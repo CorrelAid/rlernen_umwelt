@@ -1,0 +1,200 @@
+---
+title: "R Lernen: Inhaltsverzeichnis"
+author:
+output: 
+  learnr::tutorial:
+    includes:
+      after_body: ./www/favicon.html
+    language: de
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+# remotes::install_github("rstudio/learnr")
+# remotes::install_github("rstudio/gradethis")
+# suppressWarnings(if (!require("pacman")) install.packages("pacman"))
+# pacman::p_load(anytime,
+#                clisymbols,
+#                countdown,
+#                flipbookr,
+#                ggthemes,
+#                gtrendsR,
+#                prismatic,
+#                servr,
+#                tidylog,
+#                xaringan,
+#                xaringanExtra,
+#                xaringanthemer,
+#                install = TRUE,
+#                update = FALSE)
+library(gradethis)
+library(learnr)
+library(rio)
+library(tidyverse)
+library(ggbeeswarm)
+library(countrycode)
+library(httr)
+library(purrr)
+library(RSQLite)
+library(leaflet)
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+gradethis::gradethis_setup(
+  pass = "Gut gemacht!",
+  fail = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
+  code_correct = "Gut gemacht!",
+  code_incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
+  maybe_code_feedback = FALSE,
+  fail.hint = FALSE,
+  grading_problem.message = "Hups. Ist hier Code zur Überprüfung? Wenn ja, dann liegt der Fehler bei uns. Schickt Nina bitte einen Screenshot mit der Übung und Eurer Lösung."
+)
+
+tutorial_options(exercise.timelimit = 30)
+
+source("R/setup/functions.R")
+
+### Benötigt für 04, 07, 14
+data_raw <- get_data_raw()
+
+### Benötigt für 05, 07, 08, 12
+community <- get_community()
+
+### Benötigt für 06, 08
+polygons_welt <- get_poly_welt()
+
+### Benötigt für 06*api
+basis_url <- "https://unstats.un.org/"
+initiale_anfrage <- get_initiale_anfrage(url = basis_url)
+waste_data <- get_waste_data(anfrage = initiale_anfrage)
+pages <- get_pages(content = waste_data)
+
+### Benötigt für 06*sql
+con <- get_connection()
+
+### Benötigt für 07
+plastics_processed <- get_pl_proc()
+audit <- get_audit() # Auch für 11, 12
+wb_areas <- get_wb_areas()
+wb_processed <- process_wb_areas(wb_data = wb_areas)
+
+### Benötigt für 08
+karten_daten <- get_karten_daten(
+  from = community,
+  join = polygons_welt
+)
+
+### Benötigt für 09
+z <- get_z()
+
+### Benötigt für 11
+params <- get_params()
+``` 
+
+<!-- ## Willkommen -->
+```{r results='asis'}
+out <- knitr::knit_child("00_intro.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Setup -->
+```{r results='asis'}
+out <- knitr::knit_child("01_setup.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Datenschutz und Datenethik -->
+```{r results='asis'}
+out <- knitr::knit_child("02_datenschutz-und-datenethik.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Einführung in RStudio -->
+```{r results='asis'}
+out <- knitr::knit_child("03_einfuehrung-in-rstudio.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- Daten verstehen mit R -->
+```{r results='asis'}
+out <- knitr::knit_child("04_daten-verstehen-mit-r.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Datenimport und APIs -->
+```{r results='asis'}
+out <- knitr::knit_child("05_datenimport.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Exkurs: APIs-->
+```{r results='asis'}
+out <- knitr::knit_child("05_1_datenimport-exkurs-api.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Exkurs: SQL -->
+```{r results='asis'}
+out <- knitr::knit_child("05_2_datenimport-exkurs-sql.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Datentransformation -->
+```{r results='asis'}
+out <- knitr::knit_child("06_datentransformation.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Datenvisualisierung  -->
+```{r results='asis'}
+out <- knitr::knit_child("07_datenvisualisierung.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
+
+<!-- ## Grundlagen der Statistik -->
+```{r results='asis'}
+out <- knitr::knit_child("08_grundlagen-der-statistik.Rmd", quiet = TRUE)
+cat(out, sep = '')
+```
+
+<!-- ## Reports in R Markdown -->
+```{r results='asis'}
+out <- knitr::knit_child("09_reports.Rmd", quiet = TRUE)
+cat(out, sep = '')
+```
+
+<!-- ## Reportautomatisierung -->
+```{r results='asis'}
+out <- knitr::knit_child("10_automatisierte-reports.Rmd", quiet = TRUE)
+cat(out, sep = '')
+```
+
+<!-- ## Interaktive Visualisierungen -->
+```{r results='asis'}
+out <- knitr::knit_child("11_interaktive-visualisierungen.Rmd", quiet = TRUE)
+cat(out, sep = '')
+```
+
+<!-- ## Datenprojekte aus der Zivilgesellschaft -->
+```{r results='asis'}
+out <- knitr::knit_child("12_datenprojekte-fuer-die-zivilgesellschaft.Rmd", quiet = TRUE)
+cat(out, sep = '')
+```
+
+<!-- ## Lernzielkontrolle -->
+```{r results='asis'}
+out <- knitr::knit_child("13_abschlussquiz.Rmd", quiet = TRUE)
+cat(out, sep = '')
+```
+
+<!-- ## Und jetzt? -->
+```{r results='asis'}
+out <- knitr::knit_child("14_closing.Rmd", quiet = TRUE)
+cat(out, sep = '')
+```
+
+<!-- ## Glossar -->
+```{r results='asis'}
+out <- knitr::knit_child("99_glossar.Rmd", quiet = TRUE)
+cat(out, sep = "")
+```
