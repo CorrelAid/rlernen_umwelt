@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
   - Zoé Wolter
+  - Jonas Lorenz
 output: 
   html_document:
     toc: true
@@ -38,7 +39,7 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 Als Lektüre empfehlen wir die [Publikation](https://www.b-b-e.de/fileadmin/Redaktion/06_Service/02_Publikationen/2021/2021-bbe-reihe-forum-3.pdf){target="_blank"} des Bundesnetzwerks Bürgerschaftliches Engagement (BBE) zu „Datenschutz und Datensicherheit“, insbesondere die Schritte 1-12 auf den Seiten 29ff. Darüber hinaus könnt Ihr bei der Stiftung Datenschutz zahlreiche [Webinare](https://stiftungdatenschutz.org/veranstaltungen/datenschutz-im-ehrenamt){target="_blank"} zum Thema besuchen. Ein Webinar zur DSGVO-konformen Nutzung von bestehenden Datenbeständen mit der Stiftung Datenschutz und uns findet Ihr [hier](https://stiftungdatenschutz.org/veranstaltungen/unsere-veranstaltungen-detailansicht/datenschutz-im-ehrenamt-datenbestaende-rechtskonform-nutzen-293){target="_blank"}.
 
 ### **Datenschutz**
-Das Recht auf informationelle Selbstbestimmung ist ein Unterfall des verfassungsrechtlich verankerten **allgemeinen Persönlichkeitsrecht**  (Art. 1 Abs. 1 und Art. 2 Abs. 1 GG). Wichtige Rechtsgrundlage ist dafür die **DSGVO** (europäische Datenschutzgrundverordnung), welche am 25. Mai 2018 in Kraft getreten ist. 
+Das Recht auf informationelle Selbstbestimmung ist ein Unterfall des verfassungsrechtlich verankerten **allgemeinen Persönlichkeitsrecht**  (Art. 1 Abs. 1 und Art. 2 Abs. 1 GG). Wichtige Rechtsgrundlage ist dafür die **DSGVO** (europäische Datenschutzgrundverordnung), welche am 25. Mai 2018 in Kraft getreten ist. Insgesamt enthält die DSGVO 173 sogenannte **Erwägungsgründe**, also Zusätze, die eine wichtige Rolle im Verständnis und der Anwendung der Gesetze spielen. Sie sorgen dafür, dass Kontextmerkmale berücksichtigt oder komplexe Bestimmungen und ihre Hintergründe erläutert werden. Einen Überblick über alle Erwägungsgründe findet ihr [hier] (https://dsgvo-gesetz.de/erwaegungsgruende/).
 
 ```{r 02_quiz1}
 quiz(caption = NULL,
@@ -54,7 +55,7 @@ quiz(caption = NULL,
 )
 ```
 
-Personenbezogene Daten sind **Informationen**, mit denen **natürliche Personen**, also Menschen, **identifiziert** werden (können). 
+Folgt man **Art. 4 DSGVO**, so werden Personenbezogene Daten als "alle Informationen, mit denen natürliche Personen, also Menschen, direkt oder indirekt **identifiziert** werden können" definiert. 
 ![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/personenbezogene-daten.png?raw=true){#id .class width=100% height=100%}
 ```{r 02_quiz2}
 quiz(caption = NULL,
@@ -105,7 +106,7 @@ quiz(caption = NULL,
 ```
 
 
-Die Verarbeitung von personenbezogenen Daten unterliegt einem **Verbotsprinzip**: Nur wenn Ihr eine explizite Berechtigung zur Datenverarbeitung habt, dürft Ihr dies auch tun. Dabei sind die Rechtsgrundlagen bzw. **Erlaubnistatbestände** für die Datenverarbeitung folgende:
+Die Verarbeitung von personenbezogenen Daten unterliegt dem sogenannten **Verbotsprinzip**: Nur wenn Ihr eine explizite Berechtigung zur Datenverarbeitung habt, dürft Ihr dies auch tun. Eine jursitische Erlaubnis zur Verarbeitung der Daten wird durch folgende **Erlaubnistatbestände** gesichert:
 ![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/rechtmaessigkeit.png?raw=true){#id .class width=100% height=100%}
 
 ```{r 02_quiz3}
@@ -123,12 +124,12 @@ quiz(caption = NULL,
 )
 ```
 
-Auf Grund Eurer **Informationspflichten** (Art. 12-14 DSGVO) müsst Ihr bei der Datenerfassung auf **Rechtsgrundlage, Zweck, Speicherdauer, Kontaktdaten der Verantwortlichen, die Weitergabe an Dritte und Rechte der Betroffenen** hinweisen.
+Auf Grund Eurer **Informationspflichten** (Art. 12-14 DSGVO) müsst Ihr bei der Datenerfassung auf **Rechtsgrundlage, Zweck, Speicherdauer, Kontaktdaten der Verantwortlichen, die Weitergabe an Dritte und Rechte der Betroffenen** aufmerksam machen.
 <!-- - Ihr seid zu der Einhaltung der folgenden **sieben** Kernpflichten verpflichtet: **Rechtmäßigkeit, Zweckbindung, Datenminimierung, Richtigkeit, Speicherbegrenzung, Vertraulichkeit und Rechenschaft** (Art.5-7, 12-23 ff. DSGVO) -->
 Außerdem müsst Ihr auf die folgenden **Betroffenenrechte** (Art. 15-21 DSGVO) hinweisen und diese berücksichtigen:
 ![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/betroffenenrechte.png?raw=true){#id .class width=100% height=100%}
 
-Bei **Erlöschung des Zwecks** müssen personenbezogene Daten gem. §35 BDSG spätestens nach *drei Jahren* gelöscht werden - außer es handelt sich um steuerlich relevante oder Sozialdaten (Frist von 10 Jahren). Alternativ zur Löschung können Daten auch **anonymisiert** werden, indem identifizierende Informationen wie Name, exakte Adresse oder E-Mail gelöscht werden, bis die Kombination von Merkmalsausprägungen wie Wohnort, Beruf und Geschlecht jeweils bei *min. drei Personen* vorhanden ist (oder bei keiner).
+Bei **Erlöschung des Zwecks** müssen personenbezogene Daten gem. §35 BDSG spätestens nach **drei Jahren** gelöscht werden - außer es handelt sich um steuerlich relevante oder Sozialdaten (Frist von 10 Jahren). Alternativ zur Löschung können Daten auch **anonymisiert** werden, indem identifizierende Informationen wie Name, exakte Adresse oder E-Mail gelöscht werden, bis die Kombination von Merkmalsausprägungen wie Wohnort, Beruf und Geschlecht jeweils bei **min. drei Personen** vorhanden ist (oder bei keiner).
 
 ```{r 02_quiz4}
 quiz(caption = NULL,
@@ -136,7 +137,7 @@ quiz(caption = NULL,
       answer("Unbegrenzt"),
       answer("Bis zur Erlöschung des Zwecks (Prinzip der Zweckbindung)"),
       answer("Bis zur Erlöschung des Zwecks, allerdings kann eine längere Aufhebung durch konkurrierende Gesetzgebung nötig sein", correct = TRUE),
-      correct = "Richtig! Grundsätzlich gilt bei Erlöschung der Zweckbindung (z.B. Austritt eines Vereinsmitglieds) auch die Pflicht zur Löschung der Daten. Allerdings können der Löschung vertragliche Vereinbarungen und Satzungen entgegenstehen (§35 BDSG). Zudem kann eine eine gesetzliche Pflicht zur längeren Aufhebung bestehen, z.B. Dokumente, die für die Steuer relevant sind (10 Jahre, §257 HGB), und Sozialdaten (10 Jahre, §304 SGB). Bei einem Mitgliedsaustritt müssen deshalb Name, Anschrift, Daten zur Mitgliedschaft im Verein und Daten zur Beitragszahlung über 10 Jahre aufgehoben werden. Ansonsten gilt grundsätzlich die Frist zur Löschung nach drei Jahren.",
+      correct = "Richtig! Grundsätzlich gilt bei Erlöschung der Zweckbindung (z.B. Austritt eines Vereinsmitglieds) auch die Pflicht zur Löschung der Daten. Allerdings können der Löschung vertragliche Vereinbarungen und Satzungen entgegenstehen (§35 BDSG). Zudem kann eine gesetzliche Pflicht zur längeren Aufhebung bestehen, z.B. Dokumente, die für die Steuer relevant sind (10 Jahre, §257 HGB), und Sozialdaten (10 Jahre, §304 SGB). Bei einem Mitgliedsaustritt müssen deshalb Name, Anschrift, Daten zur Mitgliedschaft im Verein und Daten zur Beitragszahlung über 10 Jahre aufgehoben werden. Ansonsten gilt grundsätzlich die Frist zur Löschung nach drei Jahren.",
       incorrect = "Leider falsch. Grundsätzlich gilt bei Erlöschung der Zweckbindung (z.B. Austritt eines Vereinsmitglieds) auch die Pflicht zur Löschung der Daten. Allerdings können der Löschung vertragliche Vereinbarungen und Satzungen entgegenstehen (§35 BDSG). Zudem kann eine eine gesetzliche Pflicht zur längeren Aufhebung bestehen, z.B. Dokumente, die für die Steuer relevant sind (10 Jahre, §257 HGB), und Sozialdaten (10 Jahre, §304 SGB). Bei einem Mitgliedsaustritt müssen deshalb Name, Anschrift, Daten zur Mitgliedschaft im Verein und Daten zur Beitragszahlung über 10 Jahre aufgehoben werden. Ansonsten gilt grundsätzlich die Frist zur Löschung nach drei Jahren.",
       allow_retry = TRUE,
       try_again_button = "Nochmal versuchen"
@@ -144,8 +145,8 @@ quiz(caption = NULL,
 )
 ```
 
-Da der **Datenschutz in Drittländern** (auch in den USA) nicht so ausgeprägt ist wie in der EU, solltet Ihr bei der Auswahl von datenverarbeitenden Tools darauf achten, wo sie ihren Hauptsitz und Server haben, und müsst ggf. zusätzliche Maßnahmen (z.B. rechtliche Vereinbarung, Passwortschutz, Verschlüsselung) ergreifen.
-Am besten veröffentlicht Ihr auf Eurer Webseite Eure **Datenschutzerklärung sowie Kontaktdaten von Ansprechpartner:innen** und legt mit klar definierten **Verantwortlichen** ein **Verarbeitungsverzeichnis und Datenschutzmanagementsystem** an, das Ihr in festen Abständen **überprüft**:
+Da der **Datenschutz in anderen Ländern** (z.B. in den USA) nicht so ausgeprägt ist wie in der EU, solltet Ihr bei der Auswahl von datenverarbeitenden Tools darauf achten, wo sie ihren Hauptsitz und Server haben. Möglicherweise müsst Ihr dann zusätzliche Maßnahmen zum Schutz der Daten ergreifen (z.B. rechtliche Vereinbarung, Passwortschutz, Verschlüsselung).
+Am besten veröffentlicht Ihr auf Eurer Webseite Eure **Datenschutzerklärung sowie Kontaktdaten von Ansprechpartner:innen** und legt mit klar definierten Verantwortlichen ein **Verarbeitungsverzeichnis und Datenschutzmanagementsystem** an, welches Ihr in festen Abständen regelmäßig **überprüft**. Eine vollständige Datenschutzerklärung enthält idealerweise folgende Dinge:
 ![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/datenschutzerklaerung.png?raw=true){#id .class width=100% height=100%}
 
 ```{r 02_quiz5}
@@ -172,11 +173,11 @@ quiz(caption = NULL,
 
 ```{r 02_quiz6}
 quiz(caption = NULL,
-  question("Weil Ihr den morgendlichen und bitter benötigten Kaffee über Euren Arbeitslaptop verschüttet, verliert Ihr die Mitgliedsdaten Eures 20 Mitglieder starken Vereins, die Ihr lokal in einer Excel gespeichert hattet. Die Daten sind unwiderruflich verschwunden. „Kein Problem“, denkt Ihr, „für von Kaffee eliminierte Daten bin ich ja nicht haftungspflichtig.“ Ist das richtig?",
+  question("Weil Ihr den morgendlichen und bitter benötigten Kaffee über Euren Arbeitslaptop verschüttet, verliert Ihr die Mitgliedsdaten Eures 20 Mitglieder starken Vereins, die Ihr lokal in einer Excel-Datei gespeichert hattet. Die Daten sind unwiderruflich verschwunden. „Kein Problem“, denkt Ihr, „für von Kaffee eliminierte Daten bin ich ja nicht haftungspflichtig.“ Ist das richtig?",
       answer("Ja"),
       answer("Nein", correct = TRUE),
-      correct = "Richtig! Die Datenpanne (Art. 4 DSGVO) könnt, müsst Ihr aber nicht unebdingt innerhalb der 72h der zuständigen Behörde melden, da das Risiko für Betroffene hier nicht sehr groß ist. Den Vorfall sowie Eure Überlegungen zur Meldepflicht solltet Ihr trotzdem dokumentieren.",
-      incorrect = " Leider falsch! Eure sieben Kernpflichten (Rechtmäßigkeit, Zweckbindung, Datenminimierung, Richtigkeit, Datenreduktion, Vertraulichkeit und Rechenschaft) beinhalten gem. Art. 5 DSGVO auch den Grundsatz der Vertraulichkeit. Damit seid Ihr verpflichtet Daten durch dem Risiko angemessene technische und organisatorische Maßnahmen vor Zugriff und Verlust zu sichern. Dass Endgeräte kaputtgehen, ist durchaus zu erwarten. Eine doppelte Datensicherung durch externe, digitale Speicher wie USB oder Cloud-Lösung ist notwendig. Die Datenpanne (Art. 4 DSGVO) könnt, müsst Ihr aber nicht unbedingt innerhalb von 72h der zuständigen Behörde melden, da das Risiko für Betroffene hier nicht sehr groß ist. Den Vorfall sowie Eure Überlegungen zur Meldepflicht solltet Ihr trotzdem dokumentieren.",
+      correct = "Richtig! Die Datenpanne (Art. 4 DSGVO) könnt, müsst Ihr aber nicht unbedingt innerhalb von 72h der zuständigen Behörde melden, da das Risiko für Betroffene hier nicht sehr groß ist. Den Vorfall sowie Eure Überlegungen zur Meldepflicht solltet Ihr trotzdem dokumentieren.",
+      incorrect = " Leider falsch! Eure sieben Kernpflichten (Rechtmäßigkeit, Zweckbindung, Datenminimierung, Richtigkeit, Datenreduktion, Vertraulichkeit und Rechenschaft) beinhalten gem. Art. 5 DSGVO auch den Grundsatz der Vertraulichkeit. Damit seid Ihr verpflichtet Daten durch, dem Risiko angemessene, technische und organisatorische Maßnahmen vor Zugriff und Verlust zu sichern. Dass Endgeräte kaputtgehen, ist durchaus zu erwarten. Eine doppelte Datensicherung durch externe, digitale Speicher wie USB oder Cloud-Lösung ist notwendig. Die Datenpanne (Art. 4 DSGVO) könnt, müsst Ihr aber nicht unbedingt innerhalb von 72h der zuständigen Behörde melden, da das Risiko für Betroffene hier nicht sehr groß ist. Den Vorfall sowie Eure Überlegungen zur Meldepflicht solltet Ihr trotzdem dokumentieren.",
       allow_retry = TRUE,
       try_again_button = "Nochmal versuchen"
       ),
@@ -184,8 +185,8 @@ quiz(caption = NULL,
   question("Zum Austausch von personenbezogenen Daten nutzt die HR-Abteilung Eures Unternehmens passwortgeschützte Ordnerstrukturen in der Google Cloud. Zugang haben lediglich Mitarbeitende der Personalabteilung. Ist das unbedenklich?",
     answer("Ja"),
     answer("Nein", correct = TRUE),
-    correct = "Richtig! Es ist zwar lobenswert, dass die hochsensiblen Daten durch Passwörter geschützt werden, aber Google ist ein US-Amerikanischer Anbieter, weshalb mit dem Kippen des Privacy Shields 2020 (Schrems II) das Nutzen von US-Amerikanischen Tools zur Speicherung personenbezogener Daten unzulässig ist. Das ist zwar erstmal eine ziemlich schlechte Nachricht, aber auch wir sind derzeit noch in der Umstellung – und erwarten hier auch Korrekturen und Eingriffe der Gesetzgebenden. Bis dahin nutzen wir – wo möglich – digitale Tools aus der EU oder hosten Alternativen, wie z.B. IDGARD oder eine eigene Instanz von NextCloud.",
-    incorrect = " Leider falsch! Es ist zwar lobenswert, dass die hochsensiblen Daten durch Passwörter geschützt werden, aber Google ist ein US-Amerikanischer Anbieter, weshalb mit dem Kippen des Privacy Shields 2020 (Schrems I) das Nutzen von US-Amerikanischen Tools zur Speicherung personenbezogener Daten unzulässig ist. Das ist zwar erstmal eine ziemlich schlechte Nachricht, aber auch wir sind derzeit noch in der Umstellung – und erwarten hier auch Korrekturen und Eingriffe der Gesetzgebenden. Bis dahin nutzen wir – wo möglich – digitale Tools aus der EU oder hosten Alternativen, wie z.B. IDGARD oder eine eigene Instanz von NextCloud.",
+    correct = "Richtig! Es ist zwar lobenswert, dass die hochsensiblen Daten durch Passwörter geschützt werden, aber Google ist ein US-Amerikanischer Anbieter. Mit dem Kippen des Privacy Shields 2020 (Schrems II) ist die Nutzung US-Amerikanischer Tools zur Speicherung personenbezogener Daten unzulässig. Das ist zwar erstmal eine ziemlich schlechte Nachricht, aber auch wir sind derzeit noch in der Umstellung – und erwarten hier auch Korrekturen und Eingriffe der Gesetzgebenden. Bis dahin nutzen wir – wo möglich – digitale Tools aus der EU oder hosten Alternativen, wie z.B. IDGARD oder eine eigene Instanz von NextCloud.",
+    incorrect = " Leider falsch! Es ist zwar lobenswert, dass die hochsensiblen Daten durch Passwörter geschützt werden, aber Google ist ein US-Amerikanischer Anbieter. Mit dem Kippen des Privacy Shields 2020 (Schrems I) ist deshalb die Nutzung US-Amerikanischer Tools zur Speicherung personenbezogener Daten unzulässig. Das ist zwar erstmal eine ziemlich schlechte Nachricht, aber auch wir sind derzeit noch in der Umstellung – und erwarten hier auch Korrekturen und Eingriffe der Gesetzgebenden. Bis dahin nutzen wir – wo möglich – digitale Tools aus der EU oder hosten Alternativen, wie z.B. IDGARD oder eine eigene Instanz von NextCloud.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
@@ -196,7 +197,7 @@ quiz(caption = NULL,
     answer("Für technisch notwendige Cookies brauche ich einen Cookie-Hinweis, aber keine explizite Einwilligung.", correct = TRUE),
     answer("Für Cookies, die über die technisch notwendigen Cookies hinausgehen (z.B. Tracking, Marketing), müssen Betroffene die Möglichkeit zum Opt-In freiwillig wahrnehmen.", correct = TRUE),
     correct = "Richtig! Für technisch notwendige Cookies braucht es keine explizite Einwilligung, für alles weitere hingegegen schon. Aber: durch die Informationspflicht ist ein Banner mit Cookie-Hinweis Pflicht!",
-    incorrect = "Leider falsch! Auch hier kommt es wieder drauf an: während für alle Cookies eine Informationspflicht gilt, benötigen technisch notwendige Cookies im Gegensatz zu allen weiteren Cookies keine explizite Einwilligung.",
+    incorrect = "Leider falsch! Auch hier kommt es wieder drauf an: während für alle Cookies eine Informationspflicht gilt, benötigen technisch notwendige Cookies im Gegensatz zu allen weiteren Cookies keine explizite Einwilligung - ein Banner mit Cookie-Hinweis ist dennoch verpflichtend.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     )
@@ -206,11 +207,10 @@ quiz(caption = NULL,
 
 ### **Datenethik**
 
-- Darüber hinaus solltet Ihr Euch auch mit Euren Anforderungen an Datenethik beschäftigen, denn nur weil etwas augenscheinlich legal ist, heißt es noch lange nicht, dass es auch moralisch ist  - eine Inspiration kann die **Charta der digitalen Grundrechte** sein.
-- Prüft, ob Eure **Datengrundlage ausreicht**, um Sachverhalte zu bewerten, und diese Bewertung **sinnvoll ist**
-- Evaluiert Eure Datengrundlage und sucht gezielt nach **Verzerrungen** wie historischem Bias.
-- Überlegt Euch, ob Eure Datenanalyse zu **struktureller Benachteiligung, Diskriminierung oder (negativer) Politisierung** von Menschen führen kann.
-- Denkt bei der Programmierung von Algorithmen darüber nach, ob die zu treffende **Entscheidung** überhaupt **maschinell** anhand von sozio-demographischen Merkmalen und deren Proxies getroffen werden sollte - das gilt insbesondere bei Algorithmen, die über **Zugang zu essentiellen Bereichen** wie dem Arbeits- und Finanzmarkt oder auch über den Zugang zu **zivilgesellschaftlichen Programmen** entscheiden.
+Neben dem Datenschutz solltet Ihr Euch auch mit den **ethischen Anforderungen** Eurer Daten beschäftigen. Denn nur weil etwas augenscheinlich legal ist, bedeutet das nicht, dass es auch moralisch vertretbar ist. Als Inspiration kann Euch hierbei die [**Charta der digitalen Grundrechte**] (https://digitalcharta.eu/) dienen.
+
+Auf Basis dieser Überlegungen, könnt Ihr **übeprüfen**, ob Eure Datengrundlage ausreicht, um Sachverhalte **sinnvoll zu bewerten**. Außerdem könnt Ihr Eure zugrundeliegenden Daten **evaluieren** gezielt nach **Verzerrungen** (= engl. Biases) suchen. Anschließend solltet Ihr Euch darüber Gedanken machen, ob Eure Daten und deren Analyse zur **strukturellen Benachteiligung, Diskriminierung oder (negativen) Politisierung** von Menschen führen kann. Kommen im Zuge dieser Überlegungen Zweifel auf, müssen wir diese Ernst nehmen und **ggf. unsere Erhebungs- und Analyseinstrumente überarbeiten**.
+Wichtig: Denkt bei der Programmierung von Algorithmen stets darüber nach, ob die zu treffende Entscheidung überhaupt **maschinell** anhand von sozio-demographischen Merkmalen und deren Proxies getroffen werden sollte. Das gilt insbesondere bei Algorithmen, die über **Zugang zu essentiellen Bereichen** wie dem Arbeits- und Finanzmarkt oder auch über den Zugang zu **zivilgesellschaftlichen Programmen** entscheiden!
 
 Einige ethische Fragen solltet Ihr Euch vor und während Eurer Datenprojekte stellen:
 
@@ -222,7 +222,7 @@ quiz(caption = NULL,
   question("Wie könnt Ihr Daten zu Geschlecht und Aussehen sensibel erheben?",
       answer("Mit Selbstidentifikation mit gängigen Merkmalsausprägungen "),
       answer("Mit Selbstidentifikation mit einigen Vorschlägen, Opt Out (die Möglichkeit die Frage unbeantwortet zu lassen) und Freitextfeld"),
-      answer("Mit Selbstidentifikation mit einigen Vorschlägen, Opt Out und Freitextfeld sowie Fremdidentifikation (wie andere Menschen den:die Befragte:n wahrnehmen würden)", correct = TRUE),
+      answer("Mit Selbstidentifikation mit einigen Vorschlägen, Opt Out und Freitextfeld sowie Fremdidentifikation (d.h. wie andere Menschen die Befragungsperson wahrnehmen würden)", correct = TRUE),
       correct = "Richtig!",
       incorrect = " Leider falsch! Lies doch nochmal unter diesen Links nach: https://nibi.space/geschlechtsabfragen, https://citizensforeurope.org/wp-content/uploads/Broschu%CC%88re_2012-Einzelseiten.pdf",
       allow_retry = TRUE,
@@ -247,7 +247,7 @@ quiz(caption = NULL,
   answer("Ich kann mir bei der Programmierung von Algorithmen Gedanken darüber machen, ob die Entscheidung überhaupt maschinell und automatisiert erfolgen sollte", correct = TRUE),
   answer("Ich kann bei der Programmierung von Algorithmen  darüber nachdenken, ob Entscheidungen durch Algorithmen auf Basis von sozio-demographischen Merkmalen und deren Proxies im Anwendungsfall überhaupt fair sind", correct = TRUE),
   correct = "Richtig! Darüber hinaus gibt es aber noch wesentlich mehr Möglichkeiten. Legt idealerweise selbst einen Katalog an, der Euch als Entscheidungshilfe dient.",
-      incorrect = " Leider falsch! Zumindest die genannten vier sollten alle angewandt werden. Darüber hinaus gibt es aber noch wesentlich mehr Möglichkeiten. Legt idealerweise selbst einen Katalog an, der Euch als Entscheidungshilfe dient.",
+      incorrect = " Leider falsch! Zumindest die genannten fünf sollten alle angewandt werden. Darüber hinaus gibt es aber noch wesentlich mehr Möglichkeiten. Legt idealerweise selbst einen Katalog an, der Euch als Entscheidungshilfe dient.",
       allow_retry = TRUE,
       try_again_button = "Nochmal versuchen"
     )
