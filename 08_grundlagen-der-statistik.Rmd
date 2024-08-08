@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
   - Zoé Wolter
-  - Jonas
+  - Jonas Lorenz
 output: 
   html_document:
     toc: true
