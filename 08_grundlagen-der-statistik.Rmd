@@ -64,7 +64,7 @@ Wenn Daten Entscheidungsprozesse unterstützen sollen, braucht es kompetente Ant
 
 In der nachfolgende Abbildung zeigt ein zyklisches Prozessmodell die notwendigen Schritte für einen kompetenten Umgang mit Daten. Weil der gesamte Prozess mehrfach durchlaufen werden kann, vermittelt das Schaubild keinen klaren Startpunkt. Gewöhnlich beginnt man jedoch mit der Eingrenzung der Aufgabe und der Formulierung von (Forschungs-)Fragen.
 
--> Grafik "Prozessmodell" 
+-> ![](abbildungen/08_grundlagen-der-statistik/Zyklisches_Modell.png?raw=true){#id .class width=100% height=100%} 
 
 Die Statistik ist dabei an fast allen Schritten beteiligt:
   - Planung der Datenerhebung (Messung): Statistische Überlegungen entscheiden darüber, welche Daten in welchen Einheiten erhoben werden sollen.
