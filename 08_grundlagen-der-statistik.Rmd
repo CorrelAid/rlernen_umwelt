@@ -132,6 +132,47 @@ Achtet auf die Kommunikation sowie die verschiedenen Darstellungsarten. Welches 
 
 ### **Pressemitteilungen**
 
+Im Folgenden zeigen wir exemplarische Pressemitteilungen des Statistischen Bundesamts (Destatis) und die dazu veröffentlichten Grafiken. Diese Pressemitteilungen sind typische Beispiele für die Veröffentlichungen von statistischen Ämtern und zeigen, wie Daten in der Öffentlichkeit präsentiert werden. 
+
+Achtet auf die Kommunikation sowie die verschiedenen Darstellungsarten. Welches Wissen bzw. welche Fähigkeiten werden beim Betrachter vorausgesetzt? Welche Informationen werden vermittelt? Findet ihr die Grafiken geeignet, um die Informationen zu vermitteln?
+
+##### Industrie-Investitionen in Klimaschutz binnen zehn Jahren um 74 % gestiegen
+
+- 49 % der Klimaschutz-Investitionen flossen 2021 in die Nutzung erneuerbarer Energien
+- Umsätze mit Klimaschutzprodukten 2021 um 16 % höher als 2011
+- „Green Jobs”: Zahl der Beschäftigten im Umweltschutz von 2011 bis 2021 um 44 % gestiegen 
+
+<p>
+<center>
+![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/11/PD23_N062_32.html>*](XXX?raw=true){#id .class width=100%}
+</center>
+</p>
+
+```{r 08_quiz1, echo=FALSE}
+quiz(caption = "Fragen zur Pressemitteilung",
+  question("Wie haben sich die Investitonen in Maßnahmen zur Nutzung erneuerbarer Energien von 2011 bis 2021 entwickelt?",
+    answer("Sie haben sich zwischen 2011 und 2021 kontinuierlich erhöht."),
+    answer("Sie haben sich zwischen 2011 und 2021 ingesamt erhöht, jedoch nicht kontinuierlich.", correct = TRUE),
+    answer("Sie haben sich zwischen 2011 und 2021 ingesamt reduziert."),
+    correct = "Richtig! Die Investitionen in Maßnahmen zur Nutzung erneuerbarer Energien hat sich zwischen 2011 und 2021 sogar nahezu verdoppelt. Beim Blick auf die hellblauen Balken wird jedoch sichtbar, dass die Investitionen vor allem in den Jahren 2016 bis 2018 etwas eingebrochen sind - von einer kontinuierlichen Steigerung kann also keine Rede sein.",
+    incorrect = "Leider falsch. Wir müssen in diesem Fall die hellblauen Balken betrachten - die Legende unten Links gibt an, welche Farben, in welchem Bereich die Investitionen getätigt wurden. Die y-Achse gibt in diesem Schaubild die Höhe der Investitionen an. Betrachten wir die hellblauen balken, fällt auf, dass diese über den Zeitverlauf größer bzw. höher werden. Sie geben die Entwicklung der Investitionen in Maßnahmen zur Nutzung erneuerbarer Energien an. Diese haben sich in den entsprechenden zehn Jahren sogar fast verdoppelt. Tipp: Behalte die Legenden bzw. Beschriftungen der Achsen einer Grafik im Blick, diese sind zur Interpretation der Daten essenziell.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+  
+  question("Betrachten wir einmal alle Bereiche, in denen Investitionen getätigt wurden. Welche Aussagen können wir in diesem Fall treffen?",
+    answer("Die Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung weisen ähnliche Entwicklungsmuster auf.", correct = TRUE),
+    answer("Die Investitionen zur Energieeffizienzsteigerung/Energieeinsparung und zur Emissionsvermeidung weisen ähnliche Entwicklungsmuster auf."),
+    answer("Alle drei Bereiche weisen ähnliche Entwicklungsmuster auf."),
+    correct = "Richtig! Betrachtet man die Investitionen über die zehn Jahre, erkennt man, dass sich vor allem die Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung deutlich erhöht haben. Auch wenn die Entwicklungsverläufe nicht identisch und kontinuierlich sind, haben sich die Investitionen zur Nutzung erneuerbarer Energien nahezu verdoppelt - die Investitionen zur Energieeffizienzsteigerung/Energieeinsparung haben sich sogar mehr als verdoppelt. Betrachtet man die dunkelblauen Balken (Investitionen zur Emissionsvermeidung) fällt auf, dass diese Investitionen in den Jahren 2013 bis 2018 deutlich zurück gegangen sind, sich anschließend aber wieder etwas erholt haben und sich im Jahr 2021 annähernd auf dem Ausgangsniveau befinden.",
+    incorrect = "Leider falsch. Im Vergleich zu den Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung weisen die Investitionen zur Emissionsvermeidung eine deutlich unterschiedliche Entwicklung auf. Einerseits sind sie durchgehend auf sehr niedrigem Niveau und andererseits erfuhren diese in den Jahren 2013 bis 2018 einen deutlichen Rückgang. Anschließend konnten sie sich jedoch ein wenig erholen, sodass sie sich im Jahr 2021 wieder annähernd auf dem Ausgangsniveau befinden. Eine Steigerung der Investitionen ist allerdings nicht zu erkennen. Tipp: Klicke auf den Link zur Website der Pressemitteilung. Mit dem Curser kannst Du einzelne Balken in der Grafik ausblenden, indem Du auf die Kategorie in der Legende der Grafik klickst!",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    )
+)
+```
+
+
 -> drei umweltbezogene Pressemitteilungen inkl. Fragen
 
 # **Was sind Daten?**
