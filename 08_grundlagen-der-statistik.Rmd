@@ -64,7 +64,7 @@ Wenn Daten Entscheidungsprozesse unterstützen sollen, braucht es kompetente Ant
 
 In der nachfolgende Abbildung zeigt ein zyklisches Prozessmodell die notwendigen Schritte für einen kompetenten Umgang mit Daten. Weil der gesamte Prozess mehrfach durchlaufen werden kann, vermittelt das Schaubild keinen klaren Startpunkt. Gewöhnlich beginnt man jedoch mit der Eingrenzung der Aufgabe und der Formulierung von (Forschungs-)Fragen.
 
--> ![](abbildungen/08_grundlagen-der-statistik/Zyklisches_Modell.png?raw=true){#id .class width=100% height=100%} 
+-> ![**Abbildung:** Zyklisches Modell des Prozesses der Wertschöpfung aus Daten. Quelle: Schüller, Busch, Hindinger (2019)](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/08_grundlagen-der-statistik/Zyklisches_Modell.png?raw=true){#id .class width=100% height=100%} 
 
 Die Statistik ist dabei an fast allen Schritten beteiligt:
   - Planung der Datenerhebung (Messung): Statistische Überlegungen entscheiden darüber, welche Daten in welchen Einheiten erhoben werden sollen.
@@ -79,7 +79,7 @@ Wie wir sehen, ist eine grundlegende Datenkompetenz also von enormer Bedeutung. 
 
 Die Statistik ist eine Wissenschaft, die alle Lebensbereiche durchdringt. Wir alle sind täglich einer Fülle von Daten und Visualisierungen von Daten ausgesetzt, die uns über die verschiedene Kanäle erreichen. Im Internet kann man gezielt nach Daten aller Art suchen, z.B. nach statistischen Informationen zu Migrationsströmen oder zur Kursentwicklung von Kryptowährungen. Zugleich wird die Online-Präsentation von Daten immer benutzerfreundlicher. Dies gilt insbesondere für Daten der amtlichen Statistik – wie das folgende Beispiel einer [interaktiven Präsentation der Bevölkerungsvorausberechnung](https://service.destatis.de/bevoelkerungspyramide/){target="_blank"} für Deutschland des Statistischen Bundesamts (Destatis) zeigt.
 
--> ![*Video: von6auf1 - "Statistische Daten - Merkmalsträger, Merkmalsausprägung ..." (3min)*](https://youtu.be/fmpxGo1JJiE?si=5_Wu79t3LVA9gmLF)(04.11.2015, abgerufen August 2024)
+![**Video:** von6auf1 - "Statistische Daten - Merkmalsträger, Merkmalsausprägung ..." (3min)](https://youtu.be/fmpxGo1JJiE?si=5_Wu79t3LVA9gmLF)(04.11.2015, abgerufen August 2024)
 
 In der Statistik nennt man die Objekte, auf die sich eine statistische Untersuchung bezieht, **statistische Einheiten oder Merkmalsträger:innen**. An diesen Merkmalsträger:innen werden die Daten also erhoben. Die Menge aller (zur Beantwortung einer Fragestellung relavanten) Merkmalsträger:innen bildet eine **Grundgesamtheit (auch: Population)**. Diese muss klar definiert und als solche von anderen Personengruppen abgegrenzt sein. Als **Merkmale (auch: Variablen)** werden dabei die Eigenschaften der Merkmalsträger:innen bezeichnet. Unter dem Begriff der **Merkmalsausprägungen** werden dabei alle möglichen Werte gefasst, die ein Merkmal annehmen kann. Da sich in der Realität selten alle Personen der Grundgesamtheit erreichen lassen, wählt man nach einem **Auswahlverfahren (engl. Sampling)** eine Teilmenge aus, die sogenannte **Stichprobe**. Die folgende Abbildung verdeutlicht noch einmal den Zusammenhang zwischen Population und Stichprobe.
 
@@ -116,11 +116,11 @@ Jede Zeile einer Tabelle bildet eine zusammenhängende **Informationseinheit**, 
 
 Jede Spalte einer Tabelle repräsentiert eine **Eigenschaft**, die uns interessiert, und die für alle Zeilen auf die gleiche Art und Weise kodiert wird, so dass wir die verschiedenen Messungen leicht vergleichen können. Daher bezeichnen wir die Spalten als *Merkmale, Features, Attribute, Felder, oder Variablen*. Einen Datensatz kann mal also auch beschreiben als eine Sammlung von *N* Beobachtungen mit *Y* Merkmalen oder Variablen. Man spricht in diesem Falle von der **Dimension (auch: Komplexität)** des Datensatzes. 
 
-Ein **Datenpunkt (auch: Datenwert** ist der Schnittpunkt (= eine Zelle in der Tabelle) zwischen einer Beobachtung und einem Merkmal. Jede Tabelle besitzt eine Kopfzeile (engl. header), die die Merkmale näher beschreibt.
+Ein **Datenpunkt (auch: Datenwert)** ist der Schnittpunkt (= eine Zelle in der Tabelle) zwischen einer Beobachtung und einem Merkmal. Jede Tabelle besitzt eine Kopfzeile (engl. header), die die Merkmale näher beschreibt.
 
 Die nachfolgende Abbildung stellt alle Begriffe dieses Abschnittes noch einmal übersichtlich zusammen.
 
--> Grafik: Grundbegriffe für den Umgang mit tabellarischen Datensätzen inkl. Fragen.
+![**Abbildung:** Grundbegriffe für den Umgang mit tabellarischen Datensätzen. Quelle: Eigene Darstellung.](abbildungen/08_grundlagen-der-statistik/Datensatz.png?raw=true){#id .class width=100% height=100%} 
 
 ## Datentypen
 
