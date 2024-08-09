@@ -57,10 +57,10 @@ Los geht's!
 Im digitalen Zeitalter ist der **kometente Umgang mit Daten** eine Schlüsselqualifikation für gesellschaftliche Teilhabe, Wohlstand und Wettbewerbsfähigkeit, den Schutz von Klima und Umwelt sowie staatliches Handeln. Die **Fähigkeiten, Daten auf kritische Art und Weise zu sammeln, zu verwalten, zu bewerten und anzuwenden, wird als Data Literacy bezeichnet**. Dieser Begriff umfasst dabei nicht nur Statistikkompetenz oder ein mathematisches Grundverständnis, sondern auch Fertigkeiten wie Digital- und Medienkompetenz. Wer datenkompetent („data literate“) ist, kann die Zuverlässigkeit von Datenquellen beurteilen, Daten zielgerichtet aufbereiten und einordnen sowie sinnvolle Schlüsse aus diesen Daten ziehen.
 
 Wenn Daten Entscheidungsprozesse unterstützen sollen, braucht es kompetente Antworten auf vier grundlegende Fragen:
-  - Was will ich mit Daten machen? Daten und Datenanalysen sind kein Selbstzweck, sondern dienen einer konkreten Anwendung in der realen Welt.
-  - Was kann ich mit Daten machen? Datenquellen und deren Qualität sowie der Stand der technischen und methodischen Entwicklungen eröffnen  Möglichkeiten und setzen Grenzen.
-  - Was darf ich mit Daten machen? Alle gesetzlichen Regeln der Datennutzung (zum Beispiel Datenschutz, Urheberrechte und Lizenzfragen) müssen immer mitbedacht werden.
-  - Was soll ich mit Daten machen? Weil Daten eine wertvolle Ressource darstellen, leitet sich daraus ein normativer Anspruch ab, sie zum Wohl von Individuen und Gesellschaft zu nutzen.
+  - **Was will ich mit Daten machen?** Daten und Datenanalysen sind kein Selbstzweck, sondern dienen einer konkreten Anwendung in der realen Welt.
+  - **Was kann ich mit Daten machen?** Datenquellen und deren Qualität sowie der Stand der technischen und methodischen Entwicklungen eröffnen  Möglichkeiten und setzen Grenzen.
+  - **Was darf ich mit Daten machen?** Alle gesetzlichen Regeln der Datennutzung (zum Beispiel Datenschutz, Urheberrechte und Lizenzfragen) müssen immer mitbedacht werden.
+  - **Was soll ich mit Daten machen?** Weil Daten eine wertvolle Ressource darstellen, leitet sich daraus ein normativer Anspruch ab, sie zum Wohl von Individuen und Gesellschaft zu nutzen.
 
 In der nachfolgende Abbildung zeigt ein zyklisches Prozessmodell die notwendigen Schritte für einen kompetenten Umgang mit Daten. Weil der gesamte Prozess mehrfach durchlaufen werden kann, vermittelt das Schaubild keinen klaren Startpunkt. Gewöhnlich beginnt man jedoch mit der Eingrenzung der Aufgabe und der Formulierung von (Forschungs-)Fragen.
 
@@ -159,7 +159,6 @@ quiz(caption = "Fragen zur Pressemitteilung",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
   question("Betrachten wir einmal alle Bereiche, in denen Investitionen getätigt wurden. Welche Aussagen können wir in diesem Fall treffen?",
     answer("Die Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung weisen ähnliche Entwicklungsmuster auf.", correct = TRUE),
     answer("Die Investitionen zur Energieeffizienzsteigerung/Energieeinsparung und zur Emissionsvermeidung weisen ähnliche Entwicklungsmuster auf."),
@@ -172,8 +171,58 @@ quiz(caption = "Fragen zur Pressemitteilung",
 )
 ```
 
+#### Kosten von Mobilität: Haushalte geben im Schnitt 233 Euro monatlich fürs Auto aus, 33 Euro für Bus, Bahn und Co.
 
--> drei umweltbezogene Pressemitteilungen inkl. Fragen
+- Haushalte der höchsten Einkommensklasse haben zehn Mal so hohe Ausgaben für das Auto wie Haushalte der niedrigsten Einkommensklasse
+- Preise für Bahntickets im Fernverkehr seit 2015 gesunken, im Nahverkehr deutlich angestiegen
+- Unterschiedliche Preisentwicklung bei Pkw-Nutzung: Kraftstoffe, Reparaturen und Inspektion deutlich teurer, unterdurchschnittliche Preisentwicklung bei Kfz-Steuer, -Versicherung und Auto-Zubehör 
+
+<p>
+<center>
+![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2021/07/PD21_N045_639.html>*](XXX?raw=true){#id .class width=100%}
+</center>
+</p>
+
+```{r 08_quiz2_v2, echo=FALSE}
+quiz(caption = "Fragen zur Pressemitteilung",
+  question("Betrachten wir zunächst einmal die Kosten der PKW-Instandhaltung. Welcher Bereich weist zwischen 2015 und 2021 insgesamt die größten Preispreissteigerung auf? (Grafik 2)?",
+    answer("Verbraucherpreisindex, insgesamt"),
+    answer("Kraftstoffe"),
+    answer("Ersatzteile, Zubehör und Pflegemittel"),
+    answer("Reparatur, Inspektion, Parkgebühr und Ähnliches", correct = TRUE),
+    answer("Kraftfahrzeugversicherung"),
+    answer("Kraftfahrzeugsteuer"),
+    correct = "Richtig! Vor allem die Preise für Reparatur, Inspektion, Parkgebühr und Ähnliches hat sich in den betrachteten Jahren kontinuierlich erhöht. Im Jahr 2021 liegen die Preise in diesem Bereich ganze 20 % über den Vergleichspreisen aus dem Jahr 2015. Die Preise für Ersatzteile, Zubehör und Pflegemittel sowie die Kraftfahrzeugsteuer haben sich im Gegensatz dazu so gut wie gar nicht verändert.",
+    incorrect = "Leider falsch. Blende gerne einzelne Balken aus, um die Grafik übersichtlicher zu machen. Dann wird deutlich, dass sich vor allem die Kosten für Reparatur, Inspektion, Parkgebühr und Ähnliches kontinuierlich erhöht hat. Auch die Krfatstoffpreise haben sich ingesamt erhöhnt - allerdings nicht ganz so dramatisch.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+  question("Bleiben wir bei den Kosten zur PKW-Instandhaltung. Welcher Bereich hat zwischen 2015 und 2021 die größten Preisschwankungen erlebt? (Grafik 2)",
+    answer("Verbraucherpreisindex, insgesamt"),
+    answer("Kraftstoffe"),
+    answer("Ersatzteile, Zubehör und Pflegemittel"),
+    answer("Reparatur, Inspektion, Parkgebühr und Ähnliches"),
+    answer("Kraftfahrzeugversicherung"),
+    answer("Kraftfahrzeugsteuer", correct = TRUE),
+    correct = "Betrachten wir  die Kraftstoffpreise, so wird deutlich, dass diese zwar nicht die größte Preissteigerung erfahren, die Preisveränderung durch deutliche Schwankungen geprägt ist. Wir sehen das an den unterschiedlichen "Hügeln und Tälern", die diese Linie aufweist. Im Gegensatz zu den Kosten für Reparatur, Inspektion, Parkgebühr und Ähnliches, die einen nahezu linearen Verlauf hat, sind die Veränderungen der Kraftstoffpreise weniger stabil. Woran das genau liegt, kann man natürlich nur schwer sagen, möglicherweise liegen die niedrigen Preise ab April 2020 it der Covid-Pandemie zusammen, da sich das Leben weitestgehend in den eigenen vier Wänden abgespielt hat.",
+    incorrect = "Leider falsch. In diesem Falle betrachten wir die Preisschwankungen und nicht die endgültige Preisveränderung. Obwohl sich die Kosten für Reparatur, Inspektion, Parkgebühr und Ähnliches am meisten erhöht haben, ist diese Antwort hier nicht richtig - die Entwickling folgt annähernd dem linearen Verlauf einer Gerade. Die anderen Bereiche haben sich - ausgenommen der Versicherungskosten - kaum verändert und auch dieser Bereich hat, bis auf dem Preissturz im Herbst 2017, keine größeren Ausreißer erfahren.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+  question("Werfen wir nun noch einen Blick auf die Verbraucher:innenpreise für Bahn und Co. Welche Bereiche haben sich zugunsten der Verbraucher:innen entwickelt? (Grafik 2)",
+    answer("Verbraucherpreisindex, insgesamt"),
+    answer("Bahnfahrt, Nahverkehr"),
+    answer("Bahnfahrt, Fernverkehr", correct=TRUE),
+    answer("Beförderung mit Taxen u. Fahrgemeinschaften"),
+    answer("Kombinierte Personenbeföderungsleistungen"),
+    answer("80"),
+    correct = "Richtig! Beim Blick auf die Grafik wird schnell sichtbar, dass alle Preise gestiegen sind - bis auf die Kosten für die Fernverkehr der Bahn. Auch wenn die Preisentwicklung in diesem Bereich einige Schwankungen aushalten musste, so wird mit Beginn des Jahres 2020 ein deutlicher Preissturz sichtbar - insgesamt sind die Preise für den Fernverkehr um durchschnittlich fast 15€/Monat gesunken.",
+    incorrect = "Leider falsch. Betrachte noch einmal die verschiedenen Linien: Im Vergleich zum Ausgangspunkt im Jahr 2015, der für alle Bereiche zwischen 95-100€ lag, haben sich die Preise deutlich verändert. Liegen die Endpunkte über dem Ausgangsniveau, haben sich die Preise erhöht - liegen die Endpunkte darunter, so haben sich die Preise reduziert.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    )
+)
+```
 
 # **Was sind Daten?**
 
@@ -203,23 +252,21 @@ quiz(caption = "Fragen zu tabellarischen Daten",
     answer("3", correct = TRUE),
     answer("4"),
     answer("5"),
-    correct = "Richtig. Der Datensatz hat 3 Merkmale: 'Name', 'Alter' und 'Reaktionszeit'. 'Index' ist kein Merkmal im eigentlichen Sinne, da es automatisch für uns erzeugt wird.",
-    incorrect = "Leider falsch. Zähle nochmal die Spalten in der Tabelle. Ist 'Index' ein Merkmal, dass wir messen würden?",
+    correct = "Richtig. Anhand der Anzahl der Spalten können wir feststellen, dass der Datensatz folgende drei Merkmale hat: 'Name', 'Alter' und 'Reaktionszeit'. Etwas gemein, die Spalte 'Index' wird automatisch für uns erzeugt und ist daher kein Merkmal im eigentlichen Sinne.",
+    incorrect = "Leider falsch. Die Anzahl der Merkmale ergeben sich aus der Anzahl der Spalten unseres Datensatzes. Tipp: Eine der Spalten enthält kein Merkmal im eigentlichen Sinne, da diese automatisch für uns erzeugt wird - welche könnte das sein?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
   question("Wie viele Beobachtungen hat der Datensatz aus der Abbildung?",
     answer("2"),
     answer("3"),
     answer("4", correct = TRUE),
     answer("5"),
-    correct = "Richtig. Der Datensatz zeigt vier Beobachtungen, da es vier Zeilen mit befüllten Werten gibt und jede Zeile ist eine Beobachtung/Messung.",
-    incorrect = "Leider falsch. Zähle nochmal die Zeilen in der Tabelle.",
+    correct = "Richtig. Anhand der Anzahl der Zeilen können wir feststellen, dass der Datensatz vier Beobachtungen hat, schließlich gibt es vier Zeilen mit befüllten Werten und wie wir wissen: Jede Zeile ist eine Beobachtung/Messung.",
+    incorrect = "Leider falsch. Die Anzahl der Beobachtungen ergeben sich aus der Anzahl der Spalten unseres Datensatzes - zähle also nochmal ganz genau die Zeilen in der Tabelle.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
   question("Wie lauten die Dimensionen des Datensatzes aus der Abbildung?",
     answer("4x4"),
     answer("4x3", correct = TRUE),
@@ -242,7 +289,7 @@ Beispiele für diesen Datentyp sind Wetterdaten wie die Menge an Niederschlag od
   - **Diskrete Daten** sind im Gegensatz dazu auf ganze Zahlen beschränkt, womit sie eine abzählbare Menge von Werten darstellen. 
 Beispiele für diesen Datentyp sind die Anzahl der Kinder in einer Familie oder die Anzahl der Tore in einem Fußballspiel. Man kann 0,1,2 oder mehr Kinder haben, aber nicht 1,28 Kinder.
 
--> Grafik: Numerische Datentypen.
+-> Grafik: Numerische Datentypen und Quiz zu Datentypen
 
 Auf der anderen Seite gibt es Daten, die mithilfe von Worten und Symbolen ausgedrückt werden - die sogenannten kategorischen Daten. Allerdings gibt es auch kategorische Daten, die trotz ihres numerischen Charakters nur sinnvoll als kategorische Daten interpretiert werden können (z.B. Postleitzahlen).
 Wie die numerischen Daten, können auch die kategorischen Daten in zwei Hauptkategorien unterteilt werden:
@@ -268,7 +315,6 @@ quiz(caption = "Fragen zu Datentypen",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
   question("Welches Merkmal hat einen diskreten numerischen Datentyp im Datensatz aus der Abbildung?",
     answer("Name"),
     answer("Alter", correct = TRUE),
@@ -278,7 +324,6 @@ quiz(caption = "Fragen zu Datentypen",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
   question("Welches Merkmal hat einen kontinuierlichen numerischen Datentyp im Datensatz aus der Abbildung?",
     answer("Name"),
     answer("Alter"),
@@ -303,7 +348,7 @@ Mithilfe von Lageparametern kann man die Frage beantowrten, welche der (in der S
 
 **Modus (auch: Modelwert):** Enspricht dem häufigsten Wert, den eine bestimmte Variable annimmt. Hierzu ermittelt man die häufigste (oder wahrscheinlichste) Beobachtung.
 
-**Median:** Entspricht dem “wahren” Mittelpunkt einer Variable (50 % aller Beobachtungen sind kleiner und 50 % aller Beobachtungen sind größer als der Median). Hierzu ordnet man man alle Beobachtungen in aufsteigender Reihenfolge und bestimmt, welche Beobachtung genau in der Mitte liegt.
+**Median:** Entspricht dem “wahren” Mittelpunkt einer Variable (50 % aller Beobachtungen sind kleiner und 50 % aller Beobachtungen sind größer als der Median). Zur Bestimmung des Medians ordnet man man alle Beobachtungen in aufsteigender Reihenfolge und bestimmt, welche Beobachtung genau in der Mitte liegt.
 
 **Arithmetisches Mittel:** Enspricht dem Durchschnittswert einer Variable. Hierzu addiert man alle Einzelbeobachtungen und teilt anschließend durch die Anzahl der Beobachtungen.
 
@@ -323,42 +368,40 @@ quiz(caption = "Frage zu Lageparametern",
     answer("2", correct = TRUE),
     answer("3"),
     answer("4"),
-    correct = "Richtig! Diese Variable besitzt zwei häufigste Werte, 1 und 2.",
-    incorrect = "Leider falsch. Der Modus ist der häufigste Wert. Der Modus kann dabei auch mehrere Zahlen umfassen.",
+    correct = "Richtig! Der Modus ist der Wert, die am häufigsten vorkommt. In diesem Fall besitzt die Variable zwei häufigste Werte: 1 und 2.",
+    incorrect = "Leider falsch. Der Modus ist der Wert, der am häufigsten vorkommt. Tipp: Der Modus kann dabei auch mehrere Zahlen umfassen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
   question(sprintf("Gegeben sei die folgende Variable metrischen Messniveaus mit folgenden Ausprägungen: $x = [0, 1, 2, 4, 3, 1, 2]$. Wie lautet der Median?"),
     answer("0",),
     answer("1"),
     answer("2", correct = TRUE),
     answer("3"),
     answer("4"),
-    correct = "Richtig! Der Median lautet 2. Wenn wir die Werte sortieren, erhalten wir die Reihenfolge 0, 1, 1, 2, 2, 3, 4. Wir haben 7 Messwerte und der mittlere Wert ist der Wert an der Stelle 4, also der Messwert 2.",
-    incorrect = "Leider falsch. Der Median ist der mittlere Wert der geordneten Messreihe.",
+    correct = "Richtig! Der Median ist der "wahre" Mittelpunkt einer Variable und trennt die unteren 50 % der Ausprägungen von den oberen 50 % der Ausprägungen. Wenn wir die Werte der Größe nach sortieren, erhalten wir die Reihenfolge 0, 1, 1, 2, 2, 3, 4. Wir haben 7 Messwerte womit der vierte Messwert die obere und untere Hälfte unserer Verteilung trennt, also hat der Median in diesem Fall den Wert 2.",
+    incorrect = "Leider falsch. Der Median ist der "wahre" Mittelpunkt einer Variable und trennt die unteren 50 % der Ausprägungen von den oberen 50 % der Ausprägungen.. Tipp: Zur Bestimmung des Medians musst Du die Ausprägungen der Variable der Größe nach sortieren.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
   question(sprintf("Gegeben sei die folgende Variable metrischen Messniveaus mit folgenden Ausprägungen: $x = [0, 1, 2, 4, 3, 1, 2]$. Wie lautet der Mittelwert?"),
-    answer("0",),
-    answer("1"),
-    answer("2"),
+    answer("0,73",),
+    answer("1,45"),
+    answer("1,86", correct = TRUE),
     answer("3"),
     answer("4"),
-    answer("1,86", correct = TRUE),
-    correct = sprintf("Richtig! Der Mittelwert lautet 1,86. Dazu müssen zuerst alle Werte aufaddiert werden (=13), um anschließend durch die Anzahl der Messwerte (=7) geteilt zu werden. Wie wir sehen, ist der Mittelwert kein Wert, der in der Messung selber vorkommt, sondern ein fiktiver Wert."),
-    incorrect = "Leider falsch. Der Mittelwert ist die Summe aller Messwerte, geteilt durch die Anzahl der Messwerte.",
+    correct = sprintf("Richtig! Der Mittelwert ist das, was wir häufig als den 'Durchschnitt' bezeichnen. Zur Berechnung müssen zuerst alle Werte aufaddiert werden (= 13), um anschließend durch die Anzahl der Messwerte (= 7) geteilt zu werden. In diesem Fall beträgt der Mittelwert 1,86. Wie wir sehen, ist der Mittelwert kein Wert, der in der Messung selber vorkommt, sondern ein fiktiver Wert."),
+    incorrect = "Leider falsch. Der Mittelwert ist das, was wir häufig als Durchschnitt bezeichnen. Zur Berechnung müssen zunächst alle Werte aufsummert und anschließend durch die Anzahl der Messwerte geteilt werden. Tipp: Der Mittelwert kommt nicht zwingend selbst in der Messung vor."
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
   
   question("Warum sind schiefe Verteilungen problematisch?",
-    answer("Eine Idee", correct = TRUE),
-    answer("Keine Idee"),
-    correct = "Schiefe Verteilungen sind problematisch, weil viele statistische Modelle und Berechnungen von einer symmetrischen Verteilung ausgehen, insbesondere davon, dass die Werte gleichmäßig um den Mittelwert herum verteilt sind. Ist eine Verteilung besonders 'schief', so hat sie entweder einen langen Schwanz (engl. tail) auf der linken oder rechten Seite, d.h., ganz viele Werte mit besonders kleinen oder großen Werten. Alleine schon der Mittelwert ist für solche Verteilungen problematisch, weil er nicht mehr wirklich repräsentativ ist (siehe Abbildung). Er befindet sich viel näher an den wenigen Extremwerten als am Großteil der Werte. Mithilfe von Transformationen kann man manchmal eine solche Verteilung wieder 'normalisieren', z.B. mithilfe des Logarithmus'.",
-    incorrect = "Macht nichts, einfach die andere Option wählen ;). Stell dir eine Gehaltsverteilung wie die obige in der Grafik vor: Welchen Wert würdest du für das durchschnittliche Gehalt nennen? Den Mittelwert oder den Median? Warum?",
+    answer("Schiefe Verteilungen sind problematisch. Sind alle Werte symmetrisch verteilt, sieht mein Datensatz einfach viel schöner aus!"),
+    answer("Schiefe Verteilungen sind problematisch, da viele statistische Modelle von einer symmetrischen Verteilung der Daten ausgehen.", correct = TRUE),
+    answer("Schiefe Verteilungen sind nicht problematisch. Ist doch völlig egal, wie die Werte verteilt sind - Hauptsache, ich komme mithilfe von R zum gewünschten Ergebnis!"),
+    correct = "Schiefe Verteilungen sind problematisch, weil viele statistische Modelle und Berechnungen von einer symmetrischen Verteilung ausgehen. Vor allem gehen sie davon aus, dass die Werte gleichmäßig um den Mittelwert verteilt sind. Von einer 'schiefen' Verteilung ist die Rede, wenn diese entweder einen langen Schwanz (engl. tail) auf der linken oder rechten Seite hat. Man spricht dann von 'linksschiefen bzw. rechtssteilen' (= viele besonders kleinen Werte) oder von 'rechtsschiefen bzw. linkssteilen' (= viele besonders große Werte) Verteilungen. Mithilfe von Transformationen kann man solche problematischen Verteilungen manchmal wieder 'normalisieren', z.B. mithilfe des Logarithmus'.",
+    incorrect = "Leider falsch. Die Verteilung der Werte spielt eine große Rolle für die Auswertung und Interpretation der Daten - die Optik spielt dabei keine Rolle. Generell geht es bei der Datenanalyse und -interpretation auch nicht darum, unsere Wunschvorstellungen zu bestätigen, sondern mithilfe von wisschenschaftlichen Daten zu einem objektiven Ergebnis zu kommen. R ist dabei leider auch nur so schlau, wie wir, die es bedienen...",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     )
@@ -395,24 +438,16 @@ quiz(caption = "Frage zu Streuungsparameter",
     answer("2"),
     answer("3"),
     answer("4", correct = TRUE),
-    correct = sprintf("Richtig! Der größte Wert ist 4, der kleinste Wert ist 0, daher beträgt die Spannweite $4-0=4$."),
-    incorrect = "Leider falsch. Die Spannweite ist der Abstand zwischen dem größten und kleinsten Messweret.",
+    correct = sprintf("Richtig! Die Spannweite ist die Differenz zwischen dem größten und dem kleinsten Messwert. In diesem Fall ist der größte Wert 4, der kleinste Wert 0 - daher beträgt die Spannweite $4-0=4$."),
+    incorrect = "Leider falsch. Die Spannweite ist die Differenz zwischen dem größten und dem kleinsten Messwert.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
-  question("Entspricht ein größerer IQR auch einer größeren Streuung/Varianz um den Median?",
-    answer("Ja", correct = TRUE),
-    answer("Nein"),
-    correct = "Richtig! Für den Mittelwert wäre die Sache nicht ganz so einfach, aber der Median liegt IMMER innerhalb des oberen und unteren Quartils (per Definition), daher bedeutet ein größerer IQR auch, dass die Werte (wenigstens am Rand) weiter vom Median entfert sind als bei einem kleineren IQR. Am Boxplot wird dies in einer späteren Lektion am besten ersichtlich.",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-    ),
-  
-  question("Kann der Median durch Ausreißer (besonders große oder kleine Werte) verzerrt/beeinflusst werden?",
+  question("Kann der Median durch sogenannte 'Ausreißer' (besonders große oder kleine Werte) verzerrt/beeinflusst werden?",
     answer("Ja"),
     answer("Nein", correct = TRUE),
-    correct = "Richtig! Der Median ergibt sich ja durch den mittleren Wert der geordneten Messreihe, d.h., zuerst werden alle Messwerte sortiert und dann wird der Wert in der Mitte herausgezogen. Dieser verändert sich nicht, wenn die Werte am Anfang der Reihe, oder am Ende, noch weiter ins Extreme verschoben werden. Daher sagt man auch, dass der Median ein robustes Lagemaß ist, da er gegenüber Ausreißern unempfindlich ist. Ganz anders als der Mittelwert, bei dem ja alle Werte durch die Aufsummierung in die Berechnung mit einfließen.",
+    correct = "Richtig! Der Median ist unabhängig von den einzelnen Merkmalsausprägungen. Er ergibt sich lediglich aus der Anzahl der Werte innerhalb der geordneten Reihenfolge von Beobachtungen: Zuerst werden alle Messwerte sortiert und dann wird der mittlere Wert in der Mitte bestimmt. Dieser verändert sich nicht, wenn die Werte am Anfang der Reihe, oder am Ende, noch weiter ins Extreme verschoben werden. Daher sagt man auch, dass der Median ein 'robustes Lagemaß' ist, da er gegenüber Ausreißern unempfindlich ist. Ganz anders als der Mittelwert, bei dem ja alle Werte durch die Aufsummierung in die Berechnung mit einfließen.",
+    incorrect = "Leider falsch. Der Median ist der mittlere Wert innerhalb der geordneten Reihenfolger von Beobachtungen. Ausreißer sind besonders große oder kleine Werte und befinden sich somit am Rand unserer Verteilung - haben diese Werte einen Einfluss auf den Median?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     )
