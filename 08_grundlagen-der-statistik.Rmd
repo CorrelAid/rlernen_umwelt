@@ -505,5 +505,8 @@ Die zweite Übung behandelt noch einmal die Korrelation. Öffnet dazu bitte dies
 - [https://systats.github.io/](https://systats.github.io/linear_model/index.html)
 - [Werde ein Data Head](https://dpunkt.de/produkt/werde-ein-data-head/)
 - [Statistik: Eine Einführung mit interaktiven Elementen.](https://link.springer.com/book/10.1007/978-3-662-61912-4)
+- [Grundlagen der Datenanalyse mit R](https://link.springer.com/book/10.1007/978-3-662-61736-6)
+- [Data Litercy bei CorrelAid: Der Grundkurs für zivilgesellschaftliche Organisationen](https://www.correlaid.org/bildung/grundkurs-daten/)
+
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
