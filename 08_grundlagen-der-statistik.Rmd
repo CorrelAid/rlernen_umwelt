@@ -469,9 +469,12 @@ Außerdem kann man auch rein [zufällige Korrelationen](https://tylervigen.com/s
 
 # **Und jetzt Ihr!**
 
-Zum Abschluss dieser Lerneinheit dürft ihr nun auch noch einmal Daten interpretieren. Schaut euch dazu bitte die folgende Grafik zu [Militärausgaben im Ländervergleich 2003 - 2017](https://www.hfh-fernstudium.de/statistik-app/daten/militaer.html) an:
+Zum Abschluss dieser Lerneinheit dürft Ihr nun auch noch einmal Daten interpretieren. Schaut Euch dazu bitte die folgende Grafik zur [Nutzung erneuerbarer Energien in der Europäischen Union im Ländervergleich 2004 - 2016](https://www.hfh-fernstudium.de/statistik-app/daten/erneu_energie.html) an:
 
--> Umweltbezug!
+- Startet mit den Zeitreihen für den Brutto-Energieverbrauch, betrachten wir die Länder Deutschland, Schweden und Österreich. Wie entwickelt sich die Nutzung der erneuerbaren Energien in diesen Ländern? Was sind Gemeinsamkeiten in der Entwicklung und wo gibt es Unterschiede? Was fällt beim Blick auf die EU-Ziele für 2020 und 2030 auf - werden diese erreicht oder nicht? sucht euch drei Länder aus und vergleicht die Ausgaben in 'absoluten' Werten, 'in % BIP' und 'pro Kopf'. Was verändert sich? Warum?
+- Werfen wir anschließend einen Blick auf die Zeitreihen für den Verkehrs- und Elektrizitätssektor. Was fällt hier auf? Wie verlaufen die Entwicklungen in den einzelnen Ländern und wie lässt sich der internationale Vergleich beschreiben - wie sieht die Entwicklung in Deutschland im internationalen Vergleich aus?
+- Wechselt nun zur Darstellung 'Säulendiagramme' und bleibt im Jahr 2016. Betrachtet wiederum die einzelnen Sektoren: Welche Länder stechen jeweils positiv und negativ heraus und wie sieht es mit Blick auf die gesamte EU aus - werden die Ziele für den Brutto-Energieverbrauch von den meisten Ländern erreicht oder nicht? Tipp: Oben rechts könnt Ihr auf 'Daten ordnen' klicken - das macht diese Darstellung übersichtlicher.
+- Wechselt zum Abschluss noch zur Darstellung 'Boxplots'. Was wird hier nun dargestellt? Wenn wir die einzelnen Sektoren betrachten, wo finden die größten Veränderungen statt, betrachtet dabei z.B. Minimum, Maximum und Median.
 
 Die zweite Übung behandelt noch einmal die Korrelation. Öffnet dazu bitte diese [Seite](https://www.hfh-fernstudium.de/statistik-app/korrelation.html):
 
