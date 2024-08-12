@@ -282,22 +282,30 @@ quiz(caption = "Fragen zu tabellarischen Daten",
 
 ## **Datentypen**
 
-Je nach Kodierung der Daten unterscheiden wir verschiedene Datentypen. **Numerische** und **kategorische** Daten bilden dabei die beiden wichtigsten Datentypen. Auf der einen Seite werden Daten in Form von Zahlen (und ggf. Einheiten) ausgedrückt - man spricht dann von numerischen Daten. Diese können wiederum in zwei Hauptkategorien unterteilt werden: 
+Je nach Kodierung der Daten unterscheiden wir verschiedene Datentypen. Numerische und kategorische Daten bilden dabei die beiden wichtigsten Datentypen. Auf der einen Seite werden **Daten in Form von Zahlen (und ggf. Einheiten)** ausgedrückt - man spricht dann von **numerischen Daten**. Diese können wiederum in zwei Hauptkategorien unterteilt werden: 
 
   - **Kontinuierliche Daten** können jede Zahl innerhalb eines bestimmten Bereichs annehmen, wodurch sie eine grundsätzlich nicht zählbare Menge von Werten darstellen. Das heißt, dass es immer noch einen Wert zwischen zwei beliebigen Werten gibt. 
-Beispiele für diesen Datentyp sind Wetterdaten wie die Menge an Niederschlag oder die Außentemperatur. Die Außentemperatur kann beispielsweise mit beliebiger Genauigkeit angegeben werden: 29 °C, 28,6 °C, oder 28,6425 °C.
+Beispiele für diesen Datentyp sind Wetterdaten wie die Menge an Niederschlag oder die Außentemperatur. Die Außentemperatur kann beispielsweise mit beliebiger Genauigkeit angegeben werden: $29\ °C$, $28,6\ °C$, oder $28,6425\ °C$.
   - **Diskrete Daten** sind im Gegensatz dazu auf ganze Zahlen beschränkt, womit sie eine abzählbare Menge von Werten darstellen. 
-Beispiele für diesen Datentyp sind die Anzahl der Kinder in einer Familie oder die Anzahl der Tore in einem Fußballspiel. Man kann 0,1,2 oder mehr Kinder haben, aber nicht 1,28 Kinder.
+Beispiele für diesen Datentyp sind die Anzahl der Kinder in einer Familie oder die Anzahl der Tore in einem Fußballspiel. Man kann $0, 1, 2$ oder mehr Kinder haben, aber nicht $1,28$ Kinder.
 
--> Grafik: Numerische Datentypen und Quiz zu Datentypen
+<p>
+<center>
+![**Abbildung**: Numerische Datentypen. Quelle: \@allison_horst, lizensiert nach cc by 4.0](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/04_daten-verstehen/AllisonHorst_Datentypen2.png?raw=true){#id .class width=100%}
+</center>
+</p>
 
-Auf der anderen Seite gibt es Daten, die mithilfe von Worten und Symbolen ausgedrückt werden - die sogenannten kategorischen Daten. Allerdings gibt es auch kategorische Daten, die trotz ihres numerischen Charakters nur sinnvoll als kategorische Daten interpretiert werden können (z.B. Postleitzahlen).
+Auf der anderen Seite gibt es **Daten, die mithilfe von Worten und Symbolen** ausgedrückt werden - die sogenannten **kategorischen Daten**. Allerdings gibt es auch kategorische Daten, die trotz ihres numerischen Charakters nur sinnvoll als kategorische Daten interpretiert werden können (z.B. Postleitzahlen).
 Wie die numerischen Daten, können auch die kategorischen Daten in zwei Hauptkategorien unterteilt werden:
 
   - **Ordinale Daten** sind Daten bei denen die Werte eine natürliche Reihenfolge haben, aber die Abstände zwischen den Werten nicht notwendigerweise gleich sind. Ein Beispiel wären Schulnoten, bei denen die Note 1 besser ist als die Note 2, aber der Unterschied zwischen den beiden Noten nicht genau quantifizierbar ist. Diese Daten erlauben Vergleiche wie größer/kleiner, aber keine präzisen Berechnungen von Differenzen. Umfragen nutzen Ordinaldaten, wenn sie nach eurer Erfahrung oder Zustimmung auf einer Skala von 1-10 fragen. Die Werte sehen zwar wie diskrete Daten aus, aber es ist nicht möglich oder sinnvoll, den Abstand zwischen zwei Werten zu interpretieren - man kann schließlich nicht sagen, dass ob Abstand zwischen einer 9 und 10 in einer Umfrage identisch ist mit dem Abstand zwischen einer 0 und einer 1. Ordinaldaten müssen allerdings auch nicht mit Zahlen kodiert sein (s. Kleidergrößen: S, M, L, ...).
   - **Nominale Daten** sind qualitative Daten, die in Kategorien eingeteilt werden, ohne dass eine natürliche Reihenfolge zwischen den Kategorien besteht. Ein Beispiel sind Farben (z.B. Rot, Blau, Grün) oder Geschlechter (männlich, weiblich), bei denen keine Rangfolge oder Vergleichbarkeit hinsichtlich größer oder kleiner besteht. Nominale Daten dienen der Klassifizierung, aber arithmetische Operationen sind nicht sinnvoll.
 
--> Grafik: Kategorische Datentypen.
+<p>
+<center>
+![**Abbildung**: Kategorische Datentypen. Quelle: \@allison_horst, lizensiert nach cc by 4.0](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/04_daten-verstehen/AllisonHorst_Datentypen1.png?raw=true){#id .class width=100%}
+</center>
+</p>
 
 ## **Skalenniveaus**
 
@@ -395,7 +403,6 @@ quiz(caption = "Frage zu Lageparametern",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  
   question("Warum sind schiefe Verteilungen problematisch?",
     answer("Schiefe Verteilungen sind problematisch. Sind alle Werte symmetrisch verteilt, sieht mein Datensatz einfach viel schöner aus!"),
     answer("Schiefe Verteilungen sind problematisch, da viele statistische Modelle von einer symmetrischen Verteilung der Daten ausgehen.", correct = TRUE),
@@ -416,7 +423,7 @@ Streuungsparameter beschreiben das Ausmaß der **Streuung der Daten** innerhalb 
 
 **Varianz**: Entspricht der quadrierten Standdardabweichung.
 
-**Spannweite (auch: Range)**: Entspricht der Differenz zwischen dem kleinsten Wert (**Minimum**) und dem größten Wert (**Maximumg**) einer Variable.
+**Spannweite (auch: Range)**: Entspricht der Differenz zwischen dem kleinsten Wert (**Minimum**) und dem größten Wert (**Maximum**) einer Variable.
 
 **p-Quantil**: Entspricht dem Wert, für den mindestens $p\cdot 100 \%$ der Beobachtungen kleiner oder gleich diesem Wert sind. Das 25%-Quantil ($p=25$) ist also der Wert, für den 25 % aller beobachteten Werte kleiner oder gleich diesem Wert sind.
 
@@ -460,19 +467,20 @@ Es gibt eine weitere statistische Größe, die uns wertvolle Aussagen zu den Dat
 
 Bei einer **positiven Korrelation** (Werte nahe $+1$) beobachten wir bei Zunahme einer Variable auch eine gewisse Zunahme in der anderen Variable (Bsp.: größere Häuser erzielen für gewöhnlich einen höheren Verkaufspreis). Bei einer **negativen Korrelation** (Werte nahe $-1$) beobachten wir bei Zunahme einer Variable eine Abnahme in der anderen (Bsp.: schwerere Autos besitzen in der Regel einen höheren Kraftstoffverbrauch und somit eine geringere Reichweite). Bei einer Korrelation nahe $0$ können wir **keinen linearen Zusammenhang** erkennen: Unabhängig unseres Wissens über die eine Variable, können wir keine Vorhersage über die Werte der andere Variable treffen.
 
-Die Korrelation kann zur Interpretation der Daten sehr hilfreich, aber auch sehr trügerisch sein. Die **erste wichtige Grundregel** in Bezug auf Korrelationen ist, dass es **verschiedene Korrelationsmaße** gibt. Einige messen nur einen linearen Zusammenhang (d.h. die Daten müssen mehr oder weniger gut auf einer geraden Linie liegen), andere (Rangkorrelationen) können auch nicht lineare Zusammenhänge erfassen. Das ist wichtig, weil eine Korrelation nahe 0 **nicht** bedeutet, dass kein keinen Zusammenhang vorliegt, sondern oft nur, dass der **Zusammenhang eben nicht linear** ist. Man denke an den Zusammenhang zwischen Alter und der aufgenommenen Nahrungsmenge: Mit zunehmendem Alter steigt für gewöhnlich die Menge an Nahrung, die wir zu uns nehmen, an, bis sie ab einem gewissen Alter wieder zu sinken beginnt, weil der Körper nicht mehr so viel Energie benötigt. 
+Die Korrelation kann zur Interpretation der Daten sehr hilfreich, aber auch sehr trügerisch sein. 
+Die **erste wichtige Grundregel** in Bezug auf Korrelationen ist, dass es **verschiedene Korrelationsmaße** gibt. Einige messen nur einen linearen Zusammenhang (d.h. die Daten müssen mehr oder weniger gut auf einer geraden Linie liegen), andere (Rangkorrelationen) können auch nicht lineare Zusammenhänge erfassen. Das ist wichtig, weil eine Korrelation nahe 0 **nicht** bedeutet, dass kein Zusammenhang vorliegt, sondern lediglich, dass der **Zusammenhang eben nicht linear** ist. Man denke an den Zusammenhang zwischen Alter und der aufgenommenen Nahrungsmenge: Mit zunehmendem Alter steigt für gewöhnlich die Menge an Nahrung, die wir zu uns nehmen, an, bis sie ab einem gewissen Alter wieder zu sinken beginnt, weil der Körper nicht mehr so viel Energie benötigt. 
 
 Die **zweite wichtige Grundregel** lautet: **"Aus Korrelation folgt keine Kausalität"**. Zwei Variablen können sogar sehr stark miteinander korrelieren, ohne dass die eine die andere verursacht oder hervorruft. 
   - **Beispiel 1:** Der Verkauf von Eis und die Anzahl der Haiangriffe im Sommer korreliert stark miteinander. Das bedeutet aber nicht, dass der Verkauf von Eis Haie anlockt, oder dass Opfer von Haiangriffen danach gerne ein Eis essen. Vielmehr gibt es eine sogenannte **Drittvariable**, die beide beeinflusst: die Temperatur. Je wärmer es ist, desto mehr Eis wird verkauft und desto mehr Menschen gehen schwimmen. 
-  - **Beispiel 2:** Die Schuhgröße korreliert positiv mit der Lesefähigkeit, aber größere Schuhe machen niemanden klüger. In Wahrheit sind beide über das Alter miteinander verbunden. Beim Alter spricht man daher auch von einer **konfundierenden Variable**. 
-Außerdem kann man auch rein [zufällige Korrelationen](https://tylervigen.com/spurious-correlations) finden, die absolut keine sinnvolle Erklärung haben dürften (oder hat unser Käsekonsum vielleicht doch eine Ausrikung auf den Aktienmarkt...?).
+  - **Beispiel 2:** Die Schuhgröße korreliert positiv mit der Lesefähigkeit, aber größere Schuhe machen niemanden klüger. In Wahrheit sind beide über das Alter miteinander verbunden - man spricht in diesem Fall von einer **konfundierenden Variable**. 
+Außerdem kann man auch rein [zufällige Korrelationen](https://tylervigen.com/spurious-correlations) finden, die absolut keine sinnvolle Erklärung haben dürften (oder hat unser Käsekonsum vielleicht doch eine Auswirkung auf den Aktienmarkt...?).
 
 # **Und jetzt Ihr!**
 
 Zum Abschluss dieser Lerneinheit dürft Ihr nun auch noch einmal Daten interpretieren. Schaut Euch dazu bitte die folgende Grafik zur [Nutzung erneuerbarer Energien in der Europäischen Union im Ländervergleich 2004 - 2016](https://www.hfh-fernstudium.de/statistik-app/daten/erneu_energie.html) an:
 
-- Startet mit den Zeitreihen für den Brutto-Energieverbrauch, betrachten wir die Länder Deutschland, Schweden und Österreich. Wie entwickelt sich die Nutzung der erneuerbaren Energien in diesen Ländern? Was sind Gemeinsamkeiten in der Entwicklung und wo gibt es Unterschiede? Was fällt beim Blick auf die EU-Ziele für 2020 und 2030 auf - werden diese erreicht oder nicht? sucht euch drei Länder aus und vergleicht die Ausgaben in 'absoluten' Werten, 'in % BIP' und 'pro Kopf'. Was verändert sich? Warum?
-- Werfen wir anschließend einen Blick auf die Zeitreihen für den Verkehrs- und Elektrizitätssektor. Was fällt hier auf? Wie verlaufen die Entwicklungen in den einzelnen Ländern und wie lässt sich der internationale Vergleich beschreiben - wie sieht die Entwicklung in Deutschland im internationalen Vergleich aus?
+- Startet mit den Zeitreihen für den Brutto-Energieverbrauch, betrachten wir die Länder Deutschland, Schweden und Österreich. Wie entwickelt sich die Nutzung der erneuerbaren Energien in diesen Ländern? Was sind Gemeinsamkeiten in der Entwicklung und wo gibt es Unterschiede? Was fällt beim Blick auf die EU-Ziele für 2020 und 2030 auf - werden diese erreicht oder nicht? 
+- Werfen wir anschließend einen Blick auf die Zeitreihen für den Verkehrs- und Elektrizitätssektor. Was fällt hier auf? Wie verlaufen die Entwicklungen in den einzelnen Ländern und wie lässt sich die länderübergreifende Entwicklung beschreiben - wie steht Deutschland im internationalen Vergleich dar?
 - Wechselt nun zur Darstellung 'Säulendiagramme' und bleibt im Jahr 2016. Betrachtet wiederum die einzelnen Sektoren: Welche Länder stechen jeweils positiv und negativ heraus und wie sieht es mit Blick auf die gesamte EU aus - werden die Ziele für den Brutto-Energieverbrauch von den meisten Ländern erreicht oder nicht? Tipp: Oben rechts könnt Ihr auf 'Daten ordnen' klicken - das macht diese Darstellung übersichtlicher.
 - Wechselt zum Abschluss noch zur Darstellung 'Boxplots'. Was wird hier nun dargestellt? Wenn wir die einzelnen Sektoren betrachten, wo finden die größten Veränderungen statt, betrachtet dabei z.B. Minimum, Maximum und Median.
 
