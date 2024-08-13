@@ -64,38 +64,36 @@ Herzlich Willkommen zur dritten inhaltlichen Session unseres Kurses. Diese Woche
 -   Wenn wir mit einer neuen Arbeit beginnen, erstellen wir am besten immer ein **R Projekt**. Das hilft uns dabei, den Überblick zu behalten und nervige Dateipfad-Verwirrungen zu vermeiden, da es als eine Art "Container" für Eure Projekte funktioniert.
 -   In dem entsprechenden Ordner mit dem R Projekt legen wir deshalb am besten immer einen Ordner für unser **Daten** und einen Ordner für unseren **Code** an - falls nötig, bietet sich ein weiterer Ordner für **Grafiken** o.Ä. an.
 
-Alle Informationen zu dem Datensatz, mit dem wir in diesem Kurs arbeiten, findet Ihr [hier](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-01-26){target="_blank"}.
-
-### **Quiz**
+## **Quiz**
 
 ```{r quiz_rstudio}
 quiz(caption = NULL,
   question("Ich muss nicht auf die Groß- und Kleinschreibung achten, wenn ich in R programmiere.",
     answer("Korrekt"),
     answer("Inkorrekt", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Groß- und Kleinschreibung, aber auch Kommas und Klammern, sind wichtig für funktionierenden Code in R!",
+    correct = "Richtig. Die Groß- und Kleinschreibung müssen wir in R stets beachten, ansonsten kann es sein, dass unser Code nicht funktionieren wird!",
+    incorrect = "Leider falsch. Groß- und Kleinschreibung, aber auch Kommas und Klammern, sind wichtig damit unser Code in R funktioniert!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
   question("Code ist über Patent- und Urheberrechte geschützt, deshalb darf ich nichts von anderen Coder:innen benutzen.",
-    answer("Korrekt, Code von anderen sollte ich auf keinen Fall kopieren."),
-    answer("Inkorrekt, Code von anderen kann ich immer übernehmen."),
-    answer("Bei der Verwendung von Code sollte ich immer beachten, welcher Lizenz der Code unterliegt.", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Austausch von Code in Foren wie StackOverflow ist wichtig und hilfreich, aber dabei solltest Du immer beachten, ob der Code einer Lizenz unterliegt und du den Code tatsächlich einfach kopieren darfst (Beispiele für Lizenzen findest Du [hier](https://creativecommons.org/about/cclicenses/)).",
+    answer("Korrekt, Code von anderen sollte ich auf keinen Fall verwenden. Die Nutzung anderer Codes ist immer mit rechtliche Konsequenzen verbunden."),
+    answer("Inkorrekt, Code von anderen kann ich immer übernehmen - was soll schon passieren?"),
+    answer("Teils teils, da R eine freie Programmiersprache ist, mit der viele Personen arbeiten, die ihre Codes öffentlich teilen, darf ich auf diese Materialien zugreifen. Allerdings sollte ich bei der Verwendung von Codes immer darauf achten, welcher Lizenz der Code unterliegt.", correct = TRUE),
+    correct = "Richtig! R ist eine freie Programmiersprache und viele Menschen teilen Code zu ganz unterschiedlichen Projekten, diesen darf man grundsätzlich auch verwenden. Aber: Dabei müssen wir natürlich stets einen Blick auf die Lizenzierung des entsprechenden Codes achten und dementsprechend den Code behandeln.",
+    incorrect = "Leider falsch. R ist grundsätzlich eine offene Programmiersprache mit einer großen Community, die über Foren (z.B. StackOverflow, etc.) in ständigem Austausch miteinander ist und dort auch Code zugänglich macht - rechtliche Konsequenzen müssen wir also nicht zwangsläufig befürchten. Vielmehr sind wir daran interessiert, diese wichtigen Austausch zu fördern, indem wir Code verwenden dürfen und unsere eigenen Projekte mit anderen teilen, aber Vorsicht: Wir müssen dabei immer die Lizenz eines Codes beachten - diese kann die Nutzung einschränken oder untersagen (Beispiele für Lizenzen findest Du [hier](https://creativecommons.org/about/cclicenses/)).",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("Wo in RStudio schreibst Du Deinen Code?",
+  question("In welchem Bereich unserer 'Entwicklungsoberfläche' schreiben wir den Code?",
     answer("Konsole", correct = TRUE),
     answer("Environment"),
     answer("Terminal"),
     answer("Code Editor", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch. Öffne am besten direkt nochmal RStudio. Wo findest Du die oben genannten Fenster und kannst Du dort Code eingeben?",
+    correct = "Richtig, zum Programmieren in R verwenden wir entweder die Konsole oder den Code Editor!",
+    incorrect = "Leider falsch, öffne am besten direkt nochmal RStudio. Wo findest Du die oben genannten Fenster und kannst Du dort Code eingeben?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -103,8 +101,8 @@ quiz(caption = NULL,
   question("IDE steht für Integrated Development Environment (zu dt. integrierte Entwicklungsumgebung). RStudio ist eine integrierte Entwicklungsumgebung für R.",
     answer("Korrekt", correct = TRUE),
     answer("Inkorrekt"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch - die beiden Aussagen sind richtig.",
+    correct = "Richtig, R ist eine freie statistische Programmiersprache und RStudio eine auf R spezialisierte integrierte Entwicklungsumgebung (engl. Integrated Development Environment, kurz: IDE)!",
+    incorrect = "Leider falsch, denn R ist einerseits eine freie statistische Programmiersprache und RStudio eine auf R spezialisierte integrierte Entwicklungsumgebung (engl. Integrated Development Environment, kurz: IDE). In diesem Fall sind also beide Aussagen richtig. Schaue Dir doch gerne weiter oben noch einmal unsere Zusammenfassung zu R, RStudio und dem R Projekt an, dort findest Du alle hilfreiche Informationen für einen erfolgreichen Start mit R!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
@@ -114,32 +112,34 @@ quiz(caption = NULL,
 <br>
 <div style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
 
-*Jetzt geht es so richtig los! Bitte denke daran: am Anfang passieren immer viele Fehler und Du wirst vermutlich auch nicht alles auf Anhieb verstehen, das ist völlig normal. Lass Dich davon nicht abschrecken, schreibe Dir einfach Deine Fragen auf und bringe sie zur nächsten Livesession am Freitag mit!*
+*Jetzt geht es so richtig los! Bitte denke daran: Gerade am Anfang passieren immer viele Fehler und Du wirst vermutlich auch nicht alles auf Anhieb verstehen - das ist völlig normal und geht selbst erfahrenen Coder:innen noch so. Lass Dich davon nicht abschrecken, schreibe Dir einfach Deine Fragen auf und bringe sie zur nächsten Livesession am Freitag mit!*
 </div>
 <br>
 
-### **Grundlagen: Syntax in R**
+# **Grundlagen in R**
 
-Einen Überblick über die Grundlagen in R erhaltet Ihr in diesem [**Schummelblatt**](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"}. In diesem Abschnitt stellen wir Euch die wichtigsten Grundlagen für die kommenden Wochen vor!
+## **Syntax in R**
 
-Die simpelste Version von R ist einfach die Verwendung als Taschenrechner. Führt mal folgenden Code-Block aus:
+In diesem Abschnitt stellen wir Euch die wichtigsten Grundlagen für die kommenden Wochen und Monate vor! Es gibt nämlich eine ganze Reihe mathematischer Berechnungen, die wir bereits jetzt durchführen können, ohne uns groß Gedanken über komplizierte Funktionen gemacht zu haben. Einen Überblick über die Grundlagen in R erhaltet Ihr außerdem in diesem [**Schummelblatt**](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"}. 
+
+Starten wir also ganz simpel und verwenden R einfach als Taschenrechner! Führt mal folgenden Code-Block aus:
 
 ```{r mathop, exercise = TRUE}
-### mathematische Operatoren
+## Mathematische Operatoren in R
 2 + 2   # plus
 2 - 1   # minus
 2 * 2   # mal
 2 / 2   # geteilt
 ```
 
-Wie Ihr seht: **Kommentare** erkennt Ihr an dem Hash **"\#"**, d.h. alles was in der Zeile nach einem **"\#"** kommt, wird von R nicht als Code ausgeführt!
+Wir können R also als Taschenrechner verwenden und dabei von den Grundregeln bis hin zu komplizierten Formeln alles mögliche anstellen. Ihr seht außerdem, dass wir **Kommentare** in unseren Code integrieren können - Ihr erkennt sie an dem Hash **"\#"**. Das bedeutet, dass alles was in der Zeile nach einem **"\#"** kommt, von R nicht als Code ausgeführt wird!
 
-R kann aber auch eine Art Orakel sein: Mit **logischen Ausdrücken** könnt Ihr u.a. Datensätze filtern und Wenn-Dann-Begingungen für Operationen definieren. Was denkt Ihr, sind die folgenden logischen Ausdrücke wahr (=TRUE) oder falsch (=FALSE)?
+Mit **logischen Ausdrücken** können wir allerdings noch viel mehr machen, als solche Berechnungen. Wir können R nämlich auch als eine Art Orakel verwenden. Mithilfe der Ausdrücke können wir u.a. Datensätze filtern und Wenn-Dann-Begingungen für kompliziertere Operationen definieren. Aber starten wir einmal einfach: Was denkt Ihr, sind die folgenden logischen Ausdrücke wahr (=TRUE) oder falsch (=FALSE)?
 
 ```{r logik, exercise = TRUE}
-### logische Ausdrücke
+## Logische Ausdrücke in R
 2 == 2                      # ist gleich
-2 != 3                      # nicht gleich
+2 != 3                      # ist ungleich
 !(2 == 2)                   # nicht
 2 < 3                       # kleiner als
 2 > 3                       # größer als
@@ -149,30 +149,43 @@ R kann aber auch eine Art Orakel sein: Mit **logischen Ausdrücken** könnt Ihr 
 (1 + 1 == 2) | (2 + 2 == 5) # oder
 ```
 
-Was für Daten gibt es denn eigentlich? Erinnert euch mal zurück an letzte Woche, da haben wir uns verschiedene Datentypen angeschaut und überlegt was für (un)geordneten Informationen in den Daten enthalten sein können. Diese Unterscheidungen sind in R wichtig, denn sie bestimmen was ihr mit Daten überhaupt anstellen könnt. In R könnt Ihr mit den folgenden Grundtypen an Daten arbeiten:
+## **Datentypen in R**
+
+Was für Daten gibt es denn eigentlich? Erinnern wir uns dazu einmal an letzte Woche zurück, als wir uns verschiedene Datentypen angeschaut und überlegt haben, welche (un-)geordneten Informationen in Daten überhaupt enthalten sein können. Diese **Unterscheidung der Datentypen** werden an dieser Stelle wieder relevant, denn in R entscheidet auch die Art der Daten darüber, was wir überhaupt mit ihnen anstellen können. An dieser Stelle möchten wir daher einmal einen Blick auf die Grundtypen an Daten werfen, die es in R gibt und mit denen wir in Zukunft arbeiten werden:
 
 ```{r grundtypen, exercise = TRUE}
-7                # integer (also eine ganze Zahl)
-7.234123         # numeric (also alle Zahlen)
-'irgendein Text' # character (jegliche Text-Daten müssen immer in Anführungszeichen stehen)
-TRUE             # boolean (also das binäre TRUE oder FALSE)
+## Grundtypen an Daten in R
+7                # integer
+7.234123         # numeric
+'irgendein Text' # character
+TRUE             # logical
 ```
 
-R hat darüber hinaus aber auch eine Art Gedächtnis. D.h. Ihr könnt Werte in Objekten speichern, das geht über den Zuweisungspfeil `<-`:
+  - **numeric**: Alle Zahlen, die einen Dezimalwert haben oder einen Bruch darstellen.
+  - **integer**: Ganze Zahlen, die keinen Dezimalwert haben.
+  - **character**: Jegliche Form der Text-Daten. Diese müssen immer in Anführungszeichen stehen.
+  - **logical**: Eine Variable mit binärer Ausprägung (auch: boolean), also z.B. das binäre  TRUE oder FALSE.
+
+## **R als Gedächtnis**
+
+Man kann durchaus sagen, dass R über eine Art Gedächtnis verfügt. Denn mithilfe von R können wir **Werte in Objekten speichern**. In den entsprechenden Operationen verwenden wir dafür den Zuweisungspfeil `<-`, mit dem wir ganz simpel einem Objekt eine Zahl zuweisen. In diesem Fall weisen wir dem Objekt 'zahl' den Wert $2$ zu. Wenn wir anschließend das Objekt wieder aufrufen, wird uns der Wert angezeigt, den wir zuvor im Objekt gespeichert haben.  
 
 ```{r zuweisung, exercise = TRUE}
-zahl <- 2       # Variablenzuweisung: Der Wert 2 wird im Objekt mit dem Namen 2 gespeichert
-zahl            # Wenn Ihr dann das Objekt aufruft, wird Euch der Wert angezeigt, der im Objekt gespeichert ist
+## Variablenzuweisung zu einem Objekt
+zahl <- 2       # Variablenzuweisung
+zahl            # Aufrufen des Objekts
 ```
 
-Nun denkt ihr vielleicht, dass ein Objekt, bestehend aus nur einem Wert, ja ziemlich übersichtlich ist und man dafür vielleicht gar kein R braucht ... aber neben einzelnen Werten lässt sich natürlich auch eine ganze Reihe an Werten in einem Objekt speichern. Hierbei handelt es sich um einen Vektor, d.h. alle einzelnen Werte werden über das `c()` zusammengepackt. Achtung: in einem Vektor sollten nur Werte des gleichen Grundtyps gespeichert sein!
+Nun denkt ihr vielleicht, dass ein Objekt, bestehend aus nur einem Wert, ja ziemlich übersichtlich ist und man dafür vielleicht gar kein R braucht ..., aber neben einzelnen Werten lässt sich natürlich auch eine **ganze Reihe an Werten in einem Objekt speichern**. Hierbei handelt es sich um einen sogenannten **Vektor**. Mithilfe des alle `c()` können wir dabei alle einzelnen Werte zusammengepacken, aber Achtung: In einem Vektor sollten nur Werte des **gleichen Grundtyps** gespeichert sein! 
+In diesem Fall werden wir also zuerst alle einzelnen Werte des selben Typs in einem Vektor mit der Bezeichnung 'irgendein_vektor' speichern und anschließend aufrufen. Wie wir sehen, werden uns anschließend alle vier Werte, die wir in dem Vektor gespeichert haben, angezeigt.
+Glücklicherweise können wir auch einzelne Werte, die in einem Vektor enthalten sind, wieder aufspüren. Dazu nutzen wir die Position des Wertes im Vektor, die wir mithilfe der eckigen Klammern '[]' angeben. 
 
 ```{r vector, exercise = TRUE}
-# Einzelne Werte werden in einem Vektor mit der Bezeichnung 'irgendein_vektor' gespeichert, wenn Ihr diesen aufruft, werden alle darin enthaltenen Werte angezeigt
-irgendein_vektor <- c('R', 'ist', 'richtig', 'toll!')   
-irgendein_vektor      
+## Erstellen eines Vektors
+irgendein_vektor <- c('R', 'ist', 'richtig', 'toll!') # Speichern der Werte im Vektor  
+irgendein_vektor                                      # Aufrufen des Vektors
 
-# Natürlich könnt Ihr auch einen einzelnen Wert, der in einem Vektor enthalten ist, wieder aufspüren, dazu nutzt Ihr einfach die Position des Wertes im Vektor
+## Aufspüren eines bestimmten Wertes innerhalb eines Vektors
 irgendein_vektor[1] 
 irgendein_vektor[4]
 ```
