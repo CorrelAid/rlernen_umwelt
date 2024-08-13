@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
   - Zoé Wolter
+  - Jonas Lorenz
 output: 
   html_document:
     toc: true
@@ -34,32 +35,34 @@ library(rio)
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Ab dieser Woche geht es ans Eingemachte: Nachdem Ihr in den vergangenen Lektionen bereits erste Codezeilen ausgeführt habt, beginnen wir nun zu programmieren. Um die R-Dateien, die wir nutzen werden, lokal zu öffnen, benötigt Ihr [R](https://ftp.fau.de/cran/){target="_blank"} und [RStudio](https://rstudio.com/products/rstudio/download/#download){target="_blank"}. Versucht gerne selbst beide Programme für Euer Betriebssystem zu installieren – idealerweise auf einem Laptop oder PC, auf dem Ihr **Adminrechte** habt. Gerne auch auf Eurem privaten PC. Bei Installationsschwierigkeiten könnt Ihr uns gerne vor unserer Live-Session am Freitag **per Slack-Nachricht** kontaktieren - dann lösen wir die Herausforderungen mit Euch gemeinsam.
+Herzlich Willkommen zur dritten inhaltlichen Session unseres Kurses. Diese Woche geht es ans: Wir beginnen mithilfe von R zu programmieren. Um die R-Dateien, die wir nutzen werden, lokal zu öffnen, benötigt Ihr [R](https://ftp.fau.de/cran/){target="_blank"} und [RStudio](https://rstudio.com/products/rstudio/download/#download){target="_blank"}. Versucht gerne selbst beide Programme für Euer Betriebssystem zu installieren – idealerweise auf einem Laptop oder PC, auf dem Ihr **Adminrechte** habt. Gerne auch auf eurem privaten PC. Bei Installationsschwierigkeiten könnt Ihr uns gerne vor unserer Live-Session am Freitag **per Slack-Nachricht** kontaktieren - dann lösen wir die Herausforderungen mit Euch gemeinsam.
 
 ![*Video: Einführung in RStudio (30min)*](https://youtu.be/sgczH-e0Cxg)
 
-### **Kernaussagen**
+# **Was ist eigentlich R und RStudio?**
 
-#### R
+## R
 
 -   R ist eine **freie, statistische Programmiersprache**
 -   **Groß- und Kleinschreibung** muss in R unbedingt beachtet werden
--   Nicht jede **Funktionalität** müsst Ihr in R selbst schreiben: Über **`install.packages()`** und **`library()`** könnt Ihr Funktionalitäten, die andere Coder:innen für Euch bereitstellen, nutzen - das spart viel Zeit!
+-   Nicht jede **Funktionalität** müssen wir in R selbst schreiben. Stattdessen nutzen wir über **`install.packages()`** und **`library()`** die Funktionalitäten, die uns andere Coder:innen frei zur Verfügung stellen - das spart viel Zeit!
 
-#### RStudio
+## RStudio
 
--   RStudio ist auf R spezialisierte **integrierte Entwicklungsumgebung** (eng. Integrated Development Environment oder IDE), in der Ihr Code schreiben, ausführen, auf Dokumentation und Dateien zugreift, Eure Arbeit mit Anderen teilen könnt uvm.
--   Es ist empfehlenswert Code im **Code Editor** (zu dt. Codebearbeitungsprogramm) zu schreiben und mit "\#" zu kommentieren - den Code könnt Ihr mit "CMD + ENTER" für Mac und "CTRL + ENTER" für Windows ausführen - die Ergebnisse erhaltet Ihr in der **Console**
--   In der **Environment** (zu dt. Umgebung) sind Objekte (also auch Eure Daten) Eurer Arbeit gespeichert
--   Unter dem Environment findet Ihr einen **File Explorer** (zu dt. Dateimanager), mit dem Ihr Dateien auf Eurer Festplatte suchen und per Doppelklick öffnen könnt
--   Zusätzlich werden dort Plots (zu dt. Abbildungen), geladene Packages und die **Dokumentation** ("Hilfe") angezeigt, die Ihr mit dem Befehl **help("Funktion")** oder **?Funktion** durchsuchen könnt
--   Alle **Shortcuts** für RStudio findet Ihr unter ("Menü Help -\> Keyboard Shortcuts Help)
--   In englischer Sprache ist zudem ein **Schummelblatt** zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} verfügbar
+-   RStudio ist auf R spezialisierte **integrierte Entwicklungsumgebung** (eng. Integrated Development Environment oder IDE).
+-   In RStudion können wir Codes schreiben und ausführen, auf Dokumentationen und Dateien zugreifen, unsere Arbeit mit Anderen teilen uvm.
+-   Wir empfehlen, den Code im **Code Editor** (zu dt. Codebearbeitungsprogramm) zu schreiben und mit "\#" zu kommentieren. Mit **"CMD + ENTER"** für Mac und **"CTRL + ENTER"** für Windows können wir den Code ausführen.
+-   Die Ergebnisse unseres Codes erhalten wir in der **Console**.
+-   In der **Environment** (zu dt. Umgebung) sind Objekte (also auch Daten) unserer Arbeit gespeichert.
+-   Unter dem Environment gibt es einen **File Explorer** (zu dt. Dateimanager), mit dessen Hilfe wir Dateien auf unserer Festplatte suchen und per Doppelklick öffnen können.
+-   Dort werden auch Plots (zu dt. Abbildungen), geladene Packages und die **Dokumentation** ("Hilfe") angezeigt, die wir mit dem Befehl **help("Funktion")** oder **?Funktion** durchsuchen können.
+-   Alle **Shortcuts** für RStudio gibt es unter ("Menü Help -\> Keyboard Shortcuts Help).
+-   In englischer Sprache ist zudem ein **Schummelblatt** zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} verfügbar. Diese 'Schummelblätter' gibt es zu allen möglichen Themen rund um R und RStudio, sie werden uns also im Laufe des Kurses immer wieder begleiten.
 
-#### R Projekt (RProj)
+## R Projekt (RProj)
 
--   Um nervige Dateipfad-Verwirrungen zu vermeiden und eine Art "Container" für Eure R Projekte anzulegen, erstellt Ihr am besten immer ein **R Projekt**
--   Im Ordner mit dem R Projekt legt Ihr am besten immer einen **Ordner** für Eure Daten und einen Ordner für Euren Code an und falls nötig noch für Grafiken o.ä.
+-   Wenn wir mit einer neuen Arbeit beginnen, erstellen wir am besten immer ein **R Projekt**. Das hilft uns dabei, den Überblick zu behalten und nervige Dateipfad-Verwirrungen zu vermeiden, da es als eine Art "Container" für Eure Projekte funktioniert.
+-   In dem entsprechenden Ordner mit dem R Projekt legen wir deshalb am besten immer einen Ordner für unser **Daten** und einen Ordner für unseren **Code** an - falls nötig, bietet sich ein weiterer Ordner für **Grafiken** o.Ä. an.
 
 Alle Informationen zu dem Datensatz, mit dem wir in diesem Kurs arbeiten, findet Ihr [hier](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-01-26){target="_blank"}.
 
