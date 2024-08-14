@@ -1,5 +1,5 @@
 ---
-title: "Geo(-referenzierte) Daten (Exkurs)"
+title: "Eigene API-Anfragen (Exkurs)"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
