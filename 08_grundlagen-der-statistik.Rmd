@@ -44,7 +44,7 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 <p style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
   **Disclaimer** <br>
   Du hast alles direkt verstanden? Perfekt!
-  Du hast nicht alles direkt verstanden? Völlig normal! Nimm Deine Fragen gerne mit in die Livesession - die Tutor:innen freuen sich darüber, alle Deine Fragen zu beantworten und Dir weiterzuhelfen. Bei kleineren Fragen wende Dich natürlich auch gerne einfach direkt an Deine:n Mentor:in. Und wenn Du gar nicht weißt, wo Du anfangen sollst mit Deinen Fragen - ein kleiner Schritt nach dem anderen und nicht alles brauchst Du für jede Datenanalyse oder -visualisierung. 
+  Du hast nicht alles direkt verstanden? Völlig normal! Nimm Deine Fragen gerne mit in die Livesession - die Tutor:innen freuen sich darüber, alle Deine Fragen zu beantworten und Dir weiterzuhelfen. Bei kleineren Fragen wende Dich natürlich auch gerne einfach direkt an Deine:n Mentor:in. Und wenn Du gar nicht weißt, wo Du anfangen sollst mit Deinen Fragen - ein kleiner Schritt nach dem anderen und nicht alles brauchst Du für jede Form der Datenanalyse oder -visualisierung. 
 </p>
 
 Nachdem wir uns in der vergangenen Woche mit den juristischen und ethischen Hintergründen der Datenverarbeitung beschäftigt haben, werden wir uns in diesem Kapitel den **Grundlagen des statistischen Denkens** widmen.
@@ -54,9 +54,9 @@ Los geht's!
 
 # **Data Literacy**
 
-Im digitalen Zeitalter ist der **kometente Umgang mit Daten** eine Schlüsselqualifikation für gesellschaftliche Teilhabe, Wohlstand und Wettbewerbsfähigkeit, den Schutz von Klima und Umwelt sowie staatliches Handeln. Die **Fähigkeiten, Daten auf kritische Art und Weise zu sammeln, zu verwalten, zu bewerten und anzuwenden, wird als Data Literacy bezeichnet**. Dieser Begriff umfasst dabei nicht nur Statistikkompetenz oder ein mathematisches Grundverständnis, sondern auch Fertigkeiten wie Digital- und Medienkompetenz. Wer datenkompetent („data literate“) ist, kann die Zuverlässigkeit von Datenquellen beurteilen, Daten zielgerichtet aufbereiten und einordnen sowie sinnvolle Schlüsse aus diesen Daten ziehen.
+Im digitalen Zeitalter ist der **kompetente Umgang** mit Daten eine Schlüsselqualifikation für gesellschaftliche Teilhabe, Wohlstand und Wettbewerbsfähigkeit, den Schutz von Klima und Umwelt sowie staatliches Handeln. Die **Fähigkeiten, Daten auf kritische Art und Weise zu sammeln, zu verwalten, zu bewerten und anzuwenden, wird als Data Literacy bezeichnet**. Dieser Begriff umfasst dabei nicht nur Statistikkompetenz oder ein mathematisches Grundverständnis, sondern auch Fertigkeiten wie Digital- und Medienkompetenz. Wer datenkompetent („data literate“) ist, kann außerdem die Zuverlässigkeit von Datenquellen beurteilen, Daten zielgerichtet aufbereiten und einordnen sowie sinnvolle Schlüsse aus diesen Daten ziehen.
 
-Wenn Daten Entscheidungsprozesse unterstützen sollen, braucht es kompetente Antworten auf vier grundlegende Fragen:
+Wenn Daten Entscheidungsprozesse unterstützen sollen, sollte man sich mit diesen vier grundlegenden Fragen auseinandersetzen:
   - **Was will ich mit Daten machen?** Daten und Datenanalysen sind kein Selbstzweck, sondern dienen einer konkreten Anwendung in der realen Welt.
   - **Was kann ich mit Daten machen?** Datenquellen und deren Qualität sowie der Stand der technischen und methodischen Entwicklungen eröffnen  Möglichkeiten und setzen Grenzen.
   - **Was darf ich mit Daten machen?** Alle gesetzlichen Regeln der Datennutzung (zum Beispiel Datenschutz, Urheberrechte und Lizenzfragen) müssen immer mitbedacht werden.
@@ -70,12 +70,14 @@ In der nachfolgende Abbildung zeigt ein zyklisches Prozessmodell die notwendigen
 </center>
 </p>
 
+## Die Rolle der Statistik
+
 Die Statistik ist dabei an fast allen Schritten beteiligt:
   - Planung der Datenerhebung (Messung): Statistische Überlegungen entscheiden darüber, welche Daten in welchen Einheiten erhoben werden sollen.
   - Durchführung der Datenerhebung: Das Wissen über statistische Verteilungen bestimmter Merkmale innerhalb einer Gesellschaft (z.B. Altersverteilungen, etc.) ist bei der Auswahl der Stichprobe von großer Bedeutung und hilft, Messfehler und Verzerrungen zu vermeiden bzw. zu minimieren.
-  - Datenanalyse: Statistischer Berechnungen helfen dabei, Muster und Auffälligkeiten in den Daten zu finden.
+  - Datenanalyse: Statistische Berechnungen helfen dabei, Muster und Auffälligkeiten in den Daten zu finden.
   - Interpretation der Daten: Mithilfe statistischer Modelle können gefundene Zusammenhänge überprüft und bewertet werden.
-  - Entscheidungsfindung: Mithilfe der statistischen Bewertungen können auf Basis der erhobenen Daten wissenschaftlich fundierte Entscheidungen getroffen werden.
+  - Entscheidungsfindung: Auf Basis der erhobenen Daten und des darausfolgenden statistischen Bewertungen können wissenschaftlich fundierte Entscheidungen getroffen werden.
 
 Wie wir sehen, ist eine grundlegende Datenkompetenz also von enormer Bedeutung. Deshalb wollen wir uns näher mit den Grundlagen der Statistik beschäftigen und tun dies so praxisnah und anwendungsorientiert wie möglich zu gestalten, indem wir uns auf die Grundlagen fokussieren, die Ihr beim Umgang mit Euren eigenen Daten und Datensätzen direkt angewenden könnt!
 
@@ -83,9 +85,11 @@ Wie wir sehen, ist eine grundlegende Datenkompetenz also von enormer Bedeutung. 
 
 Die Statistik ist eine Wissenschaft, die alle Lebensbereiche durchdringt. Wir alle sind täglich einer Fülle von Daten und Visualisierungen von Daten ausgesetzt, die uns über die verschiedene Kanäle erreichen. Im Internet kann man gezielt nach Daten aller Art suchen, z.B. nach statistischen Informationen zu Migrationsströmen oder zur Kursentwicklung von Kryptowährungen. Zugleich wird die Online-Präsentation von Daten immer benutzerfreundlicher. Dies gilt insbesondere für Daten der amtlichen Statistik – wie das folgende Beispiel einer [interaktiven Präsentation der Bevölkerungsvorausberechnung](https://service.destatis.de/bevoelkerungspyramide/){target="_blank"} für Deutschland des Statistischen Bundesamts (Destatis) zeigt.
 
+## Statistische Grundbegriffe 
+
 ![**Video:** von6auf1 - "Statistische Daten - Merkmalsträger, Merkmalsausprägung ..." (3min)](https://youtu.be/fmpxGo1JJiE?si=5_Wu79t3LVA9gmLF)(04.11.2015, abgerufen August 2024)
 
-In der Statistik nennt man die Objekte, auf die sich eine statistische Untersuchung bezieht, **statistische Einheiten oder Merkmalsträger:innen**. An diesen Merkmalsträger:innen werden die Daten also erhoben. Die Menge aller (zur Beantwortung einer Fragestellung relavanten) Merkmalsträger:innen bildet eine **Grundgesamtheit (auch: Population)**. Diese muss klar definiert und als solche von anderen Personengruppen abgegrenzt sein. Als **Merkmale (auch: Variablen)** werden dabei die Eigenschaften der Merkmalsträger:innen bezeichnet. Unter dem Begriff der **Merkmalsausprägungen** werden dabei alle möglichen Werte gefasst, die ein Merkmal annehmen kann. Da sich in der Realität selten alle Personen der Grundgesamtheit erreichen lassen, wählt man nach einem **Auswahlverfahren (engl. Sampling)** eine Teilmenge aus, die sogenannte **Stichprobe**.
+In der Statistik nennt man die Objekte, auf die sich eine statistische Untersuchung bezieht, **statistische Einheiten oder Merkmalsträger:innen**. An diesen Merkmalsträger:innen werden die Daten also erhoben. Die Menge aller (zur Beantwortung einer Fragestellung relavanten) Merkmalsträger:innen bildet eine **Grundgesamtheit (auch: Population)**. Diese muss klar definiert und als solche von anderen Personengruppen abgegrenzt sein. Als **Merkmale (auch: Variablen)** werden dabei die Eigenschaften der Merkmalsträger:innen bezeichnet. Unter dem Begriff der **Merkmalsausprägungen** werden dabei alle möglichen Werte gefasst, die eine solche Variable annehmen kann. Da sich in der Realität selten alle Personen der Grundgesamtheit erreichen lassen, wählt man nach einem **Auswahlverfahren (engl. Sampling)** eine Teilmenge aus, die sogenannte **Stichprobe**.
 
 <div style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
 <p style="color:#acc940;"><b>Beispiele:  Statistische Grundbegriffe</b></p>
@@ -102,7 +106,7 @@ Die statistischen Einheiten werden hier repräsentiert durch
 
 Interessierende Merkmale und Merkmalsausprägungen können hier sein
 
-- der Familienstand der Person, etwa mit den Ausprägung „single“, "verheiratet", "geschieden"; 
+- der Familienstand der Person, etwa mit den Ausprägung „ledig“, "verheiratet", "geschieden"; 
 - das Alter der Studierenden, erfasst z.B. in Form von Altersklassen;
 </div>
 
@@ -116,31 +120,31 @@ Die folgende Abbildung verdeutlicht noch einmal den Zusammenhang zwischen Popula
 
 ## **Aufgaben und Teilbereiche der Statistik**
 
-Für Statistiker:innen ist der Begriff „Statistik“ nicht eindeutig definiert. Einerseits verstehen sie darunter ihre **Wissenschaft als Ganzes**, andererseits verwenden sie den Begriff aber auch für sogenannte **statistische Kenngrößen**, die sich aus den Daten ableiten (z.B. den Mittelwert). Wir verstehen im Rahmen dieses Kurses **„Statistik“ im Sinne von „Wissenschaft“**, die sich mit der Sammlung, Analyse, Interpretation, Präsentation und Organisation von Daten befasst. Die damit verbundenen Methoden und Werkzeuge nutzen wir, um große Mengen an Informationen systematisch zu untersuchen und daraus nützliche Erkenntnisse zu gewinnen.
+Selbst für Statistiker:innen ist der Begriff „Statistik“ nicht eindeutig definiert. Einerseits verstehen sie darunter ihre **Wissenschaft als Ganzes**, andererseits verwenden sie den Begriff aber auch für sogenannte **statistische Kenngrößen**, die sich aus den Daten ableiten (z.B. der Mittelwert). Wir verstehen im Rahmen dieses Kurses „Statistik“ im Sinne von **„Wissenschaft“, die sich mit der Sammlung, Analyse, Interpretation, Präsentation und Organisation von Daten befasst**. Die damit verbundenen Methoden und Werkzeuge nutzen wir, um große Mengen an Informationen systematisch zu untersuchen und daraus nützliche Erkenntnisse zu gewinnen.
 
 Innerhalb der Statistik lassen sich die beschreibende und die schließende Statistik unterscheiden. 
-Die **beschreibende (auch: deskriptive) Statistik** umfasst numerische und grafische Verfahren zur Charakterisierung und Präsentation von Daten. 
+Die **beschreibende (auch: deskriptive) Statistik** umfasst numerische und grafische Verfahren zur Charakterisierung und Präsentation von Daten.
+  - Bsp.: Vergleich verschiedener Testwerte, z.B. die Noten zweier Schüler:innen oder die jährliche Gewinnentwicklung eines Unternehmens.
   - Ziel: Zusammenfassung der, in den Daten enthaltenen, statistischen Informationen.
   - Methoden: Reduktion zu wenigen Kenngrößen, bei möglichst minimalem Informationsverlust. 
 
 Aus der beschreibenden Statistik hat sich die **explorative Datenanalyse** entwickelt, die noch ohne Einsatz von (mathematischen) Modellen, sondern auf Basis rechenintensiver Verfahren nach auffälligen Mustern und Strukturen in Datenbeständen sucht.
-  - Bsp.: Routinemäßige Kontroll der täglichen Scannerdaten eines Lebensmittelkonzerns nach Auffälligkeiten ohne konkrete Hypothese.
+  - Bsp.: Routinemäßige Kontrolle der täglichen Scannerdaten eines Lebensmittelkonzerns nach Auffälligkeiten ohne konkrete Hypothese.
   - Ziel: Entdeckung von Trends im Kaufverhalten der Kund:innen und rechtzeitige Organisation der Bestellungen.
+  - Methoden: Identifizierung von Mustern mithilfe aufwändiger Rechenverfahren.
 
-Die **schließende (auch: induktive) Statistik** leitet aus Stichprobendaten Aussagen ab, die über die jeweilige Stichprobe hinausgehen und sich auf eine umfassendere Grundgesamtheit beziehen. Sie sei aber nur der Vollständigkeit halber genannt und wird uns heute nicht weiter beschäftigen. Für diesen Kurs wollen wir uns nämlich in erster Linie auf den Zweig der **beschreibenden Statistik** konzentrieren. Um einen ersten Einblick in die Arbeit von Statistiker:innen zu bekommen, wollen wir einige Pressemitteilungen des Statistischen Bundesamts (Destatis) näher ansehen. Diese Pressemitteilungen sind typische Beispiele für die Veröffentlichungen von statistischen Ämtern und zeigen, wie Daten in der Öffentlichkeit präsentiert werden.
+Die **schließende (auch: induktive) Statistik** leitet aus Stichprobendaten Aussagen ab, die über die jeweilige Stichprobe hinausgehen und sich auf eine umfassendere Grundgesamtheit beziehen. Sie sei aber nur der vollständigkeit halber genannt und wird uns heute nicht weiter beschäftigen. Für diesen Kurs wollen wir uns nämlich in erster Linie auf den Zweig der **beschreibenden Statistik** konzentrieren. 
+
+Um einen ersten Einblick in die Arbeit von Statistiker:innen zu bekommen, wollen wir uns einige Pressemitteilungen des Statistischen Bundesamts (Destatis) näher ansehen. Diese Pressemitteilungen sind typische Beispiele für die Veröffentlichungen von statistischen Ämtern und zeigen, wie Daten in der Öffentlichkeit präsentiert werden.
 Achtet auf die Kommunikation sowie die verschiedenen Darstellungsarten. Welches Wissen bzw. welche Fähigkeiten werden bei den Betrachter:innen vorausgesetzt? Welche Informationen werden vermittelt? Findet ihr die Grafiken geeignet, um die Informationen zu vermitteln?
 
 ### **Pressemitteilungen**
 
-Im Folgenden zeigen wir exemplarische Pressemitteilungen des Statistischen Bundesamts (Destatis) und die dazu veröffentlichten Grafiken. Diese Pressemitteilungen sind typische Beispiele für die Veröffentlichungen von statistischen Ämtern und zeigen, wie Daten in der Öffentlichkeit präsentiert werden. 
-
-Achtet auf die Kommunikation sowie die verschiedenen Darstellungsarten. Welches Wissen bzw. welche Fähigkeiten werden beim Betrachter vorausgesetzt? Welche Informationen werden vermittelt? Findet ihr die Grafiken geeignet, um die Informationen zu vermitteln?
-
 ##### Industrie-Investitionen in Klimaschutz binnen zehn Jahren um 74 % gestiegen
 
-- 49 % der Klimaschutz-Investitionen flossen 2021 in die Nutzung erneuerbarer Energien
-- Umsätze mit Klimaschutzprodukten 2021 um 16 % höher als 2011
-- „Green Jobs”: Zahl der Beschäftigten im Umweltschutz von 2011 bis 2021 um 44 % gestiegen 
+- 49 % der Klimaschutz-Investitionen flossen 2021 in die Nutzung erneuerbarer Energien.
+- Umsätze mit Klimaschutzprodukten 2021 um 16 % höher als 2011.
+- „Green Jobs”: Zahl der Beschäftigten im Umweltschutz von 2011 bis 2021 um 44 % gestiegen. 
 
 <p>
 <center>
@@ -155,16 +159,17 @@ quiz(caption = "Fragen zur Pressemitteilung",
     answer("Sie haben sich zwischen 2011 und 2021 ingesamt erhöht, jedoch nicht kontinuierlich.", correct = TRUE),
     answer("Sie haben sich zwischen 2011 und 2021 ingesamt reduziert."),
     correct = "Richtig! Die Investitionen in Maßnahmen zur Nutzung erneuerbarer Energien hat sich zwischen 2011 und 2021 sogar nahezu verdoppelt. Beim Blick auf die hellblauen Balken wird jedoch sichtbar, dass die Investitionen vor allem in den Jahren 2016 bis 2018 etwas eingebrochen sind - von einer kontinuierlichen Steigerung kann also keine Rede sein.",
-    incorrect = "Leider falsch. Wir müssen in diesem Fall die hellblauen Balken betrachten - die Legende unten Links gibt an, welche Farben, in welchem Bereich die Investitionen getätigt wurden. Die y-Achse gibt in diesem Schaubild die Höhe der Investitionen an. Betrachten wir die hellblauen balken, fällt auf, dass diese über den Zeitverlauf größer bzw. höher werden. Sie geben die Entwicklung der Investitionen in Maßnahmen zur Nutzung erneuerbarer Energien an. Diese haben sich in den entsprechenden zehn Jahren sogar fast verdoppelt. Tipp: Behalte die Legenden bzw. Beschriftungen der Achsen einer Grafik im Blick, diese sind zur Interpretation der Daten essenziell.",
+    incorrect = "Leider falsch. Wir müssen in diesem Fall die hellblauen Balken betrachten - die Legende unten Links gibt an, in welchem Bereich die Investitionen getätigt wurden (unterschiedliche Farben). Die y-Achse gibt in diesem Schaubild die Höhe der Investitionen an. Betrachten wir die hellblauen Balken, fällt auf, dass diese über den Zeitverlauf größer werden. Sie geben die Entwicklung der Investitionen in Maßnahmen zur Nutzung erneuerbarer Energien an, welche sich in den entsprechenden zehn Jahren sogar fast verdoppelt haben. Tipp: Behalte die Legenden und Beschriftungen der Achsen einer Grafik im Blick, diese sind zur Interpretation der Daten essenziell.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
   question("Betrachten wir einmal alle Bereiche, in denen Investitionen getätigt wurden. Welche Aussagen können wir in diesem Fall treffen?",
     answer("Die Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung weisen ähnliche Entwicklungsmuster auf.", correct = TRUE),
     answer("Die Investitionen zur Energieeffizienzsteigerung/Energieeinsparung und zur Emissionsvermeidung weisen ähnliche Entwicklungsmuster auf."),
     answer("Alle drei Bereiche weisen ähnliche Entwicklungsmuster auf."),
-    correct = "Richtig! Betrachtet man die Investitionen über die zehn Jahre, erkennt man, dass sich vor allem die Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung deutlich erhöht haben. Auch wenn die Entwicklungsverläufe nicht identisch und kontinuierlich sind, haben sich die Investitionen zur Nutzung erneuerbarer Energien nahezu verdoppelt - die Investitionen zur Energieeffizienzsteigerung/Energieeinsparung haben sich sogar mehr als verdoppelt. Betrachtet man die dunkelblauen Balken (Investitionen zur Emissionsvermeidung) fällt auf, dass diese Investitionen in den Jahren 2013 bis 2018 deutlich zurück gegangen sind, sich anschließend aber wieder etwas erholt haben und sich im Jahr 2021 annähernd auf dem Ausgangsniveau befinden.",
-    incorrect = "Leider falsch. Im Vergleich zu den Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung weisen die Investitionen zur Emissionsvermeidung eine deutlich unterschiedliche Entwicklung auf. Einerseits sind sie durchgehend auf sehr niedrigem Niveau und andererseits erfuhren diese in den Jahren 2013 bis 2018 einen deutlichen Rückgang. Anschließend konnten sie sich jedoch ein wenig erholen, sodass sie sich im Jahr 2021 wieder annähernd auf dem Ausgangsniveau befinden. Eine Steigerung der Investitionen ist allerdings nicht zu erkennen. Tipp: Klicke auf den Link zur Website der Pressemitteilung. Mit dem Curser kannst Du einzelne Balken in der Grafik ausblenden, indem Du auf die Kategorie in der Legende der Grafik klickst!",
+    correct = "Richtig! Betrachtet man die Investitionen über die zehn Jahre, erkennt man, dass sich vor allem die Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung deutlich erhöht haben. Auch wenn die Entwicklungsverläufe nicht identisch sind, haben sich die Investitionen zur Nutzung erneuerbarer Energien nahezu verdoppelt - die Investitionen zur Energieeffizienzsteigerung/Energieeinsparung haben sich sogar mehr als verdoppelt. Betrachtet man die dunkelblauen Balken (Investitionen zur Emissionsvermeidung) fällt auf, dass diese Investitionen in den Jahren 2013 bis 2018 deutlich zurück gegangen sind, sich anschließend aber wieder etwas erholt haben und sich im Jahr 2021 annähernd auf dem Ausgangsniveau befinden.",
+    incorrect = "Leider falsch. Im Vergleich zu den Investitionen zur Nutzung erneuerbarer Energien und zur Energieeffizienzsteigerung/Energieeinsparung weisen die Investitionen zur Emissionsvermeidung eine deutlich unterschiedliche Entwicklung auf. Einerseits sind sie durchgehend auf sehr niedrigem Niveau und andererseits erfuhren diese in den Jahren 2013 bis 2018 einen deutlichen Rückgang. Anschließend konnten sie sich jedoch ein wenig erholen, sodass sie sich im Jahr 2021 wieder annähernd auf dem Ausgangsniveau befinden. Eine Steigerung der Investitionen ist allerdings nicht zu erkennen. Tipp: Klicke auf den Link zur Website der Pressemitteilung. Mit dem Curser kannst Du einzelne Kategorien in der Grafik ausblenden, indem Du auf die Kategorie in der Legende der Grafik klickst!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     )
@@ -173,9 +178,9 @@ quiz(caption = "Fragen zur Pressemitteilung",
 
 #### Kosten von Mobilität: Haushalte geben im Schnitt 233 Euro monatlich fürs Auto aus, 33 Euro für Bus, Bahn und Co.
 
-- Haushalte der höchsten Einkommensklasse haben zehn Mal so hohe Ausgaben für das Auto wie Haushalte der niedrigsten Einkommensklasse
-- Preise für Bahntickets im Fernverkehr seit 2015 gesunken, im Nahverkehr deutlich angestiegen
-- Unterschiedliche Preisentwicklung bei Pkw-Nutzung: Kraftstoffe, Reparaturen und Inspektion deutlich teurer, unterdurchschnittliche Preisentwicklung bei Kfz-Steuer, -Versicherung und Auto-Zubehör 
+- Haushalte der höchsten Einkommensklasse haben zehn Mal so hohe Ausgaben für das Auto wie Haushalte der niedrigsten Einkommensklasse.
+- Preise für Bahntickets im Fernverkehr seit 2015 gesunken, im Nahverkehr deutlich angestiegen.
+- Unterschiedliche Preisentwicklung bei Pkw-Nutzung: Kraftstoffe, Reparaturen und Inspektion deutlich teurer, unterdurchschnittliche Preisentwicklung bei Kfz-Steuer, -Versicherung und Auto-Zubehör.
 
 <p>
 <center>
@@ -191,7 +196,7 @@ quiz(caption = "Fragen zur Pressemitteilung",
 
 ```{r 08_quiz2_v2, echo=FALSE}
 quiz(caption = "Fragen zur Pressemitteilung",
-  question("Betrachten wir zunächst einmal die Kosten der PKW-Instandhaltung. Welcher Bereich weist zwischen 2015 und 2021 insgesamt die größten Preispreissteigerung auf? (Grafik 2)?",
+  question("Betrachten wir zunächst einmal die Kosten der PKW-Instandhaltung. Welcher Bereich weist zwischen 2015 und 2021 insgesamt die größte Preissteigerung auf? (Grafik 2)?",
     answer("Verbraucherpreisindex, insgesamt"),
     answer("Kraftstoffe"),
     answer("Ersatzteile, Zubehör und Pflegemittel"),
@@ -203,6 +208,7 @@ quiz(caption = "Fragen zur Pressemitteilung",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
   question("Bleiben wir bei den Kosten zur PKW-Instandhaltung. Welcher Bereich hat zwischen 2015 und 2021 die größten Preisschwankungen erlebt? (Grafik 2)",
     answer("Verbraucherpreisindex, insgesamt"),
     answer("Kraftstoffe"),
@@ -210,12 +216,13 @@ quiz(caption = "Fragen zur Pressemitteilung",
     answer("Reparatur, Inspektion, Parkgebühr und Ähnliches"),
     answer("Kraftfahrzeugversicherung"),
     answer("Kraftfahrzeugsteuer", correct = TRUE),
-    correct = "Betrachten wir  die Kraftstoffpreise, so wird deutlich, dass diese zwar nicht die größte Preissteigerung erfahren, die Preisveränderung durch deutliche Schwankungen geprägt ist. Wir sehen das an den unterschiedlichen "Hügeln und Tälern", die diese Linie aufweist. Im Gegensatz zu den Kosten für Reparatur, Inspektion, Parkgebühr und Ähnliches, die einen nahezu linearen Verlauf hat, sind die Veränderungen der Kraftstoffpreise weniger stabil. Woran das genau liegt, kann man natürlich nur schwer sagen, möglicherweise liegen die niedrigen Preise ab April 2020 it der Covid-Pandemie zusammen, da sich das Leben weitestgehend in den eigenen vier Wänden abgespielt hat.",
+    correct = "Betrachten wir  die Kraftstoffpreise, so wird deutlich, dass diese zwar nicht die größte Preissteigerung erfahren haben, die Preisveränderung jedoch von enormen Schwankungen geprägt ist. Wir sehen das an den unterschiedlichen "Hügeln und Tälern", die diese Linie aufweist. Im Gegensatz zu den Kosten für Reparatur, Inspektion, Parkgebühr und Ähnliches, die einen nahezu linearen Verlauf hat, sind die Veränderungen der Kraftstoffpreise weniger stabil. Woran das genau liegt, kann man natürlich nur schwer sagen, möglicherweise liegen die niedrigen Preise ab April 2020 it der Covid-Pandemie zusammen, da sich das Leben weitestgehend in den eigenen vier Wänden abgespielt hat.",
     incorrect = "Leider falsch. In diesem Falle betrachten wir die Preisschwankungen und nicht die endgültige Preisveränderung. Obwohl sich die Kosten für Reparatur, Inspektion, Parkgebühr und Ähnliches am meisten erhöht haben, ist diese Antwort hier nicht richtig - die Entwickling folgt annähernd dem linearen Verlauf einer Gerade. Die anderen Bereiche haben sich - ausgenommen der Versicherungskosten - kaum verändert und auch dieser Bereich hat, bis auf dem Preissturz im Herbst 2017, keine größeren Ausreißer erfahren.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  question("Werfen wir nun noch einen Blick auf die Verbraucher:innenpreise für Bahn und Co. Welche Bereiche haben sich zugunsten der Verbraucher:innen entwickelt? (Grafik 2)",
+
+  question("Werfen wir nun noch einen Blick auf die Verbraucher:innenpreise für Bahn und Co. Welche Bereiche haben sich zugunsten der Verbraucher:innen entwickelt? (Grafik 3)",
     answer("Verbraucherpreisindex, insgesamt"),
     answer("Bahnfahrt, Nahverkehr"),
     answer("Bahnfahrt, Fernverkehr", correct=TRUE),
@@ -223,25 +230,25 @@ quiz(caption = "Fragen zur Pressemitteilung",
     answer("Kombinierte Personenbeföderungsleistungen"),
     answer("80"),
     correct = "Richtig! Beim Blick auf die Grafik wird schnell sichtbar, dass alle Preise gestiegen sind - bis auf die Kosten für die Fernverkehr der Bahn. Auch wenn die Preisentwicklung in diesem Bereich einige Schwankungen aushalten musste, so wird mit Beginn des Jahres 2020 ein deutlicher Preissturz sichtbar - insgesamt sind die Preise für den Fernverkehr um durchschnittlich fast 15€/Monat gesunken.",
-    incorrect = "Leider falsch. Betrachte noch einmal die verschiedenen Linien: Im Vergleich zum Ausgangspunkt im Jahr 2015, der für alle Bereiche zwischen 95-100€ lag, haben sich die Preise deutlich verändert. Liegen die Endpunkte über dem Ausgangsniveau, haben sich die Preise erhöht - liegen die Endpunkte darunter, so haben sich die Preise reduziert.",
+    incorrect = "Leider falsch. Betrachte noch einmal die verschiedenen Linien: Im Vergleich zum Ausgangspunkt im Jahr 2015, der für alle Bereiche zwischen 95-100€ lag, haben sich die Preise teilweise deutlich verändert: Liegen die Endpunkte drüber, haben sich die Preise erhöht - liegen die Endpunkte darunter, so haben sich die Preise reduziert.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     )
 )
 ```
 
-# **Was sind Daten?**
+# **Grundlagen: Daten
 
-Nachdem wir uns mithilfe der Pressemitteilungen bereits ein erstes Mal mit Daten und Datenvisualisierungen auseinandergesetzt haben, ist es nun an der Zeit, dass wir einmal genau festlegen, was wir mit Daten eigentlich meinen. Was also sind eigentlich Informationen und Daten?
+## **Was sind Daten?**
+
+Nachdem wir uns mithilfe der Pressemitteilungen bereits ein erstes Mal mit Daten und Datenvisualisierungen auseinandergesetzt haben, ist es nun an der Zeit, dass wir einmal genau festlegen, was wir mit Daten überhaupt meinen. Was also sind eigentlich Informationen und Daten?
 
 Eine **Information** ist abgeleitetes Wissen, welches wir Anderen vermitteln und aufbewahren wollen. Die können wir unter anderem durch die Wahl einer geeigneten **Kodierung** erreichen. Diese kodierten Informationen bezeichnen wir wiederum als **Daten**. Da ein und dieselbe Information auf unterschiedliche Art und Weise kodiert werden kann (verschiedene Einheiten, verschiedene Skalen usw.), kann ein und dieselbe Information auch mit unterschiedlichen Daten ausgedrückt werden. Allerdings müssen wir darauf achten, dass wir die Kodierung so verständlich wie möglich gestalten - denn was bringen uns die Daten, wenn wir die darin enthaltenen Informationen nicht verwerten können?
 
-Stellen wir uns einmal eine gewöhnliche Tabelle vor, so enthält diese kodierte Informationen und somit Daten. Eine solche Tabelle mit Daten nennen wir daher auch einen **Datensatz**.
-Jede Zeile einer Tabelle bildet eine zusammenhängende **Informationseinheit**, die zu einem bestimmten Zeitpunkt erhoben oder gemessen wurde. Deshalb bezeichnen wir die Zeilen als *Messungen, Beobachtungen, Aufzeichnungen (engl. records), oder Versuche*.
-
-Jede Spalte einer Tabelle repräsentiert eine **Eigenschaft**, die uns interessiert, und die für alle Zeilen auf die gleiche Art und Weise kodiert wird, so dass wir die verschiedenen Messungen leicht vergleichen können. Daher bezeichnen wir die Spalten als *Merkmale, Features, Attribute, Felder, oder Variablen*. Einen Datensatz kann mal also auch beschreiben als eine Sammlung von *N* Beobachtungen mit *Y* Merkmalen oder Variablen. Man spricht in diesem Falle von der **Dimension (auch: Komplexität)** des Datensatzes. 
-
-Ein **Datenpunkt (auch: Datenwert)** ist der Schnittpunkt (= eine Zelle in der Tabelle) zwischen einer Beobachtung und einem Merkmal. Jede Tabelle besitzt eine Kopfzeile (engl. header), die die Merkmale näher beschreibt.
+Stellen wir uns einmal eine gewöhnliche Tabelle vor. Eine solceh Tabelle enthält kodierte Informationen, also Daten. Daher nennen wir sie auch **Datensatz**.
+Jede Zeile dieser Tabelle bildet eine zusammenhängende **Informationseinheit**, die zu einem bestimmten Zeitpunkt erhoben oder gemessen wurde. Deshalb bezeichnen wir die Zeilen als **Messungen, Beobachtungen, Aufzeichnungen (engl. records), oder Versuche**.
+Jede Spalte dieser Tabelle repräsentiert eine **Eigenschaft**, die uns interessiert, und die für alle Zeilen auf die gleiche Art und Weise kodiert wird, so dass wir die verschiedenen Messungen leicht vergleichen können. Daher bezeichnen wir die Spalten als **Merkmale, Features, Attribute, Felder, oder Variablen**. Einen Datensatz kann mal also auch beschreiben als eine Sammlung von *N* Beobachtungen mit *Y* Merkmalen oder Variablen. Man spricht in diesem Falle von der **Dimension (auch: Komplexität)** des Datensatzes. 
+Ein **Datenpunkt (auch: Datenwert)** ist der Schnittpunkt (= eine Zelle in der Tabelle) zwischen einer Beobachtung und einem Merkmal. Jede Tabelle besitzt außerdem eine Kopfzeile (engl. header), die die Merkmale näher beschreibt.
 
 Die nachfolgende Abbildung stellt alle Begriffe dieses Abschnittes noch einmal übersichtlich zusammen.
 
@@ -258,21 +265,23 @@ quiz(caption = "Fragen zu tabellarischen Daten",
     answer("3", correct = TRUE),
     answer("4"),
     answer("5"),
-    correct = "Richtig. Anhand der Anzahl der Spalten können wir feststellen, dass der Datensatz folgende drei Merkmale hat: 'Name', 'Alter' und 'Reaktionszeit'. Etwas gemein, die Spalte 'Index' wird automatisch für uns erzeugt und ist daher kein Merkmal im eigentlichen Sinne.",
+    correct = "Richtig. Anhand der Anzahl der Spalten können wir feststellen, dass der Datensatz folgende drei Merkmale hat: 'Name', 'Alter' und 'Reaktionszeit'. Etwas gemein: Die Spalte 'Index' wird automatisch für uns erzeugt und ist daher kein Merkmal im eigentlichen Sinne.",
     incorrect = "Leider falsch. Die Anzahl der Merkmale ergeben sich aus der Anzahl der Spalten unseres Datensatzes. Tipp: Eine der Spalten enthält kein Merkmal im eigentlichen Sinne, da diese automatisch für uns erzeugt wird - welche könnte das sein?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
   question("Wie viele Beobachtungen hat der Datensatz aus der Abbildung?",
     answer("2"),
     answer("3"),
     answer("4", correct = TRUE),
     answer("5"),
-    correct = "Richtig. Anhand der Anzahl der Zeilen können wir feststellen, dass der Datensatz vier Beobachtungen hat, schließlich gibt es vier Zeilen mit befüllten Werten und wie wir wissen: Jede Zeile ist eine Beobachtung/Messung.",
+    correct = "Richtig. Anhand der Anzahl der Zeilen können wir feststellen, dass der Datensatz vier Beobachtungen hat, schließlich gibt es vier Zeilen mit Werten und wie wir wissen: Jede Zeile ist eine Beobachtung/Messung.",
     incorrect = "Leider falsch. Die Anzahl der Beobachtungen ergeben sich aus der Anzahl der Spalten unseres Datensatzes - zähle also nochmal ganz genau die Zeilen in der Tabelle.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
   question("Wie lauten die Dimensionen des Datensatzes aus der Abbildung?",
     answer("4x4"),
     answer("4x3", correct = TRUE),
@@ -290,7 +299,7 @@ quiz(caption = "Fragen zu tabellarischen Daten",
 
 Je nach Kodierung der Daten unterscheiden wir verschiedene Datentypen. Numerische und kategorische Daten bilden dabei die beiden wichtigsten Datentypen. Auf der einen Seite werden **Daten in Form von Zahlen (und ggf. Einheiten)** ausgedrückt - man spricht dann von **numerischen Daten**. Diese können wiederum in zwei Hauptkategorien unterteilt werden: 
 
-  - **Kontinuierliche Daten** können jede Zahl innerhalb eines bestimmten Bereichs annehmen, wodurch sie eine grundsätzlich nicht zählbare Menge von Werten darstellen. Das heißt, dass es immer noch einen Wert zwischen zwei beliebigen Werten gibt. 
+  - **Kontinuierliche Daten** können jede Zahl innerhalb eines bestimmten Bereichs annehmen, wodurch sie eine grundsätzlich nicht zählbare Menge von Werten darstellen, da es immer noch einen Wert zwischen zwei beliebigen Werten gibt. 
 Beispiele für diesen Datentyp sind Wetterdaten wie die Menge an Niederschlag oder die Außentemperatur. Die Außentemperatur kann beispielsweise mit beliebiger Genauigkeit angegeben werden: $29\ °C$, $28,6\ °C$, oder $28,6425\ °C$.
   - **Diskrete Daten** sind im Gegensatz dazu auf ganze Zahlen beschränkt, womit sie eine abzählbare Menge von Werten darstellen. 
 Beispiele für diesen Datentyp sind die Anzahl der Kinder in einer Familie oder die Anzahl der Tore in einem Fußballspiel. Man kann $0, 1, 2$ oder mehr Kinder haben, aber nicht $1,28$ Kinder.
@@ -301,11 +310,10 @@ Beispiele für diesen Datentyp sind die Anzahl der Kinder in einer Familie oder 
 </center>
 </p>
 
-Auf der anderen Seite gibt es **Daten, die mithilfe von Worten und Symbolen** ausgedrückt werden - die sogenannten **kategorischen Daten**. Allerdings gibt es auch kategorische Daten, die trotz ihres numerischen Charakters nur sinnvoll als kategorische Daten interpretiert werden können (z.B. Postleitzahlen).
-Wie die numerischen Daten, können auch die kategorischen Daten in zwei Hauptkategorien unterteilt werden:
+Auf der anderen Seite gibt es **Daten, die mithilfe von Worten und Symbolen** ausgedrückt werden - die sogenannten **kategorischen Daten**. Allerdings gibt es auch kategorische Daten, die trotz ihres numerischen Charakters nur sinnvoll als kategorische Daten interpretiert werden können (z.B. Postleitzahlen). Wie die numerischen Daten, können auch die kategorischen Daten in zwei Hauptkategorien unterteilt werden:
 
-  - **Ordinale Daten** sind Daten bei denen die Werte eine natürliche Reihenfolge haben, aber die Abstände zwischen den Werten nicht notwendigerweise gleich sind. Ein Beispiel wären Schulnoten, bei denen die Note 1 besser ist als die Note 2, aber der Unterschied zwischen den beiden Noten nicht genau quantifizierbar ist. Diese Daten erlauben Vergleiche wie größer/kleiner, aber keine präzisen Berechnungen von Differenzen. Umfragen nutzen Ordinaldaten, wenn sie nach eurer Erfahrung oder Zustimmung auf einer Skala von 1-10 fragen. Die Werte sehen zwar wie diskrete Daten aus, aber es ist nicht möglich oder sinnvoll, den Abstand zwischen zwei Werten zu interpretieren - man kann schließlich nicht sagen, dass ob Abstand zwischen einer 9 und 10 in einer Umfrage identisch ist mit dem Abstand zwischen einer 0 und einer 1. Ordinaldaten müssen allerdings auch nicht mit Zahlen kodiert sein (s. Kleidergrößen: S, M, L, ...).
-  - **Nominale Daten** sind qualitative Daten, die in Kategorien eingeteilt werden, ohne dass eine natürliche Reihenfolge zwischen den Kategorien besteht. Ein Beispiel sind Farben (z.B. Rot, Blau, Grün) oder Geschlechter (männlich, weiblich), bei denen keine Rangfolge oder Vergleichbarkeit hinsichtlich größer oder kleiner besteht. Nominale Daten dienen der Klassifizierung, aber arithmetische Operationen sind nicht sinnvoll.
+  - **Ordinale Daten** sind Daten, bei denen die Werte eine natürliche Reihenfolge haben, aber die Abstände zwischen den Werten nicht notwendigerweise gleich sind. Ein Beispiel wären Schulnoten, bei denen die Note 1 besser ist als die Note 2, aber der Unterschied zwischen den beiden Noten nicht genau quantifizierbar ist. Diese Daten erlauben Vergleiche wie größer/kleiner, aber keine präzisen Berechnungen von Differenzen. Umfragen nutzen Ordinaldaten, wenn sie nach eurer Erfahrung oder Zustimmung auf einer Skala von 1-10 fragen. Die Werte sehen zwar wie diskrete Daten aus, aber es ist nicht möglich oder sinnvoll, den Abstand zwischen zwei Werten zu interpretieren - man kann schließlich nicht sagen, dass ob Abstand zwischen einer 9 und 10 in einer Umfrage identisch ist mit dem Abstand zwischen einer 0 und einer 1. Allerdings: Ordinaldaten müssen auch nicht zwingend mit Zahlen kodiert sein (s. Kleidergrößen: S, M, L, ...).
+  - **Nominale Daten** sind qualitative Daten, die in Kategorien eingeteilt werden, ohne dass eine natürliche Reihenfolge zwischen den Kategorien besteht. Ein Beispiel sind Farben (z.B. Rot, Blau, Grün) oder Geschlechter (z.B. männlich, weiblich, divers), bei denen keine Rangfolge oder Vergleichbarkeit hinsichtlich größer oder kleiner besteht. Nominale Daten dienen der Klassifizierung, aber arithmetische Operationen sind nicht sinnvoll.
 
 <p>
 <center>
@@ -318,26 +326,47 @@ Wie die numerischen Daten, können auch die kategorischen Daten in zwei Hauptkat
 Die Unterscheidung der Datentypen wird mithilfe sogenannter **Skalenniveaus** vorgenommen. Warum sind diese sogenannten Skalenniveaus wichtig für uns? 
 Das Skalenniveau unserer Daten **bestimmt, welche statistischen Methoden angewendet werden können**. So können beispielsweise Mittelwerte nur für kontinuierliche numerische Daten sinnvoll berechnet werden (man denke an den Notenspiegel aus der Schule, bei dem die Durchschnittsnote wenig sinnvoll ist, wenn Noten selbst diskrete Werte darstellen). Nominale kategorische Daten hingegen lassen sich nur sinnvoll über Häufigkeiten zusammenfassen, mehr kann man mit ihnen nicht anstellen.
 
+Wir unterscheiden daher folgende Skalenniveaus:
+  - **Nominalskala**: Unterschiedliche Werte bedeuten “etwas Anderes”, sonst nichts (z.B. Geschlecht, Konfession, Nationalität).
+  - **Ordinalskala**: Werte bedeuten Rangordnung, sagen aber nichts über Abstände (z.B. Wohndichte eines Wohnortes)
+  - **Intervallskala**: Abstände sind inhaltlich interpretierbar; Intervallgrössen und Nullpunkt wählbar (z.B. Temperatur)
+  - **Ratio-/Verhältnisskala**: Verhältnisse zwischen Messwerten sind interpretierbar, sinnvoller absoluter Nullpunkt existiert (z.B. Geschwindigkeit)
+
 ```{r 08_quiz_datentypen, echo=FALSE}
 quiz(caption = "Fragen zu Datentypen",
-  question("Welches Merkmal hat einen kategorischen Datentyp im Datensatz aus der Abbildung?",
-    answer("Name", correct = TRUE),
-    answer("Alter"),
-    answer("Reaktionszeit"),
-    correct = "Richtig. Das Merkmal 'Name' enthält Text und ist daher eine klassische (nominale) kategorische Variable.",
-    incorrect = "Leider falsch. Kategorische Daten sind oftmals als Text oder Symbole kodiert.",
+  question("In welche Kategorie von Datentypen fallen Schulnoten (1, 2, 3, usw.)?",
+    answer("Kontinuierliche Daten."),
+    answer("Diskrete Daten."),
+    answer("Ordinale Daten", correct = TRUE),
+    answer("Nominale Daten."),
+    correct = "Richtig! Schulnoten sind ein Beispiel für ordinale Daten, da sie eine natürliche Reihenfolge haben, aber der Abstand zwischen den Noten nicht unbedingt gleich groß ist.",
+    incorrect = "Leider falsch. Schulnoten sind ordinale Daten, da sie eine natürliche Reihenfolge haben. Sie sind nicht kontinuierlich oder nominal, da die Abstände zwischen den Noten nicht gleich sind und sie eine Reihenfolge ausdrücken.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
-  question("Welches Merkmal hat einen diskreten numerischen Datentyp im Datensatz aus der Abbildung?",
-    answer("Name"),
-    answer("Alter", correct = TRUE),
-    answer("Reaktionszeit"),
-    correct = "Richtig. Das Merkmal 'Alter' ist klassischerweise eine diskrete numerische Variable, weil wir das Alter für gewöhnlich in ganzen Jahren (oder Tage/Monaten) angeben.",
-    incorrect = "Leider falsch. Diskrete numerische Daten sind als ganze Zahlen kodiert.",
+
+  question("Welche der folgenden Aussagen beschreibt das nominale Skalenniveau korrekt?",
+    answer("Werte können geordnet werden."),
+    answer("Werte können in Kategorien eingeteilt werden.", correct = TRUE),
+    answer("Der Abstand zwischen den Werten ist interpretierbar."),
+    answer("Werte haben eine natürliche Reihenfolge."),
+    correct = "Richtig. Nominalskalierte Werte dürfen wir ausschließlich in Kategorien einteilen. Somit können wir lediglich Unterschiede zwischen den Variablen feststellen. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
+    incorrect = "Leider falsch. Schau' noch einmal weiter oben nach: bei nominalskalierten Werten, dürfen wir diese lediglich in Kategorien einteilen. Somit können wir zwar feststellen, dass es unterschiede zwischen den Variablen gibt. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
+question("Welches Skalenniveau erlaubt es, den Abstand zwischen den Werten zu messen, hat jedoch keinen natürlichen Nullpunkt?",
+    answer("Nominalskala."),
+    answer("Ordinalskala.", correct = TRUE),
+    answer("Intervallskala."),
+    answer("Ratio-/Verhältnisskala."),
+    correct = "Richtig. Nominalskalierte Werte dürfen wir ausschließlich in Kategorien einteilen. Somit können wir lediglich Unterschiede zwischen den Variablen feststellen. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
+    incorrect = "Leider falsch. Schau' noch einmal weiter oben nach: bei nominalskalierten Werten, dürfen wir diese lediglich in Kategorien einteilen. Somit können wir zwar feststellen, dass es unterschiede zwischen den Variablen gibt. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+
   question("Welches Merkmal hat einen kontinuierlichen numerischen Datentyp im Datensatz aus der Abbildung?",
     answer("Name"),
     answer("Alter"),
@@ -350,21 +379,21 @@ quiz(caption = "Fragen zu Datentypen",
 )
 ```
 
-Jetzt, wo wir uns mit den Grundlagen von Daten auskennen, können wir zur eigentlichen Statistik kommen.
+Jetzt kennen wir uns schon ein bisschen besser mit den Grundlagen von Daten aus: Wir kennen den Unterschied zwischen Informationen und Daten, wissen woraus ein Datensatz besteht und welche Datentypen und Skalenniveaus es gibt. Mit diesem neuen Wissen, können wir nun mit der eigentlichen Statistik beginnen!
 
-# **Einführung in die deskriptive Statistik**<sup><a href="#section-quelle-3">3</a></sub>
+# **Einführung in die deskriptive Statistik**
 
-Die **Herausarbeitung wesentlicher Charakteristika von Häufigkeitsverteilungen** ist ein grundlegendes Ziel der deskriptiven Statistik (acuh: beschreibende Statistik). Dies geschieht in der Regel mithilfe von **Kennzahlen und grafischen Darstellungen**, die Ihr in einer späteren Lektion kennenlernen werdet. Eine Häufigkeitsverteilung ist eine Zusammenfassung der beobachteten Werte einer Variable und gibt an, wie oft die verschiedenen Werte vorkommen. Die Häufigkeit kann dabei pro Merkmalsausprägung oder für Klassen angegeben werden, die mehrere Merkmalsausprägungen zusammenfassen (z.B. Alters- und Einkommensgruppen).
+Die **Herausarbeitung wesentlicher Charakteristika von Häufigkeitsverteilungen** ist ein grundlegendes Ziel der deskriptiven Statistik (auch: beschreibende Statistik). Dies geschieht in der Regel mithilfe von **Kennzahlen und grafischen Darstellungen**, die Ihr in einer späteren Lektion kennenlernen werdet. Eine Häufigkeitsverteilung ist eine Zusammenfassung der beobachteten Werte einer Variable und gibt an, wie oft die verschiedenen Werte vorkommen. Die Häufigkeit kann dabei pro Merkmalsausprägung oder für Klassen angegeben werden, die mehrere Merkmalsausprägungen zusammenfassen (z.B. Alters- und Einkommensgruppen).
 
 ## **Lageparameter**
 
-Mithilfe von Lageparametern kann man die Frage beantowrten, welche der (in der Stichprobe vorkommenden) Werte “typisch” oder “repräsentativ” sind. Aber Vorsicht: Ihr solltet diese Werte nicht überinterpretieren, schließlich reduzieren sie den gesamten Datensatz auf eine einzige Zahl.
+Mithilfe von Lageparametern kann man die Frage beantworten, welche der (in der Stichprobe vorkommenden) Werte “typisch” oder “repräsentativ” sind. Aber Vorsicht: Ihr solltet diese Werte nicht überinterpretieren, schließlich reduzieren sie den gesamten Datensatz auf eine einzige Zahl.
 
-**Modus (auch: Modelwert):** Enspricht dem häufigsten Wert, den eine bestimmte Variable annimmt. Hierzu ermittelt man die häufigste (oder wahrscheinlichste) Beobachtung.
+  - **Modus (auch: Modelwert):** Enspricht dem häufigsten Wert, den eine bestimmte Variable annimmt. Hierzu ermittelt man die häufigste (oder wahrscheinlichste) Beobachtung.
 
-**Median:** Entspricht dem “wahren” Mittelpunkt einer Variable (50 % aller Beobachtungen sind kleiner und 50 % aller Beobachtungen sind größer als der Median). Zur Bestimmung des Medians ordnet man man alle Beobachtungen in aufsteigender Reihenfolge und bestimmt, welche Beobachtung genau in der Mitte liegt.
+  - **Median:** Entspricht dem “wahren” Mittelpunkt einer Variable (50 % aller Beobachtungen sind kleiner und 50 % aller Beobachtungen sind größer als der Median). Zur Bestimmung des Medians ordnet man man alle Beobachtungen in aufsteigender Reihenfolge und bestimmt, welche Beobachtung genau in der Mitte liegt. Bei einer geraden Anzahl an Werten wird der Mittelwert der "beiden mittleren" Variablen berechnet.
 
-**Arithmetisches Mittel:** Enspricht dem Durchschnittswert einer Variable. Hierzu addiert man alle Einzelbeobachtungen und teilt anschließend durch die Anzahl der Beobachtungen.
+  - **Arithmetisches Mittel (auch: Mittelwert):** Enspricht dem Durchschnittswert einer Variable. Hierzu addiert man alle Einzelbeobachtungen und teilt anschließend durch die Anzahl der Beobachtungen.
 
 Dass ein und dieselbe Verteilung (beispielsweise die Erhebung des Einkommens einer Stichprobe) ganz unterschiedliche Lagemaße haben kann, zeigt die folgende Abbildung.
 
@@ -387,6 +416,7 @@ quiz(caption = "Frage zu Lageparametern",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
   question(sprintf("Gegeben sei die folgende Variable metrischen Messniveaus mit folgenden Ausprägungen: $x = [0, 1, 2, 4, 3, 1, 2]$. Wie lautet der Median?"),
     answer("0",),
     answer("1"),
@@ -398,23 +428,25 @@ quiz(caption = "Frage zu Lageparametern",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
   question(sprintf("Gegeben sei die folgende Variable metrischen Messniveaus mit folgenden Ausprägungen: $x = [0, 1, 2, 4, 3, 1, 2]$. Wie lautet der Mittelwert?"),
     answer("0,73",),
     answer("1,45"),
     answer("1,86", correct = TRUE),
     answer("3"),
     answer("4"),
-    correct = sprintf("Richtig! Der Mittelwert ist das, was wir häufig als den 'Durchschnitt' bezeichnen. Zur Berechnung müssen zuerst alle Werte aufaddiert werden (= 13), um anschließend durch die Anzahl der Messwerte (= 7) geteilt zu werden. In diesem Fall beträgt der Mittelwert 1,86. Wie wir sehen, ist der Mittelwert kein Wert, der in der Messung selber vorkommt, sondern ein fiktiver Wert."),
-    incorrect = "Leider falsch. Der Mittelwert ist das, was wir häufig als Durchschnitt bezeichnen. Zur Berechnung müssen zunächst alle Werte aufsummert und anschließend durch die Anzahl der Messwerte geteilt werden. Tipp: Der Mittelwert kommt nicht zwingend selbst in der Messung vor."
+    correct = sprintf("Richtig! Der Mittelwert ist das, was wir häufig als den 'Durchschnitt' bezeichnen. Zur Berechnung müssen zuerst alle Werte aufaddiert werden (= 13), um anschließend durch die Anzahl der Messwerte (= 7) geteilt zu werden. In diesem Fall beträgt der Mittelwert 1,86. Wie wir sehen, ist der Mittelwert kein Wert, der selbst in der Messung vorkommt, sondern ein fiktiver Wert."),
+    incorrect = "Leider falsch. Der Mittelwert ist das, was wir häufig als Durchschnitt bezeichnen. Zur Berechnung müssen zunächst alle Werte aufsummiert und anschließend durch die Anzahl der Messwerte geteilt werden. Tipp: Der Mittelwert kommt nicht zwingend selbst in der Messung vor."
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
   question("Warum sind schiefe Verteilungen problematisch?",
     answer("Schiefe Verteilungen sind problematisch. Sind alle Werte symmetrisch verteilt, sieht mein Datensatz einfach viel schöner aus!"),
     answer("Schiefe Verteilungen sind problematisch, da viele statistische Modelle von einer symmetrischen Verteilung der Daten ausgehen.", correct = TRUE),
     answer("Schiefe Verteilungen sind nicht problematisch. Ist doch völlig egal, wie die Werte verteilt sind - Hauptsache, ich komme mithilfe von R zum gewünschten Ergebnis!"),
-    correct = "Schiefe Verteilungen sind problematisch, weil viele statistische Modelle und Berechnungen von einer symmetrischen Verteilung ausgehen. Vor allem gehen sie davon aus, dass die Werte gleichmäßig um den Mittelwert verteilt sind. Von einer 'schiefen' Verteilung ist die Rede, wenn diese entweder einen langen Schwanz (engl. tail) auf der linken oder rechten Seite hat. Man spricht dann von 'linksschiefen bzw. rechtssteilen' (= viele besonders kleinen Werte) oder von 'rechtsschiefen bzw. linkssteilen' (= viele besonders große Werte) Verteilungen. Mithilfe von Transformationen kann man solche problematischen Verteilungen manchmal wieder 'normalisieren', z.B. mithilfe des Logarithmus'.",
-    incorrect = "Leider falsch. Die Verteilung der Werte spielt eine große Rolle für die Auswertung und Interpretation der Daten - die Optik spielt dabei keine Rolle. Generell geht es bei der Datenanalyse und -interpretation auch nicht darum, unsere Wunschvorstellungen zu bestätigen, sondern mithilfe von wisschenschaftlichen Daten zu einem objektiven Ergebnis zu kommen. R ist dabei leider auch nur so schlau, wie wir, die es bedienen...",
+    correct = "Schiefe Verteilungen sind problematisch, weil viele statistische Modelle und Berechnungen von einer symmetrischen Verteilung ausgehen. Vor allem gehen sie davon aus, dass die Werte gleichmäßig um den Mittelwert verteilt sind. Von einer 'schiefen' Verteilung ist die Rede, wenn diese entweder einen langen Schwanz (engl. tail) auf der linken oder rechten Seite hat. Man spricht dann von 'linksschiefen bzw. rechtssteilen' (= viele besonders kleinen Werte) oder von 'rechtsschiefen bzw. linkssteilen' (= viele besonders große Werte) Verteilungen. Mithilfe von Transformationen kann man solche problematischen Verteilungen manchmal wieder 'normalisieren', z.B. mithilfe einer Logarithmierung'.",
+    incorrect = "Leider falsch. Die Verteilung der Werte spielt eine große Rolle für die Auswertung und Interpretation der Daten - allerdings nicht aus optischen Gründen. Generell geht es bei der Datenanalyse und -interpretation auch nicht darum, unsere Wunschvorstellungen zu bestätigen, sondern mithilfe von wisschenschaftlichen Daten zu einem objektiven Ergebnis zu kommen. R ist dabei leider auch nur so schlau, wie wir, die es bedienen...",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     )
@@ -423,13 +455,14 @@ quiz(caption = "Frage zu Lageparametern",
 
 ## **Streuungsparameter** 
 
-Streuungsparameter beschreiben das Ausmaß der **Streuung der Daten** innerhalb des Datensatzes oder um einen Lageparameter herum. So gibt beispielsweise die Standardabweichung einer Variable an, wie weit im Mittel die einzelnen Beobachtungen vom Mittelwert dieser Variable entfernt sind.
+Streuungsparameter beschreiben das Ausmaß der **Streuung der Daten**. Dieser versuchen zusätzliche Kennziffern für die
+Heterogenität bzw. das Ausmass der Unterschiedlichkeit von Werten zu liefern. Das Ziel ist dabei, zu beschreiben wie nahe die Daten insgesamt am “Zentrum” liegen (bzw. wie weit entfernt). Wir unterscheiden dabei folgende Paramter:
 
-**Standardabweichung (auch: mittlere Abweichung)**: Ein standardisiertes Maß für die Streuung der einzelnen Beobachtungen vom Mittelwert einer Variable. Angabe in der selben Maßeinheit wie die Variable.
+**Standardabweichung (auch: mittlere Abweichung)**: Ein standardisiertes Maß für die Streuung der einzelnen Beobachtungen um den Mittelwert einer Variable. Angabe in der selben Maßeinheit wie die Variable.
 
-**Varianz**: Entspricht der quadrierten Standdardabweichung.
+**Varianz**: Entspricht der quadrierten Standdardabweichung. Dadurch hat die Varianz eine andere Dimension als die Ausgangswerte.
 
-**Spannweite (auch: Range)**: Entspricht der Differenz zwischen dem kleinsten Wert (**Minimum**) und dem größten Wert (**Maximum**) einer Variable.
+**Spannweite (auch: Range)**: Entspricht der Differenz zwischen dem kleinsten Wert (**Minimum**) und dem größten Wert (**Maximum**) einer Variable. Alle anderen Werte werden bei der Berechnung nicht berücksichtigt.
 
 **p-Quantil**: Entspricht dem Wert, für den mindestens $p\cdot 100 \%$ der Beobachtungen kleiner oder gleich diesem Wert sind. Das 25%-Quantil ($p=25$) ist also der Wert, für den 25 % aller beobachteten Werte kleiner oder gleich diesem Wert sind.
 
@@ -456,9 +489,10 @@ quiz(caption = "Frage zu Streuungsparameter",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
+
   question("Kann der Median durch sogenannte 'Ausreißer' (besonders große oder kleine Werte) verzerrt/beeinflusst werden?",
-    answer("Ja"),
-    answer("Nein", correct = TRUE),
+    answer("Ja, zur Bestimmung des Medians müssen alle Werte berücksichtigt werden."),
+    answer("Nein, zur Bestimmung des Medians ist lediglich die Anzahld der Werte relevant. Ob die Werte an den Rändern der Verteilung besonders hoch oder niedrig ist ist dabei egal.", correct = TRUE),
     correct = "Richtig! Der Median ist unabhängig von den einzelnen Merkmalsausprägungen. Er ergibt sich lediglich aus der Anzahl der Werte innerhalb der geordneten Reihenfolge von Beobachtungen: Zuerst werden alle Messwerte sortiert und dann wird der mittlere Wert in der Mitte bestimmt. Dieser verändert sich nicht, wenn die Werte am Anfang der Reihe, oder am Ende, noch weiter ins Extreme verschoben werden. Daher sagt man auch, dass der Median ein 'robustes Lagemaß' ist, da er gegenüber Ausreißern unempfindlich ist. Ganz anders als der Mittelwert, bei dem ja alle Werte durch die Aufsummierung in die Berechnung mit einfließen.",
     incorrect = "Leider falsch. Der Median ist der mittlere Wert innerhalb der geordneten Reihenfolger von Beobachtungen. Ausreißer sind besonders große oder kleine Werte und befinden sich somit am Rand unserer Verteilung - haben diese Werte einen Einfluss auf den Median?",
     allow_retry = TRUE,
