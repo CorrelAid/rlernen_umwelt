@@ -458,15 +458,15 @@ quiz(caption = "Frage zu Lageparametern",
 Streuungsparameter beschreiben das Ausmaß der **Streuung der Daten**. Dieser versuchen zusätzliche Kennziffern für die
 Heterogenität bzw. das Ausmass der Unterschiedlichkeit von Werten zu liefern. Das Ziel ist dabei, zu beschreiben wie nahe die Daten insgesamt am “Zentrum” liegen (bzw. wie weit entfernt). Wir unterscheiden dabei folgende Paramter:
 
-**Standardabweichung (auch: mittlere Abweichung)**: Ein standardisiertes Maß für die Streuung der einzelnen Beobachtungen um den Mittelwert einer Variable. Angabe in der selben Maßeinheit wie die Variable.
+  - **Standardabweichung (auch: mittlere Abweichung)**: Ein standardisiertes Maß für die Streuung der einzelnen Beobachtungen um den Mittelwert einer Variable. Angabe in der selben Maßeinheit wie die Variable.
 
-**Varianz**: Entspricht der quadrierten Standdardabweichung. Dadurch hat die Varianz eine andere Dimension als die Ausgangswerte.
+  - **Varianz**: Entspricht der quadrierten Standdardabweichung. Dadurch hat die Varianz eine andere Dimension als die Ausgangswerte.
 
-**Spannweite (auch: Range)**: Entspricht der Differenz zwischen dem kleinsten Wert (**Minimum**) und dem größten Wert (**Maximum**) einer Variable. Alle anderen Werte werden bei der Berechnung nicht berücksichtigt.
+  - **Spannweite (auch: Range)**: Entspricht der Differenz zwischen dem kleinsten Wert (**Minimum**) und dem größten Wert (**Maximum**) einer Variable. Alle anderen Werte werden bei der Berechnung nicht berücksichtigt.
 
-**p-Quantil**: Entspricht dem Wert, für den mindestens $p\cdot 100 \%$ der Beobachtungen kleiner oder gleich diesem Wert sind. Das 25%-Quantil ($p=25$) ist also der Wert, für den 25 % aller beobachteten Werte kleiner oder gleich diesem Wert sind.
+  - **p-Quantil**: Entspricht dem Wert, für den mindestens $p\cdot 100 \%$ der Beobachtungen kleiner oder gleich diesem Wert sind. Das 25%-Quantil ($p=25$) ist also der Wert, für den 25 % aller beobachteten Werte kleiner oder gleich diesem Wert sind.
 
-**Interquartilsabstand (IQR)**: Entspricht dem Abstand zwischen dem 75%-Quantil und dem 25%-Quantil und kennzeichnet dementsprechend den Wertebereich, in dem die mittleren 50 % der beobachteten Daten liegen.
+  - **Interquartilsabstand (IQR)**: Entspricht dem Abstand zwischen dem 75%-Quantil und dem 25%-Quantil und kennzeichnet dementsprechend den Wertebereich, in dem die mittleren 50 % der beobachteten Daten liegen.
 
 In der nachfolgenden Abbildung wird verdeutlicht, wie der Median sowie das 25%-Quantil und 75%-Quantil für eine beispielhafte Messreihe ermittelt werden können.
 
@@ -500,17 +500,23 @@ quiz(caption = "Frage zu Streuungsparameter",
     )
 )
 ```
+## Grafische Darstellung der Lage- und Streuungsparameter: Boxplot
+
+Nun haben wir schon eine ganze Menge über Lage- und Streuungsparameter gelernt, aber was fangen wir mit diesen ganzen Zahlen überhaup an? Zum einen können wir sie unter anderem dafür verwenden, verschiedene Gruppen oder Untersuchungseinheiten miteinander zu vergleichen: Welche Klasse hat den besten Durchschnitt (Mittelwert) in der letzten Mathearbeit geschrieben oder welches Unternehmen erzielt den maximalen Profit?
+Allerdings lassen sich diese Werte auch mithilfe von R grafisch in einem **Boxplot** zusammenfassen. Diese Darstellungsform eignet sich besonder gut, um einen ersten Überblick über unsere Daten zu bekommen: Was ist der größte bzw. der kleinste Wert und wo liegt überhaupt der Median, also die "wahre" Mitte unserer Daten? All das und noch etwas mehr können wir aus einem Boxplot herauslesen. Wie wir einen solchen Boxplot mithilfe von R erstellen, schauen wir uns in einem späteren Kapitel an, aber die untere Grafik zeigt Euch schon einmal, wie ein Boxplot eigentlich aussieht und welche Informationen er enthält:
+
+-> Grafik Boxplot
 
 ## **Korrelation und Kausalität**
 
 Es gibt eine weitere statistische Größe, die uns wertvolle Aussagen zu den Daten liefern kann, die aber oftmals voreilig als Ursache einer Beziehung interpretiert wird: die Korrelation. Die **Korrelation** ist ein Maß für den Zusammenhang zwischen zwei Variablen. Die häufigste Art der Korrelation nach **Pearson** misst einen **linearen Zusammenhang** (denke an eine gerade Linie durch die Datenpunkte) zwischen zwei Variablen und kann Werte zwischen $-1$ und $1$ annehmen. 
 
-Bei einer **positiven Korrelation** (Werte nahe $+1$) beobachten wir bei Zunahme einer Variable auch eine gewisse Zunahme in der anderen Variable (Bsp.: größere Häuser erzielen für gewöhnlich einen höheren Verkaufspreis). Bei einer **negativen Korrelation** (Werte nahe $-1$) beobachten wir bei Zunahme einer Variable eine Abnahme in der anderen (Bsp.: schwerere Autos besitzen in der Regel einen höheren Kraftstoffverbrauch und somit eine geringere Reichweite). Bei einer Korrelation nahe $0$ können wir **keinen linearen Zusammenhang** erkennen: Unabhängig unseres Wissens über die eine Variable, können wir keine Vorhersage über die Werte der andere Variable treffen.
+Bei einer **positiven Korrelation** (Werte nahe $+1$) beobachten wir bei Zunahme einer Variable auch eine gewisse Zunahme in der anderen Variable (Bsp.: größere Häuser erzielen für gewöhnlich einen höheren Verkaufspreis). Bei einer **negativen Korrelation** (Werte nahe $-1$) beobachten wir bei Zunahme einer Variable eine Abnahme in der anderen (Bsp.: schwerere Autos besitzen in der Regel einen höheren Kraftstoffverbrauch und somit eine geringere Reichweite). Bei einer Korrelation nahe $0$ können wir **keinen linearen Zusammenhang** erkennen: Unabhängig unseres Wissens über die eine Variable, können wir keine Vorhersage über die Werte der anderen Variable treffen.
 
-Die Korrelation kann zur Interpretation der Daten sehr hilfreich, aber auch sehr trügerisch sein. 
+Die Korrelation kann zur Interpretation der Daten sehr hilfreich, aber auch sehr trügerisch sein. Daher gibt es ein paar Dinge, die wir im Umgang mit dieser beachten müssen - folgende Grundregeln können uns dabei helfen:
 Die **erste wichtige Grundregel** in Bezug auf Korrelationen ist, dass es **verschiedene Korrelationsmaße** gibt. Einige messen nur einen linearen Zusammenhang (d.h. die Daten müssen mehr oder weniger gut auf einer geraden Linie liegen), andere (Rangkorrelationen) können auch nicht lineare Zusammenhänge erfassen. Das ist wichtig, weil eine Korrelation nahe 0 **nicht** bedeutet, dass kein Zusammenhang vorliegt, sondern lediglich, dass der **Zusammenhang eben nicht linear** ist. Man denke an den Zusammenhang zwischen Alter und der aufgenommenen Nahrungsmenge: Mit zunehmendem Alter steigt für gewöhnlich die Menge an Nahrung, die wir zu uns nehmen, an, bis sie ab einem gewissen Alter wieder zu sinken beginnt, weil der Körper nicht mehr so viel Energie benötigt. 
 
-Die **zweite wichtige Grundregel** lautet: **"Aus Korrelation folgt keine Kausalität"**. Zwei Variablen können sogar sehr stark miteinander korrelieren, ohne dass die eine die andere verursacht oder hervorruft. 
+Die **zweite wichtige Grundregel** lautet: **"Aus Korrelation folgt keine Kausalität"**. Zwei Variablen können sogar sehr stark miteinander korrelieren, ohne dass die eine Variable die andere verursacht oder hervorruft. 
   - **Beispiel 1:** Der Verkauf von Eis und die Anzahl der Haiangriffe im Sommer korreliert stark miteinander. Das bedeutet aber nicht, dass der Verkauf von Eis Haie anlockt, oder dass Opfer von Haiangriffen danach gerne ein Eis essen. Vielmehr gibt es eine sogenannte **Drittvariable**, die beide beeinflusst: die Temperatur. Je wärmer es ist, desto mehr Eis wird verkauft und desto mehr Menschen gehen schwimmen. 
   - **Beispiel 2:** Die Schuhgröße korreliert positiv mit der Lesefähigkeit, aber größere Schuhe machen niemanden klüger. In Wahrheit sind beide über das Alter miteinander verbunden - man spricht in diesem Fall von einer **konfundierenden Variable**. 
 Außerdem kann man auch rein [zufällige Korrelationen](https://tylervigen.com/spurious-correlations) finden, die absolut keine sinnvolle Erklärung haben dürften (oder hat unser Käsekonsum vielleicht doch eine Auswirkung auf den Aktienmarkt...?).
@@ -521,7 +527,7 @@ Zum Abschluss dieser Lerneinheit dürft Ihr nun auch noch einmal Daten interpret
 
 - Startet mit den Zeitreihen für den Brutto-Energieverbrauch, betrachten wir die Länder Deutschland, Schweden und Österreich. Wie entwickelt sich die Nutzung der erneuerbaren Energien in diesen Ländern? Was sind Gemeinsamkeiten in der Entwicklung und wo gibt es Unterschiede? Was fällt beim Blick auf die EU-Ziele für 2020 und 2030 auf - werden diese erreicht oder nicht? 
 - Werfen wir anschließend einen Blick auf die Zeitreihen für den Verkehrs- und Elektrizitätssektor. Was fällt hier auf? Wie verlaufen die Entwicklungen in den einzelnen Ländern und wie lässt sich die länderübergreifende Entwicklung beschreiben - wie steht Deutschland im internationalen Vergleich dar?
-- Wechselt nun zur Darstellung 'Säulendiagramme' und bleibt im Jahr 2016. Betrachtet wiederum die einzelnen Sektoren: Welche Länder stechen jeweils positiv und negativ heraus und wie sieht es mit Blick auf die gesamte EU aus - werden die Ziele für den Brutto-Energieverbrauch von den meisten Ländern erreicht oder nicht? Tipp: Oben rechts könnt Ihr auf 'Daten ordnen' klicken - das macht diese Darstellung übersichtlicher.
+- Wechselt nun zur Darstellung 'Säulendiagramme' und bleibt im Jahr 2016. Betrachtet wiederum die einzelnen Sektoren: Welche Länder stechen jeweils positiv und negativ heraus und wie sieht es mit Blick auf die gesamte EU aus - werden die Ziele für den Brutto-Energieverbrauch von den meisten Ländern erreicht oder nicht? Tipp: Oben rechts könnt Ihr auf 'Daten ordnen' klicken - das macht die Darstellung übersichtlicher.
 - Wechselt zum Abschluss noch zur Darstellung 'Boxplots'. Was wird hier nun dargestellt? Wenn wir die einzelnen Sektoren betrachten, wo finden die größten Veränderungen statt, betrachtet dabei z.B. Minimum, Maximum und Median.
 
 Die zweite Übung behandelt noch einmal die Korrelation. Öffnet dazu bitte diese [Seite](https://www.hfh-fernstudium.de/statistik-app/korrelation.html):
@@ -540,13 +546,13 @@ Die zweite Übung behandelt noch einmal die Korrelation. Öffnet dazu bitte dies
 
 # **Zusätzliche Ressourcen**
 
+- [Deskriptive Statistik - Grundlagen - Methoden - Beispiele - Aufgaben](https://link.springer.com/book/10.1007/978-3-658-13640-6)
+- [Statistik: Eine Einführung mit interaktiven Elementen.](https://link.springer.com/book/10.1007/978-3-662-61912-4)
+- [Grundlagen der Datenanalyse mit R](https://link.springer.com/book/10.1007/978-3-662-61736-6)
+- [Data Litercy bei CorrelAid: Der Grundkurs für zivilgesellschaftliche Organisationen](https://www.correlaid.org/bildung/grundkurs-daten/)
 - [Destatis - Statistisches Bundesamt](https://www.destatis.de/DE/Home/_inhalt.html)
 - [KI Campus](https://ki-campus.org/)
 - [https://systats.github.io/](https://systats.github.io/linear_model/index.html)
 - [Werde ein Data Head](https://dpunkt.de/produkt/werde-ein-data-head/)
-- [Statistik: Eine Einführung mit interaktiven Elementen.](https://link.springer.com/book/10.1007/978-3-662-61912-4)
-- [Grundlagen der Datenanalyse mit R](https://link.springer.com/book/10.1007/978-3-662-61736-6)
-- [Data Litercy bei CorrelAid: Der Grundkurs für zivilgesellschaftliche Organisationen](https://www.correlaid.org/bildung/grundkurs-daten/)
-
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
