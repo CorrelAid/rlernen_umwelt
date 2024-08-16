@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
   - Zoé Wolter
+  - Jonas Lorenz
 output: 
   html_document:
     toc: true
@@ -34,54 +35,55 @@ library(rio)
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Ab dieser Woche geht es ans Eingemachte: Nachdem Ihr in den vergangenen Lektionen bereits erste Codezeilen ausgeführt habt, beginnen wir nun zu programmieren. Um die R-Dateien, die wir nutzen werden, lokal zu öffnen, benötigt Ihr [R](https://ftp.fau.de/cran/){target="_blank"} und [RStudio](https://rstudio.com/products/rstudio/download/#download){target="_blank"}. Versucht gerne selbst beide Programme für Euer Betriebssystem zu installieren – idealerweise auf einem Laptop oder PC, auf dem Ihr **Adminrechte** habt. Gerne auch auf Eurem privaten PC. Bei Installationsschwierigkeiten könnt Ihr uns gerne vor unserer Live-Session am Freitag **per Slack-Nachricht** kontaktieren - dann lösen wir die Herausforderungen mit Euch gemeinsam.
+Nachdem wir uns in den vergangenen Lektionen vor allem die jursitischen und theoretischen Hintergründe der Datenerhebung und -verarbeitung angeschaut haben, geht es diese Woche Ans Eingemachte: **Wir beginnen in R zu programmieren!** Damit wir die R-Dateien, die wir nutzen werden, auch lokal öffnen können, benötigen wir [R](https://ftp.fau.de/cran/){target="_blank"} und [RStudio](https://rstudio.com/products/rstudio/download/#download){target="_blank"}. Über die entsprechenden Links könnt Ihr beide Programme für Euer Betriebssystem zu installieren – idealerweise auf einem Laptop oder PC, auf dem Ihr **Adminrechte** habt. Nutzt dafür gerne auch Euren privaten PC. Bei **Installationsschwierigkeiten** könnt Ihr uns gerne vor unserer Live-Session am Freitag per Slack-Nachricht kontaktieren, dann lösen wir die Herausforderungen mit Euch gemeinsam.
 
 ![*Video: Einführung in RStudio (30min)*](https://youtu.be/sgczH-e0Cxg)
 
-### **Kernaussagen**
+# **Was sind eigentlich R und RStudio?**
 
-#### R
+## R
 
--   R ist eine **freie, statistische Programmiersprache**
--   **Groß- und Kleinschreibung** muss in R unbedingt beachtet werden
--   Nicht jede **Funktionalität** müsst Ihr in R selbst schreiben: Über **`install.packages()`** und **`library()`** könnt Ihr Funktionalitäten, die andere Coder:innen für Euch bereitstellen, nutzen - das spart viel Zeit!
+  - **statistische Programmiersprache**: speziell für statistische Analysen, Datenvisualisierung und maschinelles Lernen entwickelt. 
+  - **Open Source**: ein Software, die frei verfügbar und von einer großen Community unterstützt wird.
+  - **Erweiterbarkeit und Flexibilität**: Durch eine Vielzahl von Paketen, die von der Community bereitgestellt werden, ist R extrem flexibel und kann für unterschiedlichste Aufgaben verwendet werden. Nutzt diese sog. Packages - das spart viel Zeit!
+  - **Datenvisualisierung**: starke Werkzeuge zur Erstellung hochwertiger und anpassbarer Grafiken, v.a. durch Pakete wie ggplot2.
 
-#### RStudio
+## RStudio
 
--   RStudio ist auf R spezialisierte **integrierte Entwicklungsumgebung** (eng. Integrated Development Environment oder IDE), in der Ihr Code schreiben, ausführen, auf Dokumentation und Dateien zugreift, Eure Arbeit mit Anderen teilen könnt uvm.
--   Es ist empfehlenswert Code im **Code Editor** (zu dt. Codebearbeitungsprogramm) zu schreiben und mit "\#" zu kommentieren - den Code könnt Ihr mit "CMD + ENTER" für Mac und "CTRL + ENTER" für Windows ausführen - die Ergebnisse erhaltet Ihr in der **Console**
--   In der **Environment** (zu dt. Umgebung) sind Objekte (also auch Eure Daten) Eurer Arbeit gespeichert
--   Unter dem Environment findet Ihr einen **File Explorer** (zu dt. Dateimanager), mit dem Ihr Dateien auf Eurer Festplatte suchen und per Doppelklick öffnen könnt
--   Zusätzlich werden dort Plots (zu dt. Abbildungen), geladene Packages und die **Dokumentation** ("Hilfe") angezeigt, die Ihr mit dem Befehl **help("Funktion")** oder **?Funktion** durchsuchen könnt
--   Alle **Shortcuts** für RStudio findet Ihr unter ("Menü Help -\> Keyboard Shortcuts Help)
--   In englischer Sprache ist zudem ein **Schummelblatt** zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} verfügbar
+  - Eine auf R spezialisierte **integrierte Entwicklungsumgebung** (eng. Integrated Development Environment oder IDE), in der Ihr Code schreiben, ausführen, auf Dokumentation und Dateien zugreift, Eure Arbeit mit Anderen teilen könnt uvm. Wichtig:  **Groß- und Kleinschreibung** muss in R unbedingt beachtet werden, damit wir unseren Code erfolgreich ausführen können!
+  - **Code Editor (zu dt. Codebearbeitungsprogramm)**: Der Bereich, in dem wir unseren R-Code mithilfe von Syntax-Highlighting und Autovervollständigung schreiben und mit "CMD + ENTER" für Mac und "CTRL + ENTER" für Windows Ausführen. Wir können unseren Code dort außerdem kommentieren ("\#").
+  - **Console**: Hier werden uns die Ergebnisse angezeigt. Die Console können wir alterativ auch dafür verwenden, um unseren Code zu schreiben.
+  - **Environment (zu dt. Umgebung)**: Hier werden alle akutell geladenen Daten, Variablen und Objekte unserer Arbeit angezeigt und gespeichert.
+  - **File Explorer (zu dt. Dateimanager)**: Dieser befindet sich unter der Environment und ermöglicht das Durchsuchen von Dateien und Verzeichnissen auf dem Computer direkt innerhalb von RStudio. Zusätzlich werden dort Plots (zu dt. Abbildungen), geladene Packages und die **Dokumentation** ("Hilfe") angezeigt, die wir mit dem Befehl **help("Funktion")** oder **?Funktion** durchsuchen können.
+  - **Shortcuts**: Es gibt eine ganze Menge Shortcuts, die uns das Leben in RStudio erleichtern - diese findet Ihr unter ("Menü Help -\> Keyboard Shortcuts Help)
+  - **Cheatsheets (zu dt. Schummelblätter): Für viele Packages und Themen in RStudio gibt es (überwiegend englische) Hilfestellungen. Diese werden uns auch im Laufe des Kurses immer wieder begegnen. Das erste Schummelblatt zur IDE RStudio findet ihr [hier](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"}!
 
-#### R Projekt (RProj)
+## R Projekt (RProj)
 
--   Um nervige Dateipfad-Verwirrungen zu vermeiden und eine Art "Container" für Eure R Projekte anzulegen, erstellt Ihr am besten immer ein **R Projekt**
--   Im Ordner mit dem R Projekt legt Ihr am besten immer einen **Ordner** für Eure Daten und einen Ordner für Euren Code an und falls nötig noch für Grafiken o.ä.
+  - **Organisationsstruktur**: Ermöglicht es und, alle Dateien, Daten und Skripte eines Projekts in einem gemeinsamen Verzeichnis zu verwalten  undnervige Dateipfad-Verwirrungen zu vermeiden. Deshalb erstellen wir am besten immer ein neues R Projekt, wenn wir mit einer neuen Arbeit beginnen.
+  - **Arbeitsverzeichnis**: Das zentrale Verzeichnis, in dem alle relevanten Dateien und Daten des Projekts gespeichert sind, sodass relative Pfade einfach verwendet werden können. Daher legen wir im Ordner mit dem R Projekt idealerweise immer einen **Ordner: "Daten"**, einen **"Ordner: Code** und, falls nötig, noch einen **Ordner: "Grafiken"** an.
+  - **Versionierung**: Indem wir ein RProjekt anlegen, unterstützen wir die Integration von Versionskontrollsystemen wie Git, um Änderungen im Projekt nachverfolgen und verwalten zu können.
+  - **Umgebungskonfiguration**: Speichert projektspezifische Umgebungsvariablen und Einstellungen, die automatisch geladen werden, wenn das Projekt geöffnet wird.
 
-Alle Informationen zu dem Datensatz, mit dem wir in diesem Kurs arbeiten, findet Ihr [hier](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-01-26){target="_blank"}.
-
-### **Quiz**
+## **Quiz**
 
 ```{r quiz_rstudio}
 quiz(caption = NULL,
   question("Ich muss nicht auf die Groß- und Kleinschreibung achten, wenn ich in R programmiere.",
-    answer("Korrekt"),
-    answer("Inkorrekt", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Groß- und Kleinschreibung, aber auch Kommas und Klammern, sind wichtig für funktionierenden Code in R!",
+    answer("Korrekt, unabhängig der Rechtschreibung: R weiß bestimmt schon was ich meine!"),
+    answer("Inkorrekt, damit wir unseren Code erfolgreich ausführen können, müssen wir unbedingt auf die Rechtschreibung achten.", correct = TRUE),
+    correct = "Richtig, besonders die Groß- und Kleinschreibung, aber auch Kommas und Klammern sind gerade bei komplizierteren Funktionen sehr wichtig für einen funktionierenden Code in R!",
+    incorrect = "Leider falsch: Groß- und Kleinschreibung, aber auch Kommas und Klammern, sind gerade bei komplizierteren Funktionen sehr wichtig für funktionierenden Code in R!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("Code ist über Patent- und Urheberrechte geschützt, deshalb darf ich nichts von anderen Coder:innen benutzen.",
-    answer("Korrekt, Code von anderen sollte ich auf keinen Fall kopieren."),
-    answer("Inkorrekt, Code von anderen kann ich immer übernehmen."),
-    answer("Bei der Verwendung von Code sollte ich immer beachten, welcher Lizenz der Code unterliegt.", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Austausch von Code in Foren wie StackOverflow ist wichtig und hilfreich, aber dabei solltest Du immer beachten, ob der Code einer Lizenz unterliegt und du den Code tatsächlich einfach kopieren darfst (Beispiele für Lizenzen findest Du [hier](https://creativecommons.org/about/cclicenses/)).",
+  question("Code ist über Patent- und Urheberrechte geschützt, deshalb darf ich Nichts von anderen Coder:innen benutzen.",
+    answer("Korrekt, Code von anderen sollte ich auf gar keinen Fall kopieren."),
+    answer("Inkorrekt, Code von anderen kann ich immer problemlos übernehmen."),
+    answer("Grundsätzlich kann Code von anderen Coder:innen verwendet werden, wenn sie diesen zur Verfügung stellen. Jedoch muss ich dabei immer darauf achten, welcher Lizenz der Code unterliegt.", correct = TRUE),
+    correct = "Richtig, bei R handelt es sich um eine Open-Source-Software, die von einer großen Community unterstützt und weiterentwickelt wird. Deshalb stellen viele begeisterte Coder:innen ihre Codes und Arbeiten gerne zur Verfügung. Häufig findet dieser Austausch auf Plattformen wir Stack0verflow statt. Jedoch müssen wir dabei immer auf die Lizenzierung dieser Codes achten - manche Dinge dürfen wir nämlich nicht einfach so verwenden! (Beispiele für Lizenzen findest Du [hier](https://creativecommons.org/about/cclicenses/))",
+    incorrect = "Leider falsch! Auch wenn es sich bei R um eine Open-Source-Software handelt, die von einer großen Community unterstützt und weiterentwickelt wird, müssen wir dabei immer auf die Lizenzierung der veröffentlichten Codes achten - manche Dinge dürfen wir nämlich nicht einfach so verwenden (Beispiele für Lizenzen findest Du [hier](https://creativecommons.org/about/cclicenses/)).",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -91,22 +93,33 @@ quiz(caption = NULL,
     answer("Environment"),
     answer("Terminal"),
     answer("Code Editor", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch. Öffne am besten direkt nochmal RStudio. Wo findest Du die oben genannten Fenster und kannst Du dort Code eingeben?",
+    correct = "Richtig, in erster Linie verwenden wir den Code Editor dazu, um unseren Code zu schreiben! Alternativ können wir jedoch auch die Konsole dafür verwenden.",
+    incorrect = "Leider falsch, öffne am besten direkt nochmal RStudio. Wo findest Du die oben genannten Fenster und kannst Du dort Code eingeben?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
   question("IDE steht für Integrated Development Environment (zu dt. integrierte Entwicklungsumgebung). RStudio ist eine integrierte Entwicklungsumgebung für R.",
-    answer("Korrekt", correct = TRUE),
-    answer("Inkorrekt"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch - die beiden Aussagen sind richtig.",
+    answer("Korrekt!", correct = TRUE),
+    answer("Inkorrekt!"),
+    correct = "Richtig, RStudio ist die Entwicklungsumgebung, die sich auf R spezialisiert hat und die uns das Programmieren und Arbeiten mit R durch eine benutzerfreundliche Oberfläche erleichtert.!",
+    incorrect = "Leider falsch - RStudio ist die Entwicklungsumgebung, die sich auf R spezialisiert hat und die uns das Programmieren und Arbeiten mit R durch eine benutzerfreundliche Oberfläche erleichtert.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
 )
 ```
+
+# **Der Datensatz**
+
+Bevor wir nun tatsächlich selbst mit dem Programmieren beginnen, wollen wir Euch noch den Datensatz vorstellen, mit dem wir in den kommenden Wochen und Monaten arbeiten werden. 
+
+Dieser stammt von Sarah Suave aus dem **[#Breakfreefromplastic](https://www.breakfreefromplastic.org/about/){target="_blank"}-Netzwerk**. Ein Netzwerk, das 2016 ins Leben gerufen wurde und das Ziel einer plastikfreien Welt verfolgt. Seitdem haben sich weltweit über 3.000 Organisationen und 14.000 Personen dieser Bewegung angeschlossen, um gemeinsam zusammenzuarbeiten. Um diesem Ziel Stück für Stück näher zu kommen, veröffentlicht #Breakfreefromplastic seit 2018 jedes Jahr einen sogenannten **Brand Audit**. Im Rahmen dieser Untersuchung wird Plastikmüll analysiert, um herauszufinden, welche Firmen mit ihren Produkten in großem Maße zur Verschmutzung unseres Planeten beitragen. Diese Daten werden in einem Datensatz zusammengefasst. Wir verwenden an dieser Stelle die Daten aus dem Jahr 2020. Alle weiteren Hintergründe zur Untersuchung und Brand Reports zum Download findet ihr [hier](https://brandaudit.breakfreefromplastic.org/){target="_blank"}.
+Keine Sorge, wir werden uns den Datensatz ganz bald noch im Detail anschauen, wenn es darum geht, unsere eigenen Analysen durchzuführen. Für das erste wollen wir Euch an dieser Stelle mit der folgenden Grafik einen kleinen Einblick in den Datensatz und somit auch in R geben. Ihr könnt Euch dabei schon einmal ein paar Gedanken machen, auf die wir dann zurückgreifen werden: Was könnt Ihr auf den ersten Blick erkennen? Was könnte sich hinter den verschiedenen Begriffen verbergen? Welche Begriffe sind Euch völlig fremd und wovon habt Ihr vielleicht schon einmal gehört?
+
+-> Grafik Datensatz
+
+Das war's an dieser Stelle mit dem Datensatz, schauen wir uns nun unsere ersten Codes in R an! Doch davor noch ein kleiner, aber wichtiger, Hinweis:
 
 <br>
 <div style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
