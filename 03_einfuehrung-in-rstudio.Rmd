@@ -334,7 +334,7 @@ Als Alternative zur `summary()`-Funktion können wir auch die Funktion **`str()`
 str(data_raw)                  # Überblick mit 'str()'
 ```
 
-## **Überblick Advanced**
+## **4. Schritt: Vereinfachung durch Subsets**
 
 Manchmal, gerade bei sehr großen Datenmengen, kann es auch hilfreich sein, wenn wir mit einzelnen Spalten oder **Subsets (zu dt. Teilmengen)** arbeiten. Das ist logischerweise deutlich überischtlicher, als ein Datensatz, der zehantausende Untersuchungseinheiten und mehrere hundert Variablen enthält (ja, das gibt es!). Glücklicherweise können wir mit R relativ leicht, Teilmengen aus unserem Datensazu herausziehen. Dafür nutzen wir das Dollarzeichen "\$" mit der Logik `Datensatz\$Spaltenname` oder die eckigen Klammern mit der Logik `Datensatz['Spaltenname']`. Wollen wir mehrere Spalten aufrufen, könnt Ihr diese durch ein Komma trennen und somit auflisten - Logik `Datensatz[c('Spaltenname1', 'Spaltenname2')]`. nutzen 
 **Recap**: `c()` ist die Notation von R für Vektoren, in denen wir mehrere Werte hinterlegen können.
@@ -373,7 +373,8 @@ Geschafft, Du bist spitze! :) Wenn Du direkt noch mehr zu R lernen möchtest, da
   
 <h3><b>Exkurs: Kontrollstrukturen</b></h3>  
 
-In der Programmierung gibt es verschiedene Kontrollstrukturen: Nur *wenn* die Note eines Teilnehmenden besser als eine 2 ist, *dann* soll R den Text 'Gut gemacht' ausgeben? Dann braucht Ihr eine **Wenn-Dann-Bedingung** (*engl. If-Then-Statement*). Hier die Syntax und ein kleines Beispiel - Welcher Text (*Operation innerhalb der geschwungenen Klammern*) wird hier ausgegeben?
+In der Programmierung gibt es verschiedene **Kontrollstrukturen**, die wir mithilfe sogenannter **Wenn-dann-Bedingungen (engl. If-Then-Statement)** definieren können. Was wir darunter verstehen, schauen wir uns am besten einmal direkt an einem Besipiel an: Ihr seid Fahrlehrer:in und bereitet Eure Schüler:innen mit einer Simulation der theoretischen Prüfung auf den eignetlichen Prüfungstermin vor. Eure Schüler:innen bearbeiten also einen Test, der der eigentlichen Prüfung sehr ähnlich ist. Daher dürfen die Schüler:innen maximal zehn Fehlerpunkte sammeln.  **Wenn** sie dieses Ziel "weniger als zehn Fehlerpunkte" erreichen, **dann** soll das Programm den Text 'Gut gemacht, Du hast bestanden!' ausgeben.
+Eben solche Kontrollstrukturen können wir auch in R umsetzen - wie, das schauen wir in diesem Exkurs einmal an. Beginnen wir also mit der Syntax. Wir verwenden hierfür die **`if()`**-Funktion und müssen zunächst einmal die Bedingung definieren, die überprüft wird (Bsp. Fahrschule: Die Person darf maximal zehn Fehlerpunkte erreichen). Anschließend müssen wir in der ersten geschwungenen Klammer `{}` den Code festlegen, der ausgegeben wird, wenn diese Bedingung erfüllt ist (Bsp. Fahrschule: 'Gut gemacht, Du hast bestanden!'). In der zweiten (oder weiteren) geschwungenen Klammer `{}` müssen wir den Code schreiben, der ausgeführt wird, wenn die Bedingung **nicht** erfüllt ist (Bsp. Fahrschule: 'Nicht bestanden, Du hast X Fehlerpunkte. Versuche es erneut!'). Hier noch einmal die Syntax und ein weiteres Beispiel - Welcher Text (Tipp: Operation innerhalb der geschwungenen Klammern) wird hier ausgegeben?
 
 ```{r wenndann, exercise = TRUE}
 # if (Bedingung, die überprüft wird) {
@@ -393,17 +394,17 @@ if (2 + 2 == 5) {
     }
 ```
 
-Da haben wir nochmal Glück gehabt: Unser **regelbasiertes System** funktioniert. Neben **Maschinellem Lernen** sind solche regelbasierten Systeme übrigens eine wichtige Form von allen Technologien, die unter das Modewort **Künstliche Intelligenz** fallen. Die zugehörigen Regeln werden in komplexeren Systemen von Expert:innen verfasst und erst nach und nach, wenn es möglich ist, durch alternative Technologien ersetzt. Ein gutes Beispiel dafür sind Verfahren zur Verarbeitung von Sprache (siehe [hier](https://aclanthology.org/D13-1079.pdf){target="_blank"}). Ihr könnt Euch aber auch einfach ein regelbasiertes System vorstellen, das automatisch bei der Erreichung einer bestimmten Spendensumme eine Dankesnachricht an alle Spender:innen versendet.
+Da haben wir nochmal Glück gehabt: Unser **regelbasiertes System** funktioniert. Anwednung finden solche Kontrollstrukturen vor allem im Bereich des **Maschinellen Lernens** und somit allen Technologien, die unter das Modewort **Künstliche Intelligenz** fallen. In deutlich komplexeren Systemen werden die zugehörigen Regeln von Expert:innen verfasst und erst nach und nach, wenn es möglich ist, durch alternative Technologien ersetzt. Ein gutes Beispiel dafür sind Verfahren zur Verarbeitung von Sprache (siehe [hier](https://aclanthology.org/D13-1079.pdf){target="_blank"}). Ein einfacheres regelbasiertes System könnten wir allerdings auch für unsere Organsiation verwenden: Ein System, das automatisch bei der Erreichung einer bestimmten Spendensumme eine Dankesnachricht an alle Spender:innen versendet. Zimelich praktisch oder?
 
-Neben der Ausführung von Aktionen unter bestimmten Bedingungen können wir durch technische Implementierungen **Aktionen mehrfach ausführen**. Ein Beispiel: Nach der Erreichung der Spendensumme soll eine Dankesnachricht an alle Spender:innen gesendet werden. In der Programmierung bezeichnet man diese iterierenden Verfahren als **Loop** (zu dt. Schleife). Sind alle Spender:innen bekannt (und somit die Liste der Elemente, über die man iteriert), nutzt man einen **For Loop** (zu dt. Für-Schleife).
+Neben der Ausführung von Aktionen unter bestimmten Bedingungen können wir durch technische Implementierungen **Aktionen mehrfach ausführen**. Bleiben wir bei unserem Beispiel mit den Spenden: Wenn wir eine bestimmte Spendensummer erriechen, wollen wir uns mit einer kurzen Dankesnachricht bei allen Spender:innen für ihre Unterstützung bedanken. In der Programmierung bezeichnet man diese iterierenden (dt. sich wiederholenden) Verfahren als **Loop** (zu dt. Schleife). Sind alle Spender:innen bekannt (und somit die Liste der Elemente, über die man iteriert), nutzt man einen **For Loop** (zu dt. Für-Schleife).
 
 ![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/03_einfuehrung-in-rstudio/forloop.png?raw=true){#id .class width="30%" height="100%"}
 
 ```{r fuerschleife, exercise = TRUE}
-# Aus der Liste "list("Lisa", "Frie", "Zoe")" picken wir uns eine "spenderin" raus...
-for (spenderin in list("Lisa", "Frie", "Zoe")) {
-  # für diese "spenderin" geben wir den Satz 'Danke, <Name diese:r:s Spender:in>!' aus
-  print(paste("Danke,", spenderin, "!"))
+# Aus der Liste "list("Lisa", "Hannah", "Amelie")" picken wir uns eine "Spenderin" raus...
+for (spenderin in list("Lisa", "Hannah", "Amelie")) {
+  # für diese "Spenderin" geben wir den Satz 'Danke für deine Unterstützung, <Name diese:r:s Spender:in>!' aus
+  print(paste("Danke für deine Unterstützung,", spenderin, "!"))
 }
 ```
 
@@ -412,18 +413,19 @@ Soll die Aktion ausgeführt werden, bis eine Bedingung eintritt, z.B. weil alle 
 ![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/03_einfuehrung-in-rstudio/whileloop.png?raw=true){.class width="30%" height="100%"}
 
 ```{r solangeschleife, exercise = TRUE}
-# Erstellung der Liste unbekannter Länge
-spenderinnenliste <- list("Lisa", "Frie", "Zoe")
+# Erstelle eine Liste deiner Spender:innen
+spenderinnenliste <- list("Lisa", "Hannah", "Amelie")
 
-# definiere Startwert
+# Definiere den Startwert
 i <- 1
 
-# führe den Code für alle i kleiner gleich der Länge der Liste durch...
+# Führe den Code für alle i kleiner gleich der Länge der Liste durch...
 while (i <= length(spenderinnenliste)) {
-  # ...gebe für diesen Eintrag den Satz 'Danke, <Name diese:r:s Spender:in>!' aus...
-  print(paste("Danke,", spenderinnenliste[[i]], "!"))
+  # ...gebe für diesen Eintrag den Satz 'Danke für deine Unterstützung, <Name diese:r:s Spender:in>!' aus...
+  print(paste("Danke für deine Unterstützung,", spenderinnenliste[[i]], "!"))
   # ...setze den Counter i um 1 herauf
   i = i + 1
+}
 }
 ```
 
@@ -431,10 +433,10 @@ while (i <= length(spenderinnenliste)) {
 
 ---
 
-Eine letzte Anmerkung: Es ist ganz normal, dass Euer Code mal **Fehler** wirft - auch uns passiert das. In der Console (und in RMDs unter dem Code Chunk) wird Euch dann angezeigt, **wo der Fehler auftritt und um welche Art von Fehler es sich handelt** (sog. Fehlermeldung). Beliebte Fehlerquellen sind **Syntaxfehler** (wenn Ihr beispielsweise Klammern nicht schließt, die falsche Klammerart nutzt oder Argumente nicht durch Kommata trennt) oder die falsche Verwendung von Argumenten in Funktionen. Auch das Schreiben von Kommentaren in Code Chunks ist nur mit "\#" zu Beginn des Textes möglich. Wenn Ihr mal gar nicht weiter wisst, kopiert einfach die Fehlermeldung aus der Console und begebt Euch damit auf eine Googlesuche. Auf [**Stack Overflow**](https://stackoverflow.com/){target="_blank"} und in der [**R-Online Community**](https://community.rstudio.com/){target="_blank"} finden sich für (fast) alle Herausforderungen Antworten und Hilfestellungen.
+Eine letzte Anmerkung: Das war bis hierher ganz schön viel Input! Gerade zu Beginn ist es ganz normal, dass unser Code  **Fehler** enthält - aber auch den Profis passiert das immer wieder. Wichtig ist, dass wir uns davon nicht verrückt machen lassen, häufig sind es nämlich einfache **Syntaxfehler** (z.B. offene Klammern, falsche Klammerart oder fehlende Kommas) oder die flasche Anwendung von Argumenten in Funktionen. Wichtig ist, dass wir uns dann auf die Suche nach diesen Fehlern machen. Dabei hilft uns die **Console** oder auch unser (RMarkdown-Dokument). Darin wird uns nämlich angezeigt **wo der Fehler auftritt und um welche Art von Fehler es sich handelt** (sog. Fehlermeldung). So können wir die Fehlerqulle identifizieren und (meistens) schnell beheben. Und wenn wir einmal gar nicht weiter wissen, nutzen wir die riesige R-Community, denn nahezu jedes Problem ist schon einmal irgendwo diskutiert worden. Wir kopieren einfach die Fehlermeldung aus der Console und begeben uns damit auf Googlesuche. Auf [**Stack Overflow**](https://stackoverflow.com/){target="_blank"} und in der [**R-Online Community**](https://community.rstudio.com/){target="_blank"} finden sich für (fast) alle Herausforderungen Antworten und Hilfestellungen!
 
 
-### **Und jetzt Ihr**
+# **Und jetzt Ihr!**
 
 Legt nun ein neues R Projekt (wie im Video) und eine neue R Markdown-Datei auf Eurem Rechner an und...
 
@@ -442,7 +444,7 @@ Legt nun ein neues R Projekt (wie im Video) und eine neue R Markdown-Datei auf E
 2.  Lest den Datensatz über den Hyperlink oder lokal ein. Ihr findet ihn unter diesem [Link](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv){target="_blank"} und könnt ihn dort auch herunterladen, wenn Ihr Euch für die zweite Variante entscheidet.
 3.  Nutzt die vorgestellten Funktionen, um den Datensatz zu erkunden. Dafür könnt Ihr die Code Chunks aus der Lernplattform einfach in RStudio kopieren und sie dort ausführen.
 
-### **Zusätzliche Ressourcen**
+# **Zusätzliche Ressourcen**
 
 -   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
 -   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
