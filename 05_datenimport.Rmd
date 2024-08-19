@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
   - Zoé Wolter
+  - Jonas Lorenz
 output: 
   html_document:
     toc: true
@@ -37,32 +38,17 @@ polygons_welt <- get_poly_welt()
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Diese Woche geht es darum, wie Ihr Daten in R-Studio importieren könnt. In den Kapiteln ganz unten auf der Seite (Exkurse 1 - 3) werden komplexere Themen eingeführt. Schaut Euch diese je nach Bedarf oder auch nach Ende des Kurses an - sie sind aber definitiv kein Muss! 
-
 ![*Video: Datenimport und APIs (30min)*](https://youtu.be/NA9QLeQsE9M)
 
-### **Kernaussagen**
+# **Datenimport in R**
 
-- Es gibt **zwei grundlegende Möglichkeiten**, Daten zu importieren:
-     1. aus lokal oder remote gespeicherten **Dateiformaten** (XLSX, CSV, ...)
-     2. über **Datenabfragen** von Datenbanken und aus dem Internet (Abfragesprachen wie SQL oder über APIs und Web-Scraping; mehr hierzu in den Exkursen)
-     
-- Um Dateien richtig importieren zu können, ist es wichtig, herauszufinden, welches **Dateiformat** die Datei hat:
-    - **Windows-User** können sich die Dateiendung über die Multifunktionsleiste auf der Registerkarte "Ansicht" anzeigen lassen: Aktiviert dort das Feld "Dateinamenerweiterungen" im Abschnitt "Ein-/Ausblenden"
-    - **Mac-User** navigieren zu ihrem Schreibtisch und können sich dort die Dateiendung über "Finder" -> "Erweitert" -> Alle Dateinamensuffixe einblenden" anzeigen lassen
-    
-- Um Fehlern vorzubeugen, solltet Ihr die **Datei vorab in einem Texteditor öffnen** (nicht immer möglich) und dabei folgendes beachten:
+## **1. Schritt: Dateiformat**
 
-    1) In welchem **Dateiformat** liegt die Datei vor?
-    2) Wo ist die Datei **gespeichert**?
-    3) Was gibt es hinsichtlich **Dateistruktur** zu beachten (Separatoren, fehlende Werte, etc.)?
-    4) Wenn Ihr **deutschsprachige Dateien** importiert, müsst Ihr umso mehr auf Umlaute, Spaltentrenner (engl. Separator, im Deutschen ";") und Dezimaltrennzeichen (im Deutschen ",") achten. Hier besteht großes Fehlerpotential, da die meisten Datenanalyseprogramme die englische Sprache als Standardeinstellung haben.
+Grundlegend gibt es **zwei Möglichkeiten**, Daten in R zu importieren. Entscheidend ist dabei, woher wir unsere Daten importieren wollen:
+    1. aus lokal oder remote gespeicherten **Dateiformaten** (XLSX, CSV, ...)
+    2. über **Datenabfragen** von Datenbanken und aus dem Internet (Abfragesprachen wie SQL oder über APIs und Web-Scraping; mehr hierzu in den Exkursen)
 
-- Der Import von CSV-, XLSX-, SPSS-, SAS und Stata-Dateien kann in RStudio **ohne Code** über "File" -> "Import Dataset" erfolgen
-
-- Alternativ können wir diese Dateien auch mit Funktionen diverser Packages importieren
-
-**Überblick über die verschiedenen Dateiformate:**
+**Tabelle: Überblick Dateiformate**
 ```{r dateiformate_tabelle, results='asis'}
 tabelle <- "
 
@@ -79,46 +65,61 @@ Textdatei     | allgemeine Textdateien                                          
 cat(tabelle)
 ```
 
-### **Quiz**
+Um die Daten anschließend richtig importieren ist es wichtig, einen Blick auf das **Dateiformat** zu werfen. Wenn wir nicht bereits wissen, in welchem Format unsere Daten vorliegen, gibt es (je nach Betriebssystem) mehrere Möglichkeiten, es herauszufinden: 
+  - **Windows-User** können sich die Dateiendung über die Multifunktionsleiste auf der Registerkarte "Ansicht" anzeigen lassen: Aktiviert dort das Feld "Dateinamenerweiterungen" im Abschnitt "Ein-/Ausblenden"
+  - **Mac-User** navigieren zu ihrem Schreibtisch und können sich dort die Dateiendung über "Finder" -> "Erweitert" -> Alle Dateinamensuffixe einblenden" anzeigen lassen.
+    
+Um Fehlern vorzubeugen, solltet Ihr - wenn möglich - die Datei vorab in einem **Texteditor** öffnen und dabei Folgendes beachten:
+  - **Dateiformat**: In welchem Format liegt die Datei vor?
+  - **Speicherort**: Wo ist die Datei gespeichert?
+  - **Dateistruktur**: Was gibt es hinsichtlich der Struktur zu beachten (Separatoren, fehlende Werte, etc.)?
+  - **Sprache**. Die mesiten Datenanalyseprogramm verwenden Englisch als Standardeinstellung, weshalb es bei dem Import **deutschsprachiger Dateien** zu Fehlern kommen kann. Wir müssen dabei besonders auf Umlaute, Spaltentrenner (engl. Separator, im Deutschen ";") und Dezimaltrennzeichen (im Deutschen ",") achten. Wie wir mit solchen Fällen umgehen, schauen uns wir uns gleich noch einmal genauer an!
+
+## **2. Schritt: Der Import**
+
+Einereits können wir CSV-, XLSX-, SPSS-, SAS und Stata-Dateien ganz klassisch manuell und **ohne Code** in RStudio importieren. Dabei navigieren wir über "File" -> "Import Dataset" zum entsprechenden Dateiformat und können dann ganz einfach unseren File/URL eingeben und schon haben wir unseren Datensatz in R importiert!
+Alternativ können wir diese Dateien auch mit Funktionen diverser Packages importieren - wie genau wir das machen, schauen wir uns nach dem Quiz genauer an.
+
+## **Quiz**
 ```{r quiz_datenimport, echo=FALSE}
 quiz(caption = NULL,
      
   question("Welche Faktoren spielen beim Datenimport eine wichtige Rolle?",
-    answer("Das Dateiformat (erkennbar an der Dateiendung)", correct = TRUE),
-    answer("Die Dateistruktur mit Codierung, (Dezimal-)Trennzeichen, uvm.", correct = TRUE),
-    answer("Der Speicherort (lokal oder remote)", correct = TRUE),
+    answer("Das Dateiformat (Tipp: Dateiendung)", correct = TRUE),
+    answer("Die Dateistruktur mit Codierung, (Dezimal-)Trennzeichen, usw.", correct = TRUE),
+    answer("Der Speicherort (lokal vs. remote)", correct = TRUE),
     answer("Die Art und Weise wie die Daten geladen werden sollen (einmalig, periodisch oder live)", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Alle vier Faktoren sind wichtig.",
+    correct = "Richtig, genau diese vier Dinge müssen wir beachten, wenn wir Daten in R importieren wollen! Wieso und weshalb die jeweiligen Aspekte wichtig sind, kannst Du oben noch einmal nachlesen. ",
+    incorrect = "Leider falsch, an dieser Stelle sind nämlich alle vier Faktoren wichtig, wenn wir erfolgreich Daten in R importieren wollen. Wieso und weshalb die jeweiligen Aspekte wichtig sind, kannst Du oben noch einmal nachlesen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("An welcher Dateiendung erkennt Ihr Excel-Dateien?",
+  question("An welcher Dateiendung erkennt man Excel-Dateien?",
     answer(".xls", correct = TRUE),
     answer(".xlsx", correct = TRUE),
     answer(".csv"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Excel-Dateien enden mit .xls oder .xlsx. CSV-Dateien sind Textdateien - aber Ihr könnt sie natürlich in Excel öffnen.",
+    correct = "Richtig, Excel-Datein enden mit .xls oder .xlsx. CSV-Daten sind Textdateien, die wir natürlich auch in R importieren können!",
+    incorrect = "Leider falsch, Excel-Dateien enden mit .xls oder .xlsx. CSV-Dateien sind Textdateien - aber auch diese können wir natürlich in R importieren.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("Woran erkennt Ihr CSV-Dateien?",
+  question("Woran erkennt man CSV-Dateien?",
     answer('An dem Trennzeichen ","'),
     answer('An der Dateiendung ".csv"', correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: CSV-Dateien sind zwar in der Regel durch Kommata getrennt, es gibt allerdings auch CSV-Dateien, deren Spalten durch Semikolons, Pipes (senkrechte Striche) und Tabstopps getrennt werden.",
+    correct = "Richtig, vor allem die Dateiendung ist ein wichtiger Hinweis, wenn wir das Dateiformat herausfinden möchten. CSV steht übrigens für "comma separated values", also "durch Komma getrennte Werte").",
+    incorrect = "Leider falsch, CSV-Dateien sind zwar in der Regel durch Kommata getrennt, es gibt allerdings auch CSV-Dateien, deren Spalten durch Semikolons, Pipes (senkrechte Striche) und Tabstopps getrennt werden. Daher werfen wir immer einen Blick auf die Dateiendung, wenn wir uns einmal unsicher sind.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("Welche Optionen habt Ihr, lokale Dateien zu importieren?",
-    answer("Manuell über den File Explorer in RStudio (File -> Import Dataset)", correct = TRUE),
-    answer("Mit individuellen Funktionen aus verschiedenen Packages für die verschiedenen Dateiformate", correct = TRUE),
-    answer("SAS- und SPSS-Dateien können mit der gleichen Funktion importiert werden"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Wir benötigen unterschiedliche Funktionen, die jedoch mit dem gleichen Package geladen werden können.",
+  question("Welche Optionen gibt es, um lokale Dateien zu importieren?",
+    answer("Manuell über den File Explorer in RStudio (File -> Import Dataset).", correct = TRUE),
+    answer("Mit individuellen Funktionen aus verschiedenen Packages für die verschiedenen Dateiformate.", correct = TRUE),
+    answer("SAS- und SPSS-Dateien können mit der gleichen Funktion importiert werden").,
+    correct = "Richtig, wir können einerseits manuell über den File Explorer navigieren oder aber mit verschiedenen Funktionen arbeiten!",
+    incorrect = "Leider falsch, je nach Dateiformat benötigen wir nämlich unterschiedliche Funktionen, die jedoch mit dem gleichen Package geladen werden können. Allerdings bieten und auch unterschiedliche Packages verschiedene Import-Funktionen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -126,8 +127,8 @@ quiz(caption = NULL,
   question("Können nur lokal gespeicherte Dateien importiert werden?",
     answer("Ja"),
     answer("Nein", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Auch das Laden von Dateien über Hyperlinks ist beispielsweise möglich.",
+    correct = "Richtig, wir können nämlich dank R sowohl lokal als auch remote gespeicherte Daten importieren und analysieren!",
+    incorrect = "Leider falsch, dank R können wir nämlich sowohl lokal als auhc remote gespeicherte Daten (z.B. über Hyperlinks) importieren und analysieren.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
