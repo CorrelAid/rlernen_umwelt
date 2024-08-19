@@ -446,11 +446,13 @@ Legt nun ein neues R Projekt (wie im Video) und eine neue R Markdown-Datei auf E
 
 # **Zusätzliche Ressourcen**
 
--   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
--   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
+-   [R for Data Science 2e](https://r4ds.hadley.nz/){target="_blank"}
+-   [R Studio Learn: Programming Basics](https://rstudio.cloud/learn/primers/1.2){target="_blank"}
 -   [Introduction to Programming in R (engl.)](https://app.dataquest.io/course/intro-to-r-rewrite){target="_blank"} von Dataquest
 -   [Data Structures in R (engl.)](https://app.dataquest.io/course/datastructure-in-r-rewrite){target="_blank"} von Dataquest
 -   [Control Flow, Iteration and Functions in R (engl.)](https://app.dataquest.io/course/intermediate-r){target="_blank"} von Dataquest
--   [R Studio Learn: Programming Basics](https://rstudio.cloud/learn/primers/1.2){target="_blank"}
+-   [Tutorials for learning R](https://www.r-bloggers.com/2015/12/how-to-learn-r-2/#h.nl3rvdr3ycsc){target="_blank"} von R-bloggers und DataCamp
+-   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
+-   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
