@@ -135,50 +135,62 @@ quiz(caption = NULL,
 )
 ```
 
-### **Interaktive Übung**
+# **Interaktive Übung**
 
-Im restlichen Kapitel üben wir den Import von unterschiedlichen CSV- und XLSX-Dateien.
+Im restlichen Kapitel wollen wir nun anhand praktischer Übungen den Import unterschiedlicher CSV- und XLSX-Dateien üben.
 
-##### **CSV-Dateien**
+## **CSV-Dateien**
 
-Eine CSV-Datei (comma separated values, zu dt. Komma getrennte Werte) ist eine Datei, in der die verschiedenen Datenwerte durch Kommata getrennt sind. Grundsätzlich entspricht **jede Zeile** einer **Beobachtung**. Die erste Zeile enthält allerding keine Werte, sondern die **Bezeichnungen für die entsprechende Spalte**. Sie wird **Header** genannt. Wir nutzen sie, um auf bestimmte Spalten und Werte zuzugreifen. 
+### **Datenimport über URLs**
+In einer CSV-Datei (comma separated values, zu dt. Komma getrennte Werte) werden - wie der Name bereits vermuten lässt - die verschiedenen **Datenwerte durch Kommata getrennt**. Wie wir bereits gelernt haben, entspricht dabei **jede Zeile einer Beobachtung**, wobei die **erste Zeile "Header"** genannt wird. Diese erste Zeile enthält keine Werte im eigntlichen Sinne, sondern die Bezeichnungen der einzelnen Spalten, also die Namen der Variablen. Wir nutzen den Header, um auf bestimmte Spalten und Werte zuzugreifen. 
 
-Wir können die `read.csv()`-Funktion des `readr`-Packages nutzen, um CSV-Dateien zu importieren. Diese hat verschiedene Argumente, welche wir entsprechend unserer Dateistruktur setzen können:
+Das `readr`-Package ist ein Paket, das uns den Import verschiedener Dateien ermöglicht. Innerhalb dieses Packages können wir die `read.csv()`-Funktion nutzen, um CSV-Dateien zu importieren. Wichtig ist, dass wir dabei das **Komma als Separator** zwischen den verschiedenen Argumenten und den **Punkt als Dezimaltrennzeichen** verwenden! Schauen wir uns nun einmal die verschiedenen Argumente der FUnktion an, die wir entsprechend unserer Dateistruktur setzen können:
+
+  - **`file = ...`**: Festlegen des Dateipfades
+  - **`col_names = TRUE/FAlSE`**: Vorhandensein bzw. Nicht-Vorhandensein des Headers
+  - **`skip = ...`**: Festlegen, ob Zeilen übersprungen werden sollen; kann Werte zwischen 0 und N annehmen
+  - **`na = ...`**: Definieren, wie  fehlende Werte (NAs) aussehen sollen - z.B. "" (leer)
 
 ``` {r exericse_csv, exercise = TRUE}
 # install.packages("readr")
 
-# Komma als Separator und Punkt als Dezimaltrennzeichen als Standard
 data_raw <- readr::read_csv(
-  file = 'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv', # Dateiname/Pfad zur Datei
-  col_names = TRUE, # Vorhandensein des Headers
-  skip = 0, # Festlegen, ob Zeilen übersprungen werden sollen
-  na = c("", "NA") # Definition, wie "NA"-Werte aussehen z.B. "" (leer), festlegen
+  file = 'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv', # Dateiname
+  col_names = TRUE, # Header
+  skip = 0,         # Zeilen
+  na = c("", "NA")  # fehlende Werte
   )
 
 head(data_raw)
 ```
 
-Daten können sowohl über (offene) URLs (Uniform Resource Locator, zu dt. Link) als auch über lokale Dateipfade importiert werden. Ersteres funktioniert für die meisten Packages intuitiv (siehe oben). Lesen wir Dateien ein, die lokal gespeichert sind, müssen wir den Path definieren. Dazu gibt es verschiedene Methoden, von denen jedoch nur eine wirklich sinnvoll ist: Arbeiten wir an Analysen in R, legen wir sowohl unser Skript als auch unsere Daten in einem dafür vorgesehenen **Ordner** ab, der "daten" heißt. Zu diesem Speicherort navigieren wir mithilfe der Funktion `here::here()`.
+## **Datenimport über lokale Dateipfade**
+
+Oben haben wir nun gesehen, wie wir relativ intuitiv, Daten können über (offene) URLs (Uniform Resource Locator, zu dt. Link) importieren. Nun wollen wir uns auch noch anschauen, wie wir Daten importieren, die wir bereits lokal auf unserem Rechner gespeichert haben, dazu müssen wir nämlich das **Path (dt. Dateipfad)** definieren. Dazu gibt es verschiedene Methoden, von denen allerdings nur eine wirklich sinnvoll ist, wichtig ist dabei, dass wir unsere Ordnersturktur ordentlich halten. Wenn wir Daten in R analysieren wollen, erstellen wir also ein RProjekt, das sowohl einen Ordner für unser Skript also einen einen **Ordner für unsere Daten** enthält. Dort legen wir unseren Datensatz ab, nachdem wir diesen heruntergeladen haben. Wir verwenden zum Import wie gewohnt die `read_csv()`-Funktion des `readr`-Packages und können nun ganz einfach mithilfe der Funktion `here::here()` in unseren Ordner - der in diesem Fall 'daten' genannt wurde - navigieren. Anmerkung: Die `here()`- Funktion stammt aus dem `here`-Package, das wir verwenden können, um Dateipfade in Projekten auf eine einfache und robuste Weise zu verwalten - bei Interesse könnt Ihr Euch das Package [hier](https://cran.r-project.org/web/packages/here/vignettes/here.html){target="_blank"} noch einmal genauer anschauen. Und so würde dann der entsprechende Code aussehen (hier nur zum Zeigen):
 
 ``` {r daten_einlesen_lokal, exercise = TRUE}
-# Alternative für lokale Dateien, die in Eurem R-Projekt als CSV-Datei in einem Ordner namens "Daten hinterlegt wurden, mit dem "here"-Package (hier nur zum Zeigen)
-data_processed <- readr::read_csv(here::here('daten/bffp2019_plastics_processed.csv'))
+data_processed <- readr::read_csv(here::here('daten/bffp2019_plastics_processed.csv')) # Dateipfad
 
 head(data_processed)
 ```
 
-Aber Achtung: Wer **Programme** (insb. Excel) in **deutscher Sprache** nutzt, exportiert CSV-Dateien häufig mit dem Separator ";" und dem Dezimal-Trennzeichen ",". Das führt zu Fehlern. Deutschsprachige CSV-Dateien können mit der Funktion `read.csv2()` importiert werden oder wir können die allgemeinere Funktion `read_delim()` nutzen und  das Argument `delim = ";` hinzufügen. Damit nutzen wir das Semikolon als Separator.
+## **Vorsicht: Sprache!**
 
-Dies trifft zum Beispiel auf die Strukturdaten für die Wahlkreise zur Bundestagswahl 2021 zu. Die Bundeswahlleiterin stellt die Daten [hier](https://www.bundeswahlleiterin.de/bundestagswahlen/2021/strukturdaten.html) zur Verfügung. Versucht die Datei korrekt zu importieren. Ergänzt dafür das `delim = ";"` Argument.
+Eine Sache, die wir beim Datenimport auf jeden Fall beachten müssen, ist die **Sprache unserer Programme**. Verwenden wir Programme (insb. Excel) in deutscher Sprache, werden CSV-Dateien häufig mit dem **Separator ";"** und dem **Dezimaltrennzeichen ","** exportiert. Da R allerdings das Komma als Separator und den Punkt als Dezimaltrennzeichen verwendet, kann das am Ende zu Fehlern führen. Allerdings bietet uns R auch dafür verschiedene Lösungsmöglichkeiten:
+  - 1. Verwendung der **`read.csv2()`**-Funktion für den Import deutschsprachiger CSV-Dateien
+  - 2. Verwendung der allgemeineren **`read_delim()`**-Funktion mit dem Argument **`delim = ";"` - somit legen wir das Semikolon als Separator fest.
+
+Einen solchen Fall haben wir zum Beispiel hier, wenn wir die Strukturdaten für die Wahlkreise zur Bundestagswahl 2021 importieren möchten. Diese werden uns [hier](https://www.bundeswahlleiterin.de/bundestagswahlen/2021/strukturdaten.html) von der Bundeswahlleiterin zur Verfügung gestellt. Wir möchten diese Daten nun verwenden, um verschiedene Analysen durchzuführen - logischerweise handelt es sich dabei um deutschsprachige Daten. Die Funktion und ihre grundelgenden Argumente kennen wir bereits, aber schaut gerne noch einmal oben in die Funktion, wenn es etwas unklar ist. Versucht die Datei korrekt zu importieren - Tipp: verwendet das `delim = ";"` Argument.
+*Anmerkung zum Argument `skip = 8`: An dieser Stelle müssen wir acht Zeilen überspringen. Öffnet die CSV Datei doch einmal selbst mit einem Texteditor, um herauszufinden warum.*
 
 ```{r exercise_csv, exercise = TRUE}
-# Ergänzt das `delim = ...` Argument:
+# Laden der Strukturdaten der Bundeswahlleiterin
 strukturdaten <- readr::read_delim(
-  file = 'https://www.bundeswahlleiterin.de/dam/jcr/b1d3fc4f-17eb-455f-a01c-a0bf32135c5d/btw21_strukturdaten.csv', # Dateiname/Pfad zur Datei
-  col_names = TRUE, # Vorhandensein des Headers
-  skip = 8, # Wir müssen zudem 8 Zeilen überspringen. Am Besten öffnet Ihr die CSV-Datei einmal selbst mit einem Texteditor
-  na = c("", "NA") # Definition, wie "NA"-Werte aussehen z.B. "" (leer), festlegen
+  file = 'https://www.bundeswahlleiterin.de/dam/jcr/b1d3fc4f-17eb-455f-a01c-a0bf32135c5d/btw21_strukturdaten.csv', # Dateiname
+                    # Ergänzt hier den entsprechenden Code
+  col_names = TRUE, # Header
+  skip = 8,         # Zeilen
+  na = c("", "NA"), # fehlende Werte
   )
 
 head(strukturdaten)
@@ -187,11 +199,11 @@ head(strukturdaten)
 ```{r exercise_csv-solution}
 # Laden der Strukturdaten der Bundeswahlleiterin
 strukturdaten <- readr::read_delim(
-  file = 'https://www.bundeswahlleiterin.de/dam/jcr/b1d3fc4f-17eb-455f-a01c-a0bf32135c5d/btw21_strukturdaten.csv', # Dateiname/Pfad zur Datei
-  delim = ";", # Wir legen das Semikolon als Separator fest
-  col_names = TRUE, # Vorhandensein des Headers
-  skip = 8, # Wir müssen zudem 8 Zeilen überspringen. Am Besten öffnet Ihr die CSV-Datei einmal selbst mit einem Texteditor
-  na = c("", "NA") # Definition, wie "NA"-Werte aussehen z.B. "" (leer), festlegen
+  file = 'https://www.bundeswahlleiterin.de/dam/jcr/b1d3fc4f-17eb-455f-a01c-a0bf32135c5d/btw21_strukturdaten.csv', # Dateiname
+  delim = ";",       # Semikolon als Separator
+  col_names = TRUE,  # Header
+  skip = 8,          # 8 Zeilen müssen übersprungen werden. Tipp: Texteditor
+  na = c("", "NA")   # fehlende Werte
   )
 
 head(strukturdaten)
@@ -201,7 +213,9 @@ head(strukturdaten)
 grade_this_code()
 ```
 
-#### **XLSX**
+Das war es auch schon zum Import von CSV-Dateien, machen wir also weiter mit den Excel-Datein!
+
+## **Excel-Dateien**
 
 Mit **Google Trends Daten** könnt Ihr erforschen, wonach die Welt gerade auf der Suchmaschine Google sucht. Das **Google Search Volume** (zu dt. Google Suchvolumen) bezieht sich dabei konkret auf die Anzahl der Suchanfragen, die Nutzer*innen zu einem bestimmten Suchbegriff innerhalb eines bestimmten Zeitraums eingeben. Ein hohes Volumen deutet auf hohes Interesse an einem Thema hin.
 
