@@ -142,7 +142,8 @@ Im restlichen Kapitel wollen wir nun anhand praktischer Übungen den Import unte
 ## **CSV-Dateien**
 
 ### **Datenimport über URLs**
-In einer CSV-Datei (comma separated values, zu dt. Komma getrennte Werte) werden - wie der Name bereits vermuten lässt - die verschiedenen **Datenwerte durch Kommata getrennt**. Wie wir bereits gelernt haben, entspricht dabei **jede Zeile einer Beobachtung**, wobei die **erste Zeile "Header"** genannt wird. Diese erste Zeile enthält keine Werte im eigntlichen Sinne, sondern die Bezeichnungen der einzelnen Spalten, also die Namen der Variablen. Wir nutzen den Header, um auf bestimmte Spalten und Werte zuzugreifen. 
+
+In einer **CSV-Datei (comma separated values, zu dt. Komma getrennte Werte)** werden - wie der Name bereits vermuten lässt - die verschiedenen **Datenwerte durch Kommata getrennt**. Wie wir bereits gelernt haben, entspricht dabei **jede Zeile einer Beobachtung**, wobei die **erste Zeile "Header"** genannt wird. Diese erste Zeile enthält keine Werte im eigntlichen Sinne, sondern die Bezeichnungen der einzelnen Spalten, also die Namen der Variablen. Wir nutzen den Header, um auf bestimmte Spalten und Werte zuzugreifen. 
 
 Das `readr`-Package ist ein Paket, das uns den Import verschiedener Dateien ermöglicht. Innerhalb dieses Packages können wir die `read.csv()`-Funktion nutzen, um CSV-Dateien zu importieren. Wichtig ist, dass wir dabei das **Komma als Separator** zwischen den verschiedenen Argumenten und den **Punkt als Dezimaltrennzeichen** verwenden! Schauen wir uns nun einmal die verschiedenen Argumente der FUnktion an, die wir entsprechend unserer Dateistruktur setzen können:
 
@@ -164,7 +165,7 @@ data_raw <- readr::read_csv(
 head(data_raw)
 ```
 
-## **Datenimport über lokale Dateipfade**
+### **Datenimport über lokale Dateipfade**
 
 Oben haben wir nun gesehen, wie wir relativ intuitiv, Daten können über (offene) URLs (Uniform Resource Locator, zu dt. Link) importieren. Nun wollen wir uns auch noch anschauen, wie wir Daten importieren, die wir bereits lokal auf unserem Rechner gespeichert haben, dazu müssen wir nämlich das **Path (dt. Dateipfad)** definieren. Dazu gibt es verschiedene Methoden, von denen allerdings nur eine wirklich sinnvoll ist, wichtig ist dabei, dass wir unsere Ordnersturktur ordentlich halten. Wenn wir Daten in R analysieren wollen, erstellen wir also ein RProjekt, das sowohl einen Ordner für unser Skript also einen einen **Ordner für unsere Daten** enthält. Dort legen wir unseren Datensatz ab, nachdem wir diesen heruntergeladen haben. Wir verwenden zum Import wie gewohnt die `read_csv()`-Funktion des `readr`-Packages und können nun ganz einfach mithilfe der Funktion `here::here()` in unseren Ordner - der in diesem Fall 'daten' genannt wurde - navigieren. Anmerkung: Die `here()`- Funktion stammt aus dem `here`-Package, das wir verwenden können, um Dateipfade in Projekten auf eine einfache und robuste Weise zu verwalten - bei Interesse könnt Ihr Euch das Package [hier](https://cran.r-project.org/web/packages/here/vignettes/here.html){target="_blank"} noch einmal genauer anschauen. Und so würde dann der entsprechende Code aussehen (hier nur zum Zeigen):
 
@@ -174,7 +175,7 @@ data_processed <- readr::read_csv(here::here('daten/bffp2019_plastics_processed.
 head(data_processed)
 ```
 
-## **Vorsicht: Sprache!**
+### **Vorsicht: Sprache!**
 
 Eine Sache, die wir beim Datenimport auf jeden Fall beachten müssen, ist die **Sprache unserer Programme**. Verwenden wir Programme (insb. Excel) in deutscher Sprache, werden CSV-Dateien häufig mit dem **Separator ";"** und dem **Dezimaltrennzeichen ","** exportiert. Da R allerdings das Komma als Separator und den Punkt als Dezimaltrennzeichen verwendet, kann das am Ende zu Fehlern führen. Allerdings bietet uns R auch dafür verschiedene Lösungsmöglichkeiten:
   - 1. Verwendung der **`read.csv2()`**-Funktion für den Import deutschsprachiger CSV-Dateien
@@ -216,19 +217,24 @@ grade_this_code()
 Das war es auch schon zum Import von CSV-Dateien, machen wir also weiter mit den Excel-Datein!
 
 ## **Excel-Dateien**
+Neben CSV-Daten, stehen uns viele Datensätze vor allem als **Excel-Dateien** zur Verfügung. Wahrscheinlich haben wir alle schon einmal (mehr oder weniger intensiv) mit Excel gearbeitet, weshalb wir uns direkt anschauen wollen, welche Excel-Daten wir beispielsweise nutzen und wie wir diese in R importieren können.
+Ein Besipiel wir Excel-Dateien sind **Google Trends Daten**. Mit den Daten von Google Trends können wir erforschen, wonach die Welt gerade auf der Suchmaschine Google sucht. Das **Google Search Volume** (zu dt. Google Suchvolumen) bezieht sich dabei konkret auf die Anzahl der Suchanfragen, die Nutzer:innen zu einem bestimmten Suchbegriff innerhalb eines bestimmten Zeitraums eingeben. Ein hohes Volumen deutet also auf hohes Interesse an einem Thema hin.
+Wir haben für Euch zwei Dateien erstellt, die Daten zu den Suchbegriffen "beach clean up" (zu dt. Strand aufräumen), also Aktionen wie denen von "Break Free From Plastics", und "plastic pollution" (zu dt. Plastikverschmutzung) enthalten. Das entsprechende Arbeitsblatt "trends_over_time" stellt die Entwicklung des Suchvolumens im Zeitverlauf der vergangenen fünf Jahre dar, während das Arbeitsblatt "by_country" länderspezifische Entwicklung im Durchschnitt des letzten Jahres abbildet.
+*Anmerkung zu Google Trends: Zur Live-Verknüpfung mit den aktuellen Daten von Google gibt es in R das `gtrendsR`-Package. Dazu mehr in Exkurs 1.*
 
-Mit **Google Trends Daten** könnt Ihr erforschen, wonach die Welt gerade auf der Suchmaschine Google sucht. Das **Google Search Volume** (zu dt. Google Suchvolumen) bezieht sich dabei konkret auf die Anzahl der Suchanfragen, die Nutzer*innen zu einem bestimmten Suchbegriff innerhalb eines bestimmten Zeitraums eingeben. Ein hohes Volumen deutet auf hohes Interesse an einem Thema hin.
+### **Import von Excel-Dateien**
 
-Wir haben für Euch zwei **XLSX-Dateien** erstellt, die zu den Suchbegriffen "beach clean up" (zu dt. Strand aufräumen), also Aktionen wie denen von "Break Free From Plastics", und "plastic pollution" (zu dt. Plastikverschmutzung) Daten enthalten. Das Arbeitsblatt "trends_over_time" stellt die Entwicklung des Google Search Volumes über die Zeit für die letzten fünf Jahre dar. "by_country" enthält die Entwicklung aufgeschlüsselt nach verschiedenen Ländern im Durchschnitt des letzten Jahres.
+Zum Import von Excel-Dateien verwenden wir analog zu den CSV-Dateien die **`read_excel()`**-Funktion aus dem zugehörigen **Package `readxl`**. Auch hier wollen wir zunächst einmal einen Blick auf die verschiedenen Argumente dieser Funktion werfen:
 
-Hier laden wir mit der Funktion `readxl::read_excel()` das Arbeitsblatt (`sheet = ...`) "trends_over_time" der Excel-Datei "Plastic Pollution - Google Trends.xlsx" aus unserem Ordner "Daten" (`path = ...`), das Spaltenbezeichnungen enthält (`col_names = ...`) und in dem fehlende Werte zumeist durch "" (leer) gekennzeichnet sind (`na = ...`).
-
-*Anmerkung: Zur Live-Verknüpfung mit den aktuellen Daten von Google gibt es in R das `gtrendsR`-Package. Dazu mehr in Exkurs 1.*
+  - **`path = ...`**: Definition von Path und Dateinamen
+  - **sheet = ...**: Definition des Arbeitsblatts
+  - **`col_names = TRUE/FAlSE`**: Deklarierung der Spaltennamen
+  - **`na = ...`**: Definieren, wie  fehlende Werte (NAs) aussehen sollen - z.B. "" (leer)
 
 ```{r exercise_xlsx, exercise = TRUE}
 #install.packages(readxl)
 
-# Laden der Entwicklung des Suchbegriffs "Plastic Pollution" über die Zeit
+# Laden des Arbeitsblattes "trends_over_time" der Datei "Plastic Pollution - Google Trends.xlsx"
 googletrendstime_plasticpollution <- readxl::read_excel(
   path = here::here("daten/Plastic Pollution - Google Trends.xlsx"), # Definition von Path und Dateinamen
   sheet = "trends_over_time", # Definition des Arbeitsblatts
@@ -238,7 +244,9 @@ googletrendstime_plasticpollution <- readxl::read_excel(
 head(googletrendstime_plasticpollution)
 ```
 
-Ladet nun das Arbeitsblatt "by_country" der Datei "Beach Clean Up - Google Trends.xlsx". Kopiert dazu den Code von oben und passt den Dateinamen und das Arbeitsblatt an der richtigen Stelle an.
+Wenn wir den Code nun "übersetzen", laden wir mit der Funktion `readxl::read_excel()` das Arbeitsblatt (`sheet = ...`) "trends_over_time" der Excel-Datei "Plastic Pollution - Google Trends.xlsx" aus unserem Ordner "Daten" (`path = ...`). Das ARbeitsblatt enthält Spaltenbezeichnungen  (`col_names = ...`) und fehlende Werte werden zumeist durch "" (leer) gekennzeichnet (`na = ...`).
+
+Versucht nun einmal mithilfe der gleichen Funktion das zweite Arbeitsblatt "by_country" der Datei "Beach Clean Up - Google Trends.xlsx" zu laden. Ihr köönt dazu ganz einfach den oberen Code kopieren und dann die Namen der Datei und des Arbeitsblatts an der richtigen Stelle verändern!
 
 ```{r exercise_excel, exercise = TRUE}
 # Euer Code hier
@@ -247,8 +255,8 @@ Ladet nun das Arbeitsblatt "by_country" der Datei "Beach Clean Up - Google Trend
 ```{r exercise_excel-solution}
 # Laden des Arbeitsblattes "by_country" der Datei "Beach Clean Up - Google Trends.xlsx"
 readxl::read_excel(
-  path = here::here("daten/Beach Clean Up - Google Trends.xlsx"), # hier ändern wir den Dateinamen
-  sheet = "by_country", # hier ändern wir den Arbeitsblattnamen
+  path = here::here("daten/Beach Clean Up - Google Trends.xlsx"), # Änderung Dateinamen
+  sheet = "by_country",                                           # Änderung Arbeitsblatt
   col_names = TRUE,
   na = c("", NA))
 ```
@@ -257,15 +265,15 @@ readxl::read_excel(
 grade_this_code()
 ```
 
+# **Und jetzt Ihr!**
 
-### **Und jetzt Ihr**
-Gerne könnt Ihr nun versuchen, **eigene Datensätze** in R zu importieren. Kommuniziert gerne über Slack, wenn Euch bestimmte Datensätze interessieren. Ansonsten (oder zusätzlich) gibt es die folgenden Aufgaben und das zugehörige **RMD 07_datenimport-uebung.Rmd** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"} unter 07_datenimport):
+An dieser Stelle seid Ihr dran! Ihr dürft gerne veruchen, Eure **eigene Datensätze** in R zu importieren. Kommuniziert gerne über Slack, wenn Euch bestimmte Datensätze interessieren. Ansonsten (oder zusätzlich) gibt es die folgenden Aufgaben und das zugehörige **RMD 07_datenimport-uebung.Rmd** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"} unter 07_datenimport), das Ihr bearbeiten könnt:
 
 1. Versucht, den "Plastics"-Datensatz (im Ordner `daten/plastics.csv` im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"}) mit diesem Code **lokal zu laden**.
 2. Ladet den "Plastics"-Datensatz über einen [**Hyperlink**](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv){target="_blank"}.
-3. *Bonus:* Mehr Strukturdaten vom Bundeswahlleiter: Wir wollen die Sturkturdaten der Bundestagswahl 2017 mit der Funktion *read_delim()* lokal laden. Die CSV-Datei könnt ihr [hier](https://www.bundeswahlleiterin.de/dam/jcr/f7566722-a528-4b18-bea3-ea419371e300/btw2017_strukturdaten.csv) herunterladen. Versucht die Datei manuell zu importieren. Achtet dabei auf den im Kapitel beschriebenen Ablauf: Öffnet die Datei mit einem Texteditor; welche Formatierung (encoding) hat sie? Dies könnt ihr beim manuellen Import unter "Locale" ändern. Die 2021er Strukturdaten lagen in der UTF-8 Kodierung vor. (Test: Was passiert, wenn wir die Locale nicht ändern?) Des Weiteren müsst ihr natürlich wieder auf die Argumente *skip* und *delim* achten.
+3. **Bonus:** Noch einmal zurück zur Bundeswahlleiterin und den Strukturdaten zur Bundestagswahl 20217, die uns [hier](https://www.bundeswahlleiterin.de/dam/jcr/f7566722-a528-4b18-bea3-ea419371e300/btw2017_strukturdaten.csv) als CSV-Datei zum Download zur Verfügung gestellt werden. Versucht die Datei manuell zu importieren. Achtet dabei auf den im Kapitel beschriebenen Ablauf und öffnet die Datei zunächst mit einem Texteditor: Welche Formatierung (encoding) hat sie? Ihr könnt die Formatierung anschließend beim manuellen Import unter "Locale" ändern. Die 2021er Strukturdaten lagen in der UTF-8 Kodierung vor. (Test: Was passiert, wenn wir die Locale nicht ändern?) Des Weiteren müsst ihr natürlich wieder auf die Argumente *skip* und *delim* achten.
 
-### **Exkurse**
+# **Exkurse**
 
 ---
 
