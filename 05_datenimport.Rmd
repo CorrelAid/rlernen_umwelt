@@ -66,7 +66,7 @@ cat(tabelle)
 ```
 
 Um die Daten anschließend richtig importieren ist es wichtig, einen Blick auf das **Dateiformat** zu werfen. Wenn wir nicht bereits wissen, in welchem Format unsere Daten vorliegen, gibt es (je nach Betriebssystem) mehrere Möglichkeiten, es herauszufinden: 
-  - **Windows-User** können sich die Dateiendung über die Multifunktionsleiste auf der Registerkarte "Ansicht" anzeigen lassen: Aktiviert dort das Feld "Dateinamenerweiterungen" im Abschnitt "Ein-/Ausblenden"
+  - **Windows-User** können sich die Dateiendung über die Multifunktionsleiste auf der Registerkarte "Ansicht" anzeigen lassen: Aktiviert dort das Feld "Dateinamenerweiterungen" im Abschnitt "Ein-/Ausblenden".
   - **Mac-User** navigieren zu ihrem Schreibtisch und können sich dort die Dateiendung über "Finder" -> "Erweitert" -> Alle Dateinamensuffixe einblenden" anzeigen lassen.
     
 Um Fehlern vorzubeugen, solltet Ihr - wenn möglich - die Datei vorab in einem **Texteditor** öffnen und dabei Folgendes beachten:
@@ -217,6 +217,7 @@ grade_this_code()
 Das war es auch schon zum Import von CSV-Dateien, machen wir also weiter mit den Excel-Datein!
 
 ## **Excel-Dateien**
+
 Neben CSV-Daten, stehen uns viele Datensätze vor allem als **Excel-Dateien** zur Verfügung. Wahrscheinlich haben wir alle schon einmal (mehr oder weniger intensiv) mit Excel gearbeitet, weshalb wir uns direkt anschauen wollen, welche Excel-Daten wir beispielsweise nutzen und wie wir diese in R importieren können.
 Ein Besipiel wir Excel-Dateien sind **Google Trends Daten**. Mit den Daten von Google Trends können wir erforschen, wonach die Welt gerade auf der Suchmaschine Google sucht. Das **Google Search Volume** (zu dt. Google Suchvolumen) bezieht sich dabei konkret auf die Anzahl der Suchanfragen, die Nutzer:innen zu einem bestimmten Suchbegriff innerhalb eines bestimmten Zeitraums eingeben. Ein hohes Volumen deutet also auf hohes Interesse an einem Thema hin.
 Wir haben für Euch zwei Dateien erstellt, die Daten zu den Suchbegriffen "beach clean up" (zu dt. Strand aufräumen), also Aktionen wie denen von "Break Free From Plastics", und "plastic pollution" (zu dt. Plastikverschmutzung) enthalten. Das entsprechende Arbeitsblatt "trends_over_time" stellt die Entwicklung des Suchvolumens im Zeitverlauf der vergangenen fünf Jahre dar, während das Arbeitsblatt "by_country" länderspezifische Entwicklung im Durchschnitt des letzten Jahres abbildet.
@@ -264,6 +265,31 @@ readxl::read_excel(
 ```{r exercise_excel-check}
 grade_this_code()
 ```
+
+# **Nach dem Datenimport: Datenbereinigung**
+
+## **Warum Datenbereinigung?**
+
+Bisher haben wir uns vor allem damit beschäftigt, wie wir verschiedene Dateitypen erfolgreich in R importieren können. So weit so gut - doch was machen wir, wenn wir unsere Daten erfolgreich importiert haben und von lauter Zahlen und kryptischen Bezeichnungen förmlich erschlagen werden? Wir räumen auf!
+Tatsächlich ist am Anfang einer jeden Arbeit erst einmal ein bisschen **Fleißarbeit** gefragt: Viele Datensätze sind unglaublich groß und umfangreich und dadurch im ersten Moment ziemlich unordentlich ('messy'). Glücklicherweise bietet und R auch diesem Fall eine Reihe an Möglichkeiten, die wir nutzen können, um einen sauberen ('tidy') Datensatz zu erzeugen. Wir nutzen dafür das sogenannte **`tidyverse´**-Package. Warum wir das Package verwenden und welche Möglichkeiten sich daraus ergeben, schauen wir uns einmal im folgenden Video an (bis 15:35 Min.):
+
+![*Video: Datentransformation mit Tidyverse (30min)*](https://youtu.be/YWFLSovbha0)
+
+## **Zusammenfassung: Das `tidyverse`-Package**
+
+<left>
+
+![](https://www.tidyverse.org/images/hex-tidyverse.png){#id .class width=20% height=100%}
+
+</left>
+<br>
+
+  - Das Package ist eine **Sammlung von verschiedenen R-Packages**, die aufeinander abgestimmt sind und dabei derselben Logik folgen ([tidyverse.org](https://www.tidyverse.org/packages/){target="_blank"}). Dadurch ergeben sich für unsere Datenanalyse unzählige Möglichkeiten, die wir uns in den kommenden Wochen im Detail anschauen werden - aber keine Sorge, einige der Packages und Funktionen kennen wir bereits aus den vergangenen Wochen!
+  - **Installation**: Alle enthaltenen Packages können einzeln installiert und aufgerufen werden. Wir können aber auch alle gesammelt über `install_packages('tidyverse')` bzw. `library(tidyverse)` installieren und laden.
+  - **Voraussetzung**: Um mit Tidyverse arbeiten zu können, benötigen wir "tidy" Datensätze:
+![Tidy Data](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/06_datentransformation/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
+
+*Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst*
 
 # **Und jetzt Ihr!**
 
