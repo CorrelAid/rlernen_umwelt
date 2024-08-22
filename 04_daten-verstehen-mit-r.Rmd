@@ -123,26 +123,15 @@ Bleiben wir also bei unserem [Datensatz](https://github.com/rfordatascience/tidy
 
 Nachdem wir diese Fragen formuliert haben, geht es darum, diese bestmöglich zu beantworten. Wir müssen also auf die Informationen schauen, die uns vorliegen, Das machen wir, indem wir unsere **Daten analysieren und interpretieren**! 
 
-*Anmerkung*: Unser Datensatz stammt aus den Jahren 2019 und 2020. Da es in dieser Einheit darum geht, in den **Analyse-Spirit** zu kommen und R als Analysetool kennenzulernen, haben wir den Datensatz "Break Free from Plastic" bereits **bereinigt** und in **zwei Datensätze** aufgeteilt: Einen `community`- und einen `audit`-Datensatz.
+*Anmerkung: Unser Datensatz stammt aus den Jahren 2019 und 2020. Da es in dieser Einheit darum geht, in den **Analyse-Spirit** zu kommen und R als Analysetool kennenzulernen, haben wir den Datensatz "Break Free from Plastic" bereits **bereinigt** und in **zwei Datensätze** aufgeteilt: Einen `community`- und einen `audit`-Datensatz.
   - **`community´**: Dieser Datensatz enhtählt vor allem die Variablen, welche für Fragestellungen rund um die Community-Perspektive nützlich sind. Dazu zählen unter anderem die Anzahl an gesammelten Plastikteilen, die Anzahl der Events und freiwillig Engagierten.
-  - **`audit`**: Dieser Datensatz umfasst vor allem jene Variablen, die für Fragen zur Audit-Perspektive nützlich sind. Dazu zählen unter anderem der Name der Firma und die Klassifizierung der Kunststoffe. 
+  - **`audit`**: Dieser Datensatz umfasst vor allem jene Variablen, die für Fragen zur Audit-Perspektive nützlich sind. Dazu zählen unter anderem der Name der Firma und die Klassifizierung der Kunststoffe.*
 
+### **Die `glimpse()`-Funktion**
 
-
-
-
-
-
-
-
-
-
-Wir konzentrieren uns besonders auf das Jahr 2019.
-
-Mit der Funktion **`dplyr::glimpse()`** erhaltet Ihr einen Überblick über die Struktur des Datensatzes (Anzahl der Beobachtungen, Anzahl der Variablen, Name und Datentyp der Variablen). Der `community` Datensatz enthält geographische und zeitliche Variablen sowie Daten zur gesammelten Plastikmenge, Veranstaltungen und Freiwilligen. Eine Zeile (auch: Beobachtung) entspricht einem Land.
+Eine Funktion, die wir verwenden können, um uns einen ersten Überblick zu verschaffen, ist die **`glimpse()`-Funktion** aus dem Package `dplyr` (einem Package des `tidyverse` - mehr dazu in der kommenden Woche). Mit dieser Funktion erhalten wir Informationen über die Struktur des Datensatzes (Anzahl der Beobachtungen, Anzahl der Variablen, Name und Datentyp der Variablen). Der `community` Datensatz enthält geographische und zeitliche Variablen sowie Daten zur gesammelten Plastikmenge, Veranstaltungen und Freiwilligen. Wenn wir nun die Funktion **`dplyr::glimpse()`** ausführen und den Output betrachten, können wir verschiedene Dinge herauslesen, aber veruscht das einmal selbst:
 
 ```{r exercise_community, exercise = TRUE}
-# Überblick über die Community verschaffen
 dplyr::glimpse(community)
 ```
 
@@ -154,8 +143,8 @@ quiz(caption = NULL,
     answer("51"),
     answer("6", correct = TRUE),
     answer("7"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch, schau nochmal genauer.",
+    correct = "Richtig, unser Datensatz hat insgesamt sechs Variablen. Wir können das auf den ersten Blick daran erkennen, dass unser Datensatz aus eben seschs Spalten (Columns: 6) besteht - Wiederholung: Eine Spalte steht für ein Merkmal bzw. eine Variable. In den Zeilen werden im Gegensatz dazu die Beobachtungen abgebildet. In diesem Fall sind die Länder unsere Beobachtungseinheiten, also eine Zeile = ein Land.",
+    incorrect = "Leider falsch, schau' nochmal einmal genauer hin und versuche dich daran zu erinnern, welche unterschiedlichen Informationen in den Zeilen und Spalten eines Datensatzes abgebildet werden - wir haben darüber in der Session "Grundlagen der Statistik" gesprochen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -167,8 +156,8 @@ quiz(caption = NULL,
     answer("n_volunteers"),
     answer("n_pieces", correct = TRUE),
     answer("n_events"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch. Schau nochmal genauer in die Übersicht, die dplyr::glimpse() ausgibt.",
+    correct = "Richtig, die Variable "n_pieces" zeigt an, wie viele Plastikteile in dem jeweiligen Land gesammelt wurden. Wenn Du noch einmal eine Übersicht über die Bedeutung aller Variablennamen haben möchtest, kannst Du gerne jederzeit in das Codebuch schauen, das wir für Euch erstellt haben!",
+    incorrect = "Leider falsch, schau' noch einmal genauer in die Übersicht, die dplyr::glimpse() ausgibt. Wenn Du noch einmal eine Übersicht über die Bedeutung aller Variablennamen haben möchtest, kannst Du gerne jederzeit in das Codebuch schauen, das wir für Euch erstellt haben!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -176,21 +165,26 @@ quiz(caption = NULL,
   )
 ```
 
-Bei der Interpretation der Daten müssen wir die **Aggregationsebene** betrachten. In der Datenwissenschaft verweist man auf die **Granularität der Daten**: Je aggregierter Daten vorliegen, desto schwieriger wird es, Zusammenhänge korrekt zu bestimmen. Hier also wieder: Kontext! Wie können wir den Kontext der Daten hier beschreiben? Wir können in unserem Datensatz lediglich zwischen den Ländern vergleichen, nicht beispielsweise zwischen individuellen Events, und müssen bedenken, warum diese Schwankungen existieren. So weichen beispielsweise die Anzahl durchgeführter Events und die Anzahl involvierter Freiwilliger stark voneinander ab. Wie genau diese Unterschiede zu werten sind, ob beide Zahlen von anderen Variablen (sog. Störfaktoren, engl. *confounding variables*) beeinflusst werden und ob eine Bewertung auf Basis der Daten möglich ist, müssen wir noch herausfinden. Ein Schlagwort welches häuftig in Verbindung mit der Aggregation von Daten fällt, ist der **"Ökologische Fehlschluss"**. Dieser beschreibt, wie auf der Basis von Aggregatdaten unzulässigerweise auf die Individualebene geschlossen wird. Mehr dazu findet Ihr natürlich auf [Wikipedia](https://de.wikipedia.org/wiki/%C3%96kologischer_Fehlschluss).
+Fassen wir also noch einmal die Informationen zusammen, die wir auf den ersten Blick erkennen können:
 
+  - Anzahl der Zeilen (Raws: 51) und Spalten (6): Eine Zeile ist eine Beobachtung, also in diesem Fall ein Land und eine Spalte steht für eine Variable
+  - Bezeichnugen der Spalten, also die Namen der Variablen ($ continent, $ country, ...)
+  - Ausschnitt der Ausprägungen der Variablen (z.B. für n_pieces: 988, 5818, 53)
 
-#### Erster Überblick
+## **3. Schritt: Inhaltlicher Überblick**
 
-Nun kennen wir den Grundaufbau des Datensatzes und möchten die Variablen, die für unsere Fragestellungen interessant sind, besser verstehen. Dazu geben wir uns mit `summary()` **erste (statistische) Eigenschaften** der Variablen aus.
+Wir haben nun also mithilfe der `glimpse()`-Funktion einen ersten Überblick über die Grundstruktur unseres Datensatzes und der darin enthaltenen Informationen erhalten, aber so richtig detailliert ist das Ganze jetzt noch nicht, oder? Zeit für eine neue Funtion!
+
+### **Die `summary()`-Funktion**
+
+Die **`summary()`-Funktion** ist eine grundlegende und vielseitige Funktion, die uns in kurzer Zeit eine **Zusammenfassung** über die Datenstruktur und -inhalte ermöglicht. Sie ist Teil des Base R-Packages - sie ist also bereits automatisch vorinstalliert und steht und zur Verfügung, ohne dass wir ein zusätzliches Package laden müssen. Sie fasst dabei grundlegende statistische Informationen zusammen und kann für Vektoren, Listen und Modelle verwendet werden - oder eben ganze Datensätze. Dabei gibt sie einen Überblick für jede einzelne Zeile unseres Datensatzes, wobei die tatsächlichen Informationen vom Datentyp (factor, numeric, etc.) abhängig sind. Schaut Euch doch den folgenden Output selbst einmal an: Welche Datentypen gibt es und welche Informationen stehen uns somit zur Verfügung? Welche Aussagen lassen sich treffen?
 
 ```{r summary_community, exercise = TRUE}
-# Zusammenfassung anzeigen lassen
+# Zusammenfassung
 summary(community)
 ```
 
-Wir sehen, dass die Variablen, also die Spalten in unserem Datensatz, unterschiedliche Formate haben. `continent`, `country` und `countrycode` haben die Class "character", weil sie aus Text/ Buchstaben bestehen. Statistisch gesehen sind sie **nominal skalierte** Variablen, da sie Kategorien sind, ohne Ranking und ohne numerischen Wert. Alle anderen Variablen `n_...` sind **metrisch skalierte** Variablen. Wir können sie der Größe nach sortieren und mit ihnen ganz natürlich rechnen.
-
-```{r quiz_plausibilisierung}
+``{r quiz_plausibilisierung}
 quiz(
   caption = NULL,
   question(
@@ -199,8 +193,8 @@ quiz(
     answer("68.5"),
     answer("1.0", correct = TRUE),
     answer("120646.0"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: 1 Plastikstück ist der niedrigste Wert.",
+    correct = "Richtig, werfen wir einen Blick auf die Variable 'n_pieces' und betrachten den ersten Wert, der als 'Min.' abgekürzt wird: Diese Abkürzung steht für 'Minimum' und gibt somit den kleinsten Wert unserer Variable an - in diesem Fall beträgt dieser 1!",
+    incorrect = "Leider falsch, wir betrachten ausschließlich die Variable 'n_pieces'. Die Variablennamen werden zwar durch Abkürzungen dargstellt, aber welche könnte für den niedrigsten Wert stehen, der auch 'Minimum' genannt wird?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -212,8 +206,8 @@ quiz(
     answer("Viel zu groß."),
     answer("Plausibel", correct = TRUE),
     answer("Viel zu klein"),
-    correct = "Richtig! Wir sehen keine negativen Werte und auch die Größenordnung erscheint nicht unplausibel.",
-    incorrect = "Leider falsch: Die Spannweite erscheint plausibel: wir sehen keine negativen Werte und auch die Größenordnung ist vorstellbar ",
+    correct = "Richtig, die Spannweite erscheint durchaus plausibel! Es gibt schließlich keine negativen Werte und auch die Größenordnung der Werte ist vorstellbar.",
+    incorrect = "Leider falsch, betrachte noch einmal die Werte und achte darauf ob negative oder unrealistisch hohe Werte vorhanden sind. Wenn das in Ordnung aussieht, ist die Spannweite durchaus plausibel.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -221,31 +215,34 @@ quiz(
   )
 ```
 
-Auch die Gesamtanzahl an gesammelten Plastikstücken, Events und Freiwilligen können wir bestimmen. Hierzu nutzen wir die `sum()` Funktion und die Variablen-Verweismöglichkeit mit dem `$`-Zeichen - erinnert Euch, das hatten wir in der letzten Lektion schon kurz ausprobiert.
+Wir haben also auf einen Schlag schon eine ganze Menge Informationen erhalten. Beim Blick auf den Output fällt uns auch direkt auf, dass die verschiedenen Variablen unterschiedliche Formate (auch: Datentypen) haben. Die Merkmale `continent`, `country` und `countrycode` sind Variablen der Klasse "character". Sie bestehen aus Text/Buchstaben und sind statistisch gesehen **nominal skalierte** Variablen. Das bedeutet, dass wir sie zwar in Kategorien einsortieren, ihnen aber keine numerischen Werte zuweisen oder die in eine Rangliste bringen können. Dies können wir allerdings mit allen anderen Variablen tun, denn die `n_...` sind **metrisch skalierte** Variablen, die wir eben auch der Größe nach sortieren und für unsere weiteren Berechnungen verwenden dürfen.
+
+### **Die `sum()`-Funktion**
+
+Mithilfer der `summary()`-Funktion haben wir schon viele spannende Informationen über die numerischen Werte (`n_...`) erhalten. Die **Gesamtsumme** der gesammelten Plastikteile, durchgeführten Events oder freiwillig Engagierten. Müssen wir dafür nun Zeile für Zeile durchgehen und die Gesamtzahl mühsam mit dem Taschenrechner berechnen? Natürlich nicht, auch hier können wir eine einzige Funktion verwenden, die auch bereits in R vorinstalliert ist: Die **`sum()`-Funktion**. Innerhalb der Funktion verwenden wir an dieser Stelle auch das `$`-Zeichen, das wir bereits einmal kurz ausprobiert hatten. Damit können wir auf bestimmte **Variablen verweisen**. Dazu geben wir lediglich den Datensatz, in dem unsere Variable enthalten ist, sowie den Namen der entsprechenden Variable an:
 
 ```{r berechnung_summen, exercise = TRUE}
-# Berechnung der Summen
+# Gesamtsumme
 sum(community$n_pieces)
 sum(community$n_events)
 sum(community$n_volunteers)
 ```
 
-#### Datenzusammenfassungen
+### **Die `summarize()`-Funktion** 
 
-Wir haben nun eine erste Übersicht zu einzelnen Variablen erhalten - als nächstes können wir die Daten in Tabellen zusammenfassen, beispielsweise um neue Datenobjekte zu erstellen. Hierbei hilft uns die Funktion `summarize()`, welche aus dem `dplyr` Package stammt.
-
-`summarize` erstellt neue **Hilfsvariablen**, welche Berechnungen für uns zusammenfassen. Im Beispiel unten erstellen wir eine Übersicht, welche die Gesamtzahl, sowie die Spannweite der gesammelten Plastikstücke berechnet. Hierzu benennen wir also zwei neue Hilfsvariablen und weisen diesen dann die von uns gewünschte Funktion oder Funktionskombination zu.
+Wir haben nun mithilfe der `glimpse()`-, `summary()`- und `sum()`-Funktion eine erste Überischt über unsere Struktur und Inhalte des Datensatzes erhalten. Als nächstes wollen wir wir Daten in Tabellen zusammenfassun, um beispielsweise neue Datenobjekte zu erstellen. Dabei greifen wir auf eine weitere Funktion aus dem `dplyr`-Package zurück: Die **`summarize()-Funktion** (auch: `summarise()`). Mit dieser Funktion können wir auf Basis der bereits vorhandenen Variablen neue **Hilfsvariablen** erstellen, die Berechnungen für uns zusammenfassen. Im folgenden Beispiel erstellen wir eine Übersicht, welche die Gesamtzahl, sowie die Spannweite der gesammelten Plastikteile berechnet. Hierzu bennen wir zwei neue **Hilfsvariablen 'Gesamt' und 'Spannweite'** und weisen diesen dann die gewünschte Funktion oder Funktionskombination zu:
 
 ```{r summarise, exercise = TRUE}
-# Berechnung rund um n_pieces
 dplyr::summarize(community, 
                  Gesamt = sum(community$n_pieces),
                  Spannweite = max(community$n_pieces) - min(community$n_pieces))
 ```
+*Übersetzung: Nutze den Datensatz 'community' und erstelle eine Variable 'Gesamt', die alle gesammelten Plastikteile aufsummiert und eine Variable 'Spannweite', die sich aus der Differenz aus Maximum und Minimum der Variable 'n_pieces' berechnet.* 
 
-Hier wurden nun alle Länder zusammengeschmissen... und obwohl das natürlich insgesamt einen Dateneindruck ermöglicht, können wir hiermit noch lange keine Muster erkennen. In Kombination mit der `dplyr::group_by()` Funktion lassen sich schnell etwas umfassendere Zusammenfassungen über die Daten erstellen. Die Funktion erlaubt es, Daten zu kategorisieren, bspw. Länder anhand der zugehörigen Kontinente zusammenzufassen. Mit dem Code Chunk unten können wir sehen, wie viele Länder pro Kontinent an der Aktion teilgenommen haben, wie viel insgesamt gesammelt wurde, und wie groß der Unterschied zwischen den Ländern ist.
+### **`summarize()` und `group_by()`**
 
-Hierbei erstelle ich wieder ein paar Hilfsvariablen. Die erste, in der `group_by()` Funktion, kategorisiert die Events nach Kontinenten. Danach seht Ihr die Hilfsvariablen für die drei Funktionen, die uns interessieren.
+Was hier nun passiert ist: alle Länder wurden natürlich zusammengeschmissen... - und obwohl das natürlich auch einen Einblick in unsere Daten verschafft, können wir hiermit noch lange keine Muster erkennen. Dafür müssen wir die `summarize()`-Funktion um eine weitere ergänzen: Die **`group_by()`-Funktion** aus dem `dplyr`-Package. Beide Funktionen werden gerne miteinander kombiniert, da sie uns gemeinsam in recht kurzer Zeit etwas umfassendere Zusammenfassungen über die Daten erstellen. Die `group-by`-Funktion erlaubt es uns, Daten nach en Werten einer oder mehrerer Spalten zu kategorisieren und somit Gruppenanalysen zu erstellen. 
+Wenn wir also sehen möchten, wie viele Länder pro Kontinent an den Aktionen teilgenommen haben, wie viel insgesamt gesammelt wurde, und wie groß der Unterschied zwischen den Ländern ist, müssen wir lediglich den oberen Code ein wenig ergänzen. Zunächst einmal müssen wir mithilfe von `group_y()` festlegen, auf welchen Datensatz wir zugreifen (`community`) und dass wir diese Daten anhand der neuen Hilfsvariable 'Kontinent' kategorisieren wollen. Danach folgt noch die neue Hilfsvariable 'Länder', da wir uns für die länderübergreifenden Unterschiede interessieren, sowie die beiden Hilfsvariablen, die wir bereits kennen.
 
 ```{r Vorschau_group_by, exercise = TRUE}
 # Kombination group_by und summarize
@@ -255,7 +252,17 @@ dplyr::summarize(group_by(community, Kontinent = community$continent), # aus den
                  Spannweite = max(n_pieces) - min(n_pieces)) # Differenz max() und min()
 ```
 
-Daraus können wir einen ersten Eindruck der Daten gewinnen: In Asien wurde beispielsweise am meisten Plastik gesammelt, jedoch finden wir hier auch die größten Unterschiede zwischen den Ländern (d.h., hohe Streuung der Beobachtungen). In Europa wurde zwar nicht so viel gesammelt, allerdings scheinen die teilnehmenden Länder am ähnlichsten gesammelt zu haben. Diese Erkenntnisse geben uns also Informationen zu unseren Fragen, aber sie geben uns auch Hinweise darüber, dass die Daten möglicherweise nicht ganz vergleichbar sind - zumindest nicht auf dieser Ebene.
+Somit können wir auf jeden Fall einige weitere Informationen aus unseren Daten gewinnen: In Asien wurde beispielsweise am meisten Plastik gesammelt, jedoch finden wir hier auch die größten Unterschiede zwischen den Ländern (d.h., hohe Streuung der Beobachtungen). In Europa wurde zwar insgesamt nicht so viel gesammelt, wobei die teilnehmenden Länder hier alle ähnlich viel gesammelt haben. Mithilfe dieser Zahlen können wir also bereits einige unserer Fragen beantworten und eigene Erkenntnisse gewinnen. Wir sollten allerdings auch die Hinweise erkennen, die uns die Daten darüberhinaus liefern, nämlich dass es nicht ganz so einfach ist, sie miteinander zu vergleichen - zumindest nicht auf dieser Ebene.
+
+### **Vorsicht: Interpretation der Daten!**
+
+Wie gesagt, wir können bereits jetzt schon wertvolle Erkenntnisse aus unseren Daten gewinnen, aber: Besonders bei der der Interpretation unserer Daten müssen wir auch stets die **Aggregationsebene** dieser im Auge behalten. Man verweist in diesem Zuge auch auf die **Granularität der Daten**: Je aggregierter Daten vorliegen, desto schwieriger wird es, Zusammenhänge korrekt zu bestimmen. Es kommt also auch hier wieder auf den **Kontext** drauf an!
+Wir müssen uns also Gedanken darüber machen, wie wir den Kontext unserer Daten an dieser Stelle beschreieben können. In unserem Datensatz können wir beispielsweise lediglich Vergleiche zwischen verschiedenen Ländern anstellen - aber können wir auch Aussagen über individuelle Events treffen? Nein, denn auf dieser Ebene liegen uns schlicht keine Informationen vor! Diese Schwankungen und ihre möglichen Ursachen müssen wir also stets bedenken. Die Anzahl der durhcgeführten Events weicht beispielsweise stark von der Anzahl involvierter Helfer:innen ab. Wie genau diese Unterschiede zu werten sind, ob beide Zahlen von anderen Variablen (sog. Störfaktoren, engl. *confounding variables*) beeinflusst werden und ob wir diese überhaupt auf Basis unserer Daten bewerten können müssen wir noch herausfinden. 
+Ein Schlagwort welches häuftig in Verbindung mit der Aggregation von Daten fällt, ist der **"Ökologische Fehlschluss"**. Dieser beschreibt, wie auf der Basis von Aggregatdaten, die Merkmale eines Kollektivs abbilden, unzulässigerweise auf die Individualebene geschlossen wird. Mehr dazu findet Ihr [hier](https://martin-grellmann.de/oekologischer-fehlschluss).
+
+
+
+
 
 
 #### Datenvisualisierung
