@@ -523,10 +523,10 @@ Diese Woche möchten wir die Präsenzzeit nutzen, um die folgenden Übungen zu b
 
 # **Zusätzliche Ressourcen**
 
--   Die kostenlosen Kurse des [Statistischen Bundesamts](https://www.destatis.de/DE/Service/Statistik-Campus/E-Learning/eLearning-statistik.html;jsessionid=63AE25DDABD8853990FBE83F354C8911.live722?nn=206328){target="_blank"}
--   Stocker T. C. und Steinke I. (2017): Statistik – Grundlagen und Methodik [verfügbar z.B. hier](https://www.beck-shop.de/stocker-steinke-de-gruyter-studium-statistik/product/32926361){target="_blank"}
--   [R for Data Science (engl.)](https://r4ds.had.co.nz/){target="_blank"}
--   [Statistics Fundamentals in R](https://app.dataquest.io/course/statistics-fundamentals-r){target="_blank"} auf DataQuest (engl.)
--   [Lernvideos](https://www.youtube.com/watch?v=RRIsBFW8ovc){target="_blank"} zur Inferenzstatistik (dt.)
+-   [R for Data Science 2e](https://r4ds.hadley.nz/){target="_blank"}
+-   [Stocker T. C. und Steinke I. (2017): Statistik – Grundlagen und Methodik](https://www.beck-shop.de/stocker-steinke-de-gruyter-studium-statistik/product/32926361){target="_blank"}
+-   [Statistics Fundamentals in R](https://app.dataquest.io/course/statistics-fundamentals-r){target="_blank"} auf DataQuest
+-   [Statistik-Lernvideos](https://www.youtube.com/watch?v=RRIsBFW8ovc){target="_blank"} von "Kurzes Tutorium Statistik"
+-   [Datenbank für umweltbezogene Datenprojekte](https://www.umweltbundesamt.de/publikationen){target="_blank"} vom Umweltbundesamt
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
