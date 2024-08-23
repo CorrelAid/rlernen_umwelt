@@ -114,12 +114,60 @@ quiz(caption = NULL,
 
 Bevor wir nun tatsächlich selbst mit dem Programmieren beginnen, wollen wir Euch noch den Datensatz vorstellen, mit dem wir in den kommenden Wochen und Monaten arbeiten werden. 
 
-Dieser stammt von Sarah Suave aus dem **[#Breakfreefromplastic](https://www.breakfreefromplastic.org/about/){target="_blank"}-Netzwerk**. Ein Netzwerk, das 2016 ins Leben gerufen wurde und das Ziel einer plastikfreien Welt verfolgt. Seitdem haben sich weltweit über 3.000 Organisationen und 14.000 Personen dieser Bewegung angeschlossen, um gemeinsam zusammenzuarbeiten. Um diesem Ziel Stück für Stück näher zu kommen, veröffentlicht #Breakfreefromplastic seit 2018 jedes Jahr einen sogenannten **Brand Audit**. Im Rahmen dieser Untersuchung wird Plastikmüll analysiert, um herauszufinden, welche Firmen mit ihren Produkten in großem Maße zur Verschmutzung unseres Planeten beitragen. Diese Daten werden in einem Datensatz zusammengefasst. Wir verwenden an dieser Stelle die Daten aus dem Jahr 2020. Alle weiteren Hintergründe zur Untersuchung und Brand Reports zum Download findet ihr [hier](https://brandaudit.breakfreefromplastic.org/){target="_blank"}.
-Keine Sorge, wir werden uns den Datensatz ganz bald noch im Detail anschauen - vor allem, wenn es darum geht, unsere eigenen Analysen durchzuführen. Für das erste wollen wir Euch an dieser Stelle mit der folgenden Grafik einen kleinen Einblick in den Datensatz und somit auch in R geben. Ihr könnt Euch dabei schon einmal ein paar Gedanken machen, auf die wir dann zurückgreifen werden: Was könnt Ihr auf den ersten Blick erkennen? Was könnte sich hinter den verschiedenen Begriffen verbergen? Welche Begriffe sind Euch völlig fremd und wovon habt Ihr vielleicht schon einmal gehört?
+## **Einführung**
 
--> Grafik Datensatz
+Im Rahmen unseres Kurses “R Lernen - Der Datenkurs von und für die Zivilgesellschaft” verwenden wir einen Datensatz von Sarah Suave aus dem [**#Breakfreefromplastic-Netzwerk**](https://www.breakfreefromplastic.org/about/){target="_blank"}. Dieser ist [hier](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-01-26/plastics.csv){target="_blank"} für Euch frei zugänglich. 
 
-Das war's an dieser Stelle mit dem Datensatz, schauen wir uns nun unsere ersten Codes in R an! Doch davor noch ein kleiner, aber wichtiger, Hinweis:
+## **Die Untersuchung**
+
+Wie gesagt stammen unsere DAten aus dem #Breakfreefromplastic-Netzwerk. Dabei handelt es sich um ein Netzwerk, das 2016 ins Leben gerufen wurde und das Ziel einer plastikfreien Welt verfolgt. Seitdem haben sich weltweit über 3.000 Organisationen und 14.000 Personen dieser Bewegung angeschlossen, um diesem Ziel Stück für Stück näherzukommen. Dazu veröffentlicht #Breakfreefromplastic seit 2018 jedes Jahr einen sogenannten **Brand Audit**. Im Rahmen dieser Untersuchung wird Plastikmüll analysiert, um herauszufinden, welche Firmen mit ihren Produkten in großem Maße zur Verschmutzung unseres Planeten beitragen. Diese Daten werden in einem Datensatz zusammengefasst. Wir verwenden an dieser Stelle den Datensazu aus dem Jahr 2021, der auf Aktionen basiert, die 2019 und 2020 durchgeführt wurden. Alle weiteren Hintergründe zur Untersuchung und Brand Reports zum Download findet ihr [hier](https://brandaudit.breakfreefromplastic.org/){target="_blank"}.
+
+## **Die Datenerhebung**
+
+99 % des Plastiks wird aus fossilen Brennstoffen hergestellt. Um der weltweiten Umweltverschmutzung daher nachhaltig entgegenwirken zu können, muss das Problem an seiner Wurzel bekämpft werden: Ddie Plastikproduktion globaler Unternehmen. Das fordert auch das Netzwerk #Breakfreefromplastic. Um diesen Forderungen ein quantitatives Fundament zu verleihen, wird im Rahmen lokaler Aktionen Plastikmüll gesammelt und untersucht. Diese Daten werden am Ende zusammengeführt und zum Brand Audit zusammengefasst.
+
+In den Jahren 2019 und 2020 konnten die **11.184** Freiwilligen des Netzwerks insgesamt **440** Aktionen in **45** Ländern durchführen. Das Ergebnis: **330.493** Teile Plastikmüll - und das ist “nur” die Menge an Plastikmüll, die im Rahmen dieser Aktionen gefunden werden konnten. Dennoch bilden sie eine solide Datengrundlage, da 58 % der gefundenen Teile eindeutig einer Marke zugeordnet werden konnten. Wie die gesammelten Teile in verarbeitbare Daten transformiert werden und wie solche Aktionen geplant und durchgeführt werden, könnt Ihr gerne [hier](https://brandaudit.breakfreefromplastic.org/brand-audit-training/){target="_blank"} noch einmal anschauen!
+
+Wir wollen nun einmal einen Blick auf den Datensatz und die darin enthaltenen Informationen werfen!
+
+## **Die Daten**
+*Beschreibung fehlt, s. Planungsdokument*
+
+**Tabelle: Datensatz #Breakfreefromplastic**
+```{r datensatz_tabelle, results='asis'}
+tabelle <- "
+
+Variablenname  | Datentyp    | Beschreibung                                                   | Beispiele
+:--------------|:------------|:---------------------------------------------------------------|:--------------------------------|
+country        | character   | Die Variable ‘country’ steht für das Land, in dem eine Müllsammlung stattgefunden hat.                                      |
+year           | double      | Die Variable ‘year’ steht für das Jahr, in dem die Müllsammlung stattgefunden hat. Da der Datensatz Aktionen aus den Jahren 2019 und 2020 beinhaltet, kann diese Variable zwei verschiedene Werte annehmen.                                                             | 
+parent_company | character   | Die Variable ‘parent_company’ steht für die Firma, die den Müll produziert hat. Findet eine Person z.B. eine Cola-Flasche, wird das an dieser Stelle abgebildet. Aber Vorsicht: Die Firmennamen sind nicht alle einheitlich angegeben!                                  | 
+empty          | double      | Die Variable ‘empty’ steht für die Anzahl der leeren Kategorien.                                                            | 
+hdpe           | double      | Die Variable ‘hdpe’ steht für ‘High density polyethylene count’ - einen thermoplastischen Kunststoff mit hoher Dichte und zählt alle gesammelten Teile, die aus diesem hergestellt werden.                                                                          | Milchflaschen, Plastiktüten, Flaschendeckel, Mülleimer, etc.
+ldpe           | double      | Die Variable ‘ldpe’ steht für ‘Low density polyethylene count’ - einen thermoplastischen Kunststoff mit geringer Dichte und zählt alle gesammelten Teile, die aus diesem hergestellt werden.                                                                       | Plastiktüten, Beutel mit Zip-Verschluss, Eimer, Plastikschläuche, Schneidebretter, etc.
+o              | double      | Die Variable ‘o’ steht für ‘other’ und zählt somit alle gesammelten Teile, die keiner der beiden oberen Kategorien zugeordnet werden können.                                                                                                                       |
+pet            | double      | Die Variable ‘pet’ steht für einen Polyester-Kunststoff und zählt alle gesammelten Teile, die aus diesem hergestellt werden.                                                                                                                                        | Polyesterfasern, Lebensmittelverpackungen, Kunststoffflaschen für Softdrinks o. Ä., etc. 
+pp             | double      | Die Variable ‘pp’ steht für ‘Polypropylen’ - einen härteren, wärmebeständigen Kunststoff und zählt somit alle gesammelten Teile, die aus diesem hergestellt werden.                                                                                                 | Blumentöpfe, Autoinnenverkleidungen, To-Go-Trinkbecher, mikrowellengeeignete Kunststoffbehälter, DVD-Hüllen, etc.
+ps             | double      | Die Variable ‘ps’ steht für Polystyrol - einen transparenten, günstigen (Standard-) Kunststoff und zählt somit alle gesammelten Teile, die aus diesem hergestellt werden.                                                                                           | Spielzeug, Videokassetten, Aschenbecher, Koffer, Kühlschränke, Trinkbecher, To-Go-Lebensmittel-verpackungen, etc.
+pvc            | double      | Die Variable ‘pvc’ steht für PVC-Kunststoffe - eine Sorte weicher und harter Kunststoffe und zählt somit alle gesammelten Teile, die aus diesem hergestellt werden.                                                                                                 | Fensterrahmen, Bodenbeläge, Rohre, etc. 
+grand_total    | double      | Die Variable ‘grand_total’ steht für die Anzahl der insgesamt gesammelten Plastikteile (alle Plastiktypen).                 | readr::read_delim
+num_events     | double      | Die Variable ‘num_events’ steht für die Anzahl der insgesamt durchgeführten Events, d.h. Sammelaktionen.                    | readr::read_delim
+volunteers     | double      | Die Variable ‘volunteers’ steht für die Anzahl der insgesamt anwesenden freiwilligen Helfer:innen.                          | readr::read_delim
+
+"
+cat(tabelle)
+```
+*Anmerkung: Lasst Euch nicht verwirren von dem neuen Datentypen “double”. Numerische Daten werden in R automatisch entweder als `integer` oder `double` konvertiert. Die Operationen bleiben dadurch jedoch unverändert. Mehr Infos [hier](https://uc-r.github.io/integer_double/){target="_blank"}!*
+
+## **Zusammenfassung**
+
+Wie wir sehen, gibt es insgesamt 14 Variablen, die sehr unterschiedliche Daten beinhalten. Zuallererst gibt es Variablen, die uns Informationen über das Land und das Jahr geben, indem das entsprechende Plastikteil gefunden wurde. Insgesamt umfasst die Untersuchung 45 Länder und von A wie Argentinien bis V wie Vietnam ist dabei alles dabei. Weniger Variation gibt es hinsichtlich des Jahres, da unser Datensatz ausschließlich Daten aus den Jahren 2019 und 2020 enthält. Eine der wichtigsten Variablen im Brand Report ist die Variable ‘parent_company’. Diese gibt uns Auskunft darüber, von welcher Firma das entsprechende Plastikteil, das im Rahmen einer Sammelaktion gefunden wird, hergestellt wurde. Auch hier ist sehr viel Variation geboten, da von lokalen Unternehmen bis hin zu globalen Firmen alles vertreten ist. Allerdings - und das ist auch eines der zentralen Erkenntnisse des Reports - sind vor allem diese ‘Global Player’ für einen Großteil des Plastikmülls verantwortlich.
+
+Anschließend folgen Informationen technischer Natur. Da verschiedene Kunststoffe einen unterschiedlichen Einfluss auf Tiere und Umwelt haben, werden die gesammelten Teile je nach Material klassifiziert und gezählt. Uns fällt dabei auch schon direkt auf, dass es eine ganze Menge verschiedener Kunststoffarten gibt und diese ganz unterschiedlich verarbeitet werden. Die Variable ‘o’ zählt in diesem Zusammenhang für alle Plastikteile, die keiner festen Kategorie zugeordnet werden können (‘andere’). 
+
+Abschließend folgen noch einmal einige allgemeinere Informationen wie die Gesamtzahl der gesammelten Plastikteilen, durchgeführten Aktionen und beteiligten Helfer:innen.
+
+Mit diesen Daten wollen wir also in Zukunft arbeiten und spannende Analysen durchführen. Wir hoffen, dass Euch dieses Codebuch weiterhilft und wenn es noch offene Fragen gibt, bringt diese gerne mit in unsere Live-Session am Freitag oder tauscht Euch untereinander aus. Das war's an dieser Stelle mit dem Datensatz, schauen wir uns nun unsere ersten Codes in R an! Doch davor noch ein kleiner, aber wichtiger, Hinweis:
 
 <br>
 <div style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
