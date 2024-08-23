@@ -41,7 +41,7 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 Wir wollen uns heute mithilfe von R einen Überblick über unsere Daten verschaffen. Wie uns das mit ein paar grundlegenden Schritten gelingt, werden wir anhand einiger Codes "in action" sehen. Wer möchte, kann diesen Code direkt replizieren, ansonsten soll es und erst einmal darum gehen, mit kleinen Handgriffen die Daten mithilfe von Funktionen und Kontextwissen greifbar zu machen. Beginnen wir doch einmal mit dem Video:
 
-<!-- ![*Video: Daten mit R verstehen (30min)*](https://youtu.be/nEbiJ4EZ3OE) -->
+<!-- ![*Video: Daten mit R verstehen (20min)*](https://youtu.be/nEbiJ4EZ3OE) -->
 
 # **Daten verstehen mit R**
 
@@ -171,7 +171,7 @@ Fassen wir also noch einmal die Informationen zusammen, die wir auf den ersten B
   - Bezeichnugen der Spalten, also die Namen der Variablen ($ continent, $ country, ...)
   - Ausschnitt der Ausprägungen der Variablen (z.B. für n_pieces: 988, 5818, 53)
 
-## **3. Schritt: Inhaltlicher Überblick**
+## **3. Schritt der Datenanalyse: Inhaltlicher Überblick**
 
 Wir haben nun also mithilfe der `glimpse()`-Funktion einen ersten Überblick über die Grundstruktur unseres Datensatzes und der darin enthaltenen Informationen erhalten, aber so richtig detailliert ist das Ganze jetzt noch nicht, oder? Zeit für eine neue Funtion!
 
@@ -260,37 +260,34 @@ Wie gesagt, wir können bereits jetzt schon wertvolle Erkenntnisse aus unseren D
 Wir müssen uns also Gedanken darüber machen, wie wir den Kontext unserer Daten an dieser Stelle beschreieben können. In unserem Datensatz können wir beispielsweise lediglich Vergleiche zwischen verschiedenen Ländern anstellen - aber können wir auch Aussagen über individuelle Events treffen? Nein, denn auf dieser Ebene liegen uns schlicht keine Informationen vor! Diese Schwankungen und ihre möglichen Ursachen müssen wir also stets bedenken. Die Anzahl der durhcgeführten Events weicht beispielsweise stark von der Anzahl involvierter Helfer:innen ab. Wie genau diese Unterschiede zu werten sind, ob beide Zahlen von anderen Variablen (sog. Störfaktoren, engl. *confounding variables*) beeinflusst werden und ob wir diese überhaupt auf Basis unserer Daten bewerten können müssen wir noch herausfinden. 
 Ein Schlagwort welches häuftig in Verbindung mit der Aggregation von Daten fällt, ist der **"Ökologische Fehlschluss"**. Dieser beschreibt, wie auf der Basis von Aggregatdaten, die Merkmale eines Kollektivs abbilden, unzulässigerweise auf die Individualebene geschlossen wird. Mehr dazu findet Ihr [hier](https://martin-grellmann.de/oekologischer-fehlschluss).
 
+## **4. Schritt der Datenanalyse: Visualisierung**
 
+### **Grafik: Das Punktdiagramm**
 
+Wir haben nun bereits verschiedene Funktionen kennengelernt, mit deren Hilfe wir uns in realtiv kurzer Zeit einen generellen Überblick über unsere Daten verschaffen können. Diese liefern uns in der Regel Tabellen, die mit statistischen Kennzahlen gefüllt sind. Diese Werte sind wichtig, aber bei so vielen verschiedenen Zahlen kann es doch schnell mal passieren, dass wir ein wenig durcheinander kommen. Einfache **Datenvisualisierungen** wären an dieser Stelle also auf jeden Fall hilfreich! So lassen sich Daten grafish darstellen und statistische Muster für das bloße Auge sichtbar machen und wir müssen uns eben nicht durch lauter Kennzahlen kämpfen. Da wir uns allerdings noch immer in einem explorativen Schritt der Datenanalyse befinden, wollen wir an dieser Stelle unsere Aufmerksamkeit nicht unbedingt auf den genauen Codes der Diagramme (engl. Plots) legen - vorrangig soll es nämlich um das Erkennen von Datenverhalten und -muster gehen. Wie wir die verschiedenen grafischen Darstellungsmöglichkeiten selbst erstellen, werden wir uns in einer späteren Session noch im Detail anschauen!
+Betrachten wir also noch einmal die verschiedenen Kontinente. Mithilfe des Packages **`ggplot2`** können wir hierfür ein sogenanntes **Punktediagramm (engl. Scatterplott)** erstellen. Mit diesem Package kann man verschiedene Grafiken über eine Art **Schichtsystem** erstellen:
+  - 1. Schicht: Verweis auf den verwendeten Datensatz (`data = community`) und die Variablen, die entlang der x- und y-Achsen dargestellt werden sollen (`aes(x = continent, y = n_pieces)`).
+  - 2. Schicht: Bestimmung der Art der Visualisierung durch die **`geom_jitter()`-Funktion**. 'jitter' beschreibt eine besondere Art von Punktediagramm, bei dem Datenpunkte sich ausweichen um die Lesbarkeit bei Überlagerung zu ermöglichen.
+  - 3. Schicht: Beschriftung der Grafik mithilfe der **`labs()`-Funktion**. In diesem Schritt werden Überschrift(en), Achsen und Bilderunterschrift mit Labels versehen.
+  4. Schritt: Feinschliff und Layout durch andere Schichten, die mit einem "+" hinzugefügt werden. Diese beinhalten in der Regel Funktionen zur Gestaltung (z.B. Annotation, Layout, etc.).
 
-
-
-#### Datenvisualisierung
-
-Neben Tabellen sind auch einfache Datenvisualisierungen für das Datenverständnis hilfreich! So lassen sich Daten visuell darstellen und statistische Muster erkennbar machen. Für diesen explorativen Schritt der Datenanalyse müsst Ihr nicht auf die Gestaltung oder den genauen Code der Plots achten - es soll vorrangig um das Erkennen vom Datenverhalten gehen.
-
-Erstellen wir zur Betrachtung der Kontinente als erstes ein Punktediagramm (engl. *Scatterplot*). Hierzu nutzen wir das Package `ggplot2`, mit dem man einen Plot über eine Art Schichtsystem aufbaut. Die erste Schicht, enthalten in der `ggplot()` Funktion, verweist auf den Datensatz (*community*) und die bestimmten Variablen (*continent*, *n_pieces*), die entlang der x- und y- Achsen dargestellt werden sollen. Die `geom_jitter()` Funktion bestimmt die Art der Visualisierung: *jitter* beschreibt eine besondere Art von Punktediagramm, bei dem Datenpunkte sich ausweichen um die Lesbarkeit bei Überlagerung zu ermöglichen. Andere Schichten, hinzugefügt über "+", beinhalten Schichten zur Gestaltung: Annotation, Layout, etc.
-
-Diese Visualisierung stellt sowohl die Verteilung als auch die Häufigkeit von Beobachtungen über die Verteilung dar. Nehmt Euch einen Moment und beschreibt den Plot in Euren Worten.
-
-Wo würdet Ihr die jeweiligen Mittelwerte verorten? <br>
+Betrachtet nun die folgende Visualisierung, die sowohl die Verteilung als auch die Häufigkeit von Beobachtungen über die Verteilung darstellt. Nehmt Euch einen Moment und beschreibt den Plot in Euren Worten.
 
 ```{r geom_point_n_pieces_bericht, exercise = TRUE}
 # Erstellung eines jitter plots zur Anzahl gesammelter Plastikstücke pro Kontinent
-ggplot(data = community, 
-       aes(x = continent, # x-Achse soll Kontinente zeigen
-           y = n_pieces)) +  # y-Achse soll Stücke zeigen
-  geom_jitter(size = 3, # Größe der Punkte
-             alpha = 0.6, # Transparenz der Punkte
-             width = 0.2) +  # Breite der Punkt-jitter pro Kategorie
+ggplot(data = community,      # Definition Datensatz
+       aes(x = continent,     # Definition x-Achse
+           y = n_pieces)) +   # Definition y-Achse
+  geom_jitter(size = 3,       # Größe der Punkte
+             alpha = 0.6,     # Transparenz der Punkte
+             width = 0.2) +   # Breite der Punkt-jitter pro Kategorie
   labs(title = "Auch die Anzahl gesammelter Plastikstücke von 'Break Free From Plastic' ..." ,
     subtitle = "... unterscheidet sich nach Kontinent und Land.",
     y = "Anzahl gefundener Plastikstücke pro Land",
     x = "Kontinent",
-    caption = "Datenquelle: TidyTuesday und BFFP") + # Festlegung der Achsenbezeichungen, Überschriften und Titel
-  theme_minimal() + # Festlegung des Layout-Designs  
-  theme(legend.position="none") # Ausblenden der Legende
- 
+    caption = "Datenquelle: TidyTuesday und BFFP") +   # Festlegung der Achsenbezeichungen, Überschriften und Titel
+  theme_minimal() +                                    # Festlegung des Layout-Designs  
+  theme(legend.position="none")                        # Ausblenden der Legende
 ```
 
 ```{r quiz_scatterplot}
@@ -301,8 +298,8 @@ question(
     answer("Afrika und Europa"),
     answer("Afrika und Asien", correct = TRUE),
     answer("Afrika und Ozeanien"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: in Afrika und Asien sehen wir einige sehr große Werte, die weit von den anderen Datenpunkten entfernt sind.",
+    correct = "Richtig, wir können ganz deutlich erkennen, dass die meisten Punkte für alle Kontinente relativ nah aneinander liegen. Lediglich für Afrika und Asien stellen wir einzelne (positive) Ausreißer fest.",
+    incorrect = "Leider falsch, beztrachte noch einmal die Grafik: Wo liegen die Punkte alle relativ nah aneinander und wo gibt es einzelne Datenpunkte, die ziemlich weit von den anderen entfernt sind?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -310,12 +307,11 @@ question(
 )
 ```
 
+### **Grafik: Der Boxplot**
 
-#### Betrachtung von statistischen Kennzahlen
+Da wir uns jetzt eine ganze Session mit statistischen Kennzahlen beschäftigt haben, fragen wir uns bestimmt, ob wir diese nicht auch mithilfe einer grafischen Darstellung zusammenfassen und veranschaulichen können? Selbstverständlich, Ihr kennt diese Darstellungsform bereits: **Den Boxplot**. Wenn wir uns also einmal an unsere Session zu den Grundlagen der Statistik zurück erinnern, dann haben wir auf jeden Fall schon einmal einen Boxplot gesehen und wissen vielleicht sogar noch ungefähr, welche Daten wir damit abbilden können. Es handelt sich dabei nämlich um die gängigen statistischen Maße, die wir idealerweise im Zusammenspiel mit weiteren Informationen aus underem Datensatz interpretieren - Stichwort **Kontext**: Wie viele Zeilen (Beobachtungen) tragen überhaupt zur Statistik bei und wie verteilen sich diese innerhalb der Variablen?
 
-Um gezielte Aussagen zum Datenverhalten machen zu können, helfen uns statistische Maße. Idealerweise interpretiert Ihr statistische Kennzahlen im Zusammenspiel mit weiteren Werten zum Datensatz: wie viele Zeilen (Beobachtungen) tragen zur Statistik bei und wie verteilen sich diese innerhalb der Variablen? Kurz: Wie ist der Datenkontext?
-
-Mit der oben erwähnten Kombination aus `dplyr::group_by()` und `dplyr::summarize()` können wir weitere statistische Kennzahlen auf einen Schlag ermitteln und so folgende Fragen beantworten: Wie stark streuen die beobachteten Werte um den Mittelwert, wie hoch sind Standardabweichung und Varianz? Gibt es Ausreißer?
+Wir werden daher noch einmal einen letzten Blick auf die verschiedenen Kennzahlen werfen müssen, weshalb wir uns noch einmal an den oben erwähnten Funktionen bedienen werden. Mit der Kombination aus **`dplyr::group_by()`** und **`dplyr::summarize()`** können wir nämlich auf einen Schlag weitere statistische Kennzahlen ermitteln, die uns unter anderem folgende Fragen beantworten können: Wie stark streuen die beobachteten Werte um den Mittelwert? Wie hoch sind Standardabweichung und Varianz? Gibt es Ausreißer?
 
 ```{r ueberblick_statistische_kennzahlen, exercise = TRUE}
 # Tabelle mit statistischen Kennzahlen
@@ -332,19 +328,20 @@ summarize(group_by(community, Kontinent = community$continent),
          "Spannweite" = max(n_pieces) - min(n_pieces)) 
 ```
 
-**Aber was bedeuten diese Kennzahlen nochmal genau?**
+#### **Interpretation der Daten**
 
-*Wenn ihr Euch nicht mehr sicher seid, schaut doch nochmal in die Lektion zu den Grundlagen der Statistik. Weiter unten findet Ihr als kleine Hilfestellung auch eine zusammenfassende Abbildung, die die statistischen Werte nochmal gegenüberstellt.*
+Werfen wir also einen Blick auf den Output: Was bedeuten die ganzen Kennzahlen nochmal genau und welche Aussagen können wir jetzt eigentlich treffen? 
+*Tipp: Wenn Ihr Euch nicht mehr sicher seid, schaut doch nochmal in die Lektion zu den Grundlagen der Statistik. Weiter unten findet Ihr als kleine Hilfestellung auch eine zusammenfassende Abbildung, die die statistischen Werte nochmal gegenüberstellt.*
 
 ```{r quiz_standardabweichung}
 quiz(caption = NULL,
-  question("Warum gibt R für die Standardabweichung für Ozeanien (eng. Oceania) 'NA' aus?",
+  question("Warum gibt R für die Standardabweichung und Varianz für Ozeanien (eng. Oceania) 'NA' aus?",
     answer("Weil keine Plastikstücke gefunden wurden."),
     answer("Weil Ozeanien nur drei Stück Plastik registriert hat."),
     answer("Weil nur ein Land in Ozeanien mitgemacht hat.", correct = TRUE),
     answer("Kann eigentlich nicht sein. Deutet auf einen Fehler hin."),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: In Ozeanien hat nur ein Land mitgemacht, weshalb es zwischen einzelnen Beobachtungen auf Länderebene natürlich keine Standardabweichung geben kann.",
+    correct = "Richtig, in der zweiten Spalte 'Anzahl Länder' sehen wir, dass sich im ozeanischen Kontinent lediglich ein Land an der Aktion beteiligt hat. Da die Standardabweichung und Varianz als Maßzahlen die Streuung der einzelnen Beobachtungen über verschiedene Länder hinweg angiben, können an dieser Stelle natürlich keine Länder miteinander verglichen werden - daher 'fehlen' diese Werte.",
+    incorrect = "Leider falsch, wenn wir einen Blick auf die zweite Spalte 'Anzahl Länder' werfen, fällt uns auf, dass sich im ozeanischen Kontinent lediglich ein Land an der Aktion beteiligt hat. Die Standardabweichung und Varianz sind Maßzahlen, die die Steuung der Streuung der einzelnen Beobachtungen über verschiede Länder hinweg angeben. Kann es also einen Wert geben, wenn nur ein Land an der Aktion teilgenommen hat und daher keine Länder miteinander verglichen werden können?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -352,18 +349,17 @@ quiz(caption = NULL,
 )
 ```
 
+Alles klar? Dann schauen wir uns nun an, wie wir diese statistischen Kennzahlen mithilfe des **Boxplots** grafische darstellen können. Dazu noch einmal eine kurze Wiederholung: Ein Boxplot stellt die Verteilung von Variablen inklusive wichtiger statistischer Eigenschaften dar und fasst die **fünf Punkte der Verteilung (Minimum, 25%-Quartil, Median, 75%-Quartil, Maximum)** zusammen. Jedoch ist Vorsicht geboten, denn "einfache" Boxplots zeigen ausschließlich die statistischen Werte, nicht aber die einzelnen Datenpunkte. Diese sind aber sehr wichtig, um zu erkennen, wie die tatsächliche Verteilung aussieht (bspw. ob sich die "Box" aus 4 oder 400 Werten zusammensetzt) - Stichwort: **Kontext**! Glücklicherweise lassen sich Boxplots und Scatterplots in R gut kombinieren.
+Betrachten wir also einmal den Kontinent 'Amerika'. Ein letzter Hinweis: Die sieben Punkte, die wir in dieser Grafik sehen können, stehen hierbei für die Gesamtzahl der gesammelten Plastikstücken in den jeweiligen Ländern des amerikanischen Kontinents.
 
-Eine Visualisierung, die viele nützliche statistischen Kennzahlen aufzeigt, ist der sogenannte **Boxplot**. Ein Boxplot stellt die Verteilung von Variablen inklusive wichtiger statistischer Eigenschaften dar und fasst die **fünf Punkte der Verteilung (Minimum, 25%-Quartil, Median, 75%-Quartil, Maximum)** zusammen. Aber Vorsicht: "einfache" Boxplots zeigen ausschließlich die statistischen Werte, nicht aber die einzelnen Datenpunkte. Diese sind aber wichtig um zu erkennen, wie die tatsächliche Verteilung ausschaut (bspw. ob sich die "Box" aus 4 oder 400 Werten zusammensetzt), Stichwort: Kontext! In R lassen sich Boxplots und Scatterplots zum Glück gut kombinieren.
+![Grafik: Boxplot mit statistischen Kennzahlen](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/04_daten-verstehen/Boxplot_Stat.png?raw=true){#id .class width="100%" height="100%"}
 
-Schauen wir uns das mal am Beispiel für Amerika an. Jeder Punkt bezieht sich hierbei auf die Anzahl der Plastikstücke für ein bestimmtes Land aus Amerika. Die statistischen Werte können aus diesem, auf der Seite liegenden, Boxplot ausgelesen werden:
+Folgende statistische Kennwerte können wir nun aus diesem, auf der Seite liegenden, Boxplot auslesen:
 
-![Boxplot mit statistischen Kennzahlen](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/04_daten-verstehen/Boxplot_Stat.png?raw=true){#id .class width="100%" height="100%"}
+  - **Median** (grüne Linie): "wahre" Mitte der Verteilun, d.h. die Beobachtung, die die Reihe aller enthaltenen Werte (= Länder) genau in zwei Hälften teilt. Da in Amerika insgesamt 7 Länder an der Aktion von #Breakfreefromplastic teilgenommen haben, ist die Anzahl an gesammelten Plastikstücken des **vierten Landes** der Median unserer imaginären Aufreihung.
+  - **Spannweite**: Differenz aus Minimum und Maximum. Allein für sich hat sie allerdings nur eine geringe Aussagekraft. Jedoch kann eine hohe Spannweite auch auf eine erklärbare Varianz hinweisen (z.B. haben in Amerika manche Länder extrem viel gesammelt und andere gar nicht) - eine hohe Spannweite kann aber auch ein Zeichen dafür sein, dass die Daten von anderen Faktoren abhängig sind. Im Gegensatz dazu zeugt eine geringe Spannweite davon, dass die Datenpunkte in sich eher homogen (ähnlich) sind.
 
-Der **Median** (hier in grün) stellt die **wahre Mitte der Verteilung** dar und ist die Beobachtung, die die Reihe aller enthaltenen Werte, also aller Länder, genau in zwei Hälften teilt: In Amerika haben 7 Länder an **Break Free From Plastic** teilgenommen. Die Anzahl an Plastikstücken des vierten Landes in der imaginären Aufreihung ist der Median.
-
-Die **Spannweite** ist die Differenz aus Minimum und Maximum: 100% oder schlicht "alle" beobachten Werte liegen darin. Allein hat sie allerdings nur eine geringe Aussagekraft. Eine hohe Spannweite kann auf eine erklärbare Varianz hinweisen (beispielsweise, dass in Amerika manche Länder extrem viel gesammelt haben, und andere dafür gar nicht) - aber eine hohe Spannweite kann auch ein Zeichen dafür sein, dass die Daten von anderen Faktoren abhängig sind. Eine geringe Spannweite zeugt davon, dass die Datenpunkte in sich eher homogen sind.
-
-Wie schauen die anderen Kontinente in der **Boxplotdarstellung** aus? Versucht mal die statistischen Kennzahlen für die Kontinente zu beschreiben - und was sich daraus für Schlussfolgerungen ergeben!
+Wir können den Boxplot allerdings auch verwenden, um alle Kontinente miteinander zu vergleichen. Versucht mal in der folgenden Dartsellung die statistischen Kennzahlen für die Kontinente zu beschreiben und überlegt, welche Schlussfolgerungen sich daraus ergeben.
 
 *(Hinweis: wie Ihr auch so einen Boxplot erstellen könnt, lernt Ihr in der Lektion zu Datenvisualisierung! Hier geht's ja erstmal darum, zu sehen, wie uns R helfen kann Daten zu lesen, zu kontextualisieren und zu interpretieren.)*
 
@@ -396,8 +392,8 @@ quiz(caption = NULL,
     answer("Nicht so sensibel Ausreißern gegenüber wie das arithmetische Mittel."),
     answer("Entspricht stets dem arithmetischem Mittel.", correct = TRUE),
     answer("50% aller Werte sind kleiner (gleich) diesem Wert."),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Median und Mittelwert können bei symmetrischen Verteilungen identisch sein, in der Regel unterscheiden sie sich aber.",
+    correct = "Richtig, das 50%-Quantil ist auch als Median bekannt, der die oberen und unteren 50% aller aufgelisteten Werte trennt. Da zur Bestimmung die Werte der Größe nach geordnet werden müssen und dann der mittlere Wert als Median bestimmt wird, ist dieser Wert robust gegenüber Ausreißern - ander als das arithmetische Mittel, welches auch als Mittelwert oder Durchschnitt bekannt ist.",
+    incorrect = "Leider falsch, das 50%-Quantil wird nämlich auch als Median bezeichnet. Und obwohl Median und Mittelwert bei symmetrischen Verteilungen identisch sein können, unterscheiden sie sich in der Regel voneinander. Denke noch einmal an unser Vorgehen, wenn wir den Median bestimmen, was sagt die Kennzahl aus und welchen Einfluss haben Ausreißer?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -408,8 +404,8 @@ quiz(caption = NULL,
     answer("Alle Beobachtungen liegen innerhalb der 'Box'."),
     answer("Sie fassen 5 Punkte einer Verteilung zusammen.", correct = TRUE),
     answer("Boxplots kann man auch auf nominalskalierte Variablen wie Kontinente anwenden."),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Boxplot ist nur auf mindestens ordinalskalierte Variablen anwendbar und geben den Median aus. Ausreißer können auch außerhalb der Whisker abgetragen sein.",
+    correct = "Richtig, auch wenn in unserem ersten Beispiel der Mittelwert erkennbar ist, werden in der Regel lediglich die fünf Punkte einer Verteilung angegeben - der Mittelwert zählt allerdings nicht dazu. Darüberhinaus ist der Boxplot eben nur auf mindestens ordinalskalierte Variablen anwendbar. Auch wenn das in diesem Fall nicht zutrifft, aber anhand des oberen Beispiels haben wir gesehen, dass Ausreißer auch außerhalb der Whisker (dt. Antennen) abgetragen sein können.",
+    incorrect = "Leider falsch, auch wenn der Mittelwert in unserem ersten Beispiel erkennbar ist, werden in der Regel lediglich die fünf Punkte einer Verteilung angegeben. Um einen Boxplot bzw. die darin enthaltenen Kennzahlen bestimmen zu können, müssen wir unsere Werte der Größe nach sortieren, aber dürfen wir das auch mit nominal skalierten Werten tun? Betrachte doch noch einmal das obere Beispiel, was fällt dir auf? Liegen alle Werte innerhalb der Whisker (dt. Antennen) oder können sie auch außerhalb abgetragen sein?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -422,8 +418,8 @@ quiz(caption = NULL,
     answer("Median", correct = TRUE),
     answer("75%-Quantil", correct = TRUE),
     answer("Maximum", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: nur wenn Mittelwert und Median identisch sind, wird auch der Mittelwert erfasst.",
+    correct = "Richtig, bis auf den Mittelwert zählen alle aufgelisteten Werte zu den fünf Punkten einer Verteilung. Dieser wird nur erfasst, wenn er identisch ist mit dem Median.",
+    incorrect = "Leider falsch, schau' doch noch einmal weiter oben nach, dort findest Du die Lösung! Tipp: Der Mittelwert wird nur erfasst, wenn er identisch ist mit dem Median.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -440,9 +436,10 @@ quiz(caption = NULL,
   
 <h4><b>Exkurs: Beziehungen zwischen Variablen</b></h4> 
 
-Bisher haben wir uns vor allem der **univariaten** (= eine Variable) Verteilung von Plastikstücken gewidmet. Nun möchten wir die Daten weiter nutzen, um **bivariat** (= zwei Variablen) herauszuarbeiten: Welche Faktoren beeinflussen möglicherweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Vielleicht die Zahl an Events? Oder ist es vielleicht eher die Zahl an Freiwilligen im Land?
+Bislang haben wir uns vor allem die Verteilung einer einzelnen Variable (gesammelte Plastikteile) gewidmet. Man spricht in einem solchen Fall auch von einer **univeriaten** Verteilung, d.h. das lediglich eine Variable für sich betrachtet wird. Wir interessieren uns nun aber vor allem für die Beziehung zwischen verschiedenen Variablen: Welche Faktoren beeinflussen möglicherweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Vielleicht die Zahl an Events? Oder ist es vielleicht eher die Zahl an Freiwilligen im Land?
+Wenn wir in diesem Zusammenhang zwei Variablen (z.B. Anzahl Plastikteile und Anzahl Events) betrachten, sprechen wir dabei von einer **bivariaten** Beziehung. Wir könnten allerdings auch mehr als zwei Variablen betrachten (z.B. Anzahl Plastikteile, Anzahl Events und Anzahl der Freiwilligen im Land) - dann würden wir von einer **mutlivariaten** Beziehung sprechen. 
 
-Für Fragestellungen zu möglichen Korrelationen zwischen zwei Variablen kann uns ein Scatterplot Aufschluss geben. Hier testen wir, ob die Anzahl an Events und/oder die Anzahl an Freiwilligen möglicherweise die Anzahl der gefundenen Plastikstücke beeinflusst. Eine Hilfslinie zeigt die Korrelation dieser beiden Variablen. Vergleichen wir mal...
+Bleiben wir aber einmal bei den bivariaten Beziehungen (= zwei Variablen) und fragen uns, ob zwischen diesen beiden Variablen **ein Zusammenhang** besteht, d.h. ob sie möglicherweise miteinander **korrelieren**. Für Fragestellungen zu möglichen Korrelationen zwischen zwei Variablen kann uns ein Scatterplot Aufschluss geben. Damit testen wir, ob die Anzahl an Events und/oder die Anzahl an Freiwilligen möglicherweise einen Einfluss auf die Anzahl der gefundenen Plastikstücke. Die rote Hilfslinie zeigt uns die Korrelation dieser beiden Variablen. Vergleichen wir mal...
 
 <div style='float: left; width: 50%;'>
 ```{r scatter_plot_n_events, fig.width=4,fig.height=3}
@@ -497,35 +494,34 @@ ggplot(data = community, aes( x = n_volunteers,
 ```
 </div>
 
-Wenn wir uns das Punktediagramm ansehen, dass die Anzahl an Plastikstücken der Anzahl an Freiwilligen gegenüberstellt, ist ein etwas deutlicherer Zusammenhang als bei der Anzahl an Events erkenntlich: die Trendlinie zeigt an, dass mit Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt nicht mit Sicherheit aus, dass mehr Freiwillige die *Ursache* für mehr gesammelte Plastikstücken sind. Wir beobachten sie lediglich gleichzeitig. Außerdem muss auch hier wieder beachtet werden, dass die Aussage nur auf Länderebene getroffen werden kann: es kann nicht geschlossen werden, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. Wir erinnern uns an das Stichwort "Ökologischer Fehlschluss" von oben.
+Betrachten wir also zunächst das rechte Punktediagramm, welches die Anzahl an Plastikstücken der Anzahl an Freiwilligen gegenüberstellt. Anhand der Steigung unserer roten Hilfslinie erkennenwir einen deutlicheren Zusammenhang als im rechten Diagramm, das Plastikstücke und Anzahl der Events gegenüberstellt. Die Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang aus**! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikstücken sind - wir beobachten beide Entwicklungen lediglich gleichzeitig. Wir müssen außerdem beachten, dass wir diese Aussage nur auf Länderebene treffen können. Wir können daher nicht darauf schließen, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. Wir erinnern uns an das Stichwort **"Ökologischer Fehlschluss"** von oben.
 
-Was nehmen wir aus dieser bivariaten Analyse mit? Die Anzahl an Events korreliert nur sehr schwach positiv mit der Anzahl gesammelter Plastikstücke. Die Anzahl der Freiwilligen korreliert stark positiv mit der Anzahl an gesammelten Plastikstücken. Für diesen Zusammenhang kann es viele Ursachen geben, die wir in unseren Daten überhaupt nicht betrachten, zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, welche einzelene Freiwillige investiert haben.
-
-Welche "Störfaktoren" fallen Euch noch ein?
+Welche Aussagen können wir also nun anhand dieser bivariaten Analyse treffen? Wir sehen, dass die Anzahl durchgeführter Events nur sehr schwach positiv mit der Anzahl gesammelter Plastikstücke korreliert (schwache Steigung der Geraden). Die Anzahl der Freiwilligen korreliert im Gegensatz dazu relativ stark positiv mit der Anzahl an gesammelten Plastikstücken (große Steigung der Geraden). Allerdings kann es für diese unterschiedlichen Zusammenhänge viele verschiedene Ursachen geben, die wir mit unseren Daten überhaupt nicht betrachten können - zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, welche einzelene Freiwillige in die Aktion investiert haben. Welche anderen "Drittvariablen" fallen Euch noch ein?
 
 </details>
 
 ---
 
 
-### **Und jetzt Ihr**
+# **Und jetzt Ihr!**
 Diese Woche möchten wir die Präsenzzeit nutzen, um die folgenden Übungen zu besprechen. Ergänzt unseren Input gerne zudem mit Euren **Ideen, Fragen, Anregungen oder Kommentaren**. Es ist nicht schlimm, falls diese Woche noch gar nichts (komplexes) klappt, da wir das Gelernte in den nächsten Wochen wiederholen und vertiefen werden.
 
-1.  Beantwortet anhand der präsentierten Datenanalyse die vorgestellten **Fragen**: <br>
-
--   Wie viel Plastik wurde insgesamt gesammelt? <br>
--   Wie viel Plastik wurde durchschnittlich je Kontinent gesammelt? <br>
--   Welche Faktoren beeinflussen möglicherweise diese Unterschiede? <br>
+1.  Beantwortet anhand der präsentierten Datenanalyse folgende Fragen: <br>
+  
+  - Wie viel Plastik wurde insgesamt gesammelt? <br>
+  - Wie viel Plastik wurde durchschnittlich je Kontinent gesammelt? <br>
+  - Welche Faktoren beeinflussen möglicherweise diese Unterschiede? <br>
 
 2.  Überlegt: Mit welchen Daten und Datenanalysen könnte die Frage "Wie erfolgreich war der Audit?" noch beantwortet werden? Wie könnte eine Visualisierung oder eine zusammenfassende Statistik dabei helfen? Skizziert Eure Fragen gerne schriftlich.
 
-3.  Versucht, das zugehörige **R Markdown: 06_daten-verstehen-mit-r-uebung.Rmd** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"} unter 06_daten-verstehen-mir-r) zum Laufen zu bringen und es nachzuvollziehen.
+3.  Versucht, das zugehörige **R Markdown: 06_daten-verstehen-mit-r-uebung.Rmd** im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"} unter 06_daten-verstehen-mir-r zum Laufen zu bringen und es nachzuvollziehen.
 
-4.  In der ersten Einheit haben wir uns bei der Visualisierung vor allem der **n_pieces Variable** gewidmet. Nun blicken wir auf die **n_volunteers**: Wie sehr unterscheiden sich die Freiwilligenzahlen nach Kontinenten? Erstellt in dem heruntergeladenen RMarkdown ein **Punktediagramm** (Scatterplot) mit dem Datensatz `community` für diesen Blickwinkel auf den Erfolg der "Break Free from Plastic" Aktion. Die Graphik soll `n_volunteers`, die **Anzahl der Freiwilligen** auf der y-Achse und die **Kontinente** auf der x-Achse zeigen. *Hinweis: Versucht dazu im RMarkdown in der finalen Version der Graphik die entsprechenden Variablen auszutauschen (und sonst erstmal nichts).*
+4.  In der ersten Einheit haben wir uns bei der Visualisierung vor allem der `n_pieces`-Variable gewidmet. Nun blicken wir auf die **`n_volunteers`**: Wie sehr unterscheiden sich die Freiwilligenzahlen nach Kontinenten? Erstellt in dem heruntergeladenen RMarkdown ein **Punktediagramm** (Scatterplot) mit dem Datensatz `community` für diesen Blickwinkel auf den Erfolg der "Break Free from Plastic" Aktion. Die Graphik soll `n_volunteers` auf der y-Achse und `continents`auf der x-Achse abbilden. Verseht beide Achsen mit den entsprechenden Labels **"Anzahl der Freiwilligen"** und **"Kontinente"**.
+*Hinweis: Versucht dazu im RMarkdown in der finalen Version der Graphik die entsprechenden Variablen auszutauschen.*
 
-5.  Interpretiert die Graphik. Was könnt Ihr ablesen?
+5.  Veruschen wir uns an der Interpretation der Graphik. Was können wir aus unseren Darstellungen ablesen?
 
-### **Zusätzliche Ressourcen**
+# **Zusätzliche Ressourcen**
 
 -   Die kostenlosen Kurse des [Statistischen Bundesamts](https://www.destatis.de/DE/Service/Statistik-Campus/E-Learning/eLearning-statistik.html;jsessionid=63AE25DDABD8853990FBE83F354C8911.live722?nn=206328){target="_blank"}
 -   Stocker T. C. und Steinke I. (2017): Statistik – Grundlagen und Methodik [verfügbar z.B. hier](https://www.beck-shop.de/stocker-steinke-de-gruyter-studium-statistik/product/32926361){target="_blank"}
