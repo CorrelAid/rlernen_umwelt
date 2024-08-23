@@ -80,7 +80,7 @@ Um Fehlern vorzubeugen, solltet Ihr - wenn möglich - die Datei vorab in einem *
 Einereits können wir CSV-, XLSX-, SPSS-, SAS und Stata-Dateien ganz klassisch manuell und **ohne Code** in RStudio importieren. Dabei navigieren wir über "File" -> "Import Dataset" zum entsprechenden Dateiformat und können dann ganz einfach unseren File/URL eingeben und schon haben wir unseren Datensatz in R importiert!
 Alternativ können wir diese Dateien auch mit Funktionen diverser Packages importieren - wie genau wir das machen, schauen wir uns nach dem Quiz genauer an.
 
-## **Quiz**
+### **Quiz**
 ```{r quiz_datenimport, echo=FALSE}
 quiz(caption = NULL,
      
@@ -141,9 +141,9 @@ Im restlichen Kapitel wollen wir nun anhand praktischer Übungen den Import unte
 
 ## **CSV-Dateien**
 
-### **Datenimport über URLs**
-
 In einer **CSV-Datei (comma separated values, zu dt. Komma getrennte Werte)** werden - wie der Name bereits vermuten lässt - die verschiedenen **Datenwerte durch Kommata getrennt**. Wie wir bereits gelernt haben, entspricht dabei **jede Zeile einer Beobachtung**, wobei die **erste Zeile "Header"** genannt wird. Diese erste Zeile enthält keine Werte im eigntlichen Sinne, sondern die Bezeichnungen der einzelnen Spalten, also die Namen der Variablen. Wir nutzen den Header, um auf bestimmte Spalten und Werte zuzugreifen. 
+
+### **Datenimport über URLs**
 
 Das `readr`-Package ist ein Paket, das uns den Import verschiedener Dateien ermöglicht. Innerhalb dieses Packages können wir die `read.csv()`-Funktion nutzen, um CSV-Dateien zu importieren. Wichtig ist, dass wir dabei das **Komma als Separator** zwischen den verschiedenen Argumenten und den **Punkt als Dezimaltrennzeichen** verwenden! Schauen wir uns nun einmal die verschiedenen Argumente der FUnktion an, die wir entsprechend unserer Dateistruktur setzen können:
 
@@ -258,8 +258,8 @@ Versucht nun einmal mithilfe der gleichen Funktion das zweite Arbeitsblatt "by_c
 readxl::read_excel(
   path = here::here("daten/Beach Clean Up - Google Trends.xlsx"), # Änderung Dateinamen
   sheet = "by_country",                                           # Änderung Arbeitsblatt
-  col_names = TRUE,
-  na = c("", NA))
+  col_names = TRUE,                                               # Spaltennamen
+  na = c("", NA))                                                 # fehlende Werte
 ```
 
 ```{r exercise_excel-check}
