@@ -262,10 +262,11 @@ Ein Schlagwort welches häuftig in Verbindung mit der Aggregation von Daten fäl
 
 ## **4. Schritt der Datenanalyse: Visualisierung**
 
+Wir haben nun bereits verschiedene Funktionen kennengelernt, mit deren Hilfe wir uns in realtiv kurzer Zeit einen generellen Überblick über unsere Daten verschaffen können. Diese liefern uns in der Regel Tabellen, die mit statistischen Kennzahlen gefüllt sind. Diese Werte sind wichtig, aber bei so vielen verschiedenen Zahlen kann es doch schnell mal passieren, dass wir ein wenig durcheinander kommen. Einfache **Datenvisualisierungen** wären an dieser Stelle also auf jeden Fall hilfreich! So lassen sich Daten grafish darstellen und statistische Muster für das bloße Auge sichtbar machen und wir müssen uns eben nicht durch lauter Kennzahlen kämpfen. Da wir uns allerdings noch immer in einem explorativen Schritt der Datenanalyse befinden, wollen wir an dieser Stelle unsere Aufmerksamkeit nicht unbedingt auf den genauen Codes der Diagramme (engl. Plots) legen - vorrangig soll es nämlich um das Erkennen von Datenverhalten und -muster gehen. Wie wir die verschiedenen grafischen Darstellungsmöglichkeiten selbst erstellen, werden wir uns in einer späteren Session noch im Detail anschauen!
+
 ### **Grafik: Das Punktdiagramm**
 
-Wir haben nun bereits verschiedene Funktionen kennengelernt, mit deren Hilfe wir uns in realtiv kurzer Zeit einen generellen Überblick über unsere Daten verschaffen können. Diese liefern uns in der Regel Tabellen, die mit statistischen Kennzahlen gefüllt sind. Diese Werte sind wichtig, aber bei so vielen verschiedenen Zahlen kann es doch schnell mal passieren, dass wir ein wenig durcheinander kommen. Einfache **Datenvisualisierungen** wären an dieser Stelle also auf jeden Fall hilfreich! So lassen sich Daten grafish darstellen und statistische Muster für das bloße Auge sichtbar machen und wir müssen uns eben nicht durch lauter Kennzahlen kämpfen. Da wir uns allerdings noch immer in einem explorativen Schritt der Datenanalyse befinden, wollen wir an dieser Stelle unsere Aufmerksamkeit nicht unbedingt auf den genauen Codes der Diagramme (engl. Plots) legen - vorrangig soll es nämlich um das Erkennen von Datenverhalten und -muster gehen. Wie wir die verschiedenen grafischen Darstellungsmöglichkeiten selbst erstellen, werden wir uns in einer späteren Session noch im Detail anschauen!
-Betrachten wir also noch einmal die verschiedenen Kontinente. Mithilfe des Packages **`ggplot2`** können wir hierfür ein sogenanntes **Punktediagramm (engl. Scatterplott)** erstellen. Mit diesem Package kann man verschiedene Grafiken über eine Art **Schichtsystem** erstellen:
+Bleiben wir an dieser Stelle einmal bei den verschiedenen Kontinenten. Mithilfe des Packages **`ggplot2`** können wir hierfür ein sogenanntes **Punktediagramm (engl. Scatterplott)** erstellen. Mit diesem Package kann man verschiedene Grafiken über eine Art **Schichtsystem** erstellen:
   - 1. Schicht: Verweis auf den verwendeten Datensatz (`data = community`) und die Variablen, die entlang der x- und y-Achsen dargestellt werden sollen (`aes(x = continent, y = n_pieces)`).
   - 2. Schicht: Bestimmung der Art der Visualisierung durch die **`geom_jitter()`-Funktion**. 'jitter' beschreibt eine besondere Art von Punktediagramm, bei dem Datenpunkte sich ausweichen um die Lesbarkeit bei Überlagerung zu ermöglichen.
   - 3. Schicht: Beschriftung der Grafik mithilfe der **`labs()`-Funktion**. In diesem Schritt werden Überschrift(en), Achsen und Bilderunterschrift mit Labels versehen.
@@ -328,7 +329,7 @@ summarize(group_by(community, Kontinent = community$continent),
          "Spannweite" = max(n_pieces) - min(n_pieces)) 
 ```
 
-#### **Interpretation der Daten**
+## **5. Schritt: Die Interpretation der Daten**
 
 Werfen wir also einen Blick auf den Output: Was bedeuten die ganzen Kennzahlen nochmal genau und welche Aussagen können wir jetzt eigentlich treffen? 
 *Tipp: Wenn Ihr Euch nicht mehr sicher seid, schaut doch nochmal in die Lektion zu den Grundlagen der Statistik. Weiter unten findet Ihr als kleine Hilfestellung auch eine zusammenfassende Abbildung, die die statistischen Werte nochmal gegenüberstellt.*
@@ -433,7 +434,7 @@ quiz(caption = NULL,
 <details>
   <summary><h4>&#10145; Exkurs: Beziehungen zwischen Variablen</h4></summary>
   <br>
-  
+
 <h4><b>Exkurs: Beziehungen zwischen Variablen</b></h4> 
 
 Bislang haben wir uns vor allem die Verteilung einer einzelnen Variable (gesammelte Plastikteile) gewidmet. Man spricht in einem solchen Fall auch von einer **univeriaten** Verteilung, d.h. das lediglich eine Variable für sich betrachtet wird. Wir interessieren uns nun aber vor allem für die Beziehung zwischen verschiedenen Variablen: Welche Faktoren beeinflussen möglicherweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Vielleicht die Zahl an Events? Oder ist es vielleicht eher die Zahl an Freiwilligen im Land?
