@@ -309,26 +309,32 @@ An dieser Stelle seid Ihr dran! Ihr dürft gerne veruchen, Eure **eigene Datens�
 
 <h2><b>Exkurs 1: APIs</b></h2>  
 
-<h3><b>APIs in R-Packages</b></h3>
-Der Umgang mit APIs ist für Programmieranfänger*innen oft eine Herausforderung. Viele APIs sind aber bereits in passende **Packages** eingebettet, über die der Zugriff auf die Daten wesentlich leichter funktioniert. Über das Package `WDI` könnt Ihr beispielsweise **Daten der World Bank** laden, die Euch helfen können, Eure gesellschaftliche Herausforderung besser zu verstehen und zu kontextualisieren. In der Datenbank gibt es den Indikator "Terrestrial and marine protected areas (% of total territorial area)", der für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und Fördernden genutzt werden soll. Für "Break Free From Plastics" ist dieser Indikator spannend, weil in **Naturschutzgebieten** Flora und Fauna besser vor Plastikmüll geschützt sind. In Ländern, wo neben der hohen Müllmenge und der niedrigen Recyclingquoten, besonders wenige Gebiete als Naturschutzgebiete ausgezeichnet sind, könnte der Bedarf nach gemeinnützigen Organisationen wie "Break Free From Plastic", die die Natur von schädlichen Plastikmüll befreien, also besonders hoch sein.
+<h3><b>Was sind APIs?</b></h3>
+Eine **API (Application Programming Interface)** ist ein Programm, das es zwei verschiedenen Anwendungen ermöglicht, miteinander zu kommunizieren und **Daten auszutauschen**. Wir machen uns das Leben also leichter und ersparen es und, eine Anwendung komplett neu zu erstellen und zu entwickeln, um ihre Informationen hinzuzufügen. Daher greifen wir auf eine API zurück, um eine Verbindung zwischen bereits vorhandenen Daten und einem unabhängigen Programm herzustellen. Die Anwendung solcher APIs spielt im Zeitalter von Open Data und der Digitalisierung der Gesellschaft eine zentrale Rolle für das Funktionieren des Internets. Hast Du zum Beispiel schon mal darüber anchgedacht, wie die Wetter-App auf deinem Smartphone funktioniert? Nicht sie holt und analysiert die Wetterinformationen und gibt sie an Dich weiter, sondern eine API verbindet sich mit der Datenbank, in der sich diese Informationen befinden, um sie in deiner Anwendung anzuzeigen.
 
-*Anmerkung: Genau wissen wir das natürlich nicht, die Daten geben uns hier lediglich einen Hinweis darauf, wo der Bedarf groß sein könnte. Deshalb ist es wichtig die Annahmen, auf denen Entscheidungen basieren genau zu definieren und sich darüber Gedanken zu machen, ob die Datengrundlage für eine Entscheidung überhaupt ausreichend ist. Unsere Thesen können wir dann ggf. in Interviews mit Expert\*innen (hier z.B. Naturschützer\*innen) verifizieren.*
+<h3><b>APIs in R-Packages</b></h3>
+Allerdings kann der Umgang mit APIs besonders für Programmieranfänger*innen oft eine Herausforderung darstellen - aber auch hier steht uns R wieder zur Seite: Viele APIs sind nämlich bereits in passende **Packages** eingebettet, wodurch sich der Datenabruf deutlich leichter gestaltet. 
+Wenn wir gesellschaftliche Herausforderungen verstehen und analysieren wollen, können wir zum Beispiel das **Package `WDI`** laden, wodurch wir auf die Daten der **World Bank** zugreifen können. Wir können in dieser Datenbank unter anderem  den **Indikator "Terrestrial and marine protected areas (% of total territorial area)"** abrufen. Dieser soll für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und Fördernden genutzt werden und ist daher für das Netzwerk #Breakfreefromplastics besonders spannend. Gerade die Flora und Fauna in **Naturschutzgebieten** soll besser vor Plastikmüll geschützt werden. In Ländern, wo neben der hohen Müllmenge und der niedrigen Recyclingquoten, besonders wenige Gebiete als Naturschutzgebiete ausgezeichnet sind, könnte der Bedarf nach gemeinnützigen Organisationen wie #Breakfreefromplastic, die die Natur von schädlichen Plastikmüll befreien, also besonders hoch sein.
+
+*Anmerkung: Genau wissen wir das natürlich nicht, wo der Bedarf besonders groß sein könnte - die Daten können hier lediglich als Hinweis interpretiert werden. Daher ist es wichtig, die Annahmen, auf denen unsere Entscheidungen basieren, genau zu definieren und sich darüber Gedanken zu machen, ob die Datengrundlage für eine Entscheidung überhaupt ausreichend ist. Unsere Thesen können wir dann ggf. in Interviews mit Expert:innen (hier z.B. Naturschützer:innen) verifizieren.*
+
 ```{r wb, exercise = TRUE}
 #install.packages("WDI")
 
 # Daten der World Bank mit R-Package ziehen
 wb_areas <- WDI::WDI(
-  country = "all", # Auswahl der Länder
+  country = "all",               # Auswahl der Länder
   indicator = "ER.PTD.TOTL.ZS",  # Spezifikation des Indikators (Tipp: siehe Link in der Datenbank)
-    start = 2018, # Auswahl Zeithorizont: Anfang
-  end = 2018, # Auswahl Zeithorizont: Ende
-  language = "en" # Sprachauswahl
+    start = 2018,                # Auswahl Zeithorizont: Anfang
+  end = 2018,                    # Auswahl Zeithorizont: Ende
+  language = "en"                # Sprachauswahl
 ) 
 
 head(wb_areas)
 ```
 
-Ladet nun den Datensatz zum Indikator ["Fish species, threatened" (EN.FSH.THRD.NO)](https://data.worldbank.org/indicator/EN.FSH.THRD.NO?view=chart){target="_blank"} für das Jahr 2018. Kopiert dazu den Code von oben und fügt den richtigen Indikatorschlüssel ein.
+Ladet nun den Datensatz zum Indikator ["Fish species, threatened"](https://data.worldbank.org/indicator/EN.FSH.THRD.NO?view=chart){target="_blank"} (EN.FSH.THRD.NO) für das Jahr 2018. Kopiert dazu den Code von oben und fügt den richtigen Indikatorschlüssel ein.
+
 ```{r exercise_wb, exercise = TRUE}
 # Euer Code hier
 ```
@@ -336,11 +342,11 @@ Ladet nun den Datensatz zum Indikator ["Fish species, threatened" (EN.FSH.THRD.N
 ```{r exercise_wb-solution}
 # Daten der World Bank mit R-Package ziehen
 WDI::WDI(
-  country = "all", # Auswahl der Länder
+  country = "all",               # Auswahl der Länder
   indicator = "EN.FSH.THRD.NO",  # Spezifikation des Indikators (Tipp: siehe Link in der Datenbank)
-  start = 2018, # Auswahl Zeithorizont: Anfang
-  end = 2018, # Auswahl Zeithorizont: Ende
-  language = "en" # Sprachauswahl
+  start = 2018,                  # Auswahl Zeithorizont: Anfang
+  end = 2018,                    # Auswahl Zeithorizont: Ende
+  language = "en"                # Sprachauswahl
 ) 
 ```
 
@@ -350,95 +356,95 @@ grade_this_code()
 
 Daten mit APIs, die in R-Packages eingebettet sind, zu importieren, ist sehr einfach und wir sparen uns viel Zeit für die Datenbereinigung. Neben dem `WDI`-Package für die World Bank, gibt es noch viele **weitere, nützliche R-Packages**:
 
-- `acled.api`-Package: Daten zu **bewaffneten Konflikten** von ACLED (zur [Doku](https://cran.r-project.org/web/packages/acled.api/index.html){target="_blank"}//mehr [Infos](https://acleddata.com/#/dashboard){target="_blank"})
-- `datenguideR`-Package: Daten der **amtlichen Amtstatistik** in Deutschland (zum [Repo](https://github.com/CorrelAid/datenguideR){target="_blank"}//mehr [Infos](https://datengui.de/){target="_blank"})
-- `DWD`-Package: Daten des **Deutschen Wetter Dienstes** (zur [Doku](https://github.com/CorrelAid/datenguideR){target="_blank"}//mehr [Infos](https://www.dwd.de/DE/Home/home_node.html){target="_blank"})
-- `eurostat`-Package: Open Data von **Eurostat** (zur [Doku](https://cran.r-project.org/web/packages/eurostat/index.html){target="_blank"}//mehr [Infos](https://ec.europa.eu/eurostat/de/home){target="_blank"})
-- `GermaParl`-Package: Plenarprotokolle des **Bundestags** (zur [Doku](https://cran.r-project.org/web/packages/gesisdata/index.html){target="_blank"}//mehr [Infos](https://www.gesis.org/home){target="_blank"})
-- `gesisdata`-Package: Daten des **Leibniz-Instituts** (zur [Doku](https://cran.r-project.org/web/packages/gesisdata/index.html){target="_blank"}//mehr [Infos](https://www.gesis.org/home){target="_blank"})
-- `googleAnalyticsR`-Package: Daten von **Google Analytics** (zur [Doku](https://cran.r-project.org/web/packages/googleAnalyticsR/index.html){target="_blank"}//mehr [Infos](https://analytics.google.com/analytics/web/provision/#/provision){target="_blank"})
-- `gtrendsR`-Package: **Google Trends** Daten (zur [Doku](https://cran.r-project.org/web/packages/gtrendsR/gtrendsR.pdf){target="_blank"}//mehr [Infos](https://trends.google.com/trends/?geo=FR){target="_blank"})
-- `nasadata`-Package: Daten von **NASA** (zur [Doku](https://cran.r-project.org/web/packages/nasadata/index.html){target="_blank"}//mehr [Infos](https://data.nasa.gov/){target="_blank"})
-- `pangaear`-Package: Daten zu Erde und **Umwelt** (zur [Doku](https://cran.r-project.org/web/packages/pangaear/pangaear.pdf){target="_blank"}//mehr [Infos](https://www.pangaea.de/){target="_blank"})
+- `acled.api`-Package: Daten zu **bewaffneten Konflikten** von ACLED (zur [Doku](https://cran.r-project.org/web/packages/acled.api/index.html){target="_blank"}/mehr [Infos](https://acleddata.com/#/dashboard){target="_blank"})
+- `datenguideR`-Package: Daten der **amtlichen Amtstatistik** in Deutschland (zum [Repo](https://github.com/CorrelAid/datenguideR){target="_blank"}/mehr [Infos](https://datengui.de/){target="_blank"})
+- `DWD`-Package: Daten des **Deutschen Wetter Dienstes** (zur [Doku](https://github.com/CorrelAid/datenguideR){target="_blank"}/mehr [Infos](https://www.dwd.de/DE/Home/home_node.html){target="_blank"})
+- `eurostat`-Package: Open Data von **Eurostat** (zur [Doku](https://cran.r-project.org/web/packages/eurostat/index.html){target="_blank"}/mehr [Infos](https://ec.europa.eu/eurostat/de/home){target="_blank"})
+- `GermaParl`-Package: Plenarprotokolle des **Bundestags** (zur [Doku](https://cran.r-project.org/web/packages/gesisdata/index.html){target="_blank"}/mehr [Infos](https://www.gesis.org/home){target="_blank"})
+- `gesisdata`-Package: Daten des **Leibniz-Instituts** (zur [Doku](https://cran.r-project.org/web/packages/gesisdata/index.html){target="_blank"}/mehr [Infos](https://www.gesis.org/home){target="_blank"})
+- `googleAnalyticsR`-Package: Daten von **Google Analytics** (zur [Doku](https://cran.r-project.org/web/packages/googleAnalyticsR/index.html){target="_blank"}/mehr [Infos](https://analytics.google.com/analytics/web/provision/#/provision){target="_blank"})
+- `gtrendsR`-Package: **Google Trends** Daten (zur [Doku](https://cran.r-project.org/web/packages/gtrendsR/gtrendsR.pdf){target="_blank"}/mehr [Infos](https://trends.google.com/trends/?geo=FR){target="_blank"})
+- `nasadata`-Package: Daten von **NASA** (zur [Doku](https://cran.r-project.org/web/packages/nasadata/index.html){target="_blank"}/mehr [Infos](https://data.nasa.gov/){target="_blank"})
+- `pangaear`-Package: Daten zu Erde und **Umwelt** (zur [Doku](https://cran.r-project.org/web/packages/pangaear/pangaear.pdf){target="_blank"}/mehr [Infos](https://www.pangaea.de/){target="_blank"})
 - `rtweet`-Package: **Twitter**-Daten (zur [Doku](https://cran.r-project.org/web/packages/rtweet/rtweet.pdf){target="_blank"}//mehr [Infos](https://www.twitter.com/){target="_blank"})
 - `salesforcer`-Package: Interaktion mit Daten in Salesforce (zur [Doku](https://cran.r-project.org/web/packages/salesforcer/index.html){target="_blank"})
-- `dieZeit`-Package: Online-Veröffentlichungen der **Zeit** (zur [Doku](https://cran.r-project.org/web/packages/diezeit/index.html){target="_blank"}//mehr [Infos](https://www.zeit.de/){target="_blank"})
+- `dieZeit`-Package: Online-Veröffentlichungen der **Zeit** (zur [Doku](https://cran.r-project.org/web/packages/diezeit/index.html){target="_blank"}/mehr [Infos](https://www.zeit.de/){target="_blank"})
 - uvm...
 
-Schaut Euch gerne um - entweder über eine Suchmaschinenrecherche dazu, ob Eure Lieblingsdatenquelle ein zugehöriges R-Package hat, oder auf dieser Liste aller R-Packages, die über [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html){target="_blank"} (Comprehensive R Archive Network, zu dt. Umfassendes R-Archivnetzwerk), die zentrale Stelle für geprüfte Package-Distribution, installiert werden können. <br>
+Schaut gerne,  ob Eure Lieblingsdatenquelle ein zugehöriges R-Package hat! Ihr könnt dazu eine eigene Suchmaschinenrecherche durchführen oder einen Blick in diese Liste aller R-Packages, die über [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html){target="_blank"} werfen - vielleicht hat sogar Eure Lieblingsdatenquelle ein eigenes R-Package. "CRAN" steht übrigens für **Comprehensive R Archive Network (dt. Umfassendes R-Archivnetzwerk)** und ist die zentrale Stelle für geprüfte Package-Distribution, die installiert werden können. <br>
 *Hinweis: Manche Packages wurden (noch) nicht in die Liste der von RStudio geprüften CRAN-Packages aufgenommen. Ihre Installation erfolgt zumeist über den Befehl `remotes::install_github("Link zum Github-Repository")`.*
 
 <h3><b>Eigene API Anfragen</b></h3>
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/deed.de)
 
-*"Eigene API-Anfragen (Exkurs)" von Frie Preu in "R Lernen - der Datenkurs von und für die Zivilgesellschaft" von CorrelAid e.V. Lizensiert unter [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.de).*
+*"Eigene API-Anfragen (Exkurs)" von Leo Preu in "R Lernen - Der Datenkurs von und für die Zivilgesellschaft" von CorrelAid e.V. Lizensiert unter [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.de).*
 
 ![*Video: Eigene API-Anfragen (10min)*](https://youtu.be/DePm6F_6YMA)
 
 <h4><b>Interaktive Übung</b></h4>
-Eine API (_Application Programming Interface_, de: Schnittstelle zur Programmierung von Anwendungen) ist eine Schnittstelle, die ein System bereitstellt, um anderen Programmen die Interaktion zu ermöglichen. 
+Eine API (Application Programming Interface) ist eine Schnittstelle, die ein System bereitstellt, um anderen Programmen die Interaktion zu ermöglichen. 
 
 Eine Interaktion sieht so aus:
 
-1. Der **Client** macht eine Anfrage (engl. Request) an die API
-2. Die API verarbeitet die Anfrage und gibt eine Antwort (engl.: **Response**) zurück. 
-3. Der Client verarbeitet die Antwort.
+1. Der Client macht eine **Anfrage (engl. Request**) an die API
+2. Die API verarbeitet die Anfrage und gibt eine **Antwort (engl.: Response)** zurück. 
+3. Der Client **verarbeitet** die Antwort.
 
-APIs verfügen zumeist über eine **Dokumentation**, die enthält, welche Funktionalitäten verfügbar sind und wie Anfragen gestellt werden müssen.
+APIs verfügen zumeist über eine **Dokumentation**. Diese enthalten Informationen darüber, welche Funktionalitäten verfügbar sind und wie Anfragen gestellt werden müssen.
 
-**Analogie**: Wenn Ihr (als _Client_) im Restaurant seid, stellt Euch das Restaurant eine*n Kellner\*in (Eure _API_) und eine Speisekarte (Eure _API-Dokumentation_) bereit. Der\*die Kellner\*in nimmt Eure Bestellungen (_Anfragen_) entgegen, die Küche verarbeitet diese und der:die Kellner\*in bringt Eure Bestellung (_Antwort_). 
+**Analogie: Wenn wir im Restaurant sind (= Client), stellt uns das Restaurant eine:n Kellner:in (= unsere API) und eine Speisekarte (unsere API-Dokumentation) bereit. Der:die Kellner:in nimmt unsere Bestellungen (= Resquests/Anfragen) entgegen. Die Küche verarbeitet diese und der:die Kellner:in bringt uns die Bestellung (= Antwort). 
 
-Die allermeisten APIs heutzutage verwenden das HTTP-Protokoll, welches fünf sogenannte _Methoden_ umfasst: GET, POST, PUT, PATCH und DELETE. Da wir in unserem Fall auf Interaktionen schauen, welche sich auf den Datenaustausch fokussieren, ergeben sich folgende Entsprechungen:
+Die allermeisten APIs heutzutage verwenden das HTTP-Protokoll, welches fünf sogenannte **Methoden** umfasst: GET, POST, PUT, PATCH und DELETE. Da wir in unserem Fall auf Interaktionen schauen, welche sich auf den Datenaustausch fokussieren, ergeben sich folgende Entsprechungen:
 
-- `GET` --> Daten lesen
-- `POST` --> Neue Daten erstellen
-- `PUT` --> Daten ersetzen
-- `PATCH` --> Daten aktualisieren
-- `DELETE` --> Daten löschen
+  - `GET`    --> Daten lesen
+  - `POST`   --> Neue Daten erstellen
+  - `PUT`    --> Daten ersetzen
+  - `PATCH`  --> Daten aktualisieren
+  - `DELETE` --> Daten löschen
 
 (siehe Folie 10 von ["Datenzugriff im World Wide Web"](https://projektzyklus.correlaid.org/07_datenmanagement-webdaten/2021-05-09_Datenzugriff_im_WWW.pdf), Jan Dix, lizensiert unter [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode.de).)
 
-[Hier (en)](https://github.com/public-apis/public-apis) findet Ihr eine Liste von öffentlichen APIs, die Ihr kostenfrei nutzen könnt. 
+[Hier](https://github.com/public-apis/public-apis) findet Ihr eine Liste von öffentlichen APIs, die Ihr kostenfrei nutzen könnt. 
 
 <h4><b>GET-Anfragen</b></h4>
-Wenn Ihr nur Daten laden möchtet, reicht `GET` meistens aus. Je nach API können allerdings auch `POST` Anfragen notwendig sein. `GET`-Anfragen können als normale URL (das was Ihr in euren Browser eingebt) abgebildet werden. Diese URLs setzen sich aus drei Teilen zusammen: 
-`{BASIS_URL}/{ROUTE}?{QUERY_PARAMETER}`. 
+Wenn wir nur Daten laden möchten, reicht `GET` meistens aus. Je nach API können allerdings auch `POST` Anfragen notwendig sein. `GET`-Anfragen können als normale URL (das was wir in unseren Browser eingeben) abgebildet werden. Diese URLs setzen sich aus drei Teilen zusammen: 
+**`{BASIS_URL}/{ROUTE}?{QUERY_PARAMETER}`**. 
 
-Das kennt Ihr zum Beispiel von einer Google-Suche: `https://www.google.com/search?q=CorrelAid`.
+Wir kennen das zum Beispiel von einer Google-Suche: `https://www.google.com/search?q=CorrelAid`.
 
 - `BASIS_URL`: `https://www.google.com/`
 - `ROUTE`: `search`
 - `QUERY_PARAMETER`:
   - `q`: `CorrelAid`
 
-**Analogie**: Im Restaurant bestellt (--> `GET`) Ihr bei Elmo (Eure API mit der Basis-URL `https://elmo.correlandfriends.de/`) auf der Route "Essen" (`essen`) das Gericht Risotto (Query-Parameter `gericht=risotto`). Die komplette Anfrage-URL wäre also: `https://elmo.correlandfriends.de/essen?gericht=risotto`. Das Fragezeichen signalisiert das Ende der Route und den Anfang der Query-Parameter. 
+**Analogie**: Im Restaurant bestellen (`GET`) wir bei Elmo (unsere API mit der Basis-URL `https://elmo.correlandfriends.de/`) auf der Route "Essen" (`essen`) das Gericht Risotto (Query-Parameter `gericht=risotto`). Die komplette Anfrage-URL wäre also: `https://elmo.correlandfriends.de/essen?gericht=risotto`. Das Fragezeichen signalisiert das Ende der Route und den Anfang der Query-Parameter. 
 
 <h4><b>Statuscodes</b></h4> 
-Fast alle APIs geben in Ihrer Antwort einen Code zurück, anhand dem man schnell sehen kann, ob die Anfrage erfolgreich war oder nicht. Dieser sogenannte _Statuscode_ ist sehr hilfreich, da er Aufschluss gibt, was schief gegangen sein könnte. 
+Fast alle APIs geben in Ihrer Antwort einen Code zurück. Diesen kann man relativ schnell analysieren, um herauszufinden, ob die Anfrage erfolgreich war oder nicht. Dieser sogenannte **Statuscode** ist sehr hilfreich, da er Aufschluss gibt, was schief gegangen sein könnte. 
 
 Wenn die Anfrage erfolgreich war, gibt die API einen `200` Statuscode zurück. Darüber hinaus gibt es viele Statuscodes, die einen Fehler anzeigen. Häufige Fälle sind:
  
-- `404`: Nicht gefunden ("Not found"). Z.B. existiert der Endpunkt / die Route gar nicht in der API 
-- `401`: Nicht autorisiert ("Not authorised"): Ihr seid nicht autorisiert auf die API zuzugreifen, z.B. weil Ihr keinen *Token* übergeben habt.
-- `403`: Nicht erlaubt ("Forbidden"): Ihr seid zwar im Prinzip für die API autorisiert, aber nicht für die Route, auf die ihr zugreifen wollt (z.B. sensitive Daten oder Administration).
-- `422`: Nicht verarbeitbare Anfrage ("Unprocessable Entity"): Eure Anfrage wurde nicht richtig gestellt
-- `500`: Interner Server-Fehler ("Internal Server Error"): Eure Anfrage ist zwar richtig gestellt worden, innerhalb der API kam es aber zu einem Fehler
+- `404`: Nicht gefunden ("Not found"): Endpunkt oder Route existieren gar nicht in der API. 
+- `401`: Nicht autorisiert ("Not authorised"): Wir sind nicht autorisiert auf die API zuzugreifen (z.B. weil wir keinen Token übergeben haben.
+- `403`: Nicht erlaubt ("Forbidden"): Wir sind zwar im Prinzip für die API autorisiert, aber nicht für die Route, auf die wir zugreifen wollen (z.B. sensitive Daten oder Administration).
+- `422`: Nicht verarbeitbare Anfrage ("Unprocessable Entity"): Unsere Anfrage wurde nicht richtig gestellt.
+- `500`: Interner Server-Fehler ("Internal Server Error"): Unsere Anfrage ist zwar richtig gestellt worden, innerhalb der API kam es aber zu einem Fehler.
 
-**Analogie**: Nach Eurem Besuch im Restaurant "Correl and Friends" geht Ihr noch in die Bar "AidBar". Doch irgendwie seid Ihr nicht so richtig satt geworden vorhin und bestellt, ohne die Karte (_API -Dokumentation_) zu konsultieren, eine Pommes (`/essen?gericht=Pommes`). Leider muss Euch die Kellnerin enttäuschen, "Aid's Tavern" verkauft nur Getränke: 404!
+**Analogie**: Nach Eurem Besuch im Restaurant "Correl and Friends" geht Ihr noch in die Bar "AidBar". Doch irgendwie seid Ihr nicht so richtig satt geworden vorhin und bestellt, ohne die Karte (= API-Dokumentation) zu konsultieren, eine Pommes (`/essen?gericht=Pommes`). Leider muss Euch die Kellnerin enttäuschen, "AidBar" verkauft nur Getränke: 404!
 
 Auf Folien 13-16 [dieses Foliensatzes](https://projektzyklus.correlaid.org/07_datenmanagement-webdaten/2021-05-09_Datenzugriff_im_WWW.pdf) findet Ihr noch mehr Erklärungen zu wichtigen Statuscodes.
 
 <h4><b>Beispiel</b></h4>
-Wir verwenden die [Sustainable Development Goals (SDG) API](https://unstats-undesa.opendata.arcgis.com/#api) der Vereinten Nationen (en: _United Nations_), welche Daten über den Fortschritt der [Sustainable Development Goals](https://sdgs.un.org/) bereitstellt. Die Dokumentation der API findet Ihr [hier](https://unstats.un.org/SDGAPI/swagger/). Der Indikator "[Municipal Solid Waste collection coverage by cities (percent)](https://www.sdg.org/datasets/undesa::indicator-11-6-1-municipal-solid-waste-collection-coverage-by-cities-percent/about)" (Seriencode: `EN_REF_WASCOL`) passt gut zu unseren bisherigen Analysen zum Thema Plastikverschmutzung. Um die Daten zu diesem Indikator zu laden, verwendet Ihr den GET-Endpunkt [`/v1/sdg/Series/Data`](https://unstats.un.org/SDGAPI/swagger/#!/Series/V1SdgSeriesDataGet). Zudem habt Ihr nun mehrere Möglichkeiten, Query-Parameter anzugeben, unter anderem den Code des Indikators (`seriesCode`) und den Zeitrahmen, für den Ihr Daten benötigt.
+Wir verwenden die [Sustainable Development Goals (SDG) API](https://unstats-undesa.opendata.arcgis.com/#api) der Vereinten Nationen (engl. United Nations), welche Daten über den Fortschritt der [Sustainable Development Goals](https://sdgs.un.org/) bereitstellt. Die Dokumentation der API findet Ihr [hier](https://unstats.un.org/SDGAPI/swagger/). Der Indikator "[Municipal Solid Waste collection coverage by cities (percent)](https://www.sdg.org/datasets/undesa::indicator-11-6-1-municipal-solid-waste-collection-coverage-by-cities-percent/about)" (Seriencode: `EN_REF_WASCOL`) passt gut zu unseren bisherigen Analysen zum Thema Plastikverschmutzung. Um die Daten zu diesem Indikator zu laden, verwenden wir den GET-Endpunkt [`/v1/sdg/Series/Data`](https://unstats.un.org/SDGAPI/swagger/#!/Series/V1SdgSeriesDataGet). In diesem Fall haben wir nun mehrere Möglichkeiten, Query-Parameter anzugeben, unter anderem den Code des Indikators (`seriesCode`) und den Zeitrahmen, für den wir Daten benötigen.
 
 Um Anfragen an APIs zu machen, nutzen wir das [`httr`](https://httr.r-lib.org/)-Package (Doku).
 
 ```{r series-req, exercise=TRUE}
 # library(httr)
 basis_url <- "https://unstats.un.org/" # Haupt-URL
-initiale_anfrage <- httr::GET( # Initialisierung
-  basis_url, # URL verlinken
+initiale_anfrage <- httr::GET(         # Initialisierung
+  basis_url,                           # URL verlinken
   path = "/SDGAPI/v1/sdg/Series/Data", # Route definieren
   query = list(
     seriescode = "EN_REF_WASCOL"
@@ -446,7 +452,7 @@ initiale_anfrage <- httr::GET( # Initialisierung
 )
 ```
 
-Wenn wir uns die Anfrage-URL anschauen, erkennen wir wieder das Schema `{BASIS_URL}/{ROUTE}?{QUERY_PARAMETER}`.
+Wenn wir uns die Anfrage-URL anschauen, erkennen wir wieder das Schema `{BASIS_URL}/{ROUTE}?{QUERY_PARAMETER}`:
 
 ```{r waste-url, exercise=TRUE}
 initiale_anfrage$url
@@ -459,7 +465,7 @@ quiz(caption = NULL,
     answer("https://unstats.un.org/SDGAPI/v1/sdg/Series/"),
     answer("https://unstats.un.org/", correct = TRUE),
     correct = "Richtig!",
-    incorrect = "Leider falsch: Schaue dir den Code nochmal an!",
+    incorrect = "Leider falsch, schaue dir den Code nochmal genau an!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"),
   question("Was ist die Route der Anfrage?",
@@ -467,7 +473,7 @@ quiz(caption = NULL,
     answer("SDGAPI/v1/sdg/Series/Data/", correct = TRUE),
     answer("sdg/Series/"),
     correct = "Richtig!",
-    incorrect = "Leider falsch: Schaue dir den Code nochmal an!",
+    incorrect = "Leider falsch, schaue dir den Code nochmal genau an!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -478,19 +484,20 @@ quiz(caption = NULL,
     answer("3"),
     answer("4"),
     correct = "Richtig!",
-    incorrect = "Leider falsch: Schaue dir den Code nochmal an!",
+    incorrect = "Leider falsch, schaue dir den Code nochmal genau an!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
 )
 ```
 
-Zuerst checken wir nun den **Statuscode**, um sicher zu gehen, dass unsere Anfrage erfolgreich war. In `httr` gibt es hierzu auch die `stop_for_status` Funktion, die einen Fehler schmeißt, wenn die Anfrage nicht erfolgreich war, sonst aber nichts tut.
+Zuerst checken wir nun den **Statuscode**, um sicher zu gehen, dass unsere Anfrage erfolgreich war. Im `httr`-Package gibt es hierzu auch die **`stop_for_status`**-Funktion, die eine Fehlermeldung ausgibt, wenn die Anfrage nicht erfolgreich war - sonst tut sie Nichts.
 
 ```{r waste-status, exercise=TRUE}
-initiale_anfrage$status_code # 200
-httr::stop_for_status(initiale_anfrage) # nichts passiert, alles gut!
+initiale_anfrage$status_code
+httr::stop_for_status(initiale_anfrage)
 ```
+Wir sehen: Nichts passiert (Statuscode: 200), also alles gut!
 
 Nun fragen wir uns: **Wie viele Seiten Dokument** müssen überhaupt geladen werden? APIs geben Euch nämlich meistens nicht von Haus aus alle Resultate zurück.
 ```{r apicontent, exercise = TRUE}
@@ -503,12 +510,13 @@ print(total_pages)
 pages <- c(1:total_pages)
 ```
 
-Diese Information merken wir uns und schauen uns nun an, was genau die Antwort unserer Anfrage beinhaltet. Diese erhaltet Ihr, indem Ihr die Funktion `httr::content()` (de: Inhalt) verwendet. Output dieser Funktion ist eine **vielschichtige (eng. nested) Liste**.
+Diese Information merken wir uns und schauen uns nun an, was genau die Antwort unserer Anfrage beinhaltet. Diese erhaltet Ihr, indem Ihr die Funktion `httr::content()` (dt. Inhalt) verwendet. Output dieser Funktion ist eine **vielschichtige (engl. nested) Liste**.
 ```{r content, exercise=TRUE}
 # Inhalt der Response herausziehen
 httr::content(initiale_anfrage)
 ```
-Wir erhalten von der Anfrage also eine Liste mit mehreren Elementen zurück, die die gesamte _Antwort_ darstellt. Als Anwender:innen seid Ihr hauptsächlich an den **übermittelten Daten** interessiert, die wir nun ziehen ("$data") . Mit `purrr::map_df` können wir nun die Datenliste (ebenfalls vielschichtig) entpacken.
+
+Wir erhalten von der Anfrage also eine Liste mit mehreren Elementen zurück, die die **gesamte Antwort** darstellt. Als Anwender:innen sind wir hauptsächlich an den **übermittelten Daten** interessiert, die wir nun ziehen ("$data") . Mit `purrr::map_df` können wir nun die Datenliste (ebenfalls vielschichtig) entpacken.
 ```{r goals-extract, exercise=TRUE}
 # Für verschiedene Städte in verschiedenen Ländern erhalten wir so zu verschiedenen Jahren Ihre Müllsammlungsquoten
 waste_list <- waste_data$data
@@ -529,12 +537,12 @@ Abschließend schauen wir uns nochmal genauer eines der Datenelemente an:
 str(waste_data$data[[10]])
 ```
 
-Das Daten-Listenelement enthält ziemlich viele Informationen. Für Euch relevant ist der Wert (`value`) sowie die Informationen über das "Wo": `geoAreaCode` und `geoAreaName`. 
+Das Daten-Listenelement enthält ziemlich viele Informationen. Für uns relevant ist der Wert (`value`) sowie die Informationen über das "Wo": `geoAreaCode` und `geoAreaName`. 
 
-Diese Informationen nutzen wir nun - gemeinsam mit der Seitenanzahl - um für jede Seite die benötigten Informationen zu ziehen und diese in einem Dataframe zusammenzuführen. Wie genau Ihr mit solchen komplexeren Datenstrukturen umgehen könnt und diese Daten aus _allen_ Elementen extrahieren könnt, lernt Ihr zu einem späteren Zeitpunkt in Eurer Karriere als Datenwissenschaftler\*innen der Zivilgesellschaft - hier schon einmal die Preview:
+Diese Informationen nutzen wir nun - gemeinsam mit der Seitenanzahl - um für jede Seite die benötigten Informationen zu ziehen und diese in einem Dataframe zusammenzuführen. Wie genau wir mit solchen komplexeren Datenstrukturen umgehen können und diese Daten aus allen Elementen extrahieren, lernt Ihr zu einem späteren Zeitpunkt in Eurer Karriere als Datenwissenschaftler:innen der Zivilgesellschaft - hier schon einmal die Preview:
 
 ```{r listofdataframes, exercise=TRUE}
-# Funktion, mit der alle Seiten geladen werden, indem die Seitenanzahl "Page" durch eine Nummer zwischen 1 und 11 (= Total Pages) ersetzt wir
+# Funktion, mit der alle Seiten geladen werden, indem die Seitenanzahl "Page" durch eine Nummer zwischen 1 und 11 (= Total Pages) ersetzt wird
 list_of_dataframes <- purrr::map(pages, function(page) {
   antwort <- httr::GET(
     basis_url,
@@ -558,9 +566,9 @@ waste_geo_df <- dplyr::bind_rows(list_of_dataframes)
 ```
 
 <h4><b>Authentifizierung</b></h4>
-In unserem Beispiel konnten wir ohne Authentifizierung die UN-SDG API verwenden. Die meisten APIs erfordern allerdings eine Authentifizierung, d.h. Ihr müsst beweisen, dass Ihr berechtigt (*autorisiert*) seid, auf die API und ihre Daten zuzugreifen. 
+In unserem Beispiel konnten wir ohne Authentifizierung die UN-SDG API verwenden. Die meisten APIs erfordern allerdings eine Authentifizierung, d.h. wir müssen beweisen, dass wir berechtigt (**autorisiert**) sind, auf die API und ihre Daten zuzugreifen. 
 
-Hierzu gibt es viele verschiedene Modelle. Im einfachsten Fall erstellt ihr euch einen sogenannten Token in der entsprechenden Website in den Benutzereinstellungen. Ein **Token** ist ein zufällig erstellter String, quasi euer API-"Passwort". Tokens sehen meistens so aus `eyJpc3MiOiJodHRwczovL2V4YW1...`.
+Hierzu gibt es viele verschiedene Modelle. Im einfachsten Fall erstellt ihr euch einen sogenannten Token in der entsprechenden Website in den Benutzereinstellungen. Ein **Token** ist ein zufällig erstellter String, quasi unser API-"Passwort". Tokens sehen meistens so aus `eyJpc3MiOiJodHRwczovL2V4YW1...`.
 
 ```{r authorization-ex, exercise=FALSE, eval=FALSE, echo=TRUE}
 # Liest die Umgebungsvariable API_TOKEN und speichert sie im Objekt Token
@@ -571,11 +579,12 @@ token <- Sys.getenv("API_TOKEN")
 antwort <- httr::GET(basis_url, 
                  httr::add_headers(Authorization = paste("Authorization", token)))
 ```
-Die Details zur Authentifizierung sind von API zu API unterschiedlich. Die genauen Instruktionen solltet ihr in der jeweiligen API-Dokumentation finden. 
+
+Die Details zur Authentifizierung sind von API zu API unterschiedlich. Die genauen Instruktionen finden wir normalerweise in der jeweiligen API-Dokumentation. 
 
 Es gibt spezifische Statuscodes, die in Verbindung mit Authentifizierung besonders häufig auftauchen: 401 und 403. Diese Fehlercodes tauchen häufig auf, wenn man eigentlich den richtigen Token hat, aber ihn in der Anfrage nicht richtig übergeben hat. Lest deshalb immer genau in der Dokumentation nach, wie die Authentifizierung der API im Detail funktioniert.
 
-Aus Sicherheitsgründen ist es zudem sehr wichtig, Euren Token (oder sonstige **sicherheitsrelevante Informationen**) **nicht direkt im Code zu speichern**. Anstatt dessen nutzt ihr hierzu am besten **Umgebungsvariablen** (engl. environment variables). Wie man Umgebungsvariablen zu R hinzufügt, ist in [diesem Blogpost](https://www.roelpeters.be/what-is-the-renviron-file/) gut beschrieben. Auch wir üben das zu einem späteren Zeitpunkt nochmal.
+Aus Sicherheitsgründen ist es zudem sehr wichtig, dass wir unseren Token oder sonstige **sicherheitsrelevante Informationen nicht direkt im Code zu speichern**. Stattdessen benutzen wir hierzu am besten **Umgebungsvariablen (engl. environment variables)**. Wie man Umgebungsvariablen zu R hinzufügt, ist in [diesem Blogpost](https://www.roelpeters.be/what-is-the-renviron-file/) gut beschrieben. Auch wir üben das zu einem späteren Zeitpunkt nochmal.
 
 <h3><b>Zusätzliche Ressourcen</b></h3>
 - Ihr wollt mehr darüber lernen, wie man API-Anfragen selbst schreibt? Dataquest bietet den Kurs ["APIs in R"](https://app.dataquest.io/course/apis-in-r){target="_blank"} (engl.) an.
@@ -587,24 +596,27 @@ Aus Sicherheitsgründen ist es zudem sehr wichtig, Euren Token (oder sonstige **
 ---
 
 <details>
-  <summary><h4>&#10145; Exkurs 3: Datenabfragen in SQL</h4></summary>
+  <summary><h4>&#10145; Exkurs 2: Datenabfragen in SQL</h4></summary>
   <br>
 
-<h2><b>Exkurs 3: Datenabfragen in SQL</b></h2>  
+<h2><b>Exkurs 2: Datenabfragen in SQL</b></h2>  
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/deed.de)
 
-*"Datenabfragen in SQL" von Nina Hauser in "R Lernen - der Datenkurs von und für die Zivilgesellschaft" von CorrelAid e.V. Lizensiert unter [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.de).*
+*"Datenabfragen in SQL" von Nina Hauser in "R Lernen - Der Datenkurs von und für die Zivilgesellschaft" von CorrelAid e.V. Lizensiert unter [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.de).*
+
+<h3><b>Was sind SQL?</b></h3>
+**SQL (Structured Query Language)** ist eine Programmiersprache für die **Bearbeitung von Daten und relationalen Datenbanksystemen**. Diese Sprache wird hauptsächlich für die Kommunikation mit Datenbanken verwendet, um die darin enthaltenen Daten zu verwalten. Es ermöglicht insbesondere die Speicherung, Bearbeitung und Abfrage dieser Daten. Wir können damit allerdings auch Abfragen durchzuführen, Daten aktualisieren und/oder reorganisieren, das Schema und die Struktur eines Datenbanksystems erstellen und ändern, sowie den Zugriff auf die Daten kontrollieren. Daten, die uns in unserem Alltag als Datenanalyst:innen -wissenschaftler:innen begegnen, sind nämlich oft in **Datenbanken** gespeichert. Das sind **logisch modellierte, strukturierte Datenspeicher**, mit denen wir durch **Datenbankmanagementsysteme (kurz DBMS)**, also Softwaretools, interagieren können. 
 
 <h3><b>Interaktive Übung</b></h3>  
-Daten, die uns in unserem Alltag als Datenanalyst\*innen und Datenwissenschaftler\*innen begegnen, sind oft in **Datenbanken** gespeichert. Datenbanken sind **logisch modellierte, strukturierte Datenspeicher**, mit denen mit Hilfe von **Datenbankmanagementsystemen (kurz DBMS)**, also Softwaretools, interagiert werden kann. Diese Interaktion funktioniert für jedes Datenbankmanagementsystem anders und ist **nicht trivial**. Während in einigen Fällen ein manueller Export als XLSX-, CSV- oder JSON-Datei möglich ist, kann es in einigen Fällen, auch auf Grund der Größe der Datensätze, nicht praktikabel sein manuell Daten zu exportieren. Daneben ist das natürlich auch IT im Schneckentempo statt in Lichtgeschwindigkeit. Idealerweise sind Eure Daten nämlich **live** mit Euren Analysetools verknüpft, sodass sie beständig aktuell sind. Die populärsten Datenbankmanagementsysteme findet Ihr in dieser Übersicht einer Umfrage unter Entwickler:innen von [Stack Overflow](https://insights.stackoverflow.com/survey/2020#technology-databases-all-respondents4){target="_blank}.
+Allerdinfs funktioniert diese Interaktion für jedes Datenbankmanagementsystem anders und ist **nicht trivial**. Während in einigen Fällen ein manueller Export als XLSX-, CSV- oder JSON-Datei möglich ist, kann es in einigen Fällen, auch auf Grund der Größe der Datensätze, nicht praktikabel sein, Daten manuell zu exportieren. Daneben ist das natürlich auch IT im Schneckentempo statt in Lichtgeschwindigkeit. Idealerweise sind Eure Daten nämlich **live** mit unseren Analysetools verknüpft, sodass sie beständig aktuell sind. Die populärsten Datenbankmanagementsysteme findet Ihr in dieser Übersicht einer Umfrage unter Entwickler:innen von [Stack Overflow](https://insights.stackoverflow.com/survey/2020#technology-databases-all-respondents4){target="_blank}.
 
 <center>
 
 ![*2020 Developer Survey, Stack Overflow, n = 65,000*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/05_datenimport/popular_dbms.png?raw=true){#id .class width=50% height=50%}
 </center>
 
-An einer Technologie kommt man beim Thema Datenbanken also nicht vorbei: **SQL (Structured Query Language, zu dt. Strukturierte Abfragesprache)**. SQL erlaubtuns aus SQL-basierten Datenbanken Daten abzufragen. Wie bei R handelt es sich hier also um eine Programmiersprache mit eigenem Syntax. Um erste Abfragen zu generieren, reichen allerdings nur wenige Befehle aus. In diesem Code Chunk stellen wir die Verbindung zu einer SQLite-DBMS her (Platz 4 in der 2020 Developer Survey von Stack Overflow).
+Wie wir sehen, kommt man an einer bestimmten Technologie beim Thema Datenbanken also nicht vorbei: **SQL (Structured Query Language, zu dt. Strukturierte Abfragesprache)**. SQL erlaubtuns aus SQL-basierten Datenbanken Daten abzufragen. Wie bei R handelt es sich hier also um eine Programmiersprache mit eigenem Syntax. Um erste Abfragen zu generieren, reichen allerdings nur wenige Befehle aus. In diesem Code Chunk stellen wir die Verbindung zu einer SQLite-DBMS her (Platz 4 in der 2020 Developer Survey von Stack Overflow). Hierfür benötigen wir die Packages **`RSGLite`** und **`DBI`**, mit deren Hilfe für die temporäre Datei zunächst herunterladen können, um dann eine Verbindug herzustellen:
 
 ```{r exercise_sqlite, exercise = TRUE, message = FALSE}
 # Laden der benötigten Packages für die Verknüpfung mit SQLite-Datenbanken
@@ -612,12 +624,12 @@ library(RSQLite)
 library(DBI)
 
 # Initialisierung eines temporären Ordners
-tmpfile <- tempfile(fileext = "sqlite") # Identifizierung der SQLite-DB über das Suffix "sqlite"
+tmpfile <- tempfile(fileext = "sqlite")                                                   # Identifizierung der SQLite-DB über das Suffix "sqlite"
 download.file("https://correlaid.github.io/lernplattform/daten/plastics.sqlite", tmpfile) # Herunterladen der temporären Datei
-con <- dbConnect(RSQLite::SQLite(), tmpfile) # Aufbau der Verbindung
+con <- dbConnect(RSQLite::SQLite(), tmpfile)                                              # Aufbau der Verbindung
 ```
 
-Die Live-Verknüpfung selbst funktioniert wie erklärt **für jede Datenbank anders** - dieser Code kann also nicht einfach übertragen werden. Für einen Großteil der verschiedenen DBMS und zugehörige Importmöglichkeiten gibt es  jedoch von RStudio eine praktische [Übersicht](https://db.rstudio.com/tooling/pro-drivers/){target="_blank"}. Ist Euer Analysetool mit der Datenbank verknüft, könnt Ihr in der zugehörigen Abfragesprache **Abfragen** generieren. Schauen wir uns dazu zunächst an, wie das ERM (Entity-Relationship-Modell, zu dt. Datenbankschema) der Datenbank aussieht:
+Die Live-Verknüpfung selbst funktioniert wie erklärt **für jede Datenbank anders** - dieser Code kann also nicht einfach übertragen werden. Für einen Großteil der verschiedenen DBMS und zugehörige Importmöglichkeiten gibt es jedoch von RStudio eine praktische [Übersicht](https://db.rstudio.com/tooling/pro-drivers/){target="_blank"}. Ist unser Analysetool mit der Datenbank verknüft, können wir in der zugehörigen Abfragesprache **Abfragen** generieren. Schauen wir uns dazu zunächst an, wie das ERM (Entity-Relationship-Modell, zu dt. Datenbankschema) der Datenbank aussieht:
 
 ![*ERM der Plastics-SQLite-Datenbank*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/05_datenimport/erm.png?raw=true){#id .class width=50% height=50%}
 
@@ -627,8 +639,8 @@ quiz(
   question_numeric(
     "Wie viele Tabellen enthält das Datenbankschema?",
     answer(3, correct = TRUE),
-    correct = "Richtig! Bei den Tabellen Audit Plastic und Community handelt es sich um Entitäten, also identifizierbare Objekte, während in der Tabelle Countries lediglich eine Beziehung zwischen den beiden Entitätstabellen hergestellt wird. Alle Tabellen haben Attribute (Eigenschaften).",
-    incorrect = "Leider falsch. Es gibt drei Tabellen. Bei den Tabellen Audit Plastic und Community handelt es sich um Entitäten, also identifizierbare Objekte, während in der Tabelle Countries lediglich eine Beziehung zwischen den beiden Entitätstabellen hergestellt wird. Alle Tabellen haben Attribute (Eigenschaften).",
+    correct = "Richtig! Bei den Tabellen Audit Plastic und Community handelt es sich um Entitäten, also identifizierbare Objekte, während in der Tabelle Countries lediglich eine Beziehung zwischen den beiden Entitätstabellen hergestellt wird. Alle Tabellen haben verschiedene Attribute (Eigenschaften).",
+    incorrect = "Leider falsch, es gibt drei Tabellen. Bei den Tabellen Audit Plastic und Community handelt es sich um Entitäten, also identifizierbare Objekte, während in der Tabelle Countries lediglich eine Beziehung zwischen den beiden Entitätstabellen hergestellt wird. Alle Tabellen haben verschiedene Attribute (Eigenschaften).",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ), 
@@ -638,16 +650,16 @@ quiz(
     answer("plastics"),
     answer("countrycode", correct = TRUE),
     correct = "Richtig! Das erkennt man daran, dass dieses Attribut in allen drei Tabellen auftaucht.",
-    incorrect = "Leider falsch. Das erkennt man an dem Attribut countrycode, das in allen drei Tabellen auftaucht." ,
+    incorrect = "Leider falsch, werfe noch einmal einen Blick auf die verschiedene Tabellen: Welches Attribut kommt in allen drei Tabellen vor?" ,
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
 )
 ```
 
-In einer **idealen Welt** würde so auch unser Datensatz aussehen - aufgeteilt nach Entitäten (identifizierbare Objekte) und ihren jeweiligen Attributen (Eigenschaften) in drei klar benannten Tabellen, in der jede Zeile für eine Beobachtung steht. In der realen Welt passiert das allerdings selten. So ist es eben. Wichtig ist, dass Ihr auch mit solchen Daten arbeiten könnt, aber versteht, dass Eure Datenbanken idealerweise dieser Grundlogik folgen.
+In einer **idealen Welt** würde so auch unser Datensatz aussehen: Aufgeteilt nach Entitäten (identifizierbare Objekte) und ihren jeweiligen Attributen (Eigenschaften) in drei klar benannten Tabellen, in der jede Zeile für eine Beobachtung steht. In der realen Welt passiert das allerdings selten. So ist es eben. Wichtig ist, dass wir auch mit solchen Daten arbeiten können, aber verstehen, dass unsere Datenbanken idealerweise dieser Grundlogik folgen.
 
-Für **SQL-basierte Datenbanken** werden Abfragen nun in der zugehörigen Abfragesprache SQL erstellt. Mit `dbListTables(Verbindung)` könnt Ihr Euch die Tabelle, die das DBMS enthält **anzeigen** lassen. Mit `dbReadTable(Verbindung, Tabelle)` könnt Ihr die gewünschte **Gesamttabelle laden** und als Objekt in R **speichern**. Mit `dbGetQuery(Verbindung, "SQL Befehl")` könnt Ihr die Tabelle filtern und so **Teilmengen des Datensatzes laden** (und ggf. in R als Objekt speichern).
+Für **SQL-basierte Datenbanken** werden Abfragen nun in der zugehörigen Abfragesprache SQL erstellt. Mit `dbListTables(Verbindung)` können wir uns die Tabelle, die das DBMS enthält **anzeigen** lassen. Mit `dbReadTable(Verbindung, Tabelle)` können wir die gewünschte **Gesamttabelle laden** und als Objekt in R **speichern**. Mit `dbGetQuery(Verbindung, "SQL Befehl")` könnt Ihr die Tabelle filtern und so **Teilmengen des Datensatzes laden** (und ggf. in R als Objekt speichern).
 
 ```{r exercise_queries, exercise = TRUE}
 # Abfrage der Tabellen
@@ -671,7 +683,6 @@ Die wichtigsten **Befehle zur Datenabfrage in SQL** sind:
 - `SELECT`: **Auswahl** aller **Spalten** (mit *) oder definierter Spalten
 - `FROM`: **Auswahl** eines **Datensatzes**
 - `WHERE`: **Filtern des Datensatzes** auf Basis von Kriterien
-
 
 Versucht hier die Datentabelle "events" für Australien zu filtern.
 ```{r exercise_sql, exercise = TRUE}
