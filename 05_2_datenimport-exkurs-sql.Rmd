@@ -4,6 +4,8 @@ author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
+  - Zoé Wolter
+  - Jonas Lorenz
 output: 
   html_document:
     toc: true
@@ -37,17 +39,21 @@ con <- get_connection()
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-## **Exkurs 3: Datenabfragen in SQL**
+# **Exkurs 2: Datenabfragen in SQL**
 
-### **Interaktive Übung**
-Daten, die uns in unserem Alltag als Datenanalyst:innen und Datenwissenschaftler:innen begegnen, sind oft in **Datenbanken** gespeichert. Datenbanken sind **logisch modellierte, strukturierte Datenspeicher**, mit denen mit Hilfe von **Datenbankmanagementsystemen (kurz DBMS)**, also Softwaretools, interagiert werden kann. Diese Interaktion funktioniert für jedes Datenbankmanagementsystem anders und ist **nicht trivial**. Während in einigen Fällen ein manueller Export als XLSX-, CSV- oder JSON-Datei möglich ist, kann es in einigen Fällen, auch auf Grund der Größe der Datensätze, nicht praktikabel sein manuell Daten zu exportieren. Daneben ist das natürlich auch IT im Schneckentempo statt in Lichtgeschwindigkeit. Idealerweise sind Eure Daten nämlich **live** mit Euren Analysetools verknüpft, sodass sie beständig aktuell sind. Die populärsten Datenbankmanagementsysteme findet Ihr in dieser Übersicht einer Umfrage unter Entwickler:innen von [Stack Overflow](https://insights.stackoverflow.com/survey/2020#technology-databases-all-respondents4){target="_blank}.
+## **Was sind SQL?**
+
+**SQL (Structured Query Language)** ist eine Programmiersprache für die **Bearbeitung von Daten und relationalen Datenbanksystemen**. Diese Sprache wird hauptsächlich für die Kommunikation mit Datenbanken verwendet, um die darin enthaltenen Daten zu verwalten. Es ermöglicht insbesondere die Speicherung, Bearbeitung und Abfrage dieser Daten. Wir können damit allerdings auch Abfragen durchzuführen, Daten aktualisieren und/oder reorganisieren, das Schema und die Struktur eines Datenbanksystems erstellen und ändern, sowie den Zugriff auf die Daten kontrollieren. Daten, die uns in unserem Alltag als Datenanalyst:innen -wissenschaftler:innen begegnen, sind nämlich oft in **Datenbanken** gespeichert. Das sind **logisch modellierte, strukturierte Datenspeicher**, mit denen wir durch **Datenbankmanagementsysteme (kurz DBMS)**, also Softwaretools, interagieren können. 
+
+## **Interaktive Übung**
+Allerdings funktioniert diese Interaktion für jedes Datenbankmanagementsystem anders und ist **nicht trivial**. Während in einigen Fällen ein manueller Export als XLSX-, CSV- oder JSON-Datei möglich ist, kann es in einigen Fällen, auch auf Grund der Größe der Datensätze, nicht praktikabel sein, Daten manuell zu exportieren. Daneben ist das natürlich auch IT im Schneckentempo statt in Lichtgeschwindigkeit. Idealerweise sind Eure Daten nämlich **live** mit unseren Analysetools verknüpft, sodass sie beständig aktuell sind. Die populärsten Datenbankmanagementsysteme findet Ihr in dieser Übersicht einer Umfrage unter Entwickler:innen von [Stack Overflow](https://insights.stackoverflow.com/survey/2020#technology-databases-all-respondents4){target="_blank}.
 
 <center>
 
 ![*2020 Developer Survey, Stack Overflow, n = 65,000*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/05_datenimport/popular_dbms.png?raw=true){#id .class width=50% height=50%}
 </center>
 
-An einer Technologie kommt man beim Thema Datenbanken also nicht vorbei: **SQL (Structured Query Language, zu dt. Strukturierte Abfragesprache)**. SQL erlaubtuns aus SQL-basierten Datenbanken Daten abzufragen. Wie bei R handelt es sich hier also um eine Programmiersprache mit eigenem Syntax. Um erste Abfragen zu generieren, reichen allerdings nur wenige Befehle aus. In diesem Code Chunk stellen wir die Verbindung zu einer SQLite-DBMS her (Platz 4 in der 2020 Developer Survey von Stack Overflow).
+Wie wir sehen, kommt man an einer bestimmten Technologie beim Thema Datenbanken also nicht vorbei: **SQL (Structured Query Language, zu dt. Strukturierte Abfragesprache)**. SQL erlaubtuns aus SQL-basierten Datenbanken Daten abzufragen. Wie bei R handelt es sich hier also um eine Programmiersprache mit eigenem Syntax. Um erste Abfragen zu generieren, reichen allerdings nur wenige Befehle aus. In diesem Code Chunk stellen wir die Verbindung zu einer SQLite-DBMS her (Platz 4 in der 2020 Developer Survey von Stack Overflow). Hierfür benötigen wir die Packages **`RSGLite`** und **`DBI`**, mit deren Hilfe für die temporäre Datei zunächst herunterladen können, um dann eine Verbindug herzustellen:
 
 ```{r exercise_sqlite, exercise = TRUE, message = FALSE}
 # Laden der benötigten Packages für die Verknüpfung mit SQLite-Datenbanken
@@ -55,12 +61,12 @@ library(RSQLite)
 library(DBI)
 
 # Initialisierung eines temporären Ordners
-tmpfile <- tempfile(fileext = "sqlite") # Identifizierung der SQLite-DB über das Suffix "sqlite"
+tmpfile <- tempfile(fileext = "sqlite")                                                   # Identifizierung der SQLite-DB über das Suffix "sqlite"
 download.file("https://correlaid.github.io/lernplattform/daten/plastics.sqlite", tmpfile) # Herunterladen der temporären Datei
-con <- dbConnect(RSQLite::SQLite(), tmpfile) # Aufbau der Verbindung
+con <- dbConnect(RSQLite::SQLite(), tmpfile)                                              # Aufbau der Verbindung
 ```
 
-Die Live-Verknüpfung selbst funktioniert wie erklärt **für jede Datenbank anders** - dieser Code kann also nicht einfach übertragen werden. Für einen Großteil der verschiedenen DBMS und zugehörige Importmöglichkeiten gibt es  jedoch von RStudio eine praktische [Übersicht](https://db.rstudio.com/tooling/pro-drivers/){target="_blank"}. Ist Euer Analysetool mit der Datenbank verknüft, könnt Ihr in der zugehörigen Abfragesprache **Abfragen** generieren. Schauen wir uns dazu zunächst an, wie das ERM (Entity-Relationship-Modell, zu dt. Datenbankschema) der Datenbank aussieht:
+Die Live-Verknüpfung selbst funktioniert wie erklärt **für jede Datenbank anders** - dieser Code kann also nicht einfach übertragen werden. Für einen Großteil der verschiedenen DBMS und zugehörige Importmöglichkeiten gibt es jedoch von RStudio eine praktische [Übersicht](https://db.rstudio.com/tooling/pro-drivers/){target="_blank"}. Ist unser Analysetool mit der Datenbank verknüft, können wir in der zugehörigen Abfragesprache **Abfragen** generieren. Schauen wir uns dazu zunächst an, wie das ERM (Entity-Relationship-Modell, zu dt. Datenbankschema) der Datenbank aussieht:
 
 ![*ERM der Plastics-SQLite-Datenbank*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/05_datenimport/erm.png?raw=true){#id .class width=50% height=50%}
 
@@ -70,8 +76,8 @@ quiz(
   question_numeric(
     "Wie viele Tabellen enthält das Datenbankschema?",
     answer(3, correct = TRUE),
-    correct = "Richtig! Bei den Tabellen Audit Plastic und Community handelt es sich um Entitäten, also identifizierbare Objekte, während in der Tabelle Countries lediglich eine Beziehung zwischen den beiden Entitätstabellen hergestellt wird. Alle Tabellen haben Attribute (Eigenschaften).",
-    incorrect = "Leider falsch. Es gibt drei Tabellen. Bei den Tabellen Audit Plastic und Community handelt es sich um Entitäten, also identifizierbare Objekte, während in der Tabelle Countries lediglich eine Beziehung zwischen den beiden Entitätstabellen hergestellt wird. Alle Tabellen haben Attribute (Eigenschaften).",
+    correct = "Richtig! Bei den Tabellen Audit Plastic und Community handelt es sich um Entitäten, also identifizierbare Objekte, während in der Tabelle Countries lediglich eine Beziehung zwischen den beiden Entitätstabellen hergestellt wird. Alle Tabellen haben verschiedene Attribute (Eigenschaften).",
+    incorrect = "Leider falsch, es gibt drei Tabellen. Bei den Tabellen Audit Plastic und Community handelt es sich um Entitäten, also identifizierbare Objekte, während in der Tabelle Countries lediglich eine Beziehung zwischen den beiden Entitätstabellen hergestellt wird. Alle Tabellen haben verschiedene Attribute (Eigenschaften).",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ), 
@@ -81,16 +87,16 @@ quiz(
     answer("plastics"),
     answer("countrycode", correct = TRUE),
     correct = "Richtig! Das erkennt man daran, dass dieses Attribut in allen drei Tabellen auftaucht.",
-    incorrect = "Leider falsch. Das erkennt man an dem Attribut countrycode, das in allen drei Tabellen auftaucht." ,
+    incorrect = "Leider falsch, werfe noch einmal einen Blick auf die verschiedene Tabellen: Welches Attribut kommt in allen drei Tabellen vor?" ,
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
 )
 ```
 
-In einer **idealen Welt** würde so auch unser Datensatz aussehen - aufgeteilt nach Entitäten (identifizierbare Objekte) und ihren jeweiligen Attributen (Eigenschaften) in drei klar benannten Tabellen, in der jede Zeile für eine Beobachtung steht. In der realen Welt passiert das allerdings selten. So ist es eben. Wichtig ist, dass Ihr auch mit solchen Daten arbeiten könnt, aber versteht, dass Eure Datenbanken idealerweise dieser Grundlogik folgen.
+In einer **idealen Welt** würde so auch unser Datensatz aussehen: Aufgeteilt nach Entitäten (identifizierbare Objekte) und ihren jeweiligen Attributen (Eigenschaften) in drei klar benannten Tabellen, in der jede Zeile für eine Beobachtung steht. In der realen Welt passiert das allerdings selten. So ist es eben. Wichtig ist, dass wir auch mit solchen Daten arbeiten können, aber verstehen, dass unsere Datenbanken idealerweise dieser Grundlogik folgen.
 
-Für **SQL-basierte Datenbanken** werden Abfragen nun in der zugehörigen Abfragesprache SQL erstellt. Mit `dbListTables(Verbindung)` könnt Ihr Euch die Tabelle, die das DBMS enthält **anzeigen** lassen. Mit `dbReadTable(Verbindung, Tabelle)` könnt Ihr die gewünschte **Gesamttabelle laden** und als Objekt in R **speichern**. Mit `dbGetQuery(Verbindung, "SQL Befehl")` könnt Ihr die Tabelle filtern und so **Teilmengen des Datensatzes laden** (und ggf. in R als Objekt speichern).
+Für **SQL-basierte Datenbanken** werden Abfragen nun in der zugehörigen Abfragesprache SQL erstellt. Mit `dbListTables(Verbindung)` können wir uns die Tabelle, die das DBMS enthält **anzeigen** lassen. Mit `dbReadTable(Verbindung, Tabelle)` können wir die gewünschte **Gesamttabelle laden** und als Objekt in R **speichern**. Mit `dbGetQuery(Verbindung, "SQL Befehl")` könnt Ihr die Tabelle filtern und so **Teilmengen des Datensatzes laden** (und ggf. in R als Objekt speichern).
 
 ```{r exercise_queries, exercise = TRUE}
 # Abfrage der Tabellen
@@ -109,13 +115,11 @@ dbGetQuery(con, "SELECT *
                  FROM audits
                  WHERE parent_company = 'Nice And Lovely'")
 ```
-
 Die wichtigsten **Befehle zur Datenabfrage in SQL** sind:
 
 - `SELECT`: **Auswahl** aller **Spalten** (mit *) oder definierter Spalten
 - `FROM`: **Auswahl** eines **Datensatzes**
 - `WHERE`: **Filtern des Datensatzes** auf Basis von Kriterien
-
 
 Versucht hier die Datentabelle "events" für Australien zu filtern.
 ```{r exercise_sql, exercise = TRUE}
@@ -128,7 +132,6 @@ dbGetQuery(con, "SELECT *
                  FROM events
                  WHERE countrycode = 'AUS'")
 ```
-
 ```{r exercise_sql-check}
 grade_this_code()
 ```
@@ -141,7 +144,8 @@ dbDisconnect(con)
 
 SQLite-Datenbanken benötigen in der Regel **kein Passwort** (und somit auch keinen Code für die Authentifizierung). Falls das für Euch notwendig ist, findet Ihr in der Dokumentation von RStudio in den Kapiteln [Database](https://docs.rstudio.com/connect/1.7.8/admin/database-provider.html){target="_blank"} und [Authentication](https://docs.rstudio.com/connect/1.7.8/admin/authentication.html){target="_blank"} Hilfestellungen.
 
-### **Zusätzliche Ressourcen**
-Ihr wollt mehr SQL lernen? Dataquest bietet den Kurs [SQL Fundamentals](https://app.dataquest.io/course/sql-fundamentals){target="_blank"} und [Intermediate SQL in R](https://app.dataquest.io/course/sql-intermediate-r){target="_blank"} auf DataQuest (engl.)
+# **Zusätzliche Ressourcen**
+- [Database Queries With R](https://solutions.posit.co/connections/db/getting-started/database-queries/){target="_blank"}
+- Ihr wollt mehr SQL lernen? Dataquest bietet den Kurs [SQL Fundamentals](https://app.dataquest.io/course/sql-fundamentals){target="_blank"} und [Intermediate SQL in R](https://app.dataquest.io/course/sql-intermediate-r){target="_blank"} auf DataQuest (engl.)
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
