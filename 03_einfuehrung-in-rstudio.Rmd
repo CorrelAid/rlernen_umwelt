@@ -5,6 +5,8 @@ date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
   - Zoé Wolter
+  - Jonas Lorenz
+  - Susan Reichelt
 output: 
   html_document:
     toc: true
@@ -34,109 +36,173 @@ library(rio)
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Ab dieser Woche geht es ans Eingemachte: Nachdem Ihr in den vergangenen Lektionen bereits erste Codezeilen ausgeführt habt, beginnen wir nun zu programmieren. Um die R-Dateien, die wir nutzen werden, lokal zu öffnen, benötigt Ihr [R](https://ftp.fau.de/cran/){target="_blank"} und [RStudio](https://rstudio.com/products/rstudio/download/#download){target="_blank"}. Versucht gerne selbst beide Programme für Euer Betriebssystem zu installieren – idealerweise auf einem Laptop oder PC, auf dem Ihr **Adminrechte** habt. Gerne auch auf Eurem privaten PC. Bei Installationsschwierigkeiten könnt Ihr uns gerne vor unserer Live-Session am Freitag **per Slack-Nachricht** kontaktieren - dann lösen wir die Herausforderungen mit Euch gemeinsam.
+Nachdem wir uns in den vergangenen Lektionen vor allem die jursitischen und theoretischen Hintergründe der Datenerhebung und -verarbeitung angeschaut haben, geht es diese Woche Ans Eingemachte: **Wir beginnen in R zu programmieren!** Damit wir die R-Dateien, die wir nutzen werden, auch lokal öffnen können, benötigen wir [R](https://ftp.fau.de/cran/){target="_blank"} und [RStudio](https://rstudio.com/products/rstudio/download/#download){target="_blank"}. Über die entsprechenden Links könnt Ihr beide Programme für Euer Betriebssystem zu installieren – idealerweise auf einem Laptop oder PC, auf dem Ihr **Adminrechte** habt. Nutzt dafür gerne auch Euren privaten PC. Bei **Installationsschwierigkeiten** könnt Ihr uns gerne vor unserer Live-Session am Freitag per Slack-Nachricht kontaktieren, dann lösen wir die Herausforderungen mit Euch gemeinsam.
 
 ![*Video: Einführung in RStudio (30min)*](https://youtu.be/sgczH-e0Cxg)
 
-### **Kernaussagen**
+# **Was sind eigentlich R und RStudio?**
 
-#### R
+## R
 
--   R ist eine **freie, statistische Programmiersprache**
--   **Groß- und Kleinschreibung** muss in R unbedingt beachtet werden
--   Nicht jede **Funktionalität** müsst Ihr in R selbst schreiben: Über **`install.packages()`** und **`library()`** könnt Ihr Funktionalitäten, die andere Coder:innen für Euch bereitstellen, nutzen - das spart viel Zeit!
+  - **statistische Programmiersprache**: speziell für statistische Analysen, Datenvisualisierung und maschinelles Lernen entwickelt. 
+  - **Open Source**: ein Software, die frei verfügbar und von einer großen Community unterstützt wird.
+  - **Erweiterbarkeit und Flexibilität**: Durch eine Vielzahl von Paketen, die von der Community bereitgestellt werden, ist R extrem flexibel und kann für unterschiedlichste Aufgaben verwendet werden. Nutzt diese sog. Packages - das spart viel Zeit!
+  - **Datenvisualisierung**: starke Werkzeuge zur Erstellung hochwertiger und anpassbarer Grafiken, v.a. durch Pakete wie ggplot2.
 
-#### RStudio
+## RStudio
 
--   RStudio ist auf R spezialisierte **integrierte Entwicklungsumgebung** (eng. Integrated Development Environment oder IDE), in der Ihr Code schreiben, ausführen, auf Dokumentation und Dateien zugreift, Eure Arbeit mit Anderen teilen könnt uvm.
--   Es ist empfehlenswert Code im **Code Editor** (zu dt. Codebearbeitungsprogramm) zu schreiben und mit "\#" zu kommentieren - den Code könnt Ihr mit "CMD + ENTER" für Mac und "CTRL + ENTER" für Windows ausführen - die Ergebnisse erhaltet Ihr in der **Console**
--   In der **Environment** (zu dt. Umgebung) sind Objekte (also auch Eure Daten) Eurer Arbeit gespeichert
--   Unter dem Environment findet Ihr einen **File Explorer** (zu dt. Dateimanager), mit dem Ihr Dateien auf Eurer Festplatte suchen und per Doppelklick öffnen könnt
--   Zusätzlich werden dort Plots (zu dt. Abbildungen), geladene Packages und die **Dokumentation** ("Hilfe") angezeigt, die Ihr mit dem Befehl **help("Funktion")** oder **?Funktion** durchsuchen könnt
--   Alle **Shortcuts** für RStudio findet Ihr unter ("Menü Help -\> Keyboard Shortcuts Help)
--   In englischer Sprache ist zudem ein **Schummelblatt** zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} verfügbar
+  - Eine auf R spezialisierte **integrierte Entwicklungsumgebung** (eng. Integrated Development Environment oder IDE), in der Ihr Code schreiben, ausführen, auf Dokumentation und Dateien zugreift, Eure Arbeit mit Anderen teilen könnt uvm. Wichtig:  **Groß- und Kleinschreibung** muss in R unbedingt beachtet werden, damit wir unseren Code erfolgreich ausführen können!
+  - **Code Editor (zu dt. Codebearbeitungsprogramm)**: Der Bereich, in dem wir unseren R-Code mithilfe von Syntax-Highlighting und Autovervollständigung schreiben und mit "CMD + ENTER" für Mac und "CTRL + ENTER" für Windows Ausführen. Wir können unseren Code dort außerdem kommentieren ("\#").
+  - **Console**: Hier werden uns die Ergebnisse angezeigt. Die Console können wir alterativ auch dafür verwenden, um unseren Code zu schreiben.
+  - **Environment (zu dt. Umgebung)**: Hier werden alle akutell geladenen Daten, Variablen und Objekte unserer Arbeit angezeigt und gespeichert.
+  - **File Explorer (zu dt. Dateimanager)**: Dieser befindet sich unter der Environment und ermöglicht das Durchsuchen von Dateien und Verzeichnissen auf dem Computer direkt innerhalb von RStudio. Zusätzlich werden dort Plots (zu dt. Abbildungen), geladene Packages und die **Dokumentation** ("Hilfe") angezeigt, die wir mit dem Befehl **help("Funktion")** oder **?Funktion** durchsuchen können.
+  - **Shortcuts**: Es gibt eine ganze Menge Shortcuts, die uns das Leben in RStudio erleichtern - diese findet Ihr unter ("Menü Help -\> Keyboard Shortcuts Help)
+  - **Cheatsheets (zu dt. Schummelblätter): Für viele Packages und Themen in RStudio gibt es (überwiegend englische) Hilfestellungen. Diese werden uns auch im Laufe des Kurses immer wieder begegnen. Das erste Schummelblatt zur IDE RStudio findet ihr [hier](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"}!
 
-#### R Projekt (RProj)
+## R Projekt (RProj)
 
--   Um nervige Dateipfad-Verwirrungen zu vermeiden und eine Art "Container" für Eure R Projekte anzulegen, erstellt Ihr am besten immer ein **R Projekt**
--   Im Ordner mit dem R Projekt legt Ihr am besten immer einen **Ordner** für Eure Daten und einen Ordner für Euren Code an und falls nötig noch für Grafiken o.ä.
+  - **Organisationsstruktur**: Ermöglicht es und, alle Dateien, Daten und Skripte eines Projekts in einem gemeinsamen Verzeichnis zu verwalten  undnervige Dateipfad-Verwirrungen zu vermeiden. Deshalb erstellen wir am besten immer ein neues R Projekt, wenn wir mit einer neuen Arbeit beginnen.
+  - **Arbeitsverzeichnis**: Das zentrale Verzeichnis, in dem alle relevanten Dateien und Daten des Projekts gespeichert sind, sodass relative Pfade einfach verwendet werden können. Daher legen wir im Ordner mit dem R Projekt idealerweise immer einen **Ordner: "Daten"**, einen **"Ordner: Code** und, falls nötig, noch einen **Ordner: "Grafiken"** an.
+  - **Versionierung**: Indem wir ein RProjekt anlegen, unterstützen wir die Integration von Versionskontrollsystemen wie Git, um Änderungen im Projekt nachverfolgen und verwalten zu können.
+  - **Umgebungskonfiguration**: Speichert projektspezifische Umgebungsvariablen und Einstellungen, die automatisch geladen werden, wenn das Projekt geöffnet wird.
 
-Alle Informationen zu dem Datensatz, mit dem wir in diesem Kurs arbeiten, findet Ihr [hier](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-01-26){target="_blank"}.
-
-### **Quiz**
+## **Quiz**
 
 ```{r quiz_rstudio}
 quiz(caption = NULL,
   question("Ich muss nicht auf die Groß- und Kleinschreibung achten, wenn ich in R programmiere.",
-    answer("Korrekt"),
-    answer("Inkorrekt", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Groß- und Kleinschreibung, aber auch Kommas und Klammern, sind wichtig für funktionierenden Code in R!",
+    answer("Korrekt, unabhängig der Rechtschreibung: R weiß bestimmt schon was ich meine!"),
+    answer("Inkorrekt, damit wir unseren Code erfolgreich ausführen können, müssen wir unbedingt auf die Rechtschreibung achten.", correct = TRUE),
+    correct = "Richtig, besonders die Groß- und Kleinschreibung, aber auch Kommas und Klammern sind gerade bei komplizierteren Funktionen sehr wichtig für einen funktionierenden Code in R!",
+    incorrect = "Leider falsch: Groß- und Kleinschreibung, aber auch Kommas und Klammern, sind gerade bei komplizierteren Funktionen sehr wichtig für funktionierenden Code in R!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("Code ist über Patent- und Urheberrechte geschützt, deshalb darf ich nichts von anderen Coder:innen benutzen.",
-    answer("Korrekt, Code von anderen sollte ich auf keinen Fall kopieren."),
-    answer("Inkorrekt, Code von anderen kann ich immer übernehmen."),
-    answer("Bei der Verwendung von Code sollte ich immer beachten, welcher Lizenz der Code unterliegt.", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Austausch von Code in Foren wie StackOverflow ist wichtig und hilfreich, aber dabei solltest Du immer beachten, ob der Code einer Lizenz unterliegt und du den Code tatsächlich einfach kopieren darfst (Beispiele für Lizenzen findest Du [hier](https://creativecommons.org/about/cclicenses/)).",
+  question("Code ist über Patent- und Urheberrechte geschützt, deshalb darf ich Nichts von anderen Coder:innen benutzen.",
+    answer("Korrekt, Code von anderen sollte ich auf gar keinen Fall kopieren."),
+    answer("Inkorrekt, Code von anderen kann ich immer problemlos übernehmen."),
+    answer("Grundsätzlich kann Code von anderen Coder:innen verwendet werden, wenn sie diesen zur Verfügung stellen. Jedoch muss ich dabei immer darauf achten, welcher Lizenz der Code unterliegt.", correct = TRUE),
+    correct = "Richtig, bei R handelt es sich um eine Open-Source-Software, die von einer großen Community unterstützt und weiterentwickelt wird. Deshalb stellen viele begeisterte Coder:innen ihre Codes und Arbeiten gerne zur Verfügung. Häufig findet dieser Austausch auf Plattformen wir Stack0verflow statt. Jedoch müssen wir dabei immer auf die Lizenzierung dieser Codes achten - manche Dinge dürfen wir nämlich nicht einfach so verwenden! (Beispiele für Lizenzen findest Du [hier](https://creativecommons.org/about/cclicenses/))",
+    incorrect = "Leider falsch! Auch wenn es sich bei R um eine Open-Source-Software handelt, die von einer großen Community unterstützt und weiterentwickelt wird, müssen wir dabei immer auf die Lizenzierung der veröffentlichten Codes achten - manche Dinge dürfen wir nämlich nicht einfach so verwenden (Beispiele für Lizenzen findest Du [hier](https://creativecommons.org/about/cclicenses/)).",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("Wo in RStudio schreibst Du Deinen Code?",
+  question("In welchem Bereich unserer 'Entwicklungsoberfläche' schreiben wir den Code?",
     answer("Konsole", correct = TRUE),
     answer("Environment"),
     answer("Terminal"),
     answer("Code Editor", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch. Öffne am besten direkt nochmal RStudio. Wo findest Du die oben genannten Fenster und kannst Du dort Code eingeben?",
+    correct = "Richtig, in erster Linie verwenden wir den Code Editor dazu, um unseren Code zu schreiben! Alternativ können wir jedoch auch die Konsole dafür verwenden.",
+    incorrect = "Leider falsch, öffne am besten direkt nochmal RStudio. Wo findest Du die oben genannten Fenster und kannst Du dort Code eingeben?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("IDE steht für Integrated Development Environment (zu dt. integrierte Entwicklungsumgebung). RStudio ist eine integrierte Entwicklungsumgebung für R.",
-    answer("Korrekt", correct = TRUE),
-    answer("Inkorrekt"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch - die beiden Aussagen sind richtig.",
+  question("IDE steht für "Integrated Development Environment" (zu dt. integrierte Entwicklungsumgebung). RStudio ist eine integrierte Entwicklungsumgebung für R.",
+    answer("Korrekt!", correct = TRUE),
+    answer("Inkorrekt!"),
+    correct = "Richtig, RStudio ist die Entwicklungsumgebung, die sich auf R spezialisiert hat und die uns das Programmieren und Arbeiten mit R durch eine benutzerfreundliche Oberfläche erleichtert.!",
+    incorrect = "Leider falsch - RStudio ist die Entwicklungsumgebung, die sich auf R spezialisiert hat und die uns das Programmieren und Arbeiten mit R durch eine benutzerfreundliche Oberfläche erleichtert.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
 )
 ```
 
+# **Der Datensatz**
+
+Bevor wir nun tatsächlich selbst mit dem Programmieren beginnen, wollen wir Euch noch den Datensatz vorstellen, mit dem wir in den kommenden Wochen und Monaten arbeiten werden. 
+
+## **Einführung**
+
+Im Rahmen unseres Kurses “R Lernen - Der Datenkurs von und für die Zivilgesellschaft” verwenden wir einen Datensatz von Sarah Suave aus dem [**#Breakfreefromplastic-Netzwerk**](https://www.breakfreefromplastic.org/about/){target="_blank"}. Dieser ist [hier](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-01-26/plastics.csv){target="_blank"} für Euch frei zugänglich. 
+
+## **Die Untersuchung**
+
+Wie gesagt stammen unsere DAten aus dem #Breakfreefromplastic-Netzwerk. Dabei handelt es sich um ein Netzwerk, das 2016 ins Leben gerufen wurde und das Ziel einer plastikfreien Welt verfolgt. Seitdem haben sich weltweit über 3.000 Organisationen und 14.000 Personen dieser Bewegung angeschlossen, um diesem Ziel Stück für Stück näherzukommen. Dazu veröffentlicht #Breakfreefromplastic seit 2018 jedes Jahr einen sogenannten **Brand Audit**. Im Rahmen dieser Untersuchung wird Plastikmüll analysiert, um herauszufinden, welche Firmen mit ihren Produkten in großem Maße zur Verschmutzung unseres Planeten beitragen. Diese Daten werden in einem Datensatz zusammengefasst. Wir verwenden an dieser Stelle den Datensazu aus dem Jahr 2021, der auf Aktionen basiert, die 2019 und 2020 durchgeführt wurden. Alle weiteren Hintergründe zur Untersuchung und Brand Reports zum Download findet ihr [hier](https://brandaudit.breakfreefromplastic.org/){target="_blank"}.
+
+## **Die Datenerhebung**
+
+99 % des Plastiks wird aus fossilen Brennstoffen hergestellt. Um der weltweiten Umweltverschmutzung daher nachhaltig entgegenwirken zu können, muss das Problem an seiner Wurzel bekämpft werden: Ddie Plastikproduktion globaler Unternehmen. Das fordert auch das Netzwerk #Breakfreefromplastic. Um diesen Forderungen ein quantitatives Fundament zu verleihen, wird im Rahmen lokaler Aktionen Plastikmüll gesammelt und untersucht. Diese Daten werden am Ende zusammengeführt und zum Brand Audit zusammengefasst.
+
+In den Jahren 2019 und 2020 konnten die **11.184** Freiwilligen des Netzwerks insgesamt **440** Aktionen in **45** Ländern durchführen. Das Ergebnis: **330.493** Teile Plastikmüll - und das ist “nur” die Menge an Plastikmüll, die im Rahmen dieser Aktionen gefunden werden konnten. Dennoch bilden sie eine solide Datengrundlage, da 58 % der gefundenen Teile eindeutig einer Marke zugeordnet werden konnten. Wie die gesammelten Teile in verarbeitbare Daten transformiert werden und wie solche Aktionen geplant und durchgeführt werden, könnt Ihr gerne [hier](https://brandaudit.breakfreefromplastic.org/brand-audit-training/){target="_blank"} noch einmal anschauen!
+
+Wir wollen nun einmal einen Blick auf den Datensatz und die darin enthaltenen Informationen werfen!
+
+## **Die Daten**
+*Beschreibung fehlt, s. Planungsdokument*
+
+**Tabelle: Datensatz #Breakfreefromplastic**
+```{r datensatz_tabelle, results='asis'}
+tabelle <- "
+
+Variablenname  | Datentyp    | Beschreibung                                                   | Beispiele
+:--------------|:------------|:---------------------------------------------------------------|:--------------------------------|
+country        | character   | Die Variable ‘country’ steht für das Land, in dem eine Müllsammlung stattgefunden hat.  |
+year           | double      | Die Variable ‘year’ steht für das Jahr, in dem die Müllsammlung stattgefunden hat. Da der Datensatz Aktionen aus den Jahren 2019 und 2020 beinhaltet, kann diese Variable zwei verschiedene Werte annehmen.  | 
+parent_company | character   | Die Variable ‘parent_company’ steht für die Firma, die den Müll produziert hat. Findet eine Person z.B. eine Cola-Flasche, wird das an dieser Stelle abgebildet. Aber Vorsicht: Die Firmennamen sind nicht alle einheitlich angegeben!  | 
+empty          | double      | Die Variable ‘empty’ steht für die Anzahl der leeren Kategorien.  | 
+hdpe           | double      | Die Variable ‘hdpe’ steht für ‘High density polyethylene count’ - einen thermoplastischen Kunststoff mit hoher Dichte und zählt alle gesammelten Teile, die aus diesem hergestellt werden.  | Milchflaschen, Plastiktüten, Flaschendeckel, Mülleimer, etc.
+ldpe           | double      | Die Variable ‘ldpe’ steht für ‘Low density polyethylene count’ - einen thermoplastischen Kunststoff mit geringer Dichte und zählt alle gesammelten Teile, die aus diesem hergestellt werden.  | Plastiktüten, Beutel mit Zip-Verschluss, Eimer, Plastikschläuche, Schneidebretter, etc.
+o              | double      | Die Variable ‘o’ steht für ‘other’ und zählt somit alle gesammelten Teile, die keiner der beiden oberen Kategorien zugeordnet werden können.  |
+pet            | double      | Die Variable ‘pet’ steht für einen Polyester-Kunststoff und zählt alle gesammelten Teile, die aus diesem hergestellt werden.  | Polyesterfasern, Lebensmittelverpackungen, Kunststoffflaschen für Softdrinks o. Ä., etc. 
+pp             | double      | Die Variable ‘pp’ steht für ‘Polypropylen’ - einen härteren, wärmebeständigen Kunststoff und zählt somit alle gesammelten Teile, die aus diesem hergestellt werden.  | Blumentöpfe, Autoinnenverkleidungen, To-Go-Trinkbecher, mikrowellengeeignete Kunststoffbehälter, DVD-Hüllen, etc.
+ps             | double      | Die Variable ‘ps’ steht für Polystyrol - einen transparenten, günstigen (Standard-) Kunststoff und zählt somit alle gesammelten Teile, die aus diesem hergestellt werden.  | Spielzeug, Videokassetten, Aschenbecher, Koffer, Kühlschränke, Trinkbecher, To-Go-Lebensmittel-verpackungen, etc.
+pvc            | double      | Die Variable ‘pvc’ steht für PVC-Kunststoffe - eine Sorte weicher und harter Kunststoffe und zählt somit alle gesammelten Teile, die aus diesem hergestellt werden.  | Fensterrahmen, Bodenbeläge, Rohre, etc. 
+grand_total    | double      | Die Variable ‘grand_total’ steht für die Anzahl der insgesamt gesammelten Plastikteile (alle Plastiktypen).  | 
+num_events     | double      | Die Variable ‘num_events’ steht für die Anzahl der insgesamt durchgeführten Events, d.h. Sammelaktionen.  | 
+volunteers     | double      | Die Variable ‘volunteers’ steht für die Anzahl der insgesamt anwesenden freiwilligen Helfer:innen.  | 
+
+"
+cat(tabelle)
+```
+*Anmerkung: Lasst Euch nicht verwirren von dem neuen Datentypen “double”. Numerische Daten werden in R automatisch entweder als `integer` oder `double` konvertiert. Die Operationen bleiben dadurch jedoch unverändert. Mehr Infos [hier](https://uc-r.github.io/integer_double/){target="_blank"}!*
+
+## **Zusammenfassung**
+
+Wie wir sehen, gibt es insgesamt 14 Variablen, die sehr unterschiedliche Daten beinhalten. Zuallererst gibt es Variablen, die uns Informationen über das Land und das Jahr geben, indem das entsprechende Plastikteil gefunden wurde. Insgesamt umfasst die Untersuchung 45 Länder und von A wie Argentinien bis V wie Vietnam ist dabei alles dabei. Weniger Variation gibt es hinsichtlich des Jahres, da unser Datensatz ausschließlich Daten aus den Jahren 2019 und 2020 enthält. Eine der wichtigsten Variablen im Brand Report ist die Variable ‘parent_company’. Diese gibt uns Auskunft darüber, von welcher Firma das entsprechende Plastikteil, das im Rahmen einer Sammelaktion gefunden wird, hergestellt wurde. Auch hier ist sehr viel Variation geboten, da von lokalen Unternehmen bis hin zu globalen Firmen alles vertreten ist. Allerdings - und das ist auch eines der zentralen Erkenntnisse des Reports - sind vor allem diese ‘Global Player’ für einen Großteil des Plastikmülls verantwortlich.
+
+Anschließend folgen Informationen technischer Natur. Da verschiedene Kunststoffe einen unterschiedlichen Einfluss auf Tiere und Umwelt haben, werden die gesammelten Teile je nach Material klassifiziert und gezählt. Uns fällt dabei auch schon direkt auf, dass es eine ganze Menge verschiedener Kunststoffarten gibt und diese ganz unterschiedlich verarbeitet werden. Die Variable ‘o’ zählt in diesem Zusammenhang für alle Plastikteile, die keiner festen Kategorie zugeordnet werden können (‘andere’). 
+
+Abschließend folgen noch einmal einige allgemeinere Informationen wie die Gesamtzahl der gesammelten Plastikteilen, durchgeführten Aktionen und beteiligten Helfer:innen.
+
+Mit diesen Daten wollen wir also in Zukunft arbeiten und spannende Analysen durchführen. Wir hoffen, dass Euch dieses Codebuch weiterhilft und wenn es noch offene Fragen gibt, bringt diese gerne mit in unsere Live-Session am Freitag oder tauscht Euch untereinander aus. Das war's an dieser Stelle mit dem Datensatz, schauen wir uns nun unsere ersten Codes in R an! Doch davor noch ein kleiner, aber wichtiger, Hinweis:
+
 <br>
 <div style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
 
-*Jetzt geht es so richtig los! Bitte denke daran: am Anfang passieren immer viele Fehler und Du wirst vermutlich auch nicht alles auf Anhieb verstehen, das ist völlig normal. Lass Dich davon nicht abschrecken, schreibe Dir einfach Deine Fragen auf und bringe sie zur nächsten Livesession am Freitag mit!*
+*Bitte denke daran: Am Anfang passieren immer viele Fehler und Du wirst vermutlich auch nicht alles auf Anhieb verstehen, das ist völlig normal. Lass Dich davon nicht abschrecken, schreibe Dir einfach Deine Fragen auf und bringe sie zur nächsten Livesession am Freitag mit!*
 </div>
 <br>
 
-### **Grundlagen: Syntax in R**
+# **Grundlagen in R**
 
-Einen Überblick über die Grundlagen in R erhaltet Ihr in diesem [**Schummelblatt**](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"}. In diesem Abschnitt stellen wir Euch die wichtigsten Grundlagen für die kommenden Wochen vor!
+## **Syntax in R**
 
-Die simpelste Version von R ist einfach die Verwendung als Taschenrechner. Führt mal folgenden Code-Block aus:
+In diesem Abschnitt stellen wir Euch die wichtigsten Grundlagen in R für die kommenden Wochen vor! Wir schauen uns an, wie wir ganz einfache Berechnung oder logische Operationen durchführen oder wie wir das Gedächtnis von R beeinflussen können. Wie bereits erwähnt, gibt es für (fast) alles in R ein **Schummelblatt**, so auch in diesem Fall! Wenn Ihr also einen Überblick über die grundlegenden Befehle immer abrufbereit haben möchtet, dann schaut doch einmal [hier](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} nach.
+
+## **R als Taschenrechner**
+
+Die simpelste Form, um R zu benutzen, ist die Verwendung als Taschenrechner. Ihr wollt das direkt einmal ausprobieren? Dann führt doch einmal den folgenden Code-Block aus:
 
 ```{r mathop, exercise = TRUE}
-### mathematische Operatoren
 2 + 2   # plus
 2 - 1   # minus
 2 * 2   # mal
 2 / 2   # geteilt
 ```
 
-Wie Ihr seht: **Kommentare** erkennt Ihr an dem Hash **"\#"**, d.h. alles was in der Zeile nach einem **"\#"** kommt, wird von R nicht als Code ausgeführt!
+Wie wir sehen, können wir R mithilfe der einfachen **mathematischen Operatoren** ganz einfach als Taschenrechner verwenden. Mit der Zeit werden wir auch feststellen, dass wir deutlich komplexere Berechnungen und Operationen somit ausführen können, aber für den Anfang kann das schon einmal sehr hilfreich sein! An den Hashtags erkennt ihr außerdem, wie wir **Kommentare** in unseren Code integrieren. Diese werden mit dem Hash **"\#"** markiert. Somit wird alles, was in der Zeile nach einem "\#" kommt, von R nicht als Code ausgeführt. Aber Vorsicht: Bei der Nutzung der Kommentare gilt das Prinzip **"So viel wie nötig, aber so wenig wie möglich!"**. Skripte dürfen gerne kommentiert werden, aber wir versuchen dennoch diese kurz und simpel zu halten. Möglicherweise werden in Zukunft auch andere Menschen an dem Projekt mitarbeiten und froh sein, wenn sie nicht von Kommentaren erschlagen werden.
 
-R kann aber auch eine Art Orakel sein: Mit **logischen Ausdrücken** könnt Ihr u.a. Datensätze filtern und Wenn-Dann-Begingungen für Operationen definieren. Was denkt Ihr, sind die folgenden logischen Ausdrücke wahr (=TRUE) oder falsch (=FALSE)?
+## **R als Orakel**
+
+Neben der Taschenrechner-Funktion, kann R auch eine Art Orakel sein. Mithilfe von **logischen Ausdrücken** können wir Datensätze u.a. filtern und Wenn-Dann-Begingungen für Operationen definieren - Ihr kennt das wahrscheinlich, wenn Ihr schon einmal mit Excel gearbeitet habt. Um die Bedingungen zu definieren, verwenden wir die gängigen Symbole. Die Bedeutung der einzelnen Symbole werden im folgenden Codeblock auch noch einmal erklärt. Aber versucht es doch direkt einmal selbst: Was denkt Ihr, sind die folgenden logischen Ausdrücke wahr (=TRUE) oder falsch (=FALSE)?
 
 ```{r logik, exercise = TRUE}
-### logische Ausdrücke
 2 == 2                      # ist gleich
-2 != 3                      # nicht gleich
+2 != 3                      # ist ungleich
 !(2 == 2)                   # nicht
 2 < 3                       # kleiner als
 2 > 3                       # größer als
@@ -146,98 +212,118 @@ R kann aber auch eine Art Orakel sein: Mit **logischen Ausdrücken** könnt Ihr 
 (1 + 1 == 2) | (2 + 2 == 5) # oder
 ```
 
-Was für Daten gibt es denn eigentlich? Erinnert euch mal zurück an letzte Woche, da haben wir uns verschiedene Datentypen angeschaut und überlegt was für (un)geordneten Informationen in den Daten enthalten sein können. Diese Unterscheidungen sind in R wichtig, denn sie bestimmen was ihr mit Daten überhaupt anstellen könnt. In R könnt Ihr mit den folgenden Grundtypen an Daten arbeiten:
+# **Datentypen in R**
+
+## **Grundtypen in R**
+
+Was für Daten gibt es denn eigentlich in R? Erinnert wir uns noch einmal zurück an letzte Woche als wir uns verschiedene **Datentypen** angeschaut und überlegt haben, welche Informationen in unseren Daten enthalten sein können? Diese Unterscheidung der Datentypen sind nun wieder wichtig, denn sie **bestimmen, was wir mit unseren Daten überhaupt in R anstellen können**. Schauen wir uns deshalb die möglichen Datentypen in R noch einmal im Überblick an:
 
 ```{r grundtypen, exercise = TRUE}
-7                # integer (also eine ganze Zahl)
-7.234123         # numeric (also alle Zahlen)
-'irgendein Text' # character (jegliche Text-Daten müssen immer in Anführungszeichen stehen)
-TRUE             # boolean (also das binäre TRUE oder FALSE)
+7                # integer
+7.234123         # numeric
+'irgendein Text' # character
+TRUE             # logical
 ```
+  
+  - **integer**: Zahlen, die keine Dezimalwerte enthalten. Wir können diese jedoch mit der `as.integer()`-Funktion in einen ganzzahligen Datentypen transformieren.
+  - **numeric**: Zahlen, die einen Dezimalwert haben oder einen Bruch darstellen.
+  - **character**: Ein oder mehrere Buchstabe(n), die immer mit Anführungszeichen gekennzeichnet werden müssen. Manchmal kann es sich bei diesem Datentyp jedoch auch um Zahlen handeln, da sie nicht als Zahlen behandelt oder berechnet werden sollen (Bsp.: Postleitzahlen, Telefonnummern).
+  - **logical**: Eine binäre Variable, die die Werte TRUE oder FALSE annehmen kann.
 
-R hat darüber hinaus aber auch eine Art Gedächtnis. D.h. Ihr könnt Werte in Objekten speichern, das geht über den Zuweisungspfeil `<-`:
+Möglicherweise werden uns im Laufe der Zeit auch noch Daten mit dem Typ **factor** begegnen, mit deren Hilfe wir auf qualitative Unterschiede hinweisen können. Da wir diese in der Regel selbst erstellen müssen, lassen wir sie an dieser Stelle noch einmal außen vor und werden zu einem späteren Zeitpunkt noch einmal darauf zurückgreifen.
+
+## **Das Gedächtnis von R**
+
+Schauen wir uns stattdessen einmal an, wie wir das **Gedächtnis von R** verwenden können. Wir können nämlich verschiedenen Objekten bestimmte **Werte zuweisen**. Dafür verwenden wir den **Zuweisungspfeil** und müssen lediglich den zu speichernden Wert und das Objekt definieren, in dem dieser Wert gespeichert werden soll. In diesem Fall wird der Wert 2 im Objekt mit dem Namen "zahl" gespeichert. Wenn wir anschließend das **Objekt abrufen** wird uns der Wert angezeigt, den wir zuvor in diesem abgespeichert haben:
 
 ```{r zuweisung, exercise = TRUE}
-zahl <- 2       # Variablenzuweisung: Der Wert 2 wird im Objekt mit dem Namen 2 gespeichert
-zahl            # Wenn Ihr dann das Objekt aufruft, wird Euch der Wert angezeigt, der im Objekt gespeichert ist
+zahl <- 2       # Variablenzuweisung
+zahl            # Objektabruf
 ```
 
-Nun denkt ihr vielleicht, dass ein Objekt, bestehend aus nur einem Wert, ja ziemlich übersichtlich ist und man dafür vielleicht gar kein R braucht ... aber neben einzelnen Werten lässt sich natürlich auch eine ganze Reihe an Werten in einem Objekt speichern. Hierbei handelt es sich um einen Vektor, d.h. alle einzelnen Werte werden über das `c()` zusammengepackt. Achtung: in einem Vektor sollten nur Werte des gleichen Grundtyps gespeichert sein!
+## **Vektoren in R**
+
+Ziemlich einfach, denkt ihr jetzt vielleicht - braucht man dafür wirklich R? Berechtigte Frage, aber was, wenn wir nicht nur einzelne Werte, sondern eine ganze Reihe an Werten in einem Objekt speichern wollen - dann wird die Sache doch schon viel interessanter! Speichern wir mehrere Werte in einem Objekt, so sprechen wir von einem **Vektor**, indem wir mithilfe von `c()` verschiedene Werte bündeln können. Aber Achtung, denn in einem Vektor sollten nur Werte des **gleichen Grundtyps** gespeichert sein!
+Wir speichern also, analog zum oberen Vorgehen, die gewünschten Werte in dem Vektor, den wir als "irgenein_vektor" benannt haben. Wenn wir diesen anschließend wieder abrufen, werden uns **alle** entsprechenden Werte angezeigt, die wir zuvor abgespeichert haben. Was wenn wir aber nicht immer den gesamten Vektor wieder abrufen möchten, sondern nur einzelne Werte? Kein Problem! Mithilfe der eckigen Klammern `[]` können wir ganz einfach die Position des Wertes bestimmen, den wir abrufen möchten und schon erhalten wir nur einen einzelnen Wert!
 
 ```{r vector, exercise = TRUE}
-# Einzelne Werte werden in einem Vektor mit der Bezeichnung 'irgendein_vektor' gespeichert, wenn Ihr diesen aufruft, werden alle darin enthaltenen Werte angezeigt
-irgendein_vektor <- c('R', 'ist', 'richtig', 'toll!')   
-irgendein_vektor      
+irgendein_vektor <- c('R', 'ist', 'richtig', 'toll!')    # Variablenzuweisung   
+irgendein_vektor                                         # Abruf des gesamten Vektors
 
-# Natürlich könnt Ihr auch einen einzelnen Wert, der in einem Vektor enthalten ist, wieder aufspüren, dazu nutzt Ihr einfach die Position des Wertes im Vektor
-irgendein_vektor[1] 
+irgendein_vektor[1]                                      # Abruf eines einzelnen Wertes
 irgendein_vektor[4]
 ```
 
-Einen letzten Datentyp neben den vier Grundtypen und Vektoren möchten wir Euch hier noch vorstellen: Listen - in Listen können Werte von unterschiedlichen Grundtypen gespeichert werden:
+## **Listen in R**
+
+Neben den vier Grundtypen und Vektoren möchten wir Euch hier noch einen letzten Datentypen vorstellen: **Listen**. Anders als in Vektoren können wir in Listen nämlich Werte von unterschiedlichen Grundtypen abspeichern, weshlab sie oft als "geordnete Sammlung von Werten" bezeichnet wird. Eine Liste kann Vektoren, Funktionen, Matrizen und sogar eine weitere Liste enthalten - man spricht dann von einer "verschachtelten Liste". Listen sind in der Regel "ein-indiziert", d.h. der Index beginnt mit dem Wert $1$. 
+Eine Liste erstellen wir ähnlich wie einen Vektor, mithilfe des Zuweisungspfeils `<-`. Dazu definieren wir zunächst den Namen, den unsere Liste haben soll ("meine_liste") und weisen dann mit `list()` die entsprechenden Werte zu. Wenn wir anschließend die Lsite abrufen, werden darin alle enhaltenen Werte angezeigt - aber auch hier können wir mithilfe der eckigen Klammern `[]` einfach wieder die Position des WErtes innerhalb der Liste angeben, um einen gwünschten Wert abzurufen.
 
 ```{r list, exercise = TRUE}
-# Einzelne Werte werden in einer Liste mit der Bezeichnung 'meine_liste' gespeichert, wenn Ihr diese aufruft, werden alle darin enthaltenen Werte angezeigt
-meine_liste <- list('Das', 'ist', 'eine', 'Liste', 1, 5.23, TRUE)
-meine_liste
+meine_liste <- list('Das', 'ist', 'eine', 'Liste', 1, 5.23, TRUE)  # Variablenzuweisung
+meine_liste                                                        # Variablenabruf
 
-# Natürlich könnt Ihr auch einen einzelnen Wert, der in einer Liste enthalten ist, wieder aufspüren, dazu nutzt Ihr einfach die Position des Wertes in der Liste
-meine_liste[1]
+meine_liste[1]                                                     # Abruf eines einzelnen Wertes
 ```
 
-In der Environment behaltet ihr einen ganz guten Überblick über die verschiedenen Daten und Objekte, mit denen ihr in R arbeitet. Aber ihr könnt auch Funktionen nutzen, um euch einen schnellen Überblick zu verschaffen. Wie genau die Objekte im Detail aufgebaut sind, schauen wir uns gleich noch an!
+## **Bestimmung der Datentypen in R**
+
+Ganz schön viele verschiedene Datentypen, mit denen wir also in R arbeiten können, da ist es bestimmt gar nicht so einfach, immer den Überblick zu behalten oder etwa doch? Zum einen können wir nämlich in der Environment ganz gut sehen, mit welchen Daten und Objekten wir arbeiten. Andererseits bietet uns R auch immer die Möglichkeit mithilfe von Funktionen den Datentyp aufzurufen - und zwar tun wir das mithilfe der `class()`-Funktion. In der Klammer müssen dabei lediglich das Objekt definieren, dessen Datentyp wir bestimmen wollen. Probiert es doch direkt einmal selbst!
 
 ```{r class, exercise = TRUE}
-# Um herauszufinden mit was für einem Objekt ihr umgeht, könnt ihr die class() Funktion anwenden.
-beispiel1 <- 5+4
-beispiel2 <- c('Hund', 'Katze')
-beispiel3 <- list('Auch', 'das', 'ist', 'eine', 'Liste', TRUE)
+beispiel1 <- 5+4                                                  # erstes Objekt
+beispiel2 <- c('Hund', 'Katze')                                   # zweites Objekt
+beispiel3 <- list('Auch', 'das', 'ist', 'eine', 'Liste', TRUE)    # drittes objekt
 
-class(beispiel1)
-class(beispiel2)
-class(beispiel3)
+class(beispiel1)                                                  # Bestimmung Datentyp des ersten Objekts
+class(beispiel2)                                                  # Bestimmung Datentyp des zweiten Objekts
+class(beispiel3)                                                  # Bestimmung Datentyp des dritten Objekts
 ```
 
-### **Interaktive Übung**
+# **Interaktive Übung**
 
 <div style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
 *Hinweis: In den folgenden Übungslektionen gibt es einen Teil, den Ihr innerhalb der Lernplattform erledigen könnt. Den anderen Teil solltet Ihr lokal auf Eurem Rechner ausführen, um Euch an die IDE RStudio zu gewöhnen.*
 </div>
 <br>
 
-Wenn Ihr mit Eurem Datenprojekt startet, solltet Ihr Euch überlegen, welche **Funktionalitäten** Ihr braucht, um Daten zu importieren, zu bereinigen und zu analysieren. Die benötigten Funktionalitäten müsst Ihr nicht alle selbst programmieren, dafür gibt es sogenannte **Packages** (zu dt. Pakete) - eine ziemlich gute Sache. Eure Arbeit beginnt deshalb in der Regel mit der **Installation und dem Laden** dieser Funktionalitäten. Dazu nutzen wir die Funktionen **`install.packages("package")`** und **`library(package)`**. Die Nutzung von Anführungszeichen ist nur bei der Installation (also für `install.packages()`) relevant. Bitte denkt daran, `install.packages()` auszukommentieren (also ein \# vor die Zeile zu packen), wenn die Installation abgeschlossen ist - sonst wird die Installation bei jedem Ausführen des Skripts wieder durchgeführt. In der Zukunft könnt Ihr auch eine eigene Datei für Installationsskripte einrichten - damit könnt Ihr Euch aber noch zu einem späteren Zeitpunkt beschäftigen.
+Wenn wir mit einem neuen Datenprojekt starten, sollten wir uns überlegen, welche **Funktionalitäten** wir brauchen, um Daten zu importieren, zu bereinigen und zu analysieren. Glücklicherweise müssen wir diese Funktionalitäten nicht alle selbst programmieren - wir können stattdessen auf sogenannte **Packages** (zu dt. Pakete) zurückgreifen, die uns das Leben in R erleichtern! Deshalb beginnt unsere Arbeit in der Regel mit der **Installation und dem Laden** dieser Funktionalitäten. Dafür nutzen wir die Funktionen **`install.packages("package")`** und **`library(package)`**. Die Nutzung von Anführungszeichen ist nur bei der Installation (also für `install.packages()`) relevant. Wir empfehlen Euch, `install.packages()` auszukommentieren (also ein \# vor die Zeile zu packen), wenn die Installation abgeschlossen ist - ansonsten wird die Installation bei jedem Ausführen des Skripts wiederholt. In der Zukunft können wir auch eine eigene Datei für Installationsskripte einrichten - aber damit können wir uns noch zu einem späteren Zeitpunkt beschäftigen.
 
-Ein **Code Chunk** (zu dt. Codeblock), also ein Abschnitt mit Code, der Pakete installiert und lädt, sieht so aus. Hier wurde der Code auskommentiert (da wir alle Pakete, die für die Lernplattform notwendig sind für Euch schon installiert und geladen haben).
+Das, was Ihr nun seht, ist ein sogenannter **Code Chunk** (zu dt. Codeblock), also ein Abschnitt eines R-Codes. In diesem Fall installieren und laden wir mit unserem Code eines der Pakete - das `rio`-Package. Wir wir sehen wurde der Code an dieser Stelle bereits auskommentiert, da wir alle Pakete, die für die Lernplattform notwendig sind für Euch schon installiert und geladen haben.
+
+## **1. Schritt: Installation und Laden des Packages "rio"**
 
 ```{r pakete, exercise = TRUE}
-# Installation und Laden des Packages "rio"
-# install.packages("rio")
-library(rio)
+# install.packages("rio")      # Installation
+library(rio)                   # Laden
 ```
 
-Mit der Notation **`package::funktion()`** kennzeichnen wir, woher eine Funktion kommt und können - unabhängig von geladenen Package-Libraries - Funktionen nutzen. Dabei ist es zwar nicht nötig, das Package vor die Funktion zu schreiben - aber definitiv best practice! Es gibt unglaublich viele Packages, die jeweils auch viele Funktionen mitbringen. Für viele Vorgehensweisen gibt es demnach nicht "einen" richtigen Weg, sondern je nach Package und Funktionen relativ viel Variation. Das Hinzufügen aus welchem Package eine bestimmte Funktion stammt, hilft also auch dabei, den eigenen Überblick über den gewählten Ansatz zu behalten.
+Mit der Notation **`package::funktion()`** kennzeichnen wir, aus welchem Package eine Funktion kommt. Somit können wir, unabhängig der geladenen Package-Libraries, verschiedene Funktionen nutzen. Gerade zu Beginn ist es immer hilfreich, das Package vor die Funktion zu schreiben - es ist zwar grundsätzlich nicht notwendig, aber ein guter Weg, um mit den verschiedenen Pakages und Funktionen vertraut zu werden. Da es unglaublich viele Packages gibt, die jeweils auch viele Funktionen mitbringen, ist es einfach eine gute Übung, um sich mit allen vertraut zu machen und den Überblick zu behalten. Außerdem es für viele Vorgehensweisen einfach nicht "einen" richtigen Weg gibt, sondern je nach Package und Funktionen sehr viel Variation möglich ist, hilft es uns selbst dabei auch dabei, einen Überblick über den von uns gewählten Ansatz zu behalten. Halten wir also noch einmal fest:
 
-Dateien können u.a. mit dem Package **`rio`** und der Funktion **`import()`** geladen werden, wie ihr im Code Chunk unten sehen könnt. Die geladenen Daten werden dann in einem Dataframe gespeichert - hier wird dem Datensatz der Name "data_raw" zugewiesen ("objektname \<- objekt"). Über diesen ist er dann im weiteren Skript abrufbar. Wenn Ihr Daten aus lokalen Ordnern laden möchtet, müsst Ihr den Link durch den Pfad der Datei (einsehbar über Rechtsklick auf den Dateinamen) auf Eurem Rechner ersetzen. Leichter wird das mit der Funktion **`here::here()`**, die für Euch in Verbindung mit RProjekten die Navigation in den entsprechenden Ordner stark vereinfacht (Recap: die `here`-Funktion setzt das Arbeitsverzeichnis in den Ordner mit der .Rproj-Datei).
+Wir müssen in R nicht alle unsere Funktionen selbst programmieren. Von der Community werden verschiedene Packages zur Verfügung gestellt, auf die wir zugreifen können. Diese Packages enthalten nämlich die verschiedenen Funktionen! 
+
+Das **`rio`**-Package und die darin enthaltene **`import()`**-Funktion, die wir im oberen Code Chunk geladen haben, können wir nutzen, um Dateien zu laden. Die geladenen Daten werden dann in einem **Datenframe** gespeichert. Hier wird dem entsprechenden Datensatz der Name "data_raw" zugewiesen ("objektname \<- objekt"). Über diesen ist er dann im weiteren Skript abrufbar. Wenn wir Daten aus lokalen Ordnern laden möchten, müssen wir den Link durch den Pfad der Datei (einsehbar über Rechtsklick auf den Dateinamen) auf unserem Rechner ersetzen.
+Leichter wird das mit der Funktion **`here::here()`**, die uns in Verbindung mit RProjekten die Navigation in den entsprechenden Ordner stark vereinfacht (Hintergrund: Mit der `here`-Funktion setzen wir das Arbeitsverzeichnis in den Ordner mit der .Rproj-Datei).
+
+## **2. Schritt: Datensatz laden mit der `import()`-Funktion aus dem `rio`-Package**
 
 ```{r daten_einlesen, exercise = TRUE}
-# Hier laden wir mit dem rio-Package und der Funktion "import()" unseren Datensatz.
 data_raw <- rio::import('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')
-# Wenn Ihr das Objekt aufruft, bekommt Ihr die darin gespeicherten Daten angezeigt
-data_raw
+data_raw        # Abruf des Objekts
 
 
-# Alternative für lokale Dateien, die in Eurem R-Projekt als CSV-Datei in einem Ordner namens "Daten" hinterlegt wurden, mit dem "here"-Package
+# Alternative: Laden lokaler Dateien, die in Eurem R-Projekt als CSV-Datei in einem Ordner namens "Daten" hinterlegt wurden, mit dem "here"-Package
 # data_raw <- rio::import(here::here('daten/plastics.csv'))
 ```
 
-Überprüft hier nochmal, als welche Art von **Objekt** `rio::import()` unseren Datensatz importiert. Das haben wir eben schon mit anderen Objekten probiert ... Wenn Ihr auf "Antwort einreichen" klickt, bekommt Ihr Feedback zu Eurem Code. Mit Hilfe von "Lösung anzeigen" könnt Ihr nachschauen, wie die richtige Lösung aussieht.
+Wir haben bereits eine Funktion kennengelernt, mit deren Hilfe wir Datentypen bestimmen können. Diese können wir auch dafür verwenden, um z.B. das **Datenformat unseres Datensatzes zu überprüfen**. Erinnert Euch noch einmal an die Funktion und versucht herauszufinden, in welchem Format `rio::import()` unseren Datensatz importiert hat. Wenn Ihr auf "Antwort einreichen" klickt, bekommt Ihr Feedback zu Eurem Code. Mit Hilfe von "Lösung anzeigen" könnt Ihr nachschauen, wie die richtige Lösung aussieht.
 
 ```{r exercise_class, exercise = TRUE}
 # Euer Code hier
 ```
 
 ```{r exercise_class-solution}
-# Datenformate überprüfen wir mit "class()"
+# Datenformate überprüfen wir mit der "class()"-Funktion
 class(data_raw)
 ```
 
@@ -245,28 +331,30 @@ class(data_raw)
 grade_this_code()
 ```
 
-Mit der Funktion **`head()`** könnt Ihr Euch die ersten sechs Beobachtungen anzeigen lassen, um den Datensatz zu erkunden. Das Gegenteil von `head()` ist `tail()` - damit könnt Ihr die letzten sechs Beobachtungen erkunden.
+## **3. Schritt: Überblick verschaffen**
+
+Haben wir einmal unserem Datensatz geladen und klassifiziert, geht es darum, un einen Überblick darüber zu verschaffen. Am Anfang sind die meisten Datensätze nämlich eher etwas chaotisch und wir müssen ja zunächst einmal schauen, mit welchen Daten wir überhaupt arbeiten. Dafür können wir u.a. zwei realtiv einfache Funktionen verwenden. 
+Jeder Datensatz besteht nämlich aus einem "Kopf" und einem "Schwanz", also einem oberen und einem unteren Ende. In R besteht dieses Ende aus **sechs** Beobachtungen. Mit der Funktion **`head()`** können wir uns also die die ersten sechs Beobachtungen anzeigen lassen, um einen ersten Blick auf den Datensatz werfen zu können. Logischerweise können wir allerdeings auch die Funktion **`tail()`** verwenden, um die letzten sechs Beobachtungen zu erkunden. Probiert das doch gleich einmal aus, was könnt Ihr direkt auf den ersten Blick erkennen?
 
 ```{r head, exercise = TRUE}
-# Erste sechs Zeilen anzeigen lassen
-head(data_raw)
+head(data_raw)                # Abruf 'Kopf' des Datensatzes
 ```
 
-Um eine Übersicht über die Variablen zu bekommen, könnt Ihr Euch mit der Funktion **`colnames()`** deren Namen anzeigen lassen.
+Auf den ersten Blick sehen wir also eine ganze Menge Zahlen und dazwischen auch ein paar Wörter - alles noch ziemlich unüberischtlich nicht wahr? 
+Für den Anfang wäre es also bestimmt hilfreich, einmal einen Überblick über all unsere **Variablen** zu bekommen. Wir erinnern uns: Variablen sind die Eigenschaften unserer Merkmalsträger:innen. Es geht also darum, herauszufinden, mit welchen Themen oder Kategorien wir überhaupt arbeiten. Wir können uns mühsam durch die erste Zeile unseres Datensatzes klicken oder eine einfache Funktion verwenden, die uns die Namen aller Variablen auf einmal auswirft. Da es für jede Variable eine einzelne **Spalte (engl. column**) gibt, heißt die Funktion **`colnames()`**.
 
 ```{r variablen, exercise = TRUE}
-# Spaltennamen anzeigen lassen
-colnames(data_raw)
+colnames(data_raw)            # Abruf Spaltennamen
 ```
 
-Die Funktionen **`nrow()`, `ncol()` und `dim()`** helfen Euch die **Dimensionen** Eures Datensatzes zu bestimmen. Mit `help("Funktion")` könnt Ihr Euch über RStudio in der Konsole die Erklärung zu den Funktionen anzeigen lassen. Nutzt das bisher Gelernte, um Euch die Spaltenanzahl (also die Anzahl an Variablen) ausgeben zu lassen.
+Anschließend möchten wir noch die **Dimension unseres Datensatzes** bestimmen, also die Komplexität der Daten, die wir zunächst einmal mithilfe der **Spalten- und Zeilenanzahl** definieren. Dafür können wir die Funktionen **`nrow()`, `ncol()` und `dim()`** verwenden (row = Zeile, col = Spalte). Ganz wichtig: Wenn wir einmal nicht weiter wissen, wie eine Funktion aufgebaut ist, können wir uns jederzeit mithilfe der **`help("Funktion")`** über RStudio in der Konsole die Erklärung zu den jeweiligen Funktionen anzeigen lassen. Nutzt das bisher Gelernte, um Euch die Spaltenanzahl (also die Anzahl an Variablen) ausgeben zu lassen.
 
 ```{r exercise_ncol, exercise = TRUE}
 # Euer Code hier
 ```
 
 ```{r exercise_ncol-solution}
-# Mit ncol() könnt Ihr Euch die Anzahl an Spalten (eng. columns) anzeigen lassen
+# Mit ncol() können wir uns die Anzahl an Spalten (eng. columns) anzeigen lassen. nrow() können wir verwenden, um die Zeilenanzahl herauszufinden
 ncol(data_raw)
 ```
 
@@ -283,35 +371,37 @@ ncol(data_raw)
   }))
 ```
 
-Elementare Merkmale des Datensatzes könnt Ihr Euch mit der Funktion **`summary()`** anzeigen lassen. Bei Text sind das Länge, Objektart und Mode; bei numerischen Werten Minimum, Mittelwert, Maximum, Quartile und fehlende Werte (diese Begriffe sollten euch aus der letzten Lektion bekannt vorkommen - wir werden in der nächsten Lektion auch nochmal genauer auf die Bedeutung schauen).
+Kommen wir nun zu einer Funktion, die uns auf einen Schlag eine ganze Menge an Informationen ausgibt und die sich deshalb besonders gut zur Erkudung unserer Daten eignet. Die Rede ist von der **`summary()`-Funktion**. Wie gesagt, gibt uns diese Funktion Auskunft über einige elementare Merkmale unserer Daten: Bei Text-Daten sind das Länge, Objektart und Mode und bei numerischen Werten Minimum, Mittelwert, Maximum, Quartile und fehlende Werte (keine Panik, wenn ihr von diesen fehlenden Werten bisher noch Nichts gehört haben, wir werden uns das Thema bald im Detail anschauen). Versucht Euch also einmal mithilfe der `summary`-Funktion einen Überblick zu verschaffen! 
 
 ```{r datenstruktur_summary, exercise = TRUE}
-# Überblick über Daten
-summary(data_raw)
+summary(data_raw)              # Überblick mit 'summary()'
 ```
 
-Alternativ gibt es auch die Funktion **`str()`**, die ähnlich wie **`summary()`** Grundeigenschaften von Datentabellen anzeigt. Welche Unterschiede findet Ihr zwischen den beiden Funktionen?
+Als Alternative zur `summary()`-Funktion können wir auch die Funktion **`str()`** verwenden. Beide Funktionen sind sich relativ ähnlich, da auch die `str()`-Funktion Grundeigenschaften von Datentabellen anzeigt. Probieren wir sie doch einmal aus und vergleichen die beiden Funktionen miteinander: Welche Unterschiede fallen Euch auf und welche Aspekte sich ähnlich oder sogar gleich?
 
 ```{r datenstruktur_str, exercise = TRUE}
-# Überblick über Daten
-str(data_raw)
+str(data_raw)                  # Überblick mit 'str()'
 ```
 
-Wenn Ihr einzelne Spalten oder **Subsets** (zu dt. Teilmengen) eines Datensatzes braucht, könnt Ihr diese aus dem Datensatz herausziehen. Dazu nutzen wir das Dollarzeichen "\$" mit Datensatz\$Spaltenname oder die eckigen Klammern mit Datensatz['Spaltenname']. Wollt Ihr mehrere Spalten aufrufen, könnt Ihr die Logik Datensatz[c('Spaltenname1', 'Spaltenname2')] nutzen (Recap: **`c()`** ist hierbei die Notation von R für Vektoren, in denen Ihr mehrere Werte hinterlegen könnt).
+## **4. Schritt: Vereinfachung durch Subsets**
 
-Wenn Ihr mit einem bestimmten Subset weiterarbeiten wollt, könnt ihr auch einfach über eine neue Objektzuweisung und einen Objektnamen einen zusätzlichen Datensatz erstellen.
+Manchmal, gerade bei sehr großen Datenmengen, kann es auch hilfreich sein, wenn wir mit einzelnen Spalten oder **Subsets (zu dt. Teilmengen)** arbeiten. Das ist logischerweise deutlich überischtlicher, als ein Datensatz, der zehantausende Untersuchungseinheiten und mehrere hundert Variablen enthält (ja, das gibt es!). Glücklicherweise können wir mit R relativ leicht, Teilmengen aus unserem Datensazu herausziehen. Dafür nutzen wir das Dollarzeichen "\$" mit der Logik `Datensatz\$Spaltenname` oder die eckigen Klammern mit der Logik `Datensatz['Spaltenname']`. Wollen wir mehrere Spalten aufrufen, könnt Ihr diese durch ein Komma trennen und somit auflisten - Logik `Datensatz[c('Spaltenname1', 'Spaltenname2')]`. nutzen 
+**Recap**: `c()` ist die Notation von R für Vektoren, in denen wir mehrere Werte hinterlegen können.
 
 ```{r slicing1, exercise = TRUE}
-# Auslesen der Spalte 'country'
-data_raw$country 
-# Auslesen der Spalten 'country' und 'year'
-data_raw[c('country', 'year')]
+data_raw$country                    # Abruf der Spalte 'country' 
+data_raw[c('country', 'year')]      # Abruf der Spalten 'country' und 'year'
 ```
+
+Wenn wir mit einem bestimmten Subset weiterarbeiten wollen, können wir auch einfach über eine neue Objektzuweisung und einen Objektnamen einen zusätzlichen Datensatz erstellen. Dafür verwenden wir die **`subset()`**-Funktion und ggf. mehrere Bedingungen, die der Subset erfüllen soll.
 
 ```{r slicing2, exercise = TRUE}
 # Erstellung eines Subsets auf Basis von Bedingungen
 subset(data_raw, country == "Argentina" & year == 2020)
 ```
+
+Bei der Erstellung eines Subsets müssen wir zunächst einmal das Objekt definieren, das wir als Grundalge verwenden. Das können Vektoren, Matrizen, Datensätze o.Ä. sein. Wir verwenden logischerweise unseren Datensatz "data_raw". Anschließend müssen wir unsere Bedingungen definieren, die dieser Subset zu erfüllen hat. In diesem Fall entscheiden wir uns für einen Subset, der alle Beobachtungen enthält, die im Jahr 2020 in Argentinien registriert wurden. Und schon haben wir unseren ersten (Teil-)Datensatz erstellt! Wie die Funktion genau aufgebaut ist, können wir auch nochmals mithilfe der `help("subset")`-Funktion nachschlagen.
+Auf Basis dieser Definition können wir nun ein neues **Objekt erstellen**, mit dem wir dann unabhängig unseres restlichen Datensatzes weiterarbeiten können. Dazu müssen wir mithilfe des Zuweisungspfeils `<-` unseren neu erstellten Datensatz lediglich einem Objekt zuweisen, das wir in diesem Fall "ARG_2020" nennen.  
 
 ```{r slicing3, exercise = TRUE}
 # Erstellung eines neuen Objekts auf Basis von Bedingungen
@@ -320,7 +410,7 @@ ARG_2020 <- subset(data_raw, country == "Argentina" & year == 2020)
 
 <div style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
 
-*Uff geschafft! Wenn Du direkt noch mehr zu R lernen möchtest, dann schau Dir gerne den Exkurs zu Kontrollstrukturen an. Gerne kannst Du aber auch direkt weiter zur Übung springen!*
+Geschafft, Du bist spitze! :) Wenn Du direkt noch mehr zu R lernen möchtest, dann schau Dir gerne den Exkurs zu Kontrollstrukturen an. Gerne kannst Du aber auch direkt weiter zur Übung springen!
 
 </div>
 
@@ -332,7 +422,8 @@ ARG_2020 <- subset(data_raw, country == "Argentina" & year == 2020)
   
 <h3><b>Exkurs: Kontrollstrukturen</b></h3>  
 
-In der Programmierung gibt es verschiedene Kontrollstrukturen: Nur *wenn* die Note eines Teilnehmenden besser als eine 2 ist, *dann* soll R den Text 'Gut gemacht' ausgeben? Dann braucht Ihr eine **Wenn-Dann-Bedingung** (*engl. If-Then-Statement*). Hier die Syntax und ein kleines Beispiel - Welcher Text (*Operation innerhalb der geschwungenen Klammern*) wird hier ausgegeben?
+In der Programmierung gibt es verschiedene **Kontrollstrukturen**, die wir mithilfe sogenannter **Wenn-dann-Bedingungen (engl. If-Then-Statement)** definieren können. Was wir darunter verstehen, schauen wir uns am besten einmal direkt an einem Besipiel an: Ihr seid Fahrlehrer:in und bereitet Eure Schüler:innen mit einer Simulation der theoretischen Prüfung auf den eignetlichen Prüfungstermin vor. Eure Schüler:innen bearbeiten also einen Test, der der eigentlichen Prüfung sehr ähnlich ist. Daher dürfen die Schüler:innen maximal zehn Fehlerpunkte sammeln.  **Wenn** sie dieses Ziel "weniger als zehn Fehlerpunkte" erreichen, **dann** soll das Programm den Text 'Gut gemacht, Du hast bestanden!' ausgeben.
+Eben solche Kontrollstrukturen können wir auch in R umsetzen - wie, das schauen wir in diesem Exkurs einmal an. Beginnen wir also mit der Syntax. Wir verwenden hierfür die **`if()`**-Funktion und müssen zunächst einmal die Bedingung definieren, die überprüft wird (Bsp. Fahrschule: Die Person darf maximal zehn Fehlerpunkte erreichen). Anschließend müssen wir in der ersten geschwungenen Klammer `{}` den Code festlegen, der ausgegeben wird, wenn diese Bedingung erfüllt ist (Bsp. Fahrschule: 'Gut gemacht, Du hast bestanden!'). In der zweiten (oder weiteren) geschwungenen Klammer `{}` müssen wir den Code schreiben, der ausgeführt wird, wenn die Bedingung **nicht** erfüllt ist (Bsp. Fahrschule: 'Nicht bestanden, Du hast X Fehlerpunkte. Versuche es erneut!'). Hier noch einmal die Syntax und ein weiteres Beispiel - Welcher Text (Tipp: Operation innerhalb der geschwungenen Klammern) wird hier ausgegeben?
 
 ```{r wenndann, exercise = TRUE}
 # if (Bedingung, die überprüft wird) {
@@ -352,17 +443,17 @@ if (2 + 2 == 5) {
     }
 ```
 
-Da haben wir nochmal Glück gehabt: Unser **regelbasiertes System** funktioniert. Neben **Maschinellem Lernen** sind solche regelbasierten Systeme übrigens eine wichtige Form von allen Technologien, die unter das Modewort **Künstliche Intelligenz** fallen. Die zugehörigen Regeln werden in komplexeren Systemen von Expert:innen verfasst und erst nach und nach, wenn es möglich ist, durch alternative Technologien ersetzt. Ein gutes Beispiel dafür sind Verfahren zur Verarbeitung von Sprache (siehe [hier](https://aclanthology.org/D13-1079.pdf){target="_blank"}). Ihr könnt Euch aber auch einfach ein regelbasiertes System vorstellen, das automatisch bei der Erreichung einer bestimmten Spendensumme eine Dankesnachricht an alle Spender:innen versendet.
+Da haben wir nochmal Glück gehabt: Unser **regelbasiertes System** funktioniert. Anwednung finden solche Kontrollstrukturen vor allem im Bereich des **Maschinellen Lernens** und somit allen Technologien, die unter das Modewort **Künstliche Intelligenz** fallen. In deutlich komplexeren Systemen werden die zugehörigen Regeln von Expert:innen verfasst und erst nach und nach, wenn es möglich ist, durch alternative Technologien ersetzt. Ein gutes Beispiel dafür sind Verfahren zur Verarbeitung von Sprache (siehe [hier](https://aclanthology.org/D13-1079.pdf){target="_blank"}). Ein einfacheres regelbasiertes System könnten wir allerdings auch für unsere Organsiation verwenden: Ein System, das automatisch bei der Erreichung einer bestimmten Spendensumme eine Dankesnachricht an alle Spender:innen versendet. Zimelich praktisch oder?
 
-Neben der Ausführung von Aktionen unter bestimmten Bedingungen können wir durch technische Implementierungen **Aktionen mehrfach ausführen**. Ein Beispiel: Nach der Erreichung der Spendensumme soll eine Dankesnachricht an alle Spender:innen gesendet werden. In der Programmierung bezeichnet man diese iterierenden Verfahren als **Loop** (zu dt. Schleife). Sind alle Spender:innen bekannt (und somit die Liste der Elemente, über die man iteriert), nutzt man einen **For Loop** (zu dt. Für-Schleife).
+Neben der Ausführung von Aktionen unter bestimmten Bedingungen können wir durch technische Implementierungen **Aktionen mehrfach ausführen**. Bleiben wir bei unserem Beispiel mit den Spenden: Wenn wir eine bestimmte Spendensummer erriechen, wollen wir uns mit einer kurzen Dankesnachricht bei allen Spender:innen für ihre Unterstützung bedanken. In der Programmierung bezeichnet man diese iterierenden (dt. sich wiederholenden) Verfahren als **Loop** (zu dt. Schleife). Sind alle Spender:innen bekannt (und somit die Liste der Elemente, über die man iteriert), nutzt man einen **For Loop** (zu dt. Für-Schleife).
 
 ![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/03_einfuehrung-in-rstudio/forloop.png?raw=true){#id .class width="30%" height="100%"}
 
 ```{r fuerschleife, exercise = TRUE}
-# Aus der Liste "list("Lisa", "Frie", "Zoe")" picken wir uns eine "spenderin" raus...
-for (spenderin in list("Lisa", "Frie", "Zoe")) {
-  # für diese "spenderin" geben wir den Satz 'Danke, <Name diese:r:s Spender:in>!' aus
-  print(paste("Danke,", spenderin, "!"))
+# Aus der Liste "list("Lisa", "Hannah", "Amelie")" picken wir uns eine "Spenderin" raus...
+for (spenderin in list("Lisa", "Hannah", "Amelie")) {
+  # für diese "Spenderin" geben wir den Satz 'Danke für deine Unterstützung, <Name diese:r:s Spender:in>!' aus
+  print(paste("Danke für deine Unterstützung,", spenderin, "!"))
 }
 ```
 
@@ -371,18 +462,19 @@ Soll die Aktion ausgeführt werden, bis eine Bedingung eintritt, z.B. weil alle 
 ![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/03_einfuehrung-in-rstudio/whileloop.png?raw=true){.class width="30%" height="100%"}
 
 ```{r solangeschleife, exercise = TRUE}
-# Erstellung der Liste unbekannter Länge
-spenderinnenliste <- list("Lisa", "Frie", "Zoe")
+# Erstelle eine Liste deiner Spender:innen
+spenderinnenliste <- list("Lisa", "Hannah", "Amelie")
 
-# definiere Startwert
+# Definiere den Startwert
 i <- 1
 
-# führe den Code für alle i kleiner gleich der Länge der Liste durch...
+# Führe den Code für alle i kleiner gleich der Länge der Liste durch...
 while (i <= length(spenderinnenliste)) {
-  # ...gebe für diesen Eintrag den Satz 'Danke, <Name diese:r:s Spender:in>!' aus...
-  print(paste("Danke,", spenderinnenliste[[i]], "!"))
+  # ...gebe für diesen Eintrag den Satz 'Danke für deine Unterstützung, <Name diese:r:s Spender:in>!' aus...
+  print(paste("Danke für deine Unterstützung,", spenderinnenliste[[i]], "!"))
   # ...setze den Counter i um 1 herauf
   i = i + 1
+}
 }
 ```
 
@@ -390,10 +482,10 @@ while (i <= length(spenderinnenliste)) {
 
 ---
 
-Eine letzte Anmerkung: Es ist ganz normal, dass Euer Code mal **Fehler** wirft - auch uns passiert das. In der Console (und in RMDs unter dem Code Chunk) wird Euch dann angezeigt, **wo der Fehler auftritt und um welche Art von Fehler es sich handelt** (sog. Fehlermeldung). Beliebte Fehlerquellen sind **Syntaxfehler** (wenn Ihr beispielsweise Klammern nicht schließt, die falsche Klammerart nutzt oder Argumente nicht durch Kommata trennt) oder die falsche Verwendung von Argumenten in Funktionen. Auch das Schreiben von Kommentaren in Code Chunks ist nur mit "\#" zu Beginn des Textes möglich. Wenn Ihr mal gar nicht weiter wisst, kopiert einfach die Fehlermeldung aus der Console und begebt Euch damit auf eine Googlesuche. Auf [**Stack Overflow**](https://stackoverflow.com/){target="_blank"} und in der [**R-Online Community**](https://community.rstudio.com/){target="_blank"} finden sich für (fast) alle Herausforderungen Antworten und Hilfestellungen.
+Das war bis hierher ganz schön viel Input! Gerade zu Beginn ist es ganz normal, dass unser Code  **Fehler** enthält - aber auch den Profis passiert das immer wieder. Wichtig ist, dass wir uns davon nicht verrückt machen lassen, häufig sind es nämlich einfache **Syntaxfehler** (z.B. offene Klammern, falsche Klammerart oder fehlende Kommas) oder die flasche Anwendung von Argumenten in Funktionen. Wichtig ist, dass wir uns dann auf die Suche nach diesen Fehlern machen. Dabei hilft uns die **Console** oder auch unser (RMarkdown-Dokument). Darin wird uns nämlich angezeigt **wo der Fehler auftritt und um welche Art von Fehler es sich handelt** (sog. Fehlermeldung). So können wir die Fehlerqulle identifizieren und (meistens) schnell beheben. Und wenn wir einmal gar nicht weiter wissen, nutzen wir die riesige R-Community, denn nahezu jedes Problem ist schon einmal irgendwo diskutiert worden. Wir kopieren einfach die Fehlermeldung aus der Console und begeben uns damit auf Googlesuche. Auf [**Stack Overflow**](https://stackoverflow.com/){target="_blank"} und in der [**R-Online Community**](https://community.rstudio.com/){target="_blank"} finden sich für (fast) alle Herausforderungen Antworten und Hilfestellungen!
 
 
-### **Und jetzt Ihr**
+# **Und jetzt Ihr!**
 
 Legt nun ein neues R Projekt (wie im Video) und eine neue R Markdown-Datei auf Eurem Rechner an und...
 
@@ -401,13 +493,15 @@ Legt nun ein neues R Projekt (wie im Video) und eine neue R Markdown-Datei auf E
 2.  Lest den Datensatz über den Hyperlink oder lokal ein. Ihr findet ihn unter diesem [Link](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv){target="_blank"} und könnt ihn dort auch herunterladen, wenn Ihr Euch für die zweite Variante entscheidet.
 3.  Nutzt die vorgestellten Funktionen, um den Datensatz zu erkunden. Dafür könnt Ihr die Code Chunks aus der Lernplattform einfach in RStudio kopieren und sie dort ausführen.
 
-### **Zusätzliche Ressourcen**
+# **Zusätzliche Ressourcen**
 
--   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
--   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
+-   [R for Data Science 2e](https://r4ds.hadley.nz/){target="_blank"}
+-   [R Studio Learn: Programming Basics](https://rstudio.cloud/learn/primers/1.2){target="_blank"}
 -   [Introduction to Programming in R (engl.)](https://app.dataquest.io/course/intro-to-r-rewrite){target="_blank"} von Dataquest
 -   [Data Structures in R (engl.)](https://app.dataquest.io/course/datastructure-in-r-rewrite){target="_blank"} von Dataquest
 -   [Control Flow, Iteration and Functions in R (engl.)](https://app.dataquest.io/course/intermediate-r){target="_blank"} von Dataquest
--   [R Studio Learn: Programming Basics](https://rstudio.cloud/learn/primers/1.2){target="_blank"}
+-   [Tutorials for learning R](https://www.r-bloggers.com/2015/12/how-to-learn-r-2/#h.nl3rvdr3ycsc){target="_blank"} von R-bloggers und DataCamp
+-   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
+-   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
