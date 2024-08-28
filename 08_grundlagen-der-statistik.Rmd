@@ -70,7 +70,7 @@ In der nachfolgende Abbildung zeigt ein zyklisches Prozessmodell die notwendigen
 </center>
 </p>
 
-## Die Rolle der Statistik
+## **Die Rolle der Statistik**
 
 Die Statistik ist dabei an fast allen Schritten beteiligt:
   - Planung der Datenerhebung (Messung): Statistische Überlegungen entscheiden darüber, welche Daten in welchen Einheiten erhoben werden sollen.
@@ -85,7 +85,7 @@ Wie wir sehen, ist eine grundlegende Datenkompetenz also von enormer Bedeutung. 
 
 Die Statistik ist eine Wissenschaft, die alle Lebensbereiche durchdringt. Wir alle sind täglich einer Fülle von Daten und Visualisierungen von Daten ausgesetzt, die uns über die verschiedene Kanäle erreichen. Im Internet kann man gezielt nach Daten aller Art suchen, z.B. nach statistischen Informationen zu Migrationsströmen oder zur Kursentwicklung von Kryptowährungen. Zugleich wird die Online-Präsentation von Daten immer benutzerfreundlicher. Dies gilt insbesondere für Daten der amtlichen Statistik – wie das folgende Beispiel einer [interaktiven Präsentation der Bevölkerungsvorausberechnung](https://service.destatis.de/bevoelkerungspyramide/){target="_blank"} für Deutschland des Statistischen Bundesamts (Destatis) zeigt.
 
-## Statistische Grundbegriffe 
+## **Statistische Grundbegriffe** 
 
 ![**Video:** von6auf1 - "Statistische Daten - Merkmalsträger, Merkmalsausprägung ..." (3min)](https://youtu.be/fmpxGo1JJiE?si=5_Wu79t3LVA9gmLF)(04.11.2015, abgerufen August 2024)
 
@@ -237,7 +237,7 @@ quiz(caption = "Fragen zur Pressemitteilung",
 )
 ```
 
-# **Grundlagen: Daten
+# **Grundlagen: Daten**
 
 ## **Was sind Daten?**
 
@@ -500,7 +500,7 @@ quiz(caption = "Frage zu Streuungsparameter",
     )
 )
 ```
-## Grafische Darstellung der Lage- und Streuungsparameter: Boxplot
+## **Grafische Darstellung der Lage- und Streuungsparameter: Boxplot**
 
 Nun haben wir schon eine ganze Menge über Lage- und Streuungsparameter gelernt, aber was fangen wir mit diesen ganzen Zahlen überhaup an? Zum einen können wir sie unter anderem dafür verwenden, verschiedene Gruppen oder Untersuchungseinheiten miteinander zu vergleichen: Welche Klasse hat den besten Durchschnitt (Mittelwert) in der letzten Mathearbeit geschrieben oder welches Unternehmen erzielt den maximalen Profit?
 Allerdings lassen sich diese Werte auch mithilfe von R grafisch in einem **Boxplot** zusammenfassen. Diese Darstellungsform eignet sich besonder gut, um einen ersten Überblick über unsere Daten zu bekommen: Was ist der größte bzw. der kleinste Wert und wo liegt überhaupt der Median, also die "wahre" Mitte unserer Daten? All das und noch etwas mehr können wir aus einem Boxplot herauslesen. Wie wir einen solchen Boxplot mithilfe von R erstellen, schauen wir uns in einem späteren Kapitel an, aber die untere Grafik zeigt Euch schon einmal, wie ein Boxplot eigentlich aussieht und welche Informationen er enthält:
