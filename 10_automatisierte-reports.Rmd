@@ -3,8 +3,7 @@ title: "Reportautomatisierung"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
-  - Nina Hauser
-  - Zoé Wolter
+  - Lisa Reiber
 output: 
   html_document:
     toc: true
@@ -41,8 +40,7 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ![*Video: Reportautomatisierung (20min)*](https://youtu.be/78r2ugQ6bdQ)
 
-# Kernaussagen
-
+### **Kernaussagen**
 - Berichte in R Markdown anzulegen, bedeutet, **reproduzierbare Reports** zu erstellen
 - So können...
   a) Reports leicht **aktualisiert**,
@@ -57,11 +55,9 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 - Innerhalb des R Markdowns kann auf die selbst benannten Parameter über `params$parameter_name` **zugegriffen** werden
 - Möglich ist die Festlegung von Parametern von den folgenden **Typen**: `character` (Text), `integer` (ganze Zahl), `numeric` (Zahl), `logical` (logischer Ausdruck) und Ausdrücke in R
 
-# Quiz
-
+### **Quiz**
 ```{r 11quiz_reportauto}
-quiz(
-  caption = NULL,
+quiz(caption = NULL,
   question("R Markdowns sind reproduzierbar. Das hat den Vorteil, dass...",
     answer("sie leicht aktualisiert werden können.", correct = TRUE),
     answer("in verschiede Layoutformate übertragen werden können.", correct = TRUE),
@@ -74,13 +70,14 @@ quiz(
   ),
   question("Der Mehrwert von R Markdowns liegt in...",
     answer("der leichten Anpassungsfähigkeit ihrer Designs."),
-    answer("ihrer Reproduzierbarkeit.", correct = TRUE),
-    answer("ihrem niedrigschwelligen User Interface für nicht so tech-affine Nutzer:innen."),
-    correct = "Richtig! Glücklicherweise gibt es tolle Layouttemplates und die Möglichkeit der interaktiven Parametrisierung durch GUIs, die es uns vereinfachen, Reports anschaulich und nutzerinnenfreundlich zu gestalten.",
-    incorrect = "Leider falsch: Das Layout von R Markdowns muss oft in HTML und CSS codiert werden. Deshalb nutzen wir in der Regel Templates. Teilen wir außerdem R Markdowns direkt (also nicht das Outputformat) ist auch die Nutzung in RStudio gar nicht so leicht - wie Ihr ja bereits wisst. Da müssen wir also Zeit in das Set-up und die gute Erklärung des Tools stecken.",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
+     answer("ihrer Reproduzierbarkeit.", correct = TRUE),
+     answer("ihrem niedrigschwelligen User Interface für nicht so tech-affine Nutzer:innen."),
+     correct = "Richtig! Glücklicherweise gibt es tolle Layouttemplates und die Möglichkeit der interaktiven Parametrisierung durch GUIs, die es uns vereinfachen, Reports anschaulich und nutzerinnenfreundlich zu gestalten.",
+     incorrect = "Leider falsch: Das Layout von R Markdowns muss oft in HTML und CSS codiert werden. Deshalb nutzen wir in der Regel Templates. Teilen wir außerdem R Markdowns direkt (also nicht das Outputformat) ist auch die Nutzung in RStudio gar nicht so leicht - wie Ihr ja bereits wisst. Da müssen wir also Zeit in das Set-up und die gute Erklärung des Tools stecken.",
+     allow_retry = TRUE,
+     try_again_button = "Nochmal versuchen"
   ),
+  
   question("Parameter sind...",
     answer("Platzhalter, die es ermöglichen einen Wert einmal zu definieren, und ihn an verschiedenen Stellen im Code zu übergeben.", correct = TRUE),
     answer("eine Maßeinheit der Performance in der Computerwissenschaft."),
@@ -101,10 +98,9 @@ quiz(
 )
 ```
 
-# Interaktive Übung
+### Interaktive Übung
 
-## Schritt 0: Set-up  
-
+#### Schritt 0: Set-up  
 Zunächst ist es wichtig, die richtige Infrastruktur für Eure Reports zu schaffen. Eine Reportautomatisierung besteht aus:
 
 - einem **Reporttemplate in R Markdown**, in dem der Inhalt des Reports, der Code, und die Parameter im YAML-Abschnitt definiert werden (reporttemplate.Rmd)
@@ -112,8 +108,7 @@ Zunächst ist es wichtig, die richtige Infrastruktur für Eure Reports zu schaff
 
 Eingebettet sollten die beiden Codeskripte in einem **R-Projekt** sein. Wie bereits im Kapitel "Einführung in R(Studio)" erklärt, helfen diese als metaphorischer Umzugskarton unsere Infrastruktur zusammenzuhalten. Ein R-Projekt, das alle enthaltenen Dateien einbettet, erleichtert die Übergabe der Werte zwischen den Dateien. Nützlich sind zudem die **Ordner "daten"**, in dem alle Daten hinterlegt sind, sowie der **Ordner "out"**, in dem alle erzeugten Reports gespeichert werden.
 
-## Schritt 1: Parameter definieren (und ggf. Standardwert setzen)
-
+#### Schritt 1: Parameter definieren (und ggf. Standardwert setzen)
 Um Parameter zu nutzen, müssen diese **immer** im YAML-Header definiert werden. Der folgende YAML-Header legt als Titel "Mein Report", als Autor:in "Maxi Mustermensch", als Datum den heutigen Tag (`r params$heute`) und als Output HTML fest. Darüber setzen wir noch eigene Parameter (params). Jede Zeile folgt der Logik eines **Key-Value-Paares** (zu dt. Schlüssel-Wert-Paar). Die Bezeichnung des Wertes steht also vor dem Doppelpunkt, der Wert danach (`parameter_name(key): parameter_wert(value)`). Dieser Wert ist Euer Standardwert bei der Ausführung des Codeskripts. Wenn der Wert frei bleibt, wird er automatisch auf `NULL` gesetzt.
 
     ---
@@ -132,8 +127,7 @@ Ausgewählt haben wir hier als Parameter das Ausstellungsdatum des Reports (den 
 
 *Anmerkung: Achtung bei der Nutzung von R-Funktionen in den allgemeinen YAML-Headereinstellungen und den Parametern. Die Syntax unterscheidet sich (siehe oben).* 
     
-## Schritt 2: Parameter einbinden
-
+#### Schritt 2: Parameter einbinden
 Parameter, die im YAML-Abschnitt definiert wurden, stehen als **Liste namens `params`** zur Verfügung. Um auf einen Parameter im Code zuzugreifen, benutzt Ihr `params$parameter_key`. Auf den Parameterwert könnt Ihr sowohl in Code Chunks als auch im Inhalt des R Markdowns zugreifen. Schauen wir uns das mal am Beispiel des Parameter "heute" an:
 
 ````
@@ -157,6 +151,7 @@ print(params$heute)
 Druckt hier den als Parameter definierten Filter für Plastikart (`filter_plastic`).
 ``` {r 11quiz_parameter_call, exercise = TRUE}
 # Hier Euer Code!
+
 ```
 
 ```{r 11quiz_parameter_call-solution}
@@ -177,14 +172,14 @@ grade_this_code()
 Die Parameter können wir dann nutzen, um Daten zu filtern (wir nutzen hier den vorbereiteten Datensatz `audit`).
 
 ```{r parameter_filtern, exercise = TRUE}
-# Laden des Audit-Datensatzes
+# Laden des Audit-Datensatzes 
 audit <- rio::import(
   here::here("daten/bffp2019_audit_by_country_and_company.csv")
-)
+  )
 ```
 
 ```{r 11quiz_1-parameter_filtern, exercise = TRUE}
-# Filtern des Audit-Datensatzes
+# Filtern des Audit-Datensatzes 
 audit %>%
   dplyr::filter(plastic_type == params$filter_plastic)
 ```
@@ -194,7 +189,7 @@ Filtert nun zusätzlich den Kontinent (hinterlegt als `filter_continent`):
 ```{r 11quiz_parameter_filter, exercise = TRUE}
 # Filtern des Audit-Datensatzes (hinterlegt als )
 audit %>%
-  dplyr::filter(plastic_type == params$filter_plastic)
+  dplyr::filter(plastic_type == params$filter_plastic) 
 # Euer Code hier
 ```
 
@@ -202,15 +197,12 @@ audit %>%
 ```{r 11quiz_parameter_filter-solution}
 # Filtern des Audit-Datensatzes
 audit %>%
-  dplyr::filter(
-    plastic_type == params$filter_plastic,
-    continent == params$filter_continent
-  )
+  dplyr::filter(plastic_type == params$filter_plastic,
+                continent == params$filter_continent)
 ```
 
 ```{r 11quiz_reportauto_filter}
-quiz(
-  caption = NULL,
+quiz(caption = NULL,
   question("Wie viele Beobachtungen werden gefunden?",
     answer("2886"),
     answer("0", correct = TRUE),
@@ -244,14 +236,12 @@ head(audit)
 ```
 
 
-## Schritt 3: Parameter anpassen
-
-### Option A1: YAML-Header (begrenzt praktikabel)
-
+#### Schritt 3: Parameter anpassen
+##### Option A1: YAML-Header (begrenzt praktikabel)
 Falls Ihr den Report lediglich semi-automatisch ausführen wollt, könnt Ihr die Parameter **manuell im YAML-Header** jederzeit austauschen und anpassen. Der Report wird dann auf Basis der aktualisierten Parameter durchgeführt (Klickt einfach auf "Knit").
 
-### Option A2: YAML-Header mit GUI (begrenzt praktikabel)
 
+##### Option A2: YAML-Header mit GUI (begrenzt praktikabel)
 Neben dem Knit-Button findet sich ein Menü, in dem "Knit with parameters..." ausgewählt werden kann. Daraufhin öffnet sich in R-Studio eine graphische Oberfläche, in der für die im R Markdown Dokument definierten Parameter eigene Werte eingegeben werden können. 
 
 ![*Knitting mit Parametern - Standard (Screenshot)*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/10_automatisierte-reports/knitwithparameters.png?raw=true){#id .class width=50% height=50%}
@@ -284,16 +274,15 @@ gestalten. Zur Verfügung steht Euch die freie Eingabe (Standard), Dateiuploards
 ![*Knitting mit Parametern - Menüoptionen (Screenshot)*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/10_automatisierte-reports/knitwithparametersoptions.png?raw=true){#id .class width=50% height=50%}
 
 
-### Option B1: Die Render-Funktion mit GUI (begrenzt praktikabel)
-
+##### Option B1: Die Render-Funktion mit GUI (begrenzt praktikabel)
 Die andere Option, die wir Euch nicht vorenthalten möchten, ist das Starten des GUI über die `rmarkdown::render()`-Funktion. Ansonsten funktionier hier alles analog zu Option A2.
 
 ```r
 rmarkdown::render("Report_Plastic.Rmd", params = "ask")
 ```
 
-### Option B2: Die Render-Funktion (Best Practice)
 
+##### Option B2: Die Render-Funktion (Best Practice)
 Am Besten - und wenn Ihr viele Reports auf einmal erstellen wollt - solltet Ihr nun die **Render-Datei** `render.R/render.Rmd` einrichten. Hauptbestandteil dieses Codescriptes ist die Render-Funktion:
 
 ```r
@@ -306,7 +295,7 @@ rmarkdown::render(
   )
 ```
 
-# Exkurs: Die Reportfabrik
+### **Exkurs: Die Reportfabrik**
 Wollen wir viele Reports auf einmal erstellen, müssen wir die Render-Funktion in etwas einbetten, das definiert, dass der Report für die verschiedenen Werte in einer Liste gerendert werden soll. Wir nutzen dazu die `purrr::walk`-Funktion. Sie bedeutet: Für jedes Element der Liste, wende die Funktion an, die hier definiert wird:
 
 ```r
@@ -353,12 +342,10 @@ if (!dir.exists(output_dir)) {
 
 Tolle Tipps, Tricks und mehr Input findet Ihr auf der [Website von R-Studio](https://rmarkdown.rstudio.com/lesson-6.html){target="_blank"}, in den englischsprachigen Büchern [Markdown: The Definite Guide, Kapitel 15](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html){target="_blank"} und [R Markdown Cookbook, Kapitel 17.4](https://bookdown.org/yihui/rmarkdown-cookbook/parameterized-reports.html){target="_blank"} und bei [Dataquest](https://app.dataquest.io/course/intermediate-r){target="_blank"}. In dem verlinkten Kapitel findet Ihr insbesondere weitere Hilfestellungen zu Wenn-Dann-Bedingungen, Funktionen und Iterationen.
 
-# Und jetzt Ihr
-
+### **Und jetzt Ihr**
 Wenn Ihr einen **eigenen Report** habt - den Ihr letzte Woche bereits in R erstellt habt - dann könnt Ihr jetzt versuchen, diesen mit Hilfe der `rmarkdown::render()` Funktion zu generieren und die Funktion so anzupassen, dass der Dateiname nach euren Wünschen Angepasst wird. Wenn Ihr nicht genug vom Report fabrizieren bekommen könnt oder Ihr keinen eigenen Report habt, dann schaut in den Ordner `10_automatisierte-reports/10_automatisiertereports` im [Übungsordner](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"}, öffnet das R Projekt und versucht die Aufgaben in `Report_Factory.Rmd` zu bearbeiten. 
 
-# Zusätzliche Ressourcen
-
+### **Zusätzliche Ressourcen**
 - [RStudio Webinar: **Rethink Reporting with Automation**](https://www.rstudio.com/resources/webinars/rethink-reporting-with-automation/){target="_blank"}
 - Yihui Xie et al. [**RMarkdown: The Definitive Guide**](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html){target="_blank"} (engl.)
 - RStudios [Hilfeseite](https://rmarkdown.rstudio.com/lesson-6.html){target="_blank"}

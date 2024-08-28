@@ -3,7 +3,6 @@ title: "Datentransformation"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
-  - Nina Hauser
   - Zoé Wolter
 output: 
   html_document:

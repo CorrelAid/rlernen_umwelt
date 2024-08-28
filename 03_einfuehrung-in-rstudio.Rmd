@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
   - Zoé Wolter
+  - Susan Reichelt
 output: 
   html_document:
     toc: true
