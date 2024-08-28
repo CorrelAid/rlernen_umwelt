@@ -4,6 +4,7 @@ author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
   - Zoé Wolter
+  - Jonas Lorenz
 output: 
   html_document:
     toc: true
@@ -42,11 +43,9 @@ wb_processed <- process_wb_areas(wb_data = wb_areas)
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-![*Video: Datentransformation (30min)*](https://youtu.be/YWFLSovbha0)
+![*Video: Datentransformation mit Tidyverse (30min)*](https://youtu.be/YWFLSovbha0)
 
-# Kernaussagen
-
-## Das Tidyverse
+# **Das `Tidyverse`-Package**
 
 <left>
 
@@ -55,16 +54,33 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 </left>
 <br>
 
-- Das Tidyverse ist eine **Sammlung von verschiedenen R-Packages**, die aufeinander abgestimmt sind und dabei derselben Logik folgen ([tidyverse.org](https://www.tidyverse.org/){target="_blank"}). 
-- Voraussetzung für die Arbeit mit dem Tidyverse sind "tidy" Datensätze:
-![Tidy Data](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/06_datentransformation/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
+## **Zusammenfassung**
 
+  - **Sammlung verschiedener R-Packages**, die aufeinander abgestimmt sind und dabei derselben Logik folgen ([tidyverse.org](https://www.tidyverse.org/){target="_blank"}).
+  - Die Packages können einzeln installiert und aufgerufen werden, aber auch gesammelt über `install_packages('tidyverse')` bzw. `library(tidyverse)`.
+  - Einige der Packages und Funktionen kennen wir bereits aus den letzten Wochen!
+  - **"tidy" Datensätze sind die Voraussetzung, um mit dem Tidyverse arbeiten zu können:
+
+![Tidy Data](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/06_datentransformation/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
 *Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst*
 
-- Einige der Packages und Funktionen kennt Ihr bereits aus den letzten Wochen!
-- Die Packages können einzeln installiert und aufgerufen werden, aber auch gesammelt über `install_packages('tidyverse')` bzw. `library(tidyverse)`. 
+### **Packages des Tidyverse**
 
-#### Die wichtigsten Funktionen des Tidyverse
+Hier nochmal ein kurzer Überblick, welche Packages alle im `Tidyverse`enthalten sind und was wir ungefähr mit diesen anstellen können, denn das ist eine ganze Menge:
+
+  - **`ggplot2`**: Ermöglicht das Erstellen von komplexen und ästhetisch ansprechenden Grafiken basierend auf der Grammatik der Grafiken. Ideal für Datenvisualisierung in einer Vielzahl von Formaten.
+  - **`dplyr`**: Bietet eine Reihe von Funktionen zur Datenmanipulation, wie z. B. Filtern, Sortieren, Gruppieren und Summarieren von Daten. Es ist besonders nützlich für die Arbeit mit DataFrames.
+  - **`tidyr`**: Hilft dabei, Daten in ein „tidy“ Format zu bringen, bei dem jede Variable eine Spalte und jede Beobachtung eine Zeile ist. Es ermöglicht das Aufbereiten und Umformen von Daten.
+  - **`readr`**: Dient dem schnellen und effizienten Einlesen von Daten in R, insbesondere von textbasierten Dateiformaten wie CSV, TSV und anderen strukturierten Textdateien.
+  - **`purrr`**: Stellt Funktionen zur Verfügung, die das funktionale Programmieren in R ermöglichen und erleichtern, insbesondere das Arbeiten mit Listen und deren Daten.
+  - **`tibble`**: Eine moderne Alternative zu den traditionellen DataFrames in R, die verbesserte Ausdruckskraft und Benutzerfreundlichkeit bietet. Tibbles zeigen Daten auf eine kontrollierte und übersichtliche Weise an.
+  - **`stringr`**: Bietet eine konsistente und einfache Schnittstelle zur Manipulation und Analyse von Zeichenketten (Strings) in R. Ideal für Textverarbeitung und Mustererkennung.
+  - **`forcats`**: Speziell für die Arbeit mit Faktoren entwickelt, die eine spezielle Datenstruktur in R für kategorische Daten sind. Es vereinfacht das Sortieren, Reordnen und Zusammenfassen von Faktorebenen.
+
+Alle weiteren Informationen, Links, etc. findet Ihr auch [hier](https://www.tidyverse.org/packages/){target="_blank"}.
+
+## **Funktionen des Tidyverse**
+
 | Funktion             | Wofür?                                                                                                                    |
 |:----------------|:--------------------------------------------------------|
 | `dplyr::arrange()`   | **Sortierung** von Zeilen im Datensatz nach bestimmten Kriterien                                                          |
@@ -75,48 +91,10 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 | `dplyr::summarise()` | **Zusammenfassen** von Beobachtungen mit statistischen Kennzahlen                                                         |
 <br>
 
-### **Quiz** 
+## **Wiederholung: Die Pipe `%>%`**
 
-```{r 07quiz_datenbereinigung1}
-quiz(caption = NULL,
-  question("Was macht einen Datensatz tidy?",
-    answer("Jede Variable hat eine eigene Spalte", correct = TRUE),
-    answer("Jede Beobachtung hat eine eigene Zeile", correct = TRUE),
-    answer("Jeder Wert hat eine eigene Zelle", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-  ),
-  question("Was ist der Pipe-Operator (%>%)?",
-    answer("Eine Funktion", correct = TRUE),
-    answer("Ein Werkzeug zur Strukturierung von mehrfachen Operationen in R", correct = TRUE),
-    answer("Ein Werkzeug zur verbesserten Lesbarkeit von Code in R", correct = TRUE),
-    answer("Syntax des ggplot2-Packages"),
-    answer("Eine Besonderheit des dplyr-Packages", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-  ),
-  question("Wofür steht NA?",
-    answer("Not accessible"),
-    answer("Not available", correct = TRUE),
-    answer("Not attainable"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: NA steht für not available (nicht verfügbar).",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-  )
-)
-```
-
-<br>
-
-### **Interaktive Übung**
-
-#### Wiederholung: Die Pipe `%>%`
-Bei der ersten Einführung in R habt Ihr Euch die Funktion `nrow()` angeschaut, mit der Ihr herausfinden könnt, wie viele Zeilen ein Datensatz hat. Damals habt Ihr das mit `nrow(data_raw)` gemacht, also `base R`, in der Zwischenzeit habt Ihr aber auch die **Pipe (%>%)** aus dem `tidyverse` kennengelernt. So könnten wir anstatt mit `ncol(plastics)` mit dem Pipe-Operator die Anzahl an Spalten bestimmen:
+Bei der ersten Einführung in R haben wir bereits mit der Funktion `nrow()` Bekanntschaft gemacht. Diese können wir nutzen, um die Zeilenanzahl unseres Datensatzes herauszufinden. Zu Beginn des Kurses haben wir damals noch mit der Funktion `nrow(data_raw)` gearbeitet, die Teil von `base R` ist. In der Zwischenzeit haben wir eine ganze Menge R-Erfahrung gesammelt und sind einen Schritt weiter: Wir haben verschiedene Packages und darin enthaltene Funktionen kennengelernt. So auch die **Pipe-Operator `(%>%)`** aus dem `tidyverse`! Das ist ein sehr nützliches Tool mit dem wir die Lesbarkeit und Nachvollziehbarkeit unseres Codes verbessern können. Wir können den Output einer Funktion direkt als Input für die nächste Funktion weitergeben, d.h. mehrere Funktionen mit einer „Pipeline“ verknüpfen. Dadurch wird unser Code deutlich strukturierter und nachvollziehbarer, da die Daten in einem Schritt durch eine Reihe von Funktionen geleitet wird. Trotzdem ist jede Funktion klar und eigenständig, wodurch wir Fehler weiterhin einfach anpassen oder korrigieren können. Unsere Datenbearbeitung wird dadurch deutlich „flüssiger“, da die Daten durch die verschiedenen Schritte „fließen“, ohne dass wir uns um temporäre Variablen kümmern müssen. 
+Wir können nun also den **Pipe-Operator** anstatt der Funktion `ncol(plastics)` verwenden, um die Spaltenanzahl zu bestimmen:
 
 ``` {r 07pipebeispiel, exercise = TRUE}
 # Berechnung der Spaltenanzahl
@@ -124,7 +102,7 @@ data_raw %>%
   ncol()
 ```
 
-Nutzt nun die Pipe, um Euch die Anzahl der Beobachtungen (`nrow()`) im Datensatz ausgeben zu lassen:
+Das Gleiche gilt für die Anzahl der Zeilen. Nutzt auch hier die Pipe, um Euch die Anzahl der Beobachtungen (Zeilen, engl.: rows) im Datensatz ausgeben zu lassen:
 ``` {r exercise_07pipe, exercise = TRUE}
 # Hier Euer Code!
 ```
@@ -138,10 +116,58 @@ data_raw %>%
 ```{r exercise_07pipe-check}
 grade_this_code()
 ```
+<br>
 
-Die Pipe wird Euch in dieser Lektion überall begegnen. So bleibt die langwidrige Datenbereinigung nämlich schön übersichtlich.
+## **Quiz** 
+
+```{r 07quiz_datenbereinigung1}
+quiz(caption = NULL,
+  question("Was macht einen Datensatz tidy?",
+    answer("Jede Variable hat eine eigene Spalte", correct = TRUE),
+    answer("Jede Beobachtung hat eine eigene Zeile", correct = TRUE),
+    answer("Jeder Wert hat eine eigene Zelle", correct = TRUE),
+    correct = "Richtig, bei einem "tidy" Datensatz sprechen wir auch von einem "aufgeräumten" Datensatz. Das Chaos, das möglicherweise einmal geherrscht hat ist beseitigt und es herrscht Ordnung: eine Variable von Spalte, eine Beobachtung pro Zeile und ein Wert pro Zelle!",
+    incorrect = "Leider falsch, bei einem "tidy" Datensatz sprechen wir auch von einem "aufgeräumten" Datensatz. Was könnte man darunter verstehen? Versuche es nochmal oder schaue im Video nach!",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+  ),
+
+  question("Was ist der Pipe-Operator (%>%)?",
+    answer("Eine Funktion", correct = TRUE),
+    answer("Ein Werkzeug zur Strukturierung von mehrfachen Operationen in R", correct = TRUE),
+    answer("Ein Werkzeug zur verbesserten Lesbarkeit von Code in R", correct = TRUE),
+    answer("Syntax des ggplot2-Packages"),
+    answer("Eine Besonderheit des dplyr-Packages", correct = TRUE),
+    correct = "Richtig!",
+    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+  ),
+
+  question("Wofür steht NA?",
+    answer("Not accessible"),
+    answer("Not available", correct = TRUE),
+    answer("Not attainable"),
+    correct = "Richtig, NA steht für not available (nicht verfügbar)!",
+    incorrect = "Leider falsch, NA steht für not available (nicht verfügbar).",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+  )
+)
+```
 
 <br>
+
+# **Interaktive Übung**
+
+Springen wir direkt weiter in unsere praktische Übung und schauen uns an, welche verschiedenen Operationen mit unseren Daten so möglich sind. Einige der Funktionen kennen wir sogar bereits!
+
+
+
+
+
+
+
 
 #### Import der Rohdaten
 Zuerst laden wir - wie immer - den Datensatz. Das kennt Ihr ja bereits! Hier ziehen wir uns über den Hyperlink einen ziemlich unordentlichen Rohdatensatz, aus dem wir gemeinsam zwei bereinigte Datentabellen (`community` und `audit`) generieren.
