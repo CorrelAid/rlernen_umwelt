@@ -3,9 +3,12 @@ title: "Datenimport und APIs"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
+  - David Schweizer
   - Nina Hauser
   - Zoé Wolter
   - Jonas Lorenz
+  - Leo Preo
+  - Philipp Bosch
 output: 
   html_document:
     toc: true

@@ -6,6 +6,7 @@ authors:
   - Nina Hauser
   - Zoé Wolter
   - Jonas Lorenz
+  - Susan Reichelt
 output: 
   html_document:
     toc: true
@@ -88,7 +89,7 @@ quiz(caption = NULL,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("Wo in RStudio schreibst Du Deinen Code?",
+  question("In welchem Bereich unserer 'Entwicklungsoberfläche' schreiben wir den Code?",
     answer("Konsole", correct = TRUE),
     answer("Environment"),
     answer("Terminal"),
@@ -201,7 +202,7 @@ Neben der Taschenrechner-Funktion, kann R auch eine Art Orakel sein. Mithilfe vo
 
 ```{r logik, exercise = TRUE}
 2 == 2                      # ist gleich
-2 != 3                      # nicht gleich
+2 != 3                      # ist ungleich
 !(2 == 2)                   # nicht
 2 < 3                       # kleiner als
 2 > 3                       # größer als
