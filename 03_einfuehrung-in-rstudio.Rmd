@@ -6,6 +6,7 @@ authors:
   - Nina Hauser
   - Zoé Wolter
   - Jonas Lorenz
+  - Susan Reichelt
 output: 
   html_document:
     toc: true
