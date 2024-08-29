@@ -162,45 +162,49 @@ quiz(caption = NULL,
 
 Springen wir direkt weiter in unsere praktische Übung und schauen uns an, welche verschiedenen Operationen mit unseren Daten so möglich sind. Einige der Funktionen kennen wir sogar bereits!
 
+## **1. Schritt: Import der Rohdaten**
 
-
-
-
-
-
-
-#### Import der Rohdaten
-Zuerst laden wir - wie immer - den Datensatz. Das kennt Ihr ja bereits! Hier ziehen wir uns über den Hyperlink einen ziemlich unordentlichen Rohdatensatz, aus dem wir gemeinsam zwei bereinigte Datentabellen (`community` und `audit`) generieren.
+Wie immer starten wir damit, unseren Datensatz zu laden. Hier ziehen wir uns über den Hyperlink einen ziemlich unordentlichen Rohdatensatz, aus dem wir gemeinsam zwei bereinigte Datentabellen (`community` und `audit`) generieren.
 
 ``` {r 07load_data, exercise = TRUE}
 # Laden des Datensatzes
 data_raw <- rio::import('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')
 ```
 
-#### Bereinigungsschritte definieren
-Nun überlegen wir uns, welche Datensätze am Ende des Bereinigungsprozesses existieren sollen und wie wir dorthin kommen.
+## **2. Schritt: Definition der Bereinigungsschritte**
 
-Das Ziel sind zwei verschiedene Datensätze:<br>
+Nachdem wir unsere Daten erfolgreich importiert haben, können wir einen ersten Blick in den Datensatz werfen: Sieht ganz schön unordentlich aus oder? Um ein bisschen Ordnung in das Chaos zu bringen, müssen wir die Daten bereinigen. Bevor wir aber wild drauf los coden, überlegen wir uns erst einmal, welche Datensätze am Ende des Bereinigungsprozesses existieren sollen und wie wir dieses Ziel erreichen.
+*Hinweis: Unser Rohdatensatz enthält Daten aus den Jahren 2019 und 2020. Da wir uns an dieser Stelle erst einmal mit den grundlegenden Funktionen beschäftigen und keinen komplexen Zeitvergleich durchführen wollen, werden wir uns auf die Daten aus dem Jahr 2019 beschränken. Aufgrund der Covid-19-Pandemie stehen für das Jahr 2020 nämlich nur sehr wenige Daten zur Verfügung.*
 
-- **Community** (2019):
+Da wir uns einerseits für Daten (aus dem Jahr 2019) interessieren, die die #Breakfreefromplastic-Community betriffen, möchten wir einmal den Datensatz  **`community`** erstellen. Mithilfe dieser Daten wollen wir das Verhalten der Community in den verschiedenen Ländern vergleichen. Daher beobachten wir die einzelnen Länder, d.h. **jede Zeile steht für ein Land**. Als "communitybezogene" Daten identifizieren wir folgende Variablen: **Kontinent, Land, Countrycode, Anzahl Plastikteile, Events und Freiwillige**. Diese werden in unseren Spalten abgetragen, schließlich interessieren wir uns unter anderem Dafür, wie viele Events in den verschiedenen Ländern stattgefunden haben oder wie viele Plastikteile jeweils gesammelt werden konnten.
+
+Andererseits interessieren wir uns auch für Daten (aus dem Jahr 2019), die die Firmen betreffen, die für den Plastikmüll verantwortlich sind und die wir somit einer Prüfung (engl. Audit) unterziehen. Daher erstellen wir einen zweiten Datensatz mit dem Namen **`audit`**. An dieser Stelle wird es ein klein wenig komplexer. Da wir uns neben der herstellenden Firma auch für die Art des Plastikmülls (Plastiktyp) und das Land interessieren, in dem der Müll gefunden wurde, beobachten wir verschiedene Dinge auf einmal: **Jede Zeile bildet also eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land**. Als "auditbezogene" Daten identifizieren wir folgende Variablen: **Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke**. Diese werden in unseren Spalten abgetragen, da wir uns wie gesagt dafür interessieren, welche Art von Plastikmüll in welchem Land auftritt und welche Firma dafür verantwortlich ist.
+
+- Datensatz `community`:
   - Eine Zeile = Ein Land
   - Variablen: Kontinent, Land, Countrycode, Anzahl Plastikstücke, Events und Freiwillige
-- **Audit** (2019):
+- Datensatz `audit`:
   - Eine Zeile = Eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land
   - Variablen: Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke
 
-Das heißt um diese beiden Datensätze zu erstellen, müssen wir folgende Schritte machen:
+Unser Ziel ist nun also klar definiert: Wir wollen zwei aufgeräumte Datensätze erstellen, die jeweils unterschiedliche Variablen betrachten. Nun müssen wir uns überlegen, wie wir dieses Ziel erreichen können. Zum einen wollen wir natürlich ausschließlich "vollständige" Daten betrachten. Fälle, in denen zum Beispiel kein Land angegeben ist ("EMPTY") sortieren wir aus - ebenso Beobachtungen aus dem Jahr 2020 (s. Hinweis). Da die Ländernamen auch nicht in jedem Fall gleich angegeben wurden (z.B. ECUADOR, Ecuador) - manche Namen müssen wir auch zunächst übersetzen (z.B. Cote D_ivoire). Abschließend müssen wir die "community- bzw- auditbezogenen Veriablen auswählen und den Datensatz entsprechend umformen. Wir entscheiden und also für Folgendes Vorgehen:
 
-1. Zeilen, in denen das Land "EMPTY" ist, Sammelzeilen und Beobachtungen aus dem Jahr 2020 aussortieren. <br>
-2. Ländernamen bereinigen und übersetzen. <br>
-3. Entsprechende Variablen auswählen und ggf. Datensatz umformen. <br>
+  1. Zeilen, in denen das Land "EMPTY" ist, Sammelzeilen und Beobachtungen aus dem Jahr 2020 aussortieren. <br>
+  2. Ländernamen bereinigen und übersetzen. <br>
+  3. Entsprechende Variablen auswählen und ggf. Datensatz umformen. <br>
 
 <br>
 
-#### Die Funktion `dplyr::filter()`
-![](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/filter.png?raw=true){#id .class width=60% height=60%}
+## **Die Datenbereinigung mit dem `dplyr´-Package**
 
-Für die Analyse des Datensatzes planen wir einen **Ländervergleich** und sortieren deshalb Beobachtungen aus, für die das Land nicht hinterlegt wurde. Es handelt sich hierbei vermutlich um ein einziges Land, da die Anzahl an Freiwilligen und Events über alle Zeilen konstant ist. Daneben sortieren wir Summenzeilen aus, die unsere Ergebnisse verfälschen würden, und schließen 2020 auf Grund der COVID-19-Pandemie aus. Zum **Filtern von Zeilen bzw. Beobachtungen** nutzen wir die `dplyr::filter()`-Funktion, wobei die Zeilen beibehalten werden, die die Bedingung(en) erfüllen, die Ihr definiert. Im Kapitel "Einführung in (R)Studio" im Exkurs "Syntax R" könnt Ihr nachschauen, wie Ihr die Bedingungen für die Filterfunktion definieren könnt.
+Um die Basics der Datenbereinigung kennenzulernen, werden wir in dieser Woche das **`dplyr`**-Package verwenden. Dieses ist speziell für die Datenmanipulation entwickelt worden und liefert uns eine Reihe an Möglichkeiten, wie wir unsere Daten verändern können. An dieser Stelle wollen wir uns einmal die **sechs Grundverben** dieses Packages anschauen.
+
+### **Die `filter()`-Funktion**
+
+![Graphische Veranschaulichung der filter()-Funktion](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/filter.png?raw=true){#id .class width=60% height=60%}
+
+Beginnen wir also einmal mit der Funktion **`dplyr::filter()`** mit der wir - wie der Name bereits vermuten lässt - **Zeilen bzw. Beobachtungen filtern** können. Wir betrachten also zunächst den gesamten Datensatz und legen dann mithilfe der Funktion die Zeilen aus, die wir behalten wolllen. Dazu müssen wir bestimmte Bedingung(en) definieren, die die entsprechenen Zeilen erfüllen müssen. Die Grammatik, um diese Bedingungen festzulegen, haben wir bereits in der Session "Einführung in (R)Studio" unter dem Namen **"Kontrollstrukturen"** kennengelernt - vielleicht erinnert Ihr Euch. Wir schauen uns das Ganze aber auch direkt einmal an einem Beispiel an:
+Da wir für die Analyse des Datensatzes einen **Ländervergleich** planen, wollen wir alle Beobachtungen aussortieren, für die kein Land hinterlegt wurde. Wenn kein Land hinterlegt ist, ist die Zeile `country` leer. Dafür formulieren wir folgende Bedingung: `country != "EMPTY"`. In manchen Fällen wurden außerdem die Firmen, die für den Plasikmüll verantwortlich sind "aufsummert" bzw. vermischt. In diesen Fällen wird in der Zeile `parent_company`der Wert "Grand Total" angegeben. Um diese Fälle ebenfalls auszusortieren formulieren wir die Bedingung `parent_company != "Grand Total"`. Dementsprechend sieht unser Code wie folgt aus:
 
 ``` {r 07overview_data, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
@@ -210,7 +214,9 @@ data_raw %>%
                 parent_company != "Grand Total")
 ```
 
-Angenommen Ihr möchtet nun nur die Daten aus dem Jahr 2019. Filtert den Datensatz so, dass er nur die Daten aus dem Jahr 2019 enthält: 
+Für die Analyse des Datensatzes planen wir einen **Ländervergleich** und sortieren deshalb Beobachtungen aus, für die das Land nicht hinterlegt wurde. Es handelt sich hierbei vermutlich um ein einziges Land, da die Anzahl an Freiwilligen und Events über alle Zeilen konstant ist. Daneben sortieren wir Summenzeilen aus, die unsere Ergebnisse verfälschen würden, und schließen 2020 auf Grund der COVID-19-Pandemie aus. Zum **Filtern von Zeilen bzw. Beobachtungen** nutzen wir die `dplyr::filter()`-Funktion, wobei die Zeilen beibehalten werden, die die Bedingung(en) erfüllen, die Ihr definiert. Im Kapitel "Einführung in (R)Studio" im Exkurs "Syntax R" könnt Ihr nachschauen, wie Ihr die Bedingungen für die Filterfunktion definieren könnt.
+
+Und jetzt Ihr: Unser Datensatz enthält Daten aus den Jahren 2019 und 2020. Einerseits sind wir nicht an einem Zeitvergleich interessiert und andererseits liegen uns aufgrund der Covid-Pandemie für das Jahr 202 schlicht zu wenige Daten vor. Daher möchte wir ausschließlich die Daten beibehalten, die aus dem Jahr 2019 stammen - versucht einmal den folgenden Code entsprechend zu ändern und fügt die entsprechende Bedingung hinzu:
 
 ``` {r exercise_07filter_data_exercise, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
@@ -239,8 +245,8 @@ grade_this_code()
 
 <br>
 
-#### Die Funktion `dplyr::mutate()`
-![](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/mutate.png?raw=true){#id .class width=60% height=60%}
+### **Die `mutate()`-Funktion**
+![Graphische Veranschaulichung der mutate()-Funktion](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/mutate.png?raw=true){#id .class width=60% height=60%}
 
 Nun sollten wir die Variable `country` (zu dt. Land) bereinigen. Wie so oft sind die Bezeichnungen für Großbritannien und die USA **nicht standardisiert** und die **Groß- und Kleinschreibung** ist vollkommen durcheinander geraten. Außerdem möchten wir die **deutschen Bezeichnungen** nutzen und den Kontinent und Countrycode ergänzen. Mit `dplyr::case_when()` können wir einen bestimmten Wert in einen anderen Wert transformieren (WENN-DANN), mit `stringr::str_to_title()` wird nur noch der Anfangsbuchstabe großgeschrieben und mit dem Package `countrycode` können wir Ländernamen in verschiedene Sprachen übersetzen und kodieren. Welche Funktionen Ihr für Eure Bereinigungsschritte braucht, hängt immer vom Datensatz ab. Mit etwas mehr Erfahrung und einer Googlerecherche lassen sich für die meisten Herausforderungen tolle Hilfsmittel finden!
 
