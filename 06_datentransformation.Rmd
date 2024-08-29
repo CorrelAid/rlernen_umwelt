@@ -66,7 +66,7 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ### **Packages des Tidyverse**
 
-Hier nochmal ein kurzer Überblick, welche Packages alle im `Tidyverse`enthalten sind und was wir ungefähr mit diesen anstellen können, denn das ist eine ganze Menge:
+Hier nochmal ein kurzer Überblick, welche Packages alle im `Tidyverse`enthalten sind und was wir ungefähr mit diesen anstellen können:
 
   - **`ggplot2`**: Ermöglicht das Erstellen von komplexen und ästhetisch ansprechenden Grafiken basierend auf der Grammatik der Grafiken. Ideal für Datenvisualisierung in einer Vielzahl von Formaten.
   - **`dplyr`**: Bietet eine Reihe von Funktionen zur Datenmanipulation, wie z. B. Filtern, Sortieren, Gruppieren und Summarieren von Daten. Es ist besonders nützlich für die Arbeit mit DataFrames.
@@ -78,18 +78,6 @@ Hier nochmal ein kurzer Überblick, welche Packages alle im `Tidyverse`enthalten
   - **`forcats`**: Speziell für die Arbeit mit Faktoren entwickelt, die eine spezielle Datenstruktur in R für kategorische Daten sind. Es vereinfacht das Sortieren, Reordnen und Zusammenfassen von Faktorebenen.
 
 Alle weiteren Informationen, Links, etc. findet Ihr auch [hier](https://www.tidyverse.org/packages/){target="_blank"}.
-
-## **Funktionen des Tidyverse**
-
-| Funktion             | Wofür?                                                                                                                    |
-|:----------------|:--------------------------------------------------------|
-| `dplyr::arrange()`   | **Sortierung** von Zeilen im Datensatz nach bestimmten Kriterien                                                          |
-| `dplyr::filter()`    | **Auswahl von Zeile**n bzw. Beobachtungen nach bestimmten Kriterien                                                       |
-| `dplyr::select()`    | **Auswahl von Spalten** bzw. Variablen                                                                                    |
-| `dplyr::mutate()`    | **Erstellung neuer Spalten/Variablen** auf Basis bereits vorhandener Spalten/Variablen bzw. **Veränderung von Variablen** |
-| `dplyr::group_by()`  | **Gruppierung** von Beobachtungen                                                                                         |
-| `dplyr::summarise()` | **Zusammenfassen** von Beobachtungen mit statistischen Kennzahlen                                                         |
-<br>
 
 ## **Wiederholung: Die Pipe `%>%`**
 
@@ -198,6 +186,17 @@ Unser Ziel ist nun also klar definiert: Wir wollen zwei aufgeräumte Datensätze
 ## **Die Datenbereinigung mit dem `dplyr´-Package**
 
 Um die Basics der Datenbereinigung kennenzulernen, werden wir in dieser Woche das **`dplyr`**-Package verwenden. Dieses ist speziell für die Datenmanipulation entwickelt worden und liefert uns eine Reihe an Möglichkeiten, wie wir unsere Daten verändern können. An dieser Stelle wollen wir uns einmal die **sechs Grundverben** dieses Packages anschauen.
+Hier eine kurze Überischt über die Funktionen:
+
+| Funktion             | Wofür?                                                                                                                    |
+|:----------------|:--------------------------------------------------------|
+| `dplyr::filter()`    | **Auswahl von Zeile**n bzw. Beobachtungen nach bestimmten Kriterien                                                       |
+| `dplyr::mutate()`    | **Erstellung neuer Spalten/Variablen** auf Basis bereits vorhandener Spalten/Variablen bzw. **Veränderung von Variablen** |
+| `dplyr::group_by()`  | **Gruppierung** von Beobachtungen                                                                                         |
+| `dplyr::summarise()` | **Zusammenfassen** von Beobachtungen mit statistischen Kennzahlen                                                         |
+| `dplyr::select()`    | **Auswahl von Spalten** bzw. Variablen                                                                                    |
+| `dplyr::arrange()`   | **Sortierung** von Zeilen im Datensatz nach bestimmten Kriterien                                                          |
+<br>
 
 ### **Die `filter()`-Funktion**
 
@@ -246,11 +245,17 @@ grade_this_code()
 <br>
 
 ### **Die `mutate()`-Funktion**
+
 ![Graphische Veranschaulichung der mutate()-Funktion](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/mutate.png?raw=true){#id .class width=60% height=60%}
 
-Nun sollten wir die Variable `country` (zu dt. Land) bereinigen. Wie so oft sind die Bezeichnungen für Großbritannien und die USA **nicht standardisiert** und die **Groß- und Kleinschreibung** ist vollkommen durcheinander geraten. Außerdem möchten wir die **deutschen Bezeichnungen** nutzen und den Kontinent und Countrycode ergänzen. Mit `dplyr::case_when()` können wir einen bestimmten Wert in einen anderen Wert transformieren (WENN-DANN), mit `stringr::str_to_title()` wird nur noch der Anfangsbuchstabe großgeschrieben und mit dem Package `countrycode` können wir Ländernamen in verschiedene Sprachen übersetzen und kodieren. Welche Funktionen Ihr für Eure Bereinigungsschritte braucht, hängt immer vom Datensatz ab. Mit etwas mehr Erfahrung und einer Googlerecherche lassen sich für die meisten Herausforderungen tolle Hilfsmittel finden!
+Nun wollen wir die die Variable `country` (zu dt. Land) bereinigen. Denn, wie so oft, herrscht Unordnung: Die Länderbezeichnungen für Großbritannien und die USA sind nicht standardisiert, die Groß- und Kleinschreibung ist vollkommen durcheinander und außerdem wollen wir die deutschen Bezeichnungen verwenden, sowie den Kontinent und Countrycode ergänzen. Klingt nach sehr viel Arbeit, aber zum Glück bietet uns das `dplyr`-Package mit der Funktion **`mutate`** die Möglichkeit, Berechnungen auf Spaltenebene durchzuführen. Oder einfach gesagt: Wie können unserem Datensatz neue Variablen hinzufügen oder bestehende Variablen bearbeiten. Die grundlegende Syntax folgt dabei der anderen Funktionen: `dplyr::mutate(name_der_neuen_spalte = bedingung1 + bedingung2 + ...)`.
+In diesem fall brauchen wir allerdings noch zwei weitere Funktionen, die wir mit der `mutate()`-Funktion kombinieren können. Zunächst einmal möchten wir die Ländernamen vereinheitlichen ("United Kingdom" und "United States"). Dafür verwenden wir die Funktion **`case_when()`** aus dem `dplyr` Package. Mit dieser Funktion können wir bestimmte Werte in einen anderen Wert transformieren - das Einzige, was wir dafür festlegen müssen, ist die entsprechende Wenn-Dann-Bedingung. Beispiel: `dplyr::case_when(country == "United Kingdom of Great Britain & Northern Ireland" ~ "United Kingdom", TRUE ~ country). 
+*Sprich: Wenn (`dplyr::case_when()`) die Ländervariable `country == ...` den Wert `"United Kingdom of Great Britain & Northern Ireland"` hat, dann (`~`) erzeuge daraus den Wert `"United Kingdom"`. Dann füge diesen Wert der Variable "country" hinzu (`TRUE ~ country`).*
+In einem zweiten Schritt bedienen wir uns am **Package `stringr`**, das ebenfalls im Tidyverse enthalten ist und uns dabei hilft, Zeichenketten (engl. Strings) relativ einfach zu manipulieren und analysieren. Mit der darin enthaltenen Funktion **`str_to_title()`** wird nämlich ein "Titel" erzeugt, d.h. der Anfangsbuchstabe wird großgeschrieben. Damit wir nun auch die deutschen Bezeichnungen verwenden können, können wir das **Package `countrycode`** verwenden. Damit können wir die Namen übersetzen und kodieren
 
-De Code ist für Euch schon geschrieben. Könnt Ihr die fehlenden Funktionen und Variablennamen an Stelle der ??? ergänzen? Um alle Stellen zu finden, müsst Ihr etwas scrollen.
+Wichtig: Welche Funktionen Ihr am Ende für Eure Bereinigungsschritte braucht, hängt auch immer vom Datensatz ab. Gerade am Anfang kann das etwas überischtlich werden, vor allem mit den verschiedenen Funktionen aus unterschiedlichen Packages. Keine Sorge, mit etwas mehr Erfahrung und einer Googlerecherche lassen sich für die meisten Herausforderungen wirklich tolle Hilfsmittel finden!*
+
+Nun wollen wir das Ganze aber auch selbst einmal ausprobieren! Der Code ist bereits schon geschrieben, allerdings fehlen an manchen Stellen (gekennzeichnet durch: ???) Funktionen und Variablennamen. Ergänzt diese an den entsprechenden Stellen, um alle Stellen zu finden, müsst Ihr etwas scrollen.
 
 ```{r exercise_07mutate_data_exercise, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
@@ -332,11 +337,11 @@ data_raw %>%
 grade_this_code()
 ```
 
-Der Hauptteil der Bereinigung ist nun abgeschlossen. Das Ergebnis steht Euch unter `plastics_processed` zur Verfügung. Wir können die Daten nun in zwei Tabellen aufteilen.
-
+Ein Großteil unserer Datenbereinigung ist nun abgeschlossen - das Ergebnis steht Euch unter `plastics_processed` zur Verfügung! Da wir uns einerseits für community- und andererseits für auditbezogene Daten interessieren, können wir uns nun anschauen, wie wir den Datensatz in zwei Tabellen afteilen.
 <br>
 
-#### Die Funktionen `dplyr::group_by()` und `dplyr::summarise()`
+### **Die Funktionen `group_by()`- und `summarise()`-Funktion**
+
 ![](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/groupby.png?raw=true){#id .class width=60% height=60%}
 ![](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/summarize.png?raw=true){#id .class width=60% height=60%}
 
