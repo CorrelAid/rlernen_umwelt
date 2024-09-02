@@ -66,7 +66,7 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ### **Packages des Tidyverse**
 
-Hier nochmal ein kurzer Überblick, welche Packages alle im `Tidyverse`enthalten sind und was wir ungefähr mit diesen anstellen können:
+Hier nochmal ein kurzer Überblick über alle Packages, die im `Tidyverse`enthalten sind und wofür wir diese unter anderem verwenden können:
 
   - **`ggplot2`**: Ermöglicht das Erstellen von komplexen und ästhetisch ansprechenden Grafiken basierend auf der Grammatik der Grafiken. Ideal für Datenvisualisierung in einer Vielzahl von Formaten.
   - **`dplyr`**: Bietet eine Reihe von Funktionen zur Datenmanipulation, wie z. B. Filtern, Sortieren, Gruppieren und Summarieren von Daten. Es ist besonders nützlich für die Arbeit mit DataFrames.
@@ -81,7 +81,7 @@ Alle weiteren Informationen, Links, etc. findet Ihr auch [hier](https://www.tidy
 
 ## **Wiederholung: Die Pipe `%>%`**
 
-Bei der ersten Einführung in R haben wir bereits mit der Funktion `nrow()` Bekanntschaft gemacht. Diese können wir nutzen, um die Zeilenanzahl unseres Datensatzes herauszufinden. Zu Beginn des Kurses haben wir damals noch mit der Funktion `nrow(data_raw)` gearbeitet, die Teil von `base R` ist. In der Zwischenzeit haben wir eine ganze Menge R-Erfahrung gesammelt und sind einen Schritt weiter: Wir haben verschiedene Packages und darin enthaltene Funktionen kennengelernt. So auch die **Pipe-Operator `(%>%)`** aus dem `tidyverse`! Das ist ein sehr nützliches Tool mit dem wir die Lesbarkeit und Nachvollziehbarkeit unseres Codes verbessern können. Wir können den Output einer Funktion direkt als Input für die nächste Funktion weitergeben, d.h. mehrere Funktionen mit einer „Pipeline“ verknüpfen. Dadurch wird unser Code deutlich strukturierter und nachvollziehbarer, da die Daten in einem Schritt durch eine Reihe von Funktionen geleitet wird. Trotzdem ist jede Funktion klar und eigenständig, wodurch wir Fehler weiterhin einfach anpassen oder korrigieren können. Unsere Datenbearbeitung wird dadurch deutlich „flüssiger“, da die Daten durch die verschiedenen Schritte „fließen“, ohne dass wir uns um temporäre Variablen kümmern müssen. 
+Bei der ersten Einführung in R haben wir bereits mit der Funktion `nrow()` Bekanntschaft gemacht. Diese können wir nutzen, um die Zeilenanzahl unseres Datensatzes herauszufinden, so wie wir das zu Beginn gemacht haben - diese Funktion `nrow(data_raw)` ist Teil von `base R`. In der Zwischenzeit haben wir eine ganze Menge R-Erfahrung gesammelt und sind einen Schritt weiter: Wir haben verschiedene Packages und darin enthaltene Funktionen kennengelernt. So auch die **Pipe-Operator `(%>%)`** aus dem `tidyverse`! Das ist ein sehr nützliches Tool mit dem wir die Lesbarkeit und Nachvollziehbarkeit unseres Codes verbessern können. Wir können den Output einer Funktion direkt als Input für die nächste Funktion weitergeben, d.h. mehrere Funktionen mit einer „Pipeline“ verknüpfen. Dadurch wird unser Code deutlich strukturierter und nachvollziehbarer, da die Daten in einem Schritt durch eine Reihe von Funktionen geleitet werden. Trotzdem ist jede Funktion klar und eigenständig, wodurch wir Fehler weiterhin einfach anpassen oder korrigieren können. Unsere Datenbearbeitung wird dadurch deutlich „flüssiger“, da die Daten durch die verschiedenen Schritte „fließen“, ohne dass wir uns um temporäre Variablen kümmern müssen. Daher wird uns der Pipe-Operator auch in Zukunft weiterhin bgeleiten.
 Wir können nun also den **Pipe-Operator** anstatt der Funktion `ncol(plastics)` verwenden, um die Spaltenanzahl zu bestimmen:
 
 ``` {r 07pipebeispiel, exercise = TRUE}
@@ -126,8 +126,8 @@ quiz(caption = NULL,
     answer("Ein Werkzeug zur verbesserten Lesbarkeit von Code in R", correct = TRUE),
     answer("Syntax des ggplot2-Packages"),
     answer("Eine Besonderheit des dplyr-Packages", correct = TRUE),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
+    correct = "Richtig, der Pipe-Operator ist eine kleine Sache, die eine große Wirkung zeigt und uns das Leben sehr viel leichter macht! Mit diesem Ausdruck können wir verschiedene Funktionen miteinander verknüpfen. Dadurch werden unsere Daten automatisch durch diese Funktionen geleitet, wodurch unser Code deutlich strukturierter und lesbarer wird.",
+    incorrect = "Leider falsch, versuche es nochmal oder schaue im Video nach!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -183,9 +183,9 @@ Unser Ziel ist nun also klar definiert: Wir wollen zwei aufgeräumte Datensätze
 
 <br>
 
-## **Die Datenbereinigung mit dem `dplyr´-Package**
+## **3. Schritt: Die Datenbereinigung mit dem `dplyr´-Package**
 
-Um die Basics der Datenbereinigung kennenzulernen, werden wir in dieser Woche das **`dplyr`**-Package verwenden. Dieses ist speziell für die Datenmanipulation entwickelt worden und liefert uns eine Reihe an Möglichkeiten, wie wir unsere Daten verändern können. An dieser Stelle wollen wir uns einmal die **sechs Grundverben** dieses Packages anschauen.
+Um die Basics der Datenbereinigung kennenzulernen, werden wir in dieser Woche vor allem das **`dplyr`**-Package verwenden. Dieses ist speziell für die Datenmanipulation entwickelt worden und liefert uns eine Reihe an Möglichkeiten, wie wir unsere Daten verändern können. An dieser Stelle wollen wir uns einmal die **sechs Grundverben** dieses Packages anschauen.
 Hier eine kurze Überischt über die Funktionen:
 
 | Funktion             | Wofür?                                                                                                                    |
@@ -338,21 +338,23 @@ grade_this_code()
 ```
 
 Ein Großteil unserer Datenbereinigung ist nun abgeschlossen - das Ergebnis steht Euch unter `plastics_processed` zur Verfügung! Da wir uns einerseits für community- und andererseits für auditbezogene Daten interessieren, können wir uns nun anschauen, wie wir den Datensatz in zwei Tabellen afteilen.
+
 <br>
 
-### **Die Funktionen `group_by()`- und `summarise()`-Funktion**
+### **Die `group_by()`- und `summarise()`-Funktion**
 
-![](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/groupby.png?raw=true){#id .class width=60% height=60%}
-![](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/summarize.png?raw=true){#id .class width=60% height=60%}
+![Graphische Veranschaulichung der group_by()-Funktion](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/groupby.png?raw=true){#id .class width=60% height=60%}
+![Graphische Veranschaulichung der summarise()-Funktion](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/summarize.png?raw=true){#id .class width=60% height=60%}
 
-Um den `community`- Datensatz zu erstellen, in dem eine Beobachtung pro Land vorhanden sein soll, müssen wir die bereinigten Daten pro Land gruppieren und entscheiden, wie die anderen Variablen zusammengefasst werden sollen. Mit `dplyr::group_by()` und `dplyr::summarise()` steht uns die **Gruppierung und Zusammenfassung** der Variablen offen. Wir addieren die Plastikstücke und wählen für die Anzahl der Events und Freiwilligen genau einen Wert aus. Diese sind im Originaldatensatz mehrfach vorhanden - etwas, das typischerweise beim Zusammenfügen von Datensätzen entsteht.
+Nach wie vor verfolgen wir mit unserer Datenbereinigung das Zeil der **Ländervergleiche**: Wie möchten herausfinden, in welchen Ländern am meisten Plastikmüll gesammelt wurde, die meisten Events durchgeführt wurden oder die meisten Freiwilligen aktiv sind. Bislang haben gibt es jedoch für die meisten der Länder verschiedene Beobachtungen, wodurch diese länderübergreifenden Vergleiche schlicht nicht möglich sind. Daher müssen wir innerhalb unseres `community` Datensatzes eine Struktur erschaffen, in dem eine Beobachtung pro Land vorhanden ist - wir müssen unsere bereinigten Daten also pro Land **gruppieren**. Dafür können wir aus dem `dplyr`auf zwei Funktionen zurückgreifen, die uns diesen Schritt ermöglichen und häufig miteinander kombiniert werden: Die Funktionen **`group_by()`** und **`summarise()`** auch (`summarize()`). Zusammen sind sie vor besonders nützlich für das Erstellen von Gruppenzusammenfassungen und die Berechnung von Statistiken für verschiedene Kategorien innerhalb eines Datensatzes. Die Funktion **`group_by()`** wird dabei  verwendet, um Daten nach einer oder mehreren Variablen zu gruppieren. Diese Gruppierung ermöglicht es, anschließende Berechnungen oder Zusammenfassungen auf Gruppenebene durchzuführen. Im Anschluss können mit der Funktion **`summarise()`**  (oder: `summarize()`) zusammenfassende Statistiken oder aggregierte Berechnungen für jede Gruppe im Datensatz erstellt werden.
+Daher werden wir zuerst entsprechend der Kontinente und Länder gruppieren (`dplyr::group_by(continent, country, countrycode)`). Anschließend müssen wir ebenfalls entscheiden, wie die anderen Variablen zusammengefasst werden (`dplyr::summarise(…)`). In diesem Fall addieren wir die Plastikteile und wählen für die Anzahl der Events und Freiwilligen genau einen Wert aus. Diese sind im Originaldatensatz mehrfach vorhanden - etwas, das typischerweise beim Zusammenfügen von Datensätzen entsteht. Aber schauen wir uns das ganze Vorgehen doch einmal direkt in unserem R-Code an:
 
 ``` {r 07group_by_summarise1, exercise = TRUE}
-# Ihr nehmt Euren Datensatz,...
+# Ihr nehmt Euren Datensatz, ...
 community <- plastics_processed %>% 
-  # ..gruppiert die Beobachtungen pro Land
+  # … gruppiert die Beobachtungen pro Land
   dplyr::group_by(continent, country, countrycode) %>% # Pro Kontinent und Land gruppieren
-  # ..entscheidet, wie die anderen Variablen zusammengefasst werden sollen
+  # … entscheidet, wie die anderen Variablen zusammengefasst werden sollen
   dplyr::summarise(
     n_pieces = sum(grand_total, na.rm = TRUE), # Summe
     n_volunteers = unique(volunteers), # Einzigartige Werte (da Duplikate)
@@ -360,18 +362,18 @@ community <- plastics_processed %>%
   )
 ```
 
-Berechnet nun zur Übung mit den Funktionen `dplyr::group_by()` und `dplyr::summarise()` die Gesamtzahl der Plastikstücke, die pro Kontinent gesammelt wurden. Nutzt dafür den `community`-Datensatz.
+Und jetzt Ihr: Verwendet an dieser Stelle die neuen Funktionen `dplyr::group_by()` und `dplyr::summarise()` und versucht einmal die Gesamtzahl der Plastikstücke, die pro Kontinent gesammelt wurden zu berechnen - nutzt dafür den `community`-Datensatz.
 
 ```{r 07group_by_summarise2, exercise = TRUE}
 # Hier Euer Code
 ```
 
 ```{r 07group_by_summarise2-solution}
-# Ihr nehmt Euren Datensatz,...
+# Ihr nehmt Euren Datensatz, ...
 community %>%
-  # ..gruppiert die Beobachtungen pro Kontinent
+  # … gruppiert die Beobachtungen pro Kontinent
   dplyr::group_by(continent) %>%
-  #..entscheidet, wie die anderen Variablen zusammengefasst werden sollen
+  # … entscheidet, wie die anderen Variablen zusammengefasst werden sollen
   dplyr::summarise(n_pieces = sum(n_pieces, na.rm = TRUE)) # Summe
 ```
 
@@ -385,34 +387,38 @@ grade_this_code()
   <summary><h4>&#10145; Exkurs: Pivoting</h4></summary>
   <br>
 
-Über die Bereinigung von Werten im Datensatz und das Filtern von Werten hinaus, könnt Ihr auch die Form des gesamten Datensatzes über `tidyr::pivot_longer()` und `tidyr::pivot_wider()` verändern. Um den `audit`-Datensatz zu bereinigen, müsst Ihr beispielsweise noch die Plastikarten so transformieren, dass sie als eine Variable im Datensatz vorkommen:
+Kurzer Exkurs zwischendurch!
+Bislang haben wir uns damit beschäftigt, wie wir einzelne Werte in Datensätzen filtern und  bereinigen. Mithilfe von R ist es allerdings auch möglich, die **gesamte Form** eines Datensatzes zu verändern.
+
+Um einen solchen „Tide“ Datensatz zu erhalten, können wir auf Funktionen aus dem **`tidyr`**-Package zurückgreifen. Das Paket bietet verschiedene Werkzeuge zur Umformung und Bereinigung von Datensätzen, sodass sie in diesem klaren und strukturierten Format vorliegen. Unter anderem sind darin Funktionen zur Umstrukturierung der Daten enthalten (z. B. von einem breiten Format in ein langes Format oder umgekehrt). Wenn wir Daten für bestimmte Analysen oder Visualisierungen vorbereiten müssen, kann das durchaus sehr nützlich sein. Aus diesem Package hilft uns die Funktion **`pivot_longer`** dabei, um einen Datensatz von einem breiten Format in ein langes Format umzuwandeln. Was das bedeutet? In einem breiten Format sind Variablen in mehreren Spalten verteilt, während in einem langen Format jede Variable in einer Spalte steht und jede Zeile eine Beobachtung darstellt. Im Gegensatz dazu können wir die Funktion **`pivot_wider`** dafür verwenden, um einen Datensatz von einem langen Format in ein breites Format zu bringen. Dies kann notwendig oder von Vorteil sein, wenn wir Daten für bestimmte Berichte oder Analysen benötigen, die breitere Formate erfordern.
+Wir können das direkt an unserem `audit`-Datensatz üben, den wir ebenfalls noch bereinigen müssen. Wir können beispielsweise die Plastikarten noch so transformieren, dass sie als eine Variable im Datensatz vorkommen:
 
 ``` {r 07pivot_wider, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
 plastics_processed %>%
-  #..pivotiert die Plastikarten
+  # … pivotiert die Plastikarten
   tidyr::pivot_longer(
     cols = c(hdpe, ldpe, o, pet, pp, ps, pvc), # Betroffene Variablen
-    names_to = "plastic_type", # Zielspalte
-    values_to = "n_pieces" # Wertspalte
+    names_to = "plastic_type", 	# Zielspalte
+    values_to = "n_pieces" 		# Wertspalte
     ) %>%
-  # ..und faktorisiert sicherheitshalber die anderen Variablen (nicht immer notwendig)
+  # … und faktorisiert sicherheitshalber die anderen Variablen (nicht immer notwendig)
   dplyr::mutate(dplyr::across( # Zu Faktor konvertieren
     .cols = c(country, continent, year, plastic_type),
     .fns = as_factor
     ))
 ```
 
-Mit `dyplr::pivot_wider()` könnt Ihr den Datensatz auch wieder in das breite Format bringen. Wir empfehlen aber die lange Form zu nutzen.
+Mit `dyplr::pivot_wider()` können wir den Datensatz auch wieder in das breite Format bringen. An dieser Stelle würden wir aber empfehlen, die Daten in der langen Form zu benutzen.
 
 </details> 
 
 ---
 
-#### Die Funktion `dplyr::select()`
-![](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/select.png?raw=true){#id .class width=60% height=60%}
+## **Die `select()`-Funktion**
+![Graphische Veranschaulichung der select()-Funktion](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/select.png?raw=true){#id .class width=60% height=60%}
 
-Neben Zeilen bzw. Beobachtungen könnt Ihr natürlich auch **Spalten bzw. Variablen filtern**. Auch hier hilft Euch das `dplyr` Package mit der Funktion `dplyr::select()` weiter. Mit `dplyr::select()` könnt Ihr entweder die Variablen auswählen, die im Datensatz enthalten sein sollen oder aber mit einem `-` die Variablen auswählen, die aus Eurem Datensatz gelöscht werden sollen. Der folgende Code löscht so zum Beispiel die Variable `grand_total` aus dem `data_raw`-Datensatz:
+Bislang haben wir Zeilen bzw. Beobachtungen gefiltert, aber dabei soll es nicht bleiben. Denn das `dplyr` liefert uns glücklicherweise auch direkt eine Funktion, mit der wir auch **Spalten bzw. Variablen filtern** können: Die **`select()`**-Funktion. Sie ist also ein durchaus hilfreiches Werkzeug, weil sie es ermöglicht, den Datensatz auf die für die Analyse relevanten Spalten zu reduzieren. Wir können einerseits bestimmte Spalten auswählen, aber auch Spalten umbenennen und nach verschiedenen Kriterien auswählen, wie z. B. nach dem Namen, dem Typ oder der Position der Spalten. Wir können also entweder die Variablen auswählen, die im Datensatz enthalten bleiben sollen oder aber mit einem `-` die Variablen auswählen, die aus Eurem Datensatz gelöscht werden sollen. Der folgende Code löscht so zum Beispiel die Variable `grand_total` aus dem `data_raw`-Datensatz:
 
 ``` {r 07select_data1, exercise = TRUE}
 # Spalte "grand total" NICHT auswählen
@@ -421,27 +427,27 @@ data_raw %>%
   head()
 ```
 
-Um den `audit`-Datensatz zu finalisieren, wählen wir in einem letzten Schritt die relevanten Variablen aus:
+Um die Bereinigung des `audit`-Datensatzes zu finalisieren, wählen wir also in einem letzten Schritt noch alle relevanten Variablen aus:
 
 ```{r 07select_data2, exercise = TRUE}
-# Ihr nehmt Euren Datensatz...
+# Ihr nehmt Euren Datensatz ...
 audit <- plastics_processed %>%
-  #..pivotiert die Plastikarten
+  # …pivotiert die Plastikarten
   tidyr::pivot_longer(
     cols = c(hdpe, ldpe, o, pet, pp, ps, pvc), # Betroffene Variablen
-    names_to = "plastic_type", # Zielspalte
-    values_to = "n_pieces" # Wertspalte
+    names_to = "plastic_type", 	# Zielspalte
+    values_to = "n_pieces" 		# Wertspalte
     ) %>%
-  # ..faktorisiert sicherheitshalber die anderen Variablen (nicht immer notwendig)
+  # … faktorisiert sicherheitshalber die anderen Variablen (nicht immer notwendig)
   dplyr::mutate(dplyr::across( # Zu Faktor konvertieren
     .cols = c(country, continent, countrycode, year, plastic_type),
     .fns = as_factor
     )) %>%
-  # und wählt die richtigen Spalten aus, da manche Variablen mit der Pivotierung nicht aussagekräftig sind.
+  # … und wählt die richtigen Spalten aus, da manche Variablen mit der Pivotierung nicht aussagekräftig sind.
   dplyr::select(continent, country, countrycode, parent_company, plastic_type, n_pieces)
 ```
 
-Wir sind soweit: Die beiden bereinigten Datensätze stehen. Sind die enthaltenen Werte richtig? Wir machen eine **Qualitätsprüfung** und schauen uns für beide Datensätze einige Informationen an:
+Schon ist ein großer Schritt getan und unsere beiden Datensätze sind bereinigt! Was meint Ihr: Sind die enthaltenen Werte richtig? Können wir diese Frage überhaupt einfach so beantworten? Schwierig, das auf den ersten Blick zusagen - aber wir können mit R eine Art **Qualitätsprüfung** durchführen. Schauen wir uns also für beide Datensätze einige Informationen an:
 
 ```{r sanitycheck, exercise = TRUE}
 # Anzahl Plastikstücke
@@ -452,14 +458,15 @@ sum(audit$n_pieces, na.rm = TRUE) == sum(plastics_processed$grand_total)
 sort(unique(community$country)) == sort(unique(audit$country))
 ```
 
-Check! Das habt Ihr wirklich gut gemacht!
+Das sieht doch sauber aus - gut gemacht!
 
 <br>
 
-#### Die Funktion `dplyr::arrange()`
-![](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/arrange.png?raw=true){#id .class width=60% height=60%}
+## **Die `arrange()`-Funktion**
+![Graphische Veranschaulichung der arrange()-Funktion](https://github.com/CorrelAid/lernplattform/blob/zoe_datentransformation/abbildungen/06_datentransformation/arrange.png?raw=true){#id .class width=60% height=60%}
 
-Eine Funktion, die wir Euch nicht vorenthalten möchten und die oft eher für Transformation als Bereinigung genutzt wird, z.B. um **Ranglisten** auszugeben, ist `dplyr::arrange()`. Sie **sortiert Datensätze** für Euch. Wir interessieren uns für die Top10 der Firmen, deren Plastikverpackung gefunden wurde:
+Unsere Daten sind erst einmal bereinigt und das ist ein riesiger Schritt, häufig ist die Bereinigung nämlich deutlich mehr Arbeit als die anschließenden Visualisierungen oder Berechnungen - Ihr könnt also wirklich stolz auf Euch sein! 
+Und dennoch sind wir noch nicht ganz fertig mit den `dplyr`-Package. Denn das hat einfach unglaublich viel zu bieten … - und eine Funktion, die wir Euch definitiv nicht vorenthalten möchten ist die **`arrange()`**-Funktion. Diese wird eher für die Transformation unserer Daten als für deren Bereinigung genutzt. Mit dieser Funktion kann man die Zeilen eines Datensatzes nach den Werten einer oder mehrerer Spalten zu sortieren bzw. **Ranglisten ausgeben**. Sie ist also eine große Hilfe, wenn wir Daten in einer bestimmten Reihenfolge analysieren oder präsentieren und z.B. Trends erkennen, Daten für Berichte vorbereiten oder Extremwerte identifizieren möchten. Wenn wir uns also für die „Top 10“ der Firmen interessieren, die am meisten Plastikmüll produzieren, können zunächst die Firmen auswählen und gruppieren, uns eine Zusammenfassung ausgeben lassen und dann auf die „Top 10“ beschränken. Anschließend können wir mit `dplyr::arrange()` die Werte einfach in absteigender Reihenfolge sortieren - das ist also die perfekte Zusammenfassung des `dplyr:
 
 ```{r arrange, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
@@ -478,232 +485,13 @@ audit %>%
   dplyr::arrange(desc(total_pieces))
 ```
 
-Das gefundene Plastik kann Herstellern direkt zugeordnet werden: La Doo (4 Prozent) und Coca-Cola (2,7 Prozent). Vielleicht ist das etwas für die nächste Kampagne?
+Nun können wir das gefundene Plastik den verschiedenen Firmen zuordnen: LaDoo, Coca-Cola und Barna sind dabei offensichtlich die drei Firmen, die mit 15.221, 9.988 bzw. 6.225 gefundenen Plastikteilen in hohem Maße für die Umweltverschmutzung durch Plastikmüll verantwortlich sind. Vielleicht wären diese Ergebnisse etwas für die nächste Kampagne?
+Nun sind wir aber wirklich durch. Ihr kennt alle `dplyr`-Verben und seid fit für die Datentransformation! Mit dem neuen Wissen können wir direkt in die Übungsaufgabe einsteigen und nochmal alles ausprobieren. Vorher aber noch einmal ein kleiner Hinweis: Auf einige Themen sind wir hier nur am Rande eingegangen, allerdings werden wir uns einige davon (z.B. den Umgang mit fehlenden Werte (NAs, die Umformung von Textdaten und das Zusammenfügen von Datensätzen) bereits in der kommenden Woche im Detail anschauen. Lasst Euch also davon nicht beirren!
 
-Nun kennt Ihr alle `dplyr`-Verben und seid fit für die Datentransformation! Bevor Ihr in die Übung geht: Auf einige Themen sind wir hier nur am Rande eingegangen - den Umgang mit fehlenden Werte (NAs), die Umformung von Textdaten und das (in der `countrycode`-Funktion versteckte) Zusammenfügen von Datensätzen. Wenn Ihr Euch für diese Themen interessiert, dann macht gerne die Exkurse.
-
-
----
-
-<details>
-  <summary><h3>&#10145; Exkurs: Umgang mit fehlenden Werten (NAs)</h3></summary>
-  <br>
-
-Nachdem Ihr nun Variablen und Beobachtungen auswählen und filtern könnt, schaut Ihr Euch nun den Umgang mit fehlenden Werten, also NAs (**n**ot **a**vailable) an. Versucht zuerst einmal, die Summe für die Variable `n_pieces` im Datensatz `community` zu berechnen.
-
-``` {r 07mean_na1, exercise = TRUE}
-# Berechnung der Summe
-sum(community$n_pieces)
-```
-
-Klappt! Im Datensatz `community` sind keine NAs enthalten, die bei der Berechnung der Summe stören könnten. Versucht das gleiche jetzt mal für den `audit`-Datensatz in folgendem Codeblock:
-
-``` {r exercise_07mean_na2, exercise = TRUE}
-# Hier Euer Code!
-
-```
-
-```{r exercise_07mean_na2-solution}
-# Berechnung de Summe
-sum(audit$n_pieces)
-```
-
-```{r exercise_07mean_na2-check}
-grade_this_code()
-```
-
-Ups - Ihr erhaltet ein NA? R kann den Wert nicht berechnen, da **in der Variable NAs** enthalten sind. Versucht hier zu berechnen, wie viele NAs die Variable hat. <br>
-*Tipp: Experimentiert mit der Funktion `summary()`)!*
-
-``` {r exercise_07mean_na3, exercise = TRUE}
-# Hier Euer Code!
-
-```
-
-``` {r exercise_07mean_na3-solution}
-# NAs bestimmen
-summary(audit)
-```
-
-``` {r exercise_07mean_na3-check}
-grade_this_code()
-```
-
-Trotzdem wollt Ihr in solchen Fällen manchmal statistische Kennzahlen berechnen. Dafür könnt Ihr R explizit sagen, dass die **NAs bei der Berechnung ignoriert** werden sollen. Das funktioniert über das Argument `na.rm = TRUE`, das Ihr schon aus vorherigen Übungen kennt:
-
-``` {r 07mean_na4, exercise = TRUE}
-# Berechnung der Summe unter Ausschluss der NAs
-sum(audit$n_pieces, na.rm = TRUE)
-```
-
-Perfekt, jetzt könnt Ihr R schon mitteilen, **NAs zu ignorieren**! Natürlich gibt es noch viele weitere Möglichkeiten, NA's in Datensätzen zu entdecken und zu filtern - versucht dafür mal den folgenden Codeblock zu verstehen: 
-
-``` {r 07mean_na5, exercise = TRUE}
-# Anzahl an fehlenden Werten (is.na gibt für eine Beobachtung TRUE (1) oder FALSE (0) zurück, deshalb können wir das hier aufsummieren)
-na_count <- sum(is.na(audit$n_pieces))
-
-# Auflisten von Beobachtungen, die fehlende Werte haben
-na_rows <- audit[!complete.cases(audit$n_pieces), ]
-na_rows <- which(is.na(audit$n_pieces))
-
-# Neuer Datensatz ohne fehlende Werte
-new_df <- na.omit(audit)
-```
-
-**Achtung:** Nicht immer können fehlende Werte einfach so ausgeschlossen werden. Manchmal beeinträchtigt dieser Ausschluss die **Aussagekraft unserer Analysen**. Bei [Allison 2010](https://statisticalhorizons.com/wp-content/uploads/Allison_MissingData_Handbook.pdf){target="_blank"} findet Ihr eine gute Übersicht gängiger Herausforderungen und Lösungen. Unser Tipp: Schon bei der Datenerhebung ansetzen und während der Datenerhebung beständig auf genau solche Vorkommnisse prüfen, sodass Ihr rechtzeitig reagieren könnt.
-
-Häufig kommt es zudem vor, dass **NAs nicht als NAs codiert** sind: Wie Ihr vielleicht schon mal gesehen habt, werden fehlende Werte häufig auch als **“N/A”, “N A”, und “Not Available”, oder -99, oder -1** (oder wie bei uns mit etwas ganz anderem wie "EMPTY") angegeben. Schaut deshalb immer ins **Codebuch**, bevor Ihr die Daten bereinigt und analysiert - sonst berechnet Ihr beispielsweise einen Mittelwert, in den fälschlicherweise diese Zahlen einfließen! Hier hat dann auch das `dplyr`-Package wieder eine einfache Lösung parat: die Funktion `dplyr::na_if()`. Diese wenden wir mithilfe von `dplyr::mutate_all()` auf alle Spalten an:
-
-``` {r 07mean_na6, exercise = TRUE}
-# Erstellung eines Beispieldataframes mit NAs als "NA" und "-99"
-df <- tibble::tribble(
-  ~name,              ~x,  ~y,           ~z,  
-  "Person 1",         1,   -99,          6.7, 
-  "Person 2",         3,   NA,           -99,
-  "Person 3",         NA,  0.76,         -1.6
-  )
-
-# Definition der NAs
-df2 <- df %>% 
-  dplyr::mutate_all(dplyr::na_if, -99)
-
-# Erste fünf Zeilen anzeigen
-head(df2)
-```
-
-</details>
-
----
-
----
-
-<details>
-  <summary><h3>&#10145; Exkurs: Datensätze zusammenfügen</h3></summary>
-  <br>
-
-Häufig ist es auch der Fall, dass mehrere Datensätze zu einem zusammengefügt werden sollen. Letzte Woche habt Ihr bereits den Datensatz der Weltbank zu Naturschutzgebieten (`wb_areas`) heruntergeladen. Verschafft Euch zuerst nochmal einen kleinen Überblick über den Datensatz `wb_areas`: 
-
-``` {r 07gdppc, exercise = TRUE}
-# Hier Euer Code!
-
-```
-
-Den Datensatz `wb_areas` wollt Ihr nun mit dem Datensatz `community` zusammenfügen. Um die Datensätze zusammenzuführen, braucht Ihr eine **gemeinsame Variable**, anhand der R die Länder einander zuordnen kann. Die Variable muss den **gleichen Namen** in beiden Datensätzen haben oder von Euch zugeordnet werden und die Kodierung (hier ISO2C) muss übereinstimmen. Da Ländernamen fehleranfällig sind, fokussieren wir uns auf die **Country Codes**:
-
-``` {r 07wb_clean, exercise = TRUE}
-# Umbennung der Spalten
-wb_areas %>% 
-  dplyr::select(countrycode = 'iso2c', protected_area = 'ER.PTD.TOTL.ZS')
-```
-
-Versucht jetzt einmal herauszufinden, wie viele Länder in beiden Datensätzen `community` und `wb_areas` vorhanden sind (hier führen viele Wege zum Ziel!):
-
-``` {r 07nrow_ex, exercise = TRUE}
-# Hier Euer Code!
-
-```
-
-```{r 07quiz_datenbereinigung5}
-quiz(caption = NULL,
-  question("Wie viele Länder sind im Datensatz der World Bank enthalten?",
-    answer("3"),
-    answer("266", correct = TRUE),
-    answer("51"),
-    answer("4084"),
-    correct = "Gut gemacht!",
-    incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-  )
-)
-```
-
-```{r 07quiz_datenbereinigung6}
-quiz(caption = NULL,
-  question("Wie viele Länder sind in Community enthalten?",
-    answer("51", correct = TRUE),
-    answer("4"),
-    answer("9296"),
-    answer("4084"),
-    correct = "Gut gemacht!",
-    incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-  )
-)
-```
-
-Jetzt könnt Ihr die beiden Datensätze zusammenfügen. Dabei gibt es verschiedene Möglichkeiten, denn in dem einen Datensatz kommen viel mehr Länder vor als im anderen:
-
-- `inner_join`: nur die Länder werden beibehalten, die **in beiden Datensätzen** enthalten sind
-- `full_join`: **alle Länder** aus beiden Datensätzen sind enthalten
-- `left_join`/`right_join`: nur die **Länder aus dem zuerst bzw. zuletzt genannten Datensatz** bleiben enthalten
-
-![](https://d33wubrfki0l68.cloudfront.net/aeab386461820b029b7e7606ccff1286f623bae1/ef0d4/diagrams/join-venn.png){#id .class width=80% height=100%}
-
-Führt die folgenden Codeblöcke nacheinander aus und schaut Euch an, wie diese verschiedenen Joins für Euren Datensatz in der Praxis funktionieren:
-
-``` {r 07inner_join, exercise = TRUE}
-# Ihr nehmt Euren ersten Datensatz...
-community %>%
-  # ...und führt den Join aus
-  dplyr::inner_join(wb_processed, by = "countrycode")
-```
-
-``` {r 07full_join, exercise = TRUE}
-# Ihr nehmt Euren ersten Datensatz...
-community %>%
-  # ...und führt den Join aus
-  dplyr::full_join(wb_processed, by = "countrycode")
-```
-
-``` {r 07left_join, exercise = TRUE}
-# Ihr nehmt Euren ersten Datensatz...
-community %>%
-  # ...und führt den Join aus
-  dplyr::left_join(wb_processed, by = "countrycode")
-```
-
-``` {r 07right_join, exercise = TRUE}
-# Ihr nehmt Euren ersten Datensatz...
-community %>%
-  # ...und führt den Join aus
-  dplyr::right_join(wb_processed, by = "countrycode")
-```
-
-```{r 07quiz_datenbereinigung8}
-quiz(
-  caption = NULL,
-  question("Wie Ihr sehen könnt, führt der full_join natürlich zu den meisten Zeilen im Datensatz und der inner_join zur geringsten Anzahl an Ländern. Welcher der beiden anderen Joins führt zu einer höheren Anzahl an Ländern im Datensatz?",
-    answer("left_join"),
-    answer("right_join", correct = TRUE),
-    correct = "Gut gemacht!",
-    incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-  ),
-  question("Welche der folgenden Aussagen sind wahr?",
-    answer("Beim Inner Join bleiben nur Zeilen bestehen, die in beiden Datensätzen vorhanden sind (n = 50)", correct = TRUE),
-    answer ("Beim Full Join bleiben alle Zeilen bestehen, passende werden zusammengefügt (n = 267)", correct = TRUE),
-    answer ("Beim Left Join bleiben alle Zeilen des links referenzierten Datensatzes (community) bestehen, passende werden zusammengefügt (n = 51)", correct = TRUE),
-    answer ("Beim Right Join bleiben alle Zeilen des rechts referenzierten Datensatzes (wb_areas) bestehen, passende werden zusammengefügt (n = 266)", correct = TRUE),
-    correct = "Gut gemacht!",
-    incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-  )
-)
-```
-  
-</details>
-
----
-
-  
-### **Und jetzt Ihr**
+# **Und jetzt Ihr!**
 Wenn Ihr einen **eigenen Datensatz** habt - den Ihr letzte Woche bereits in R importiert habt - dann könnt Ihr jetzt versuchen, diesen zu bereinigen. Wenn Ihr nicht genug von Datenbereinigung bekommen könnt oder Ihr keinen eigenen Datensatz habt, dann schaut Euch das **R Markdown: 06_datentransformation-uebung.Rmd** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"} unter 06_datentransformation) an und versucht die Aufgaben darin zu bearbeiten. 
 
-### **Zusätzliche Ressourcen**
+# **Zusätzliche Ressourcen**
 - [Schummelblatt: dplyr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-dplyr.pdf){target="_blank"} (engl.)
 - [Schummelblatt: stringr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-stringr.pdf){target="_blank"} (engl.)
 - [Schummelblatt: tidyr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-tidyr.pdf){target="_blank"} (engl.)
