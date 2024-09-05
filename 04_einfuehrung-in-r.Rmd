@@ -26,6 +26,8 @@ library(learnr)
 library(gradethis)
 source("R/setup/gradethis-setup.R")
 source("R/setup/tutorial-setup.R")
+source("R/setup/functions.R")
+
 # Read app parameters
 params <- yaml::yaml.load_file("www/app_parameters.yml")
 
@@ -100,7 +102,7 @@ quiz(caption = NULL,
     try_again_button = "Nochmal versuchen"
   ),
   
-  question("IDE steht für "Integrated Development Environment" (zu dt. integrierte Entwicklungsumgebung). RStudio ist eine integrierte Entwicklungsumgebung für R.",
+  question('IDE steht für "Integrated Development Environment" (zu dt. integrierte Entwicklungsumgebung). RStudio ist eine integrierte Entwicklungsumgebung für R.',
     answer("Korrekt!", correct = TRUE),
     answer("Inkorrekt!"),
     correct = "Richtig, RStudio ist die Entwicklungsumgebung, die sich auf R spezialisiert hat und die uns das Programmieren und Arbeiten mit R durch eine benutzerfreundliche Oberfläche erleichtert.!",
@@ -474,7 +476,6 @@ while (i <= length(spenderinnenliste)) {
   print(paste("Danke für deine Unterstützung,", spenderinnenliste[[i]], "!"))
   # ...setze den Counter i um 1 herauf
   i = i + 1
-}
 }
 ```
 
