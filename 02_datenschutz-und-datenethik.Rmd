@@ -43,7 +43,7 @@ Als weiterführende Lektüre empfehlen wir Euch hierzu die [Publikation](https:/
 
 ## **Europäische Datenschutzgrundverordnung (DSGVO)**
 
-Das **Recht auf informationelle Selbstbestimmung** ist Teil des verfassungsrechtlich verankerten **allgemeinen Persönlichkeitsrechts**  (Art. 1 Abs. 1 und Art. 2 Abs. 1 GG) und sichert "das Recht des/der Einzelnen, grundsätzlich selbst über die Preisgabe und Verwendung seiner/ihrer personenbezogenen Daten zu bestimmen" ([s. Bundesministerium des Innern und für Heimat](https://www.bmi.bund.de/DE/themen/verfassung/datenschutz/datenschutz-node.html){target="_blank"}). Wichtige Rechtsgrundlage dafür ist die **Europäische Datenschutzgrundverordnung (kurz: DSGVO)**, welche am 25. Mai 2018 in Kraft getreten ist. Neben den 99 Artikeln, enthält diese zusätzlich insgesamt 173 sogenannte **Erwägungsgründe**. Das sind Zusätze, die eine wichtige Rolle im Verständnis und der Anwendung der Gesetze spielen, indem sie dafür sorgen, dass Kontextmerkmale berücksichtigt oder komplexe Bestimmungen und ihre Hintergründe erläutert werden. Einen Überblick über alle Erwägungsgründe findet ihr [hier] (https://dsgvo-gesetz.de/erwaegungsgruende/){target="_blank"}.
+Das **Recht auf informationelle Selbstbestimmung** ist Teil des verfassungsrechtlich verankerten **allgemeinen Persönlichkeitsrechts**  (Art. 1 Abs. 1 und Art. 2 Abs. 1 GG) und sichert "das Recht des/der Einzelnen, grundsätzlich selbst über die Preisgabe und Verwendung seiner/ihrer personenbezogenen Daten zu bestimmen" ([s. Bundesministerium des Innern und für Heimat](https://www.bmi.bund.de/DE/themen/verfassung/datenschutz/datenschutz-node.html){target="_blank"}). Wichtige Rechtsgrundlage dafür ist die **Europäische Datenschutzgrundverordnung (kurz: DSGVO)**, welche am 25. Mai 2018 in Kraft getreten ist. Neben den 99 Artikeln, enthält diese zusätzlich insgesamt 173 sogenannte **Erwägungsgründe**. Das sind Zusätze, die eine wichtige Rolle im Verständnis und der Anwendung der Gesetze spielen, indem sie dafür sorgen, dass Kontextmerkmale berücksichtigt oder komplexe Bestimmungen und ihre Hintergründe erläutert werden. Einen Überblick über alle Erwägungsgründe findet ihr [hier](https://dsgvo-gesetz.de/erwaegungsgruende/){target="_blank"}.
 
 ```{r 02_quiz1}
 quiz(caption = NULL,
@@ -62,7 +62,7 @@ quiz(caption = NULL,
 Doch was sind überhaupt **personenbezogene Daten**?
 Folgt man **Art. 4 DSGVO**, so werden Personenbezogene Daten als "alle Informationen, mit denen natürliche Personen, also Menschen, direkt oder indirekt **identifiziert** werden können" definiert. Also im Grunde werden darunter alle Informationen gefasst, die Ihr über eine Person sammeln könnt und die Euch und Anderen dabei helfen können, diese Person wieder zu identifizieren. Die folgende Grafik fasst noch einmal zusammen, welche Daten als personenbezogene Daten verstanden werden:
 
-![*Abbildung: Personenbezogene Daten**](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/personenbezogene-daten.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Personenbezogene Daten*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/personenbezogene-daten.png?raw=true){#id .class width=100% height=100%}
 
 ```{r 02_quiz2}
 quiz(caption = NULL,
@@ -116,7 +116,7 @@ quiz(caption = NULL,
 
 Die Verarbeitung von personenbezogenen Daten unterliegt dem sogenannten **Verbotsprinzip**: Wir dürfen Daten also nur verarbeiten, wenn wir dafür eine **explizite Berechtigung** haben - ansonsten ist die Datenverarbeitung strengstens **verboten**! Eine jursitische Erlaubnis zur Verarbeitung der Daten wird durch folgende **Erlaubnistatbestände** gesichert:
 
-![**Abbildung: Rechtmäßigkeit der Datenverarbeitung](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/rechtmaessigkeit.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Rechtmäßigkeit der Datenverarbeitung*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/rechtmaessigkeit.png?raw=true){#id .class width=100% height=100%}
 
 ```{r 02_quiz3}
 quiz(caption = NULL,
@@ -139,7 +139,7 @@ Die Nutzung der Daten ist ein heikles Thema. Daher haben wir als Nutzer:innen de
 
 Da wir in der Regel zur Datenverarbeitung auf die Auskunft anderer Personen angewiesen sind, deren Daten wir verarbeiten dürfen, müssen wir sicherstellen, dass diese Personen in besonderem Maße von uns geschützt werden. Daher müssen wir die folgenden **Betroffenenrechte** (Art. 15-21 DSGVO) hinweisen und diese berücksichtigen:
 
-![**Abbildung: Betroffenenrechte**](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/betroffenenrechte.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Betroffenenrechte*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/betroffenenrechte.png?raw=true){#id .class width=100% height=100%}
 
 Bei **Erlöschung des Zwecks** müssen personenbezogene Daten gem. §35 BDSG spätestens nach **drei Jahren** gelöscht werden - außer es handelt sich um steuerlich relevante oder Sozialdaten, diese unterliegen einer Frist von 10 Jahren. Alternativ zur Löschung können Daten auch **anonymisiert** werden, indem identifizierende Informationen wie Name, exakte Adresse oder E-Mail gelöscht werden, bis die Kombination von Merkmalsausprägungen wie Wohnort, Beruf und Geschlecht jeweils bei **min. drei** Personen vorhanden sind. Idealerweise liegt eine Kombination der Daten allerdings bei keiner einzigen Person vor.
 
@@ -163,7 +163,7 @@ Da der **Datenschutz in anderen Ländern** (z.B. in den USA) nicht so ausgepräg
 
 Seid Ihr in einer Firma, einer Organisation oder einem Verein tätig, veröffentlicht Ihr am besten auf Eurer Webseite eine **Datenschutzerklärung sowie Kontaktdaten von Ansprechpartner:innen**. Innerhalb Eurer Organsiation legt ihr am besten zusätzlich ein **Verarbeitungsverzeichnis und Datenschutzmanagementsystem** an, welches Ihr in festen Abständen regelmäßig überprüft. Wichtig hierbei: Bestimmt zur Einhaltung und Überprüfung der eigenen Richtlinien verantwortliche Personen innherlab Eurer eigenen Strukturen! Das ist für Euch, aber auch für externe Personen, mit denen Ihr zusammenarbeitet, eine große Stütze. Eine vollständige Datenschutzerklärung enthält idealerweise folgende Dinge:
 
-![**Abbildung: Datenschutzerklärung**](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/datenschutzerklaerung.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Datenschutzerklärung*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/datenschutzerklaerung.png?raw=true){#id .class width=100% height=100%}
 
 ```{r 02_quiz5}
 quiz(caption = NULL,
@@ -183,8 +183,6 @@ quiz(caption = NULL,
 )
 ```
 
-<br>
-
 ## **Datenschutz in der Praxis**
 
 Bislang haben wir uns vor allem mit den theoretischen Hintergründen des Datenschutzes beschäftigt. Diese sind wichtig und die Grundlage für unser tatsächliches Verhalten. Daher wollen wir uns doch einmal anschauen, wie es mit dem Datenschutz in der tatsächlichen Praxis aussieht und welcher Herausforderungen dabei auf uns zukommen können.
@@ -202,7 +200,7 @@ quiz(caption = NULL,
   
   question("Zum Austausch von personenbezogenen Daten nutzt die HR-Abteilung Eures Unternehmens passwortgeschützte Ordnerstrukturen in der Google Cloud. Zugang haben lediglich Mitarbeitende der Personalabteilung. Ist das unbedenklich?",
     answer("Ja, schließlich haben sind die Daten passwortgeschützt und können nur von den Mitarbeiter:innen der Personalabteilung aufgerufen werden!"),
-    answer("Nein, Passwortschutz hin oder her. Da Google ein US-Amerikanischer Anbieter ist, arbeiten sie mit amerikanischen Datnschutzvereinbarungen - diese weichen von den EU-Regelungen ab.", correct = TRUE),
+    answer("Nein, Passwortschutz hin oder her. Da Google ein US-Amerikanischer Anbieter ist, arbeiten sie mit amerikanischen Datenschutzvereinbarungen - diese weichen von den EU-Regelungen ab.", correct = TRUE),
     correct = "Richtig! Es ist zwar lobenswert, dass die hochsensiblen Daten durch Passwörter geschützt werden, aber Google ist ein US-Amerikanischer Anbieter. Mit dem Kippen des Privacy Shields 2020 ist die Nutzung US-Amerikanischer Tools zur Speicherung personenbezogener Daten unzulässig. Das ist zwar erstmal eine ziemlich schlechte Nachricht, aber auch wir sind derzeit noch in der Umstellung – und erwarten hier auch Korrekturen und Eingriffe der Gesetzgebenden. Bis dahin nutzen wir – wo möglich – digitale Tools aus der EU oder hosten Alternativen, wie z.B. IDGARD oder eine eigene Instanz von NextCloud.",
     incorrect = " Leider falsch! Es ist zwar lobenswert, dass die hochsensiblen Daten durch Passwörter geschützt werden, aber Google ist ein US-Amerikanischer Anbieter. Mit dem Kippen des Privacy Shields 2020 ist deshalb die Nutzung US-Amerikanischer Tools zur Speicherung personenbezogener Daten unzulässig. Das ist zwar erstmal eine ziemlich schlechte Nachricht, aber auch wir sind derzeit noch in der Umstellung – und erwarten hier auch Korrekturen und Eingriffe der Gesetzgebenden. Bis dahin nutzen wir – wo möglich – digitale Tools aus der EU oder hosten Alternativen, wie z.B. IDGARD oder eine eigene Instanz von NextCloud.",
     allow_retry = TRUE,
@@ -226,16 +224,18 @@ quiz(caption = NULL,
 
 ## **Charta der digitalen Grundrechte**
 
-Neben dem Datenschutz solltet Ihr Euch auch mit den **ethischen Anforderungen** Eurer Daten beschäftigen. Denn nur weil etwas augenscheinlich legal ist, bedeutet das nicht, dass es auch moralisch vertretbar ist. Als Inspiration kann Euch hierbei die [**Charta der digitalen Grundrechte**] (https://digitalcharta.eu/) dienen.
+Neben dem Datenschutz solltet Ihr Euch auch mit den **ethischen Anforderungen** Eurer Daten beschäftigen. Denn nur weil etwas augenscheinlich legal ist, bedeutet das nicht, dass es auch moralisch vertretbar ist. Als Inspiration kann Euch hierbei die [Charta der digitalen Grundrechte](https://digitalcharta.eu/){target="_blank"} dienen.
 
 Auf Basis dieser Überlegungen, könnt Ihr **überprüfen**, ob Eure Datengrundlage ausreicht, um Sachverhalte **sinnvoll zu bewerten**. Außerdem könnt Ihr Eure zugrundeliegenden Daten **evaluieren** und gezielt nach **Verzerrungen** (= engl. Biases) suchen. Anschließend solltet Ihr Euch darüber Gedanken machen, ob Eure Daten und deren Analyse zur **strukturellen Benachteiligung, Diskriminierung oder (negativen) Politisierung** von Menschen führen können. Kommen im Zuge dieser Überlegungen Zweifel auf, müssen wir diese Ernst nehmen und ggf. unsere Erhebungs- und Analyseinstrumente **überarbeiten**.
 Wichtig: Denkt v.a. bei der **Programmierung von Algorithmen** stets darüber nach, ob die zu treffende Entscheidung überhaupt **maschinell** anhand von sozio-demographischen Merkmalen und deren Proxies getroffen werden sollte. Das gilt insbesondere bei Algorithmen, die über den **Zugang zu essentiellen Bereichen** wie dem Arbeits- und Finanzmarkt oder zu zivilgesellschaftlichen Programmmen entscheiden!
 
 Einige ethische Fragen solltet Ihr Euch vor und während Eurer Datenprojekte stellen:
 
-![**Abbildung: Fragenkatalog Datenethik**](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/ethische-fragen.png?raw=true){#id .class width=100% height=100%}
 
-#### **Datenethik in der Praxis**
+![*Abbildung: Fragenkatalog Datenethik*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/ethische-fragen.png?raw=true){#id .class width=100% height=100%}
+
+
+## **Datenethik in der Praxis**
 ```{r 02_quiz}
 quiz(caption = NULL,
   question("Wie könnt Ihr Daten zu Geschlecht und Aussehen sensibel erheben?",
@@ -276,10 +276,10 @@ quiz(caption = NULL,
 # Und jetzt Ihr: Eigenes Datenverarbeitungsverzeichnis erstellen (optional)
 Ihr arbeitet mit personenbezogenen Daten und möchtet ein **Datenverarbeitungsverzeichnis** anlegen? Zur Erstellung eines solchen Verzeichnisses gibt es im Netz zahlreiche Informationen. Hier geht es zu den Veröffentlichungen der [Datenschutzkonferenz (DKI)](https://www.bfdi.bund.de/DE/Fachthemen/Inhalte/Allgemein/Verzeichnis-Verarbeitungstaetigkeiten.html){target="_blank"} und [bitkom](https://www.bitkom.org/sites/default/files/file/import/180529-LF-Verarbeitungsverzeichnis-online.pdf){target="_blank"}. 
 
-Die **Stiftung Datenschutz** kennen wir ja bereits! Diese haben, wie wir finden, eine ziemlich hilfreiche **Vorlage für Vereine und gemeinnützige Organisationen** veröffentlicht. Dieses Muster wollen wir mit Euch teilen - Ihr könnt es [hier](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/Vorlage_Datenverarbeitungstätigkeiten.xlsx?raw=true){target="_blank"} herunterladen.
+Die **Stiftung Datenschutz** kennen wir ja bereits! Diese haben, wie wir finden, eine ziemlich hilfreiche **Vorlage für Vereine und gemeinnützige Organisationen** veröffentlicht. Dieses Muster wollen wir mit Euch teilen - Ihr könnt es [hier](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/MusterDatenverarbeitungsverzeichnis.xlsx?raw=true){target="_blank"} herunterladen.
 
 <center>
-![*Template: Datenverarbeitungsverzeichnis*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/Vorlage_Datenverarbeitung_NGO.png?raw=true){#id .class width=100% height=100%}
+![*Template: Datenverarbeitungsverzeichnis*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/Verarbeitungsverzeichnis.png?raw=true){#id .class width=100% height=100%}
 </center>
 <br>
 
