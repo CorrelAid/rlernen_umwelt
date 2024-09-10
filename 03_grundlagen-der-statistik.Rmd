@@ -157,7 +157,7 @@ Achtet auf die Kommunikation sowie die verschiedenen Darstellungsarten. Welches 
 ```{r 08_quiz1, echo=FALSE}
 quiz(caption = "Fragen zur Pressemitteilung",
   question("Wie haben sich die Investitonen in Maßnahmen zur Nutzung erneuerbarer Energien von 2011 bis 2021 entwickelt?",
-    answer("Sie haben sich zwischen 2011 und 2021 kontinuierlich erhöht."),
+    answer("Sie haben sich zwischen 2011 und 2021 kontinuierlich erhöht."), 
     answer("Sie haben sich zwischen 2011 und 2021 ingesamt erhöht, jedoch nicht kontinuierlich.", correct = TRUE),
     answer("Sie haben sich zwischen 2011 und 2021 ingesamt reduziert."),
     correct = "Richtig! Die Investitionen in Maßnahmen zur Nutzung erneuerbarer Energien hat sich zwischen 2011 und 2021 sogar nahezu verdoppelt. Beim Blick auf die hellblauen Balken wird jedoch sichtbar, dass die Investitionen vor allem in den Jahren 2016 bis 2018 etwas eingebrochen sind - von einer kontinuierlichen Steigerung kann also keine Rede sein.",
