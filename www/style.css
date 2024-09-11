@@ -20,6 +20,7 @@ body .btn.btn-primary.btn-back-to-main {
   border: none !important;
 }
 
+
 /* Change link color */
 a {
   color: var(--green2); 
@@ -45,6 +46,11 @@ a:hover {
   background-color: var(--blue1) !important;
   border: none !important;
   color: #fff !important;
+}
+
+/* hide button for "nächstes Kapitel" */
+.btn[data-i18n="button.nexttopic"] {
+  display:none;
 }
 
 /* Background color for correct answers */
