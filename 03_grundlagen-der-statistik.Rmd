@@ -68,7 +68,7 @@ In der nachfolgende Abbildung zeigt ein zyklisches Prozessmodell die notwendigen
 
 <p>
 <center>
-![**Abbildung**: Zyklisches Modell des Prozesses der Wertschöpfung aus Daten. Quelle: Schüller, Busch, Hindinger (2019)](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/08_grundlagen-der-statistik/Zyklisches_Modell.png?raw=true){#id .class width=70% height=70%}
+![**Abbildung**: Zyklisches Modell des Prozesses der Wertschöpfung aus Daten. Quelle: Schüller, Busch, Hindinger (2019)](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/Zyklisches_Modell.png?raw=true){#id .class width=70% height=70%}
 </center>
 </p>
 
@@ -250,7 +250,7 @@ Die nachfolgende Abbildung stellt alle Begriffe dieses Abschnittes noch einmal �
 
 <p>
 <center>
-![**Abbildung**: Grundbegriffe für den Umgang mit tabellarischen Datensätzen. Quelle: Eigene Darstellung.](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/08_grundlagen-der-statistik/Datensatz.png?raw=true){#id .class width=100%}
+![**Abbildung**: Grundbegriffe für den Umgang mit tabellarischen Datensätzen. Quelle: Eigene Darstellung.](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/Datensatz.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
@@ -302,7 +302,7 @@ Beispiele für diesen Datentyp sind die Anzahl der Kinder in einer Familie oder 
 
 <p>
 <center>
-![**Abbildung**: Numerische Datentypen. Quelle: \@allison_horst, lizensiert nach cc by 4.0](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/04_daten-verstehen/AllisonHorst_Datentypen2.png?raw=true){#id .class width=100%}
+![**Abbildung**: Numerische Datentypen. Quelle: \@allison_horst, lizensiert nach cc by 4.0](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/AllisonHorst_Datentypen2.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
@@ -313,7 +313,7 @@ Auf der anderen Seite gibt es **Daten, die mithilfe von Worten und Symbolen** au
 
 <p>
 <center>
-![**Abbildung**: Kategorische Datentypen. Quelle: \@allison_horst, lizensiert nach cc by 4.0](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/04_daten-verstehen/AllisonHorst_Datentypen1.png?raw=true){#id .class width=100%}
+![**Abbildung**: Kategorische Datentypen. Quelle: \@allison_horst, lizensiert nach cc by 4.0](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/AllisonHorst_Datentypen1.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
@@ -395,7 +395,7 @@ Dass ein und dieselbe Verteilung (beispielsweise die Erhebung des Einkommens ein
 
 <p>
 <center>
-![**Abbildung**: Schiefe vs. symmetrische Verteilungen. Quelle: Eigene Darstellung](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/08_grundlagen-der-statistik/Schiefe_Verteilungen.png?raw=true){#id .class width=100%}
+![**Abbildung**: Schiefe vs. symmetrische Verteilungen. Quelle: Eigene Darstellung](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/Schiefe_Verteilungen.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
@@ -468,7 +468,7 @@ In der nachfolgenden Abbildung wird verdeutlicht, wie der Median sowie das 25%-Q
 
 <p>
 <center>
-![**Abbildung**: Bestimmung und Bedeutung von p-Quantilen. Quelle: Eigene Darstellung](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/08_grundlagen-der-statistik/Quantile.png?raw=true){#id .class width=100%}
+![**Abbildung**: Bestimmung und Bedeutung von p-Quantilen. Quelle: Eigene Darstellung](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/Quantile.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
@@ -501,7 +501,7 @@ quiz(caption = "Frage zu Streuungsparameter",
 Nun haben wir schon eine ganze Menge über Lage- und Streuungsparameter gelernt, aber was fangen wir mit diesen ganzen Zahlen überhaup an? Zum einen können wir sie unter anderem dafür verwenden, verschiedene Gruppen oder Untersuchungseinheiten miteinander zu vergleichen: Welche Klasse hat den besten Durchschnitt (Mittelwert) in der letzten Mathearbeit geschrieben oder welches Unternehmen erzielt den maximalen Profit?
 Allerdings lassen sich diese Werte auch mithilfe von R grafisch in einem **Boxplot** zusammenfassen. Diese Darstellungsform eignet sich besonder gut, um einen ersten Überblick über unsere Daten zu bekommen: Was ist der größte bzw. der kleinste Wert und wo liegt überhaupt der Median, also die "wahre" Mitte unserer Daten? All das und noch etwas mehr können wir aus einem Boxplot herauslesen. Wie wir einen solchen Boxplot mithilfe von R erstellen, schauen wir uns in einem späteren Kapitel an, aber die untere Grafik zeigt Euch schon einmal, wie ein Boxplot eigentlich aussieht und welche Informationen er enthält:
 
-![Boxplot mit statistischen Kennzahlen](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/04_daten-verstehen/Boxplot_Stat.png?raw=true){#id .class width="100%" height="100%"}
+![Boxplot mit statistischen Kennzahlen](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/Boxplot_Stat.png?raw=true){#id .class width="100%" height="100%"}
 
 ## **Korrelation und Kausalität**
 
