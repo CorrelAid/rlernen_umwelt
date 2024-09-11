@@ -150,7 +150,7 @@ Achtet auf die Kommunikation sowie die verschiedenen Darstellungsarten. Welches 
 
 <p>
 <center>
-![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/11/PD23_N062_32.html>*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_grundlagen-der-statistik/umweltschutzinvestitionen-klimaschutz.png?raw=true){#id .class width=100%}
+![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/11/PD23_N062_32.html>*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/umweltschutzinvestitionen-klimaschutz.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
@@ -186,7 +186,7 @@ quiz(caption = "Fragen zur Pressemitteilung",
 
 <p>
 <center>
-![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2021/07/PD21_N045_639.html>*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_grundlagen-der-statistik/verbraucherinnenpreise_pkw.png?raw=true){#id .class width=100%}
+![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2021/07/PD21_N045_639.html>*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/verbraucherinnenpreise_pkw.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
