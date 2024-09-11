@@ -357,8 +357,8 @@ question("Welches Skalenniveau erlaubt es, den Abstand zwischen den Werten zu me
     answer("Ordinalskala."),
     answer("Intervallskala.", correct = TRUE),
     answer("Ratio-/Verhältnisskala."),
-    correct = "Richtig. Nominalskalierte Werte dürfen wir ausschließlich in Kategorien einteilen. Somit können wir lediglich Unterschiede zwischen den Variablen feststellen. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
-    incorrect = "Leider falsch. Schau' noch einmal weiter oben nach: bei nominalskalierten Werten, dürfen wir diese lediglich in Kategorien einteilen. Somit können wir zwar feststellen, dass es unterschiede zwischen den Variablen gibt. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
+    correct = "Richtig. Nominalskalierte Werte dürfen wir ausschließlich in Kategorien einteilen. Somit können wir lediglich Unterschiede zwischen den Variablen feststellen. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen. Das dürfen wir bei Ordinalskalen, allerdings ist der Abstand hier nicht interpretierbar. Ratioskalen haben wiederum einen natürlichen Nullpunkt.",
+    incorrect = "Leider falsch. Schau' noch einmal weiter oben nach: bei nominalskalierten Werten, dürfen wir diese lediglich in Kategorien einteilen. Somit können wir zwar feststellen, dass es Unterschiede zwischen den Variablen gibt. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
