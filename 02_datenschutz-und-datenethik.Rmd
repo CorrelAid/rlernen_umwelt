@@ -62,7 +62,7 @@ quiz(caption = NULL,
 Doch was sind überhaupt **personenbezogene Daten**?
 Folgt man **Art. 4 DSGVO**, so werden Personenbezogene Daten als "alle Informationen, mit denen natürliche Personen, also Menschen, direkt oder indirekt **identifiziert** werden können" definiert. Also im Grunde werden darunter alle Informationen gefasst, die Ihr über eine Person sammeln könnt und die Euch und Anderen dabei helfen können, diese Person wieder zu identifizieren. Die folgende Grafik fasst noch einmal zusammen, welche Daten als personenbezogene Daten verstanden werden:
 
-![*Abbildung: Personenbezogene Daten*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/personenbezogene-daten.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Personenbezogene Daten*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/personenbezogene-daten.png?raw=true){#id .class width=100% height=100%}
 
 ```{r 02_quiz2}
 quiz(caption = NULL,
@@ -116,7 +116,7 @@ quiz(caption = NULL,
 
 Die Verarbeitung von personenbezogenen Daten unterliegt dem sogenannten **Verbotsprinzip**: Wir dürfen Daten also nur verarbeiten, wenn wir dafür eine **explizite Berechtigung** haben - ansonsten ist die Datenverarbeitung strengstens **verboten**! Eine jursitische Erlaubnis zur Verarbeitung der Daten wird durch folgende **Erlaubnistatbestände** gesichert:
 
-![*Abbildung: Rechtmäßigkeit der Datenverarbeitung*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/rechtmaessigkeit.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Rechtmäßigkeit der Datenverarbeitung*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/rechtmaessigkeit.png?raw=true){#id .class width=100% height=100%}
 
 ```{r 02_quiz3}
 quiz(caption = NULL,
@@ -139,7 +139,7 @@ Die Nutzung der Daten ist ein heikles Thema. Daher haben wir als Nutzer:innen de
 
 Da wir in der Regel zur Datenverarbeitung auf die Auskunft anderer Personen angewiesen sind, deren Daten wir verarbeiten dürfen, müssen wir sicherstellen, dass diese Personen in besonderem Maße von uns geschützt werden. Daher müssen wir die folgenden **Betroffenenrechte** (Art. 15-21 DSGVO) hinweisen und diese berücksichtigen:
 
-![*Abbildung: Betroffenenrechte*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/betroffenenrechte.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Betroffenenrechte*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/betroffenenrechte.png?raw=true){#id .class width=100% height=100%}
 
 Bei **Erlöschung des Zwecks** müssen personenbezogene Daten gem. §35 BDSG spätestens nach **drei Jahren** gelöscht werden - außer es handelt sich um steuerlich relevante oder Sozialdaten, diese unterliegen einer Frist von 10 Jahren. Alternativ zur Löschung können Daten auch **anonymisiert** werden, indem identifizierende Informationen wie Name, exakte Adresse oder E-Mail gelöscht werden, bis die Kombination von Merkmalsausprägungen wie Wohnort, Beruf und Geschlecht jeweils bei **min. drei** Personen vorhanden sind. Idealerweise liegt eine Kombination der Daten allerdings bei keiner einzigen Person vor.
 
@@ -163,7 +163,7 @@ Da der **Datenschutz in anderen Ländern** (z.B. in den USA) nicht so ausgepräg
 
 Seid Ihr in einer Firma, einer Organisation oder einem Verein tätig, veröffentlicht Ihr am besten auf Eurer Webseite eine **Datenschutzerklärung sowie Kontaktdaten von Ansprechpartner:innen**. Innerhalb Eurer Organsiation legt ihr am besten zusätzlich ein **Verarbeitungsverzeichnis und Datenschutzmanagementsystem** an, welches Ihr in festen Abständen regelmäßig überprüft. Wichtig hierbei: Bestimmt zur Einhaltung und Überprüfung der eigenen Richtlinien verantwortliche Personen innherlab Eurer eigenen Strukturen! Das ist für Euch, aber auch für externe Personen, mit denen Ihr zusammenarbeitet, eine große Stütze. Eine vollständige Datenschutzerklärung enthält idealerweise folgende Dinge:
 
-![*Abbildung: Datenschutzerklärung*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/datenschutzerklaerung.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Datenschutzerklärung*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/datenschutzerklaerung.png?raw=true){#id .class width=100% height=100%}
 
 ```{r 02_quiz5}
 quiz(caption = NULL,
@@ -232,7 +232,7 @@ Wichtig: Denkt v.a. bei der **Programmierung von Algorithmen** stets darüber na
 Einige ethische Fragen solltet Ihr Euch vor und während Eurer Datenprojekte stellen:
 
 
-![*Abbildung: Fragenkatalog Datenethik*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/ethische-fragen.png?raw=true){#id .class width=100% height=100%}
+![*Abbildung: Fragenkatalog Datenethik*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/ethische-fragen.png?raw=true){#id .class width=100% height=100%}
 
 
 ## **Datenethik in der Praxis**
@@ -276,10 +276,10 @@ quiz(caption = NULL,
 # Und jetzt Ihr: Eigenes Datenverarbeitungsverzeichnis erstellen (optional)
 Ihr arbeitet mit personenbezogenen Daten und möchtet ein **Datenverarbeitungsverzeichnis** anlegen? Zur Erstellung eines solchen Verzeichnisses gibt es im Netz zahlreiche Informationen. Hier geht es zu den Veröffentlichungen der [Datenschutzkonferenz (DKI)](https://www.bfdi.bund.de/DE/Fachthemen/Inhalte/Allgemein/Verzeichnis-Verarbeitungstaetigkeiten.html){target="_blank"} und [bitkom](https://www.bitkom.org/sites/default/files/file/import/180529-LF-Verarbeitungsverzeichnis-online.pdf){target="_blank"}. 
 
-Die **Stiftung Datenschutz** kennen wir ja bereits! Diese haben, wie wir finden, eine ziemlich hilfreiche **Vorlage für Vereine und gemeinnützige Organisationen** veröffentlicht. Dieses Muster wollen wir mit Euch teilen - Ihr könnt es [hier](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/MusterDatenverarbeitungsverzeichnis.xlsx?raw=true){target="_blank"} herunterladen.
+Die **Stiftung Datenschutz** kennen wir ja bereits! Diese haben, wie wir finden, eine ziemlich hilfreiche **Vorlage für Vereine und gemeinnützige Organisationen** veröffentlicht. Dieses Muster wollen wir mit Euch teilen - Ihr könnt es [hier](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/MusterDatenverarbeitungsverzeichnis.xlsx?raw=true){target="_blank"} herunterladen.
 
 <center>
-![*Template: Datenverarbeitungsverzeichnis*](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/02_datenschutz-und-datenethik/Verarbeitungsverzeichnis.png?raw=true){#id .class width=100% height=100%}
+![*Template: Datenverarbeitungsverzeichnis*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/datenverarbeitungsverzeichnis.png?raw=true){#id .class width=100% height=100%}
 </center>
 <br>
 
