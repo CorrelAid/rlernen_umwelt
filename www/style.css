@@ -2,17 +2,13 @@
   --blue1: #345a8c;
   --blue2: #98accc;
   --blue3: #88a1b0;
-  --green1: #769e7b;
-  --green2: #96c042;
+  --green1: #769e7b; 
+  --green2: #96c342;
   --green3: #bbd459;
 
   --button-color: var(--green2); /* Replace with the color you want */
 }
 
-/* Header styles and colors */
-h1 {
-  color: var(--blue1);
-}
 
 /* Change style of the "Session beenden" button */
 body .btn.btn-primary.btn-back-to-main {
@@ -31,13 +27,6 @@ a:hover {
   color: var(--green1); 
 }
 
-/* Change background color of the table of contents */
-.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
-    z-index: 2;
-    color: #fff;
-    background-color: var(--blue1);
-    border-color: var(--blue1);
-}
 
 /* Change tutorial style --------------------------*/
 
@@ -50,6 +39,13 @@ a:hover {
 
 /* hide button for "nächstes Kapitel" */
 .btn[data-i18n="button.nexttopic"] {
+  display:none;
+}
+
+.date {
+  display:none;
+}
+.author {
   display:none;
 }
 

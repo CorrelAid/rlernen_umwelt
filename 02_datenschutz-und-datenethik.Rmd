@@ -1,5 +1,5 @@
 ---
-title: "Datenschutz und Datenethik"
+title: "CorrelAid e.V."
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
@@ -7,7 +7,7 @@ authors:
   - Zoé Wolter
   - Jonas Lorenz
 output: 
-  html_document:
+  learnr::tutorial:
     toc: true
     toc_depth: 2
     toc_float: true
@@ -29,6 +29,10 @@ source("R/setup/functions.R")
 # Read app parameters
 params <- yaml::yaml.load_file("www/app_parameters.yml")
 ```
+
+# Datenschutz und Datenethik
+
+#### `r Sys.Date()`
 
 ```{r results='asis'}
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
