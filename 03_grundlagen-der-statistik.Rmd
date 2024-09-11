@@ -3,10 +3,10 @@ title: "Grundlagen der Statistik"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
-  - Nina Hauser
+  - Michael Aydinbas
   - Zoé Wolter
   - Jonas Lorenz
-  - Michael Aydinbas
+  - Nina Hauser
 output: 
   html_document:
     toc: true
