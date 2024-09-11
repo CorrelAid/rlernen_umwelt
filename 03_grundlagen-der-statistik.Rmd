@@ -354,8 +354,8 @@ quiz(caption = "Fragen zu Datentypen",
 
 question("Welches Skalenniveau erlaubt es, den Abstand zwischen den Werten zu messen, hat jedoch keinen natürlichen Nullpunkt?",
     answer("Nominalskala."),
-    answer("Ordinalskala.", correct = TRUE),
-    answer("Intervallskala."),
+    answer("Ordinalskala."),
+    answer("Intervallskala.", correct = TRUE),
     answer("Ratio-/Verhältnisskala."),
     correct = "Richtig. Nominalskalierte Werte dürfen wir ausschließlich in Kategorien einteilen. Somit können wir lediglich Unterschiede zwischen den Variablen feststellen. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
     incorrect = "Leider falsch. Schau' noch einmal weiter oben nach: bei nominalskalierten Werten, dürfen wir diese lediglich in Kategorien einteilen. Somit können wir zwar feststellen, dass es unterschiede zwischen den Variablen gibt. Aussagen über eine Rangordung oder die Bedeutung der Unterschiede dürfen wir allerdings nicht treffen.",
@@ -451,7 +451,7 @@ quiz(caption = "Frage zu Lageparametern",
 
 ## **Streuungsparameter** 
 
-Streuungsparameter beschreiben das Ausmaß der **Streuung der Daten**. Dieser versuchen zusätzliche Kennziffern für die
+Streuungsparameter beschreiben das Ausmaß der **Streuung der Daten**. Diese versuchen zusätzliche Kennziffern für die
 Heterogenität bzw. das Ausmass der Unterschiedlichkeit von Werten zu liefern. Das Ziel ist dabei, zu beschreiben wie nahe die Daten insgesamt am “Zentrum” liegen (bzw. wie weit entfernt). Wir unterscheiden dabei folgende Paramter:
 
   - **Standardabweichung (auch: mittlere Abweichung)**: Ein standardisiertes Maß für die Streuung der einzelnen Beobachtungen um den Mittelwert einer Variable. Angabe in der selben Maßeinheit wie die Variable.
