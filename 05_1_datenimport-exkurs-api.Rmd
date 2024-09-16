@@ -46,12 +46,12 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ## **Was sind APIs?**
 
-Eine **API (Application Programming Interface)** ist ein Programm, das es zwei verschiedenen Anwendungen ermöglicht, miteinander zu kommunizieren und **Daten auszutauschen**. Wir machen uns das Leben also leichter und ersparen es und, eine Anwendung komplett neu zu erstellen und zu entwickeln, um ihre Informationen hinzuzufügen. Daher greifen wir auf eine API zurück, um eine Verbindung zwischen bereits vorhandenen Daten und einem unabhängigen Programm herzustellen. Die Anwendung solcher APIs spielt im Zeitalter von Open Data und der Digitalisierung der Gesellschaft eine zentrale Rolle für das Funktionieren des Internets. Hast Du zum Beispiel schon mal darüber anchgedacht, wie die Wetter-App auf deinem Smartphone funktioniert? Nicht sie holt und analysiert die Wetterinformationen und gibt sie an Dich weiter, sondern eine API verbindet sich mit der Datenbank, in der sich diese Informationen befinden, um sie in deiner Anwendung anzuzeigen.
+Eine **API (Application Programming Interface)** ist ein Programm, das es zwei verschiedenen Anwendungen ermöglicht, miteinander zu kommunizieren und **Daten auszutauschen**. Wir machen uns das Leben also leichter und ersparen es uns, eine Anwendung komplett neu zu erstellen und zu entwickeln, um ihre Informationen hinzuzufügen. Daher greifen wir auf eine API zurück, um eine Verbindung zwischen bereits vorhandenen Daten und einem unabhängigen Programm herzustellen. Die Anwendung solcher APIs spielt im Zeitalter von Open Data und der Digitalisierung der Gesellschaft eine zentrale Rolle für das Funktionieren des Internets. Hast Du zum Beispiel schon mal darüber nachgedacht, wie die Wetter-App auf deinem Smartphone funktioniert? Nicht sie holt und analysiert die Wetterinformationen und gibt sie an Dich weiter, sondern eine API verbindet sich mit der Datenbank, in der sich diese Informationen befinden, um sie in deiner Anwendung anzuzeigen.
 
 ## **APIs in R-Packages**
 
-Allerdings kann der Umgang mit APIs besonders für Programmieranfänger*innen oft eine Herausforderung darstellen - aber auch hier steht uns R wieder zur Seite: Viele APIs sind nämlich bereits in passende **Packages** eingebettet, wodurch sich der Datenabruf deutlich leichter gestaltet. 
-Wenn wir gesellschaftliche Herausforderungen verstehen und analysieren wollen, können wir zum Beispiel das **Package `WDI`** laden, wodurch wir auf die Daten der **World Bank** zugreifen können. Wir können in dieser Datenbank unter anderem  den **Indikator "Terrestrial and marine protected areas (% of total territorial area)"** abrufen. Dieser soll für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und Fördernden genutzt werden und ist daher für das Netzwerk #Breakfreefromplastics besonders spannend. Gerade die Flora und Fauna in **Naturschutzgebieten** soll besser vor Plastikmüll geschützt werden. In Ländern, wo neben der hohen Müllmenge und der niedrigen Recyclingquoten, besonders wenige Gebiete als Naturschutzgebiete ausgezeichnet sind, könnte der Bedarf nach gemeinnützigen Organisationen wie #Breakfreefromplastic, die die Natur von schädlichen Plastikmüll befreien, also besonders hoch sein.
+Allerdings kann der Umgang mit APIs besonders für Programmieranfänger:innen oft eine Herausforderung darstellen - aber auch hier steht uns R wieder zur Seite: Viele APIs sind nämlich bereits in passende **Packages** eingebettet, wodurch sich der Datenabruf deutlich leichter gestaltet. 
+Wenn wir gesellschaftliche Herausforderungen verstehen und analysieren wollen, können wir zum Beispiel das **Package `WDI`** laden, wodurch wir auf die Daten der **World Bank** zugreifen können. Wir können in dieser Datenbank unter anderem  den **Indikator "Terrestrial and marine protected areas (% of total territorial area)"** abrufen. Dieser soll für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und Fördernden genutzt werden und ist daher auch für das Netzwerk #Breakfreefromplastics besonders spannend. Gerade die Flora und Fauna in **Naturschutzgebieten** soll besser vor Plastikmüll geschützt werden. In Ländern, wo neben der hohen Müllmenge und der niedrigen Recyclingquoten, besonders wenige Gebiete als Naturschutzgebiete ausgezeichnet sind, könnte der Bedarf nach gemeinnützigen Organisationen wie #Breakfreefromplastic, die die Natur von schädlichen Plastikmüll befreien, also besonders hoch sein.
 
 *Anmerkung: Genau wissen wir das natürlich nicht, wo der Bedarf besonders groß sein könnte - die Daten können hier lediglich als Hinweis interpretiert werden. Daher ist es wichtig, die Annahmen, auf denen unsere Entscheidungen basieren, genau zu definieren und sich darüber Gedanken zu machen, ob die Datengrundlage für eine Entscheidung überhaupt ausreichend ist. Unsere Thesen können wir dann ggf. in Interviews mit Expert:innen (hier z.B. Naturschützer:innen) verifizieren.*
 
@@ -62,7 +62,7 @@ Wenn wir gesellschaftliche Herausforderungen verstehen und analysieren wollen, k
 wb_areas <- WDI::WDI(
   country = "all",               # Auswahl der Länder
   indicator = "ER.PTD.TOTL.ZS",  # Spezifikation des Indikators (Tipp: siehe Link in der Datenbank)
-    start = 2018,                # Auswahl Zeithorizont: Anfang
+  start = 2018,                  # Auswahl Zeithorizont: Anfang
   end = 2018,                    # Auswahl Zeithorizont: Ende
   language = "en"                # Sprachauswahl
 ) 
@@ -108,7 +108,7 @@ Daten mit APIs, die in R-Packages eingebettet sind, zu importieren, ist sehr ein
 - `dieZeit`-Package: Online-Veröffentlichungen der **Zeit** (zur [Doku](https://cran.r-project.org/web/packages/diezeit/index.html){target="_blank"}/mehr [Infos](https://www.zeit.de/){target="_blank"})
 - uvm...
 
-Schaut gerne,  ob Eure Lieblingsdatenquelle ein zugehöriges R-Package hat! Ihr könnt dazu eine eigene Suchmaschinenrecherche durchführen oder einen Blick in diese Liste aller R-Packages, die über [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html){target="_blank"} werfen - vielleicht hat sogar Eure Lieblingsdatenquelle ein eigenes R-Package. "CRAN" steht übrigens für **Comprehensive R Archive Network (dt. Umfassendes R-Archivnetzwerk)** und ist die zentrale Stelle für geprüfte Package-Distribution, die installiert werden können. <br>
+Schaut gerne,  ob Eure Lieblingsdatenquelle ein zugehöriges R-Package hat! Ihr könnt dazu eine eigene Suchmaschinenrecherche durchführen oder einen Blick in diese Liste aller R-Packages, über [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html){target="_blank"} werfen - vielleicht ist da etwas für Euch dabei. "CRAN" steht übrigens für **Comprehensive R Archive Network (dt. Umfassendes R-Archivnetzwerk)** und ist die zentrale Stelle für geprüfte Package-Distribution, die installiert werden können. <br>
 *Hinweis: Manche Packages wurden (noch) nicht in die Liste der von RStudio geprüften CRAN-Packages aufgenommen. Ihre Installation erfolgt zumeist über den Befehl `remotes::install_github("Link zum Github-Repository")`.*
 
 # **Interaktive Übung**
@@ -131,7 +131,7 @@ Eine Interaktion sieht so aus:
 
 APIs verfügen zumeist über eine **Dokumentation**. Diese enthalten Informationen darüber, welche Funktionalitäten verfügbar sind und wie Anfragen gestellt werden müssen.
 
-**Analogie: Wenn wir im Restaurant sind (= Client), stellt uns das Restaurant eine:n Kellner:in (= unsere API) und eine Speisekarte (unsere API-Dokumentation) bereit. Der:die Kellner:in nimmt unsere Bestellungen (= Resquests/Anfragen) entgegen. Die Küche verarbeitet diese und der:die Kellner:in bringt uns die Bestellung (= Antwort). 
+**Analogie**: Wenn wir im Restaurant sind (= Client), stellt uns das Restaurant eine:n Kellner:in (= unsere API) und eine Speisekarte (unsere API-Dokumentation) bereit. Der:die Kellner:in nimmt unsere Bestellungen (= Resquests/Anfragen) entgegen. Die Küche verarbeitet diese und der:die Kellner:in bringt uns die Bestellung (= Antwort). 
 
 Die allermeisten APIs heutzutage verwenden das HTTP-Protokoll, welches fünf sogenannte **Methoden** umfasst: GET, POST, PUT, PATCH und DELETE. Da wir in unserem Fall auf Interaktionen schauen, welche sich auf den Datenaustausch fokussieren, ergeben sich folgende Entsprechungen:
 
@@ -161,17 +161,17 @@ Wir kennen das zum Beispiel von einer Google-Suche: `https://www.google.com/sear
 
 ## **Statuscodes** 
 
-Fast alle APIs geben in Ihrer Antwort einen Code zurück. Diesen kann man relativ schnell analysieren, um herauszufinden, ob die Anfrage erfolgreich war oder nicht. Dieser sogenannte **Statuscode** ist sehr hilfreich, da er Aufschluss gibt, was schief gegangen sein könnte. 
+Fast alle APIs geben in Ihrer Antwort einen Code zurück. Diesen kann man relativ schnell analysieren, um herauszufinden, ob die Anfrage erfolgreich war oder nicht. Dieser sogenannte **Statuscode** ist sehr hilfreich, da er Aufschluss darüber gibt, was möglicherweise schief gelaufen ist. 
 
-Wenn die Anfrage erfolgreich war, gibt die API einen `200` Statuscode zurück. Darüber hinaus gibt es viele Statuscodes, die einen Fehler anzeigen. Häufige Fälle sind:
- 
+Wenn die Anfrage erfolgreich war, gibt die API den Statuscode `200` zurück. Darüber hinaus gibt es viele Statuscodes, die einen Fehler anzeigen. Häufige Fälle sind:
+
 - `404`: Nicht gefunden ("Not found"): Endpunkt oder Route existieren gar nicht in der API. 
 - `401`: Nicht autorisiert ("Not authorised"): Wir sind nicht autorisiert auf die API zuzugreifen (z.B. weil wir keinen Token übergeben haben.
 - `403`: Nicht erlaubt ("Forbidden"): Wir sind zwar im Prinzip für die API autorisiert, aber nicht für die Route, auf die wir zugreifen wollen (z.B. sensitive Daten oder Administration).
 - `422`: Nicht verarbeitbare Anfrage ("Unprocessable Entity"): Unsere Anfrage wurde nicht richtig gestellt.
 - `500`: Interner Server-Fehler ("Internal Server Error"): Unsere Anfrage ist zwar richtig gestellt worden, innerhalb der API kam es aber zu einem Fehler.
 
-**Analogie**: Nach Eurem Besuch im Restaurant "Correl and Friends" geht Ihr noch in die Bar "AidBar". Doch irgendwie seid Ihr nicht so richtig satt geworden vorhin und bestellt, ohne die Karte (= API-Dokumentation) zu konsultieren, eine Pommes (`/essen?gericht=Pommes`). Leider muss Euch die Kellnerin enttäuschen, "AidBar" verkauft nur Getränke: 404!
+**Analogie**: Nach Eurem Besuch im Restaurant "Correl and Friends" geht Ihr noch in die Bar "AidBar". Doch irgendwie seid Ihr vorhin  nicht so richtig satt geworden und bestellt, ohne die Karte (= API-Dokumentation) zu konsultieren, eine Pommes (`/essen?gericht=Pommes`). Leider muss Euch die Kellnerin enttäuschen, "AidBar" verkauft nur Getränke: 404!
 
 Auf Folien 13-16 [dieses Foliensatzes](https://projektzyklus.correlaid.org/07_datenmanagement-webdaten/2021-05-09_Datenzugriff_im_WWW.pdf) findet Ihr noch mehr Erklärungen zu wichtigen Statuscodes.
 
@@ -179,7 +179,7 @@ Auf Folien 13-16 [dieses Foliensatzes](https://projektzyklus.correlaid.org/07_da
 
 Wir verwenden die [Sustainable Development Goals (SDG) API](https://unstats-undesa.opendata.arcgis.com/#api) der Vereinten Nationen (engl. United Nations), welche Daten über den Fortschritt der [Sustainable Development Goals](https://sdgs.un.org/) bereitstellt. Die Dokumentation der API findet Ihr [hier](https://unstats.un.org/SDGAPI/swagger/). Der Indikator "[Municipal Solid Waste collection coverage by cities (percent)](https://www.sdg.org/datasets/undesa::indicator-11-6-1-municipal-solid-waste-collection-coverage-by-cities-percent/about)" (Seriencode: `EN_REF_WASCOL`) passt gut zu unseren bisherigen Analysen zum Thema Plastikverschmutzung. Um die Daten zu diesem Indikator zu laden, verwenden wir den GET-Endpunkt [`/v1/sdg/Series/Data`](https://unstats.un.org/SDGAPI/swagger/#!/Series/V1SdgSeriesDataGet). In diesem Fall haben wir nun mehrere Möglichkeiten, Query-Parameter anzugeben, unter anderem den Code des Indikators (`seriesCode`) und den Zeitrahmen, für den wir Daten benötigen.
 
-Um Anfragen an APIs zu machen, nutzen wir das [`httr`](https://httr.r-lib.org/)-Package (Doku).
+Um Anfragen an APIs zu machen, nutzen wir das [**`httr`**](https://httr.r-lib.org/)-Package (Doku).
 
 ```{r series-req, exercise=TRUE}
 # library(httr)
@@ -209,6 +209,7 @@ quiz(caption = NULL,
     incorrect = "Leider falsch, schaue dir den Code nochmal genau an!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"),
+
   question("Was ist die Route der Anfrage?",
     answer("v1/sdg/Series/Data"),
     answer("SDGAPI/v1/sdg/Series/Data/", correct = TRUE),
@@ -218,6 +219,7 @@ quiz(caption = NULL,
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
+
   question("Wie viele Parameter hat unsere Anfrage?",
     answer("0"),
     answer("1", correct = TRUE),
@@ -324,9 +326,9 @@ antwort <- httr::GET(basis_url,
 
 Die Details zur Authentifizierung sind von API zu API unterschiedlich. Die genauen Instruktionen finden wir normalerweise in der jeweiligen API-Dokumentation. 
 
-Es gibt spezifische Statuscodes, die in Verbindung mit Authentifizierung besonders häufig auftauchen: 401 und 403. Diese Fehlercodes tauchen häufig auf, wenn man eigentlich den richtigen Token hat, aber ihn in der Anfrage nicht richtig übergeben hat. Lest deshalb immer genau in der Dokumentation nach, wie die Authentifizierung der API im Detail funktioniert.
+Es gibt spezifische Statuscodes, die in Verbindung mit Authentifizierung besonders häufig auftauchen: 401 und 403. Diese Fehlercodes tauchen häufig dann auf, wenn man eigentlich den richtigen Token hat, ihn aber in der Anfrage nicht korrekt übergeben hat. Lest deshalb immer genau in der Dokumentation nach, wie die Authentifizierung der API im Detail funktioniert.
 
-Aus Sicherheitsgründen ist es zudem sehr wichtig, dass wir unseren Token oder sonstige **sicherheitsrelevante Informationen nicht direkt im Code zu speichern**. Stattdessen benutzen wir hierzu am besten **Umgebungsvariablen (engl. environment variables)**. Wie man Umgebungsvariablen zu R hinzufügt, ist in [diesem Blogpost](https://www.roelpeters.be/what-is-the-renviron-file/) gut beschrieben. Auch wir üben das zu einem späteren Zeitpunkt nochmal.
+Aus Sicherheitsgründen ist es zudem sehr wichtig, dass wir unseren Token oder sonstige **sicherheitsrelevante Informationen nicht direkt im Code speichern**. Stattdessen benutzen wir hierzu am besten **Umgebungsvariablen (engl. environment variables)**. Wie man Umgebungsvariablen zu R hinzufügt, ist in [diesem Blogpost](https://www.roelpeters.be/what-is-the-renviron-file/) gut beschrieben. Auch wir üben das zu einem späteren Zeitpunkt nochmal.
 
 # **Zusätzliche Ressourcen**
 - [APIs in R](https://app.dataquest.io/course/apis-in-r){target="_blank"} auf DataQuest (engl.)
