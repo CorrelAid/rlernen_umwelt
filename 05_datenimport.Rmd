@@ -7,7 +7,7 @@ authors:
   - Nina Hauser
   - Zoé Wolter
   - Jonas Lorenz
-  - Leo Preo
+  - Leo Preu
   - Philipp Bosch
 output: 
   html_document:
@@ -68,7 +68,7 @@ Textdatei     | allgemeine Textdateien                                          
 cat(tabelle)
 ```
 
-Um die Daten anschließend richtig importieren ist es wichtig, einen Blick auf das **Dateiformat** zu werfen. Wenn wir nicht bereits wissen, in welchem Format unsere Daten vorliegen, gibt es (je nach Betriebssystem) mehrere Möglichkeiten, es herauszufinden: 
+Um die Daten anschließend richtig zu importieren ist es wichtig, einen Blick auf das **Dateiformat** zu werfen. Wenn wir nicht bereits wissen, in welchem Format unsere Daten vorliegen, gibt es (je nach Betriebssystem) mehrere Möglichkeiten, es herauszufinden: 
   - **Windows-User** können sich die Dateiendung über die Multifunktionsleiste auf der Registerkarte "Ansicht" anzeigen lassen: Aktiviert dort das Feld "Dateinamenerweiterungen" im Abschnitt "Ein-/Ausblenden".
   - **Mac-User** navigieren zu ihrem Schreibtisch und können sich dort die Dateiendung über "Finder" -> "Erweitert" -> Alle Dateinamensuffixe einblenden" anzeigen lassen.
     
@@ -76,11 +76,11 @@ Um Fehlern vorzubeugen, solltet Ihr - wenn möglich - die Datei vorab in einem *
   - **Dateiformat**: In welchem Format liegt die Datei vor?
   - **Speicherort**: Wo ist die Datei gespeichert?
   - **Dateistruktur**: Was gibt es hinsichtlich der Struktur zu beachten (Separatoren, fehlende Werte, etc.)?
-  - **Sprache**. Die mesiten Datenanalyseprogramm verwenden Englisch als Standardeinstellung, weshalb es bei dem Import **deutschsprachiger Dateien** zu Fehlern kommen kann. Wir müssen dabei besonders auf Umlaute, Spaltentrenner (engl. Separator, im Deutschen ";") und Dezimaltrennzeichen (im Deutschen ",") achten. Wie wir mit solchen Fällen umgehen, schauen uns wir uns gleich noch einmal genauer an!
+  - **Sprache**. Die meisten Datenanalyseprogramme verwenden Englisch als Standardeinstellung, weshalb es bei dem Import **deutschsprachiger Dateien** zu Fehlern kommen kann. Wir müssen dabei besonders auf Umlaute, Spaltentrenner (engl. Separator, im Deutschen ";") und Dezimaltrennzeichen (im Deutschen ",") achten. Wie wir mit solchen Fällen umgehen, schauen uns wir uns gleich noch einmal genauer an!
 
 ## **2. Schritt: Der Import**
 
-Einereits können wir CSV-, XLSX-, SPSS-, SAS und Stata-Dateien ganz klassisch manuell und **ohne Code** in RStudio importieren. Dabei navigieren wir über "File" -> "Import Dataset" zum entsprechenden Dateiformat und können dann ganz einfach unseren File/URL eingeben und schon haben wir unseren Datensatz in R importiert!
+Einerseits können wir CSV-, XLSX-, SPSS-, SAS und Stata-Dateien ganz klassisch manuell und **ohne Code** in RStudio importieren. Dabei navigieren wir über "File" -> "Import Dataset" zum entsprechenden Dateiformat und können dann ganz einfach unseren File/URL eingeben und schon haben wir unseren Datensatz in R importiert!
 Alternativ können wir diese Dateien auch mit Funktionen diverser Packages importieren - wie genau wir das machen, schauen wir uns nach dem Quiz genauer an.
 
 ### **Quiz**
@@ -131,7 +131,7 @@ quiz(caption = NULL,
     answer("Ja"),
     answer("Nein", correct = TRUE),
     correct = "Richtig, wir können nämlich dank R sowohl lokal als auch remote gespeicherte Daten importieren und analysieren!",
-    incorrect = "Leider falsch, dank R können wir nämlich sowohl lokal als auhc remote gespeicherte Daten (z.B. über Hyperlinks) importieren und analysieren.",
+    incorrect = "Leider falsch, dank R können wir nämlich sowohl lokal als auch remote gespeicherte Daten (z.B. über Hyperlinks) importieren und analysieren.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
@@ -144,11 +144,11 @@ Im restlichen Kapitel wollen wir nun anhand praktischer Übungen den Import unte
 
 ## **CSV-Dateien**
 
-In einer **CSV-Datei (comma separated values, zu dt. Komma getrennte Werte)** werden - wie der Name bereits vermuten lässt - die verschiedenen **Datenwerte durch Kommata getrennt**. Wie wir bereits gelernt haben, entspricht dabei **jede Zeile einer Beobachtung**, wobei die **erste Zeile "Header"** genannt wird. Diese erste Zeile enthält keine Werte im eigntlichen Sinne, sondern die Bezeichnungen der einzelnen Spalten, also die Namen der Variablen. Wir nutzen den Header, um auf bestimmte Spalten und Werte zuzugreifen. 
+In einer **CSV-Datei (comma separated values, zu dt. Komma getrennte Werte)** werden - wie der Name bereits vermuten lässt - die verschiedenen **Datenwerte durch Kommata getrennt**. Wie wir bereits gelernt haben, entspricht dabei **jede Zeile einer Beobachtung**, wobei die **erste Zeile "Header"** genannt wird. Diese erste Zeile enthält keine Werte im eigentlichen Sinne, sondern die Bezeichnungen der einzelnen Spalten, also die Namen der Variablen. Wir nutzen den Header, um auf bestimmte Spalten und Werte zuzugreifen. 
 
 ### **Datenimport über URLs**
 
-Das `readr`-Package ist ein Paket, das uns den Import verschiedener Dateien ermöglicht. Innerhalb dieses Packages können wir die `read.csv()`-Funktion nutzen, um CSV-Dateien zu importieren. Wichtig ist, dass wir dabei das **Komma als Separator** zwischen den verschiedenen Argumenten und den **Punkt als Dezimaltrennzeichen** verwenden! Schauen wir uns nun einmal die verschiedenen Argumente der FUnktion an, die wir entsprechend unserer Dateistruktur setzen können:
+Das **`readr`**-Package ist ein Paket, das uns den Import verschiedener Dateien ermöglicht. Innerhalb dieses Packages können wir die **`read.csv()`**-Funktion nutzen, um CSV-Dateien zu importieren. Wichtig ist, dass wir dabei das **Komma als Separator** zwischen den verschiedenen Argumenten und den **Punkt als Dezimaltrennzeichen** verwenden! Schauen wir uns nun einmal die verschiedenen Argumente der Funktion an, die wir entsprechend unserer Dateistruktur setzen können:
 
   - **`file = ...`**: Festlegen des Dateipfades
   - **`col_names = TRUE/FAlSE`**: Vorhandensein bzw. Nicht-Vorhandensein des Headers
@@ -170,7 +170,7 @@ head(data_raw)
 
 ### **Datenimport über lokale Dateipfade**
 
-Oben haben wir nun gesehen, wie wir relativ intuitiv, Daten können über (offene) URLs (Uniform Resource Locator, zu dt. Link) importieren. Nun wollen wir uns auch noch anschauen, wie wir Daten importieren, die wir bereits lokal auf unserem Rechner gespeichert haben, dazu müssen wir nämlich das **Path (dt. Dateipfad)** definieren. Dazu gibt es verschiedene Methoden, von denen allerdings nur eine wirklich sinnvoll ist, wichtig ist dabei, dass wir unsere Ordnersturktur ordentlich halten. Wenn wir Daten in R analysieren wollen, erstellen wir also ein RProjekt, das sowohl einen Ordner für unser Skript also einen einen **Ordner für unsere Daten** enthält. Dort legen wir unseren Datensatz ab, nachdem wir diesen heruntergeladen haben. Wir verwenden zum Import wie gewohnt die `read_csv()`-Funktion des `readr`-Packages und können nun ganz einfach mithilfe der Funktion `here::here()` in unseren Ordner - der in diesem Fall 'daten' genannt wurde - navigieren. Anmerkung: Die `here()`- Funktion stammt aus dem `here`-Package, das wir verwenden können, um Dateipfade in Projekten auf eine einfache und robuste Weise zu verwalten - bei Interesse könnt Ihr Euch das Package [hier](https://cran.r-project.org/web/packages/here/vignettes/here.html){target="_blank"} noch einmal genauer anschauen. Und so würde dann der entsprechende Code aussehen (hier nur zum Zeigen):
+Oben haben wir nun gesehen, wie wir relativ intuitiv, Daten über (offene) URLs (Uniform Resource Locator, zu dt. Link) importieren können. Nun wollen wir uns auch noch anschauen, wie wir Daten importieren, die wir bereits lokal auf unserem Rechner gespeichert haben, dazu müssen wir nämlich das **Path (dt. Dateipfad)** definieren. Hierfür gibt es verschiedene Methoden, von denen allerdings nur eine wirklich sinnvoll ist. Wichtig ist dabei, dass wir unsere **Ordnerstruktur ordentlich** halten. Wenn wir Daten in R analysieren wollen, erstellen wir also ein RProjekt, das sowohl einen **Ordner für unser Skript** also einen einen **Ordner für unsere Daten** enthält. Dort legen wir unseren Datensatz ab, nachdem wir diesen heruntergeladen haben. Wir verwenden zum Import wie gewohnt die **`read_csv()`**-Funktion des `readr`-Packages und können nun ganz einfach mithilfe der Funktion **`here::here()`** in unseren Ordner - der in diesem Fall 'daten' genannt wurde - navigieren. Anmerkung: Die `here()`- Funktion stammt aus dem `here`-Package, das wir verwenden können, um Dateipfade in Projekten auf eine einfache und robuste Weise zu verwalten - bei Interesse könnt Ihr Euch das Package [hier](https://cran.r-project.org/web/packages/here/vignettes/here.html){target="_blank"} noch einmal genauer anschauen. Und so würde dann der entsprechende Code aussehen (hier nur zum Zeigen):
 
 ``` {r daten_einlesen_lokal, exercise = TRUE}
 data_processed <- readr::read_csv(here::here('daten/bffp2019_plastics_processed.csv')) # Dateipfad
@@ -178,13 +178,13 @@ data_processed <- readr::read_csv(here::here('daten/bffp2019_plastics_processed.
 head(data_processed)
 ```
 
-### **Vorsicht: Sprache!**
+## **Vorsicht: Sprache!**
 
 Eine Sache, die wir beim Datenimport auf jeden Fall beachten müssen, ist die **Sprache unserer Programme**. Verwenden wir Programme (insb. Excel) in deutscher Sprache, werden CSV-Dateien häufig mit dem **Separator ";"** und dem **Dezimaltrennzeichen ","** exportiert. Da R allerdings das Komma als Separator und den Punkt als Dezimaltrennzeichen verwendet, kann das am Ende zu Fehlern führen. Allerdings bietet uns R auch dafür verschiedene Lösungsmöglichkeiten:
   - 1. Verwendung der **`read.csv2()`**-Funktion für den Import deutschsprachiger CSV-Dateien
   - 2. Verwendung der allgemeineren **`read_delim()`**-Funktion mit dem Argument **`delim = ";"` - somit legen wir das Semikolon als Separator fest.
 
-Einen solchen Fall haben wir zum Beispiel hier, wenn wir die Strukturdaten für die Wahlkreise zur Bundestagswahl 2021 importieren möchten. Diese werden uns [hier](https://www.bundeswahlleiterin.de/bundestagswahlen/2021/strukturdaten.html) von der Bundeswahlleiterin zur Verfügung gestellt. Wir möchten diese Daten nun verwenden, um verschiedene Analysen durchzuführen - logischerweise handelt es sich dabei um deutschsprachige Daten. Die Funktion und ihre grundelgenden Argumente kennen wir bereits, aber schaut gerne noch einmal oben in die Funktion, wenn es etwas unklar ist. Versucht die Datei korrekt zu importieren - Tipp: verwendet das `delim = ";"` Argument.
+Einen solchen Fall haben wir zum Beispiel hier, wenn wir die Strukturdaten für die Wahlkreise zur Bundestagswahl 2021 importieren möchten. Diese werden uns [hier](https://www.bundeswahlleiterin.de/bundestagswahlen/2021/strukturdaten.html) von der Bundeswahlleiterin zur Verfügung gestellt. Wir möchten diese Daten nun verwenden, um verschiedene Analysen durchzuführen - logischerweise handelt es sich dabei um deutschsprachige Daten. Die Funktion und ihre grundlegenden Argumente kennen wir bereits, aber schaut gerne noch einmal oben in die Funktion, wenn es etwas unklar ist. Versucht die Datei korrekt zu importieren - Tipp: verwendet das `delim = ";"` Argument.
 *Anmerkung zum Argument `skip = 8`: An dieser Stelle müssen wir acht Zeilen überspringen. Öffnet die CSV Datei doch einmal selbst mit einem Texteditor, um herauszufinden warum.*
 
 ```{r exercise_csv, exercise = TRUE}
@@ -222,13 +222,13 @@ Das war es auch schon zum Import von CSV-Dateien, machen wir also weiter mit den
 ## **Excel-Dateien**
 
 Neben CSV-Daten, stehen uns viele Datensätze vor allem als **Excel-Dateien** zur Verfügung. Wahrscheinlich haben wir alle schon einmal (mehr oder weniger intensiv) mit Excel gearbeitet, weshalb wir uns direkt anschauen wollen, welche Excel-Daten wir beispielsweise nutzen und wie wir diese in R importieren können.
-Ein Besipiel wir Excel-Dateien sind **Google Trends Daten**. Mit den Daten von Google Trends können wir erforschen, wonach die Welt gerade auf der Suchmaschine Google sucht. Das **Google Search Volume** (zu dt. Google Suchvolumen) bezieht sich dabei konkret auf die Anzahl der Suchanfragen, die Nutzer:innen zu einem bestimmten Suchbegriff innerhalb eines bestimmten Zeitraums eingeben. Ein hohes Volumen deutet also auf hohes Interesse an einem Thema hin.
+Ein Beispiel für Excel-Dateien sind **Google Trends Daten**. Mit den Daten von Google Trends können wir erforschen, wonach die Welt gerade auf der Suchmaschine Google sucht. Das **Google Search Volume** (zu dt. Google Suchvolumen) bezieht sich dabei konkret auf die Anzahl der Suchanfragen, die Nutzer:innen zu einem bestimmten Suchbegriff innerhalb eines bestimmten Zeitraums eingeben. Ein hohes Volumen deutet also auf ein hohes Interesse an dem entsprechenden Thema hin.
 Wir haben für Euch zwei Dateien erstellt, die Daten zu den Suchbegriffen "beach clean up" (zu dt. Strand aufräumen), also Aktionen wie denen von "Break Free From Plastics", und "plastic pollution" (zu dt. Plastikverschmutzung) enthalten. Das entsprechende Arbeitsblatt "trends_over_time" stellt die Entwicklung des Suchvolumens im Zeitverlauf der vergangenen fünf Jahre dar, während das Arbeitsblatt "by_country" länderspezifische Entwicklung im Durchschnitt des letzten Jahres abbildet.
-*Anmerkung zu Google Trends: Zur Live-Verknüpfung mit den aktuellen Daten von Google gibt es in R das `gtrendsR`-Package. Dazu mehr in Exkurs 1.*
+*Anmerkung zu Google Trends: Zur Live-Verknüpfung mit den aktuellen Daten von Google gibt es in R das `gtrendsR`-Package. Dazu mehr im Exkurs "API".*
 
 ### **Import von Excel-Dateien**
 
-Zum Import von Excel-Dateien verwenden wir analog zu den CSV-Dateien die **`read_excel()`**-Funktion aus dem zugehörigen **Package `readxl`**. Auch hier wollen wir zunächst einmal einen Blick auf die verschiedenen Argumente dieser Funktion werfen:
+Zum Import von Excel-Dateien verwenden wir analog zu den CSV-Dateien die **`read_excel()`**-Funktion aus dem zugehörigen Package **`readxl`**. Auch hier wollen wir zunächst einmal einen Blick auf die verschiedenen Argumente dieser Funktion werfen:
 
   - **`path = ...`**: Definition von Path und Dateinamen
   - **`sheet = ...`**: Definition des Arbeitsblatts
@@ -248,9 +248,9 @@ googletrendstime_plasticpollution <- readxl::read_excel(
 head(googletrendstime_plasticpollution)
 ```
 
-Wenn wir den Code nun "übersetzen", laden wir mit der Funktion `readxl::read_excel()` das Arbeitsblatt (`sheet = ...`) "trends_over_time" der Excel-Datei "Plastic Pollution - Google Trends.xlsx" aus unserem Ordner "Daten" (`path = ...`). Das ARbeitsblatt enthält Spaltenbezeichnungen  (`col_names = ...`) und fehlende Werte werden zumeist durch "" (leer) gekennzeichnet (`na = ...`).
+Wenn wir den Code nun "übersetzen", laden wir mit der Funktion `readxl::read_excel()` das Arbeitsblatt (`sheet = ...`) "trends_over_time" der Excel-Datei "Plastic Pollution - Google Trends.xlsx" aus unserem Ordner "Daten" (`path = ...`). Das Arbeitsblatt enthält Spaltenbezeichnungen  (`col_names = ...`) und fehlende Werte werden durch "" (leer) gekennzeichnet (`na = ...`).
 
-Versucht nun einmal mithilfe der gleichen Funktion das zweite Arbeitsblatt "by_country" der Datei "Beach Clean Up - Google Trends.xlsx" zu laden. Ihr köönt dazu ganz einfach den oberen Code kopieren und dann die Namen der Datei und des Arbeitsblatts an der richtigen Stelle verändern!
+Versucht nun einmal mithilfe der gleichen Funktion das zweite Arbeitsblatt "by_country" der Datei "Beach Clean Up - Google Trends.xlsx" zu laden. Ihr könnt dazu den oberen Code kopieren und dann die Namen der Datei und des Arbeitsblatts an der richtigen Stelle verändern!
 
 ```{r exercise_excel, exercise = TRUE}
 # Euer Code hier
@@ -274,7 +274,7 @@ grade_this_code()
 ## **Warum Datenbereinigung?**
 
 Bisher haben wir uns vor allem damit beschäftigt, wie wir verschiedene Dateitypen erfolgreich in R importieren können. So weit so gut - doch was machen wir, wenn wir unsere Daten erfolgreich importiert haben und von lauter Zahlen und kryptischen Bezeichnungen förmlich erschlagen werden? Wir räumen auf!
-Tatsächlich ist am Anfang einer jeden Arbeit erst einmal ein bisschen **Fleißarbeit** gefragt: Viele Datensätze sind unglaublich groß und umfangreich und dadurch im ersten Moment ziemlich unordentlich ('messy'). Glücklicherweise bietet und R auch diesem Fall eine Reihe an Möglichkeiten, die wir nutzen können, um einen sauberen ('tidy') Datensatz zu erzeugen. Wir nutzen dafür das sogenannte **`tidyverse´**-Package. Warum wir das Package verwenden und welche Möglichkeiten sich daraus ergeben, schauen wir uns einmal im folgenden Video an (bis 15:35 Min.):
+Tatsächlich ist am Anfang einer jeden Arbeit erst einmal ein bisschen **Fleißarbeit** gefragt, denn viele Datensätze sind unglaublich groß und umfangreich und dadurch im ersten Moment ziemlich unordentlich ('messy'). Glücklicherweise bietet uns R auch diesem Fall eine Reihe an Möglichkeiten, die wir nutzen können, um einen sauberen ('tidy') Datensatz zu erzeugen. Wir nutzen dafür das sogenannte **`tidyverse´**-Package. Warum wir das Package verwenden und welche Möglichkeiten sich daraus ergeben, schauen wir uns einmal im folgenden Video an (bis 15:35 Min.):
 
 ![*Video: Datentransformation mit Tidyverse (30min)*](https://youtu.be/YWFLSovbha0)
 
@@ -287,10 +287,10 @@ Tatsächlich ist am Anfang einer jeden Arbeit erst einmal ein bisschen **Fleißa
 </left>
 <br>
 
-  - Das Package ist eine **Sammlung von verschiedenen R-Packages**, die aufeinander abgestimmt sind und dabei derselben Logik folgen ([tidyverse.org](https://www.tidyverse.org/packages/){target="_blank"}). Dadurch ergeben sich für unsere Datenanalyse unzählige Möglichkeiten, die wir uns in den kommenden Wochen im Detail anschauen werden - aber keine Sorge, einige der Packages und Funktionen kennen wir bereits aus den vergangenen Wochen!
+  - Das [`tidyverse`](https://www.tidyverse.org/packages/){target="_blank"}-Package ist eine **Sammlung von verschiedenen R-Packages**, die aufeinander abgestimmt sind und dabei derselben Logik folgen. Es bietet uns unzählige Möglichkeiten, die wir uns in den kommenden Wochen im Detail anschauen werden - aber keine Sorge, einige der Packages und Funktionen kennen wir bereits aus den vergangenen Wochen!
   - **Installation**: Alle enthaltenen Packages können einzeln installiert und aufgerufen werden. Wir können aber auch alle gesammelt über `install_packages('tidyverse')` bzw. `library(tidyverse)` installieren und laden.
   - **Voraussetzung**: Um mit Tidyverse arbeiten zu können, benötigen wir "tidy" Datensätze:
-![Tidy Data](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/06_datentransformation/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
+![Tidy Data](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/06_datentransformation/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
 
 *Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst*
 
@@ -300,7 +300,7 @@ An dieser Stelle seid Ihr dran! Ihr dürft gerne veruchen, Eure **eigene Datens�
 
 1. Versucht, den "Plastics"-Datensatz (im Ordner `daten/plastics.csv` im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"}) mit diesem Code **lokal zu laden**.
 2. Ladet den "Plastics"-Datensatz über einen [**Hyperlink**](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv){target="_blank"}.
-3. **Bonus:** Noch einmal zurück zur Bundeswahlleiterin und den Strukturdaten zur Bundestagswahl 20217, die uns [hier](https://www.bundeswahlleiterin.de/dam/jcr/f7566722-a528-4b18-bea3-ea419371e300/btw2017_strukturdaten.csv) als CSV-Datei zum Download zur Verfügung gestellt werden. Versucht die Datei manuell zu importieren. Achtet dabei auf den im Kapitel beschriebenen Ablauf und öffnet die Datei zunächst mit einem Texteditor: Welche Formatierung (encoding) hat sie? Ihr könnt die Formatierung anschließend beim manuellen Import unter "Locale" ändern. Die 2021er Strukturdaten lagen in der UTF-8 Kodierung vor. (Test: Was passiert, wenn wir die Locale nicht ändern?) Des Weiteren müsst ihr natürlich wieder auf die Argumente *skip* und *delim* achten.
+3. **Bonus:** Noch einmal zurück zur Bundeswahlleiterin und den Strukturdaten zur Bundestagswahl 20217, die uns [hier](https://www.bundeswahlleiterin.de/dam/jcr/f7566722-a528-4b18-bea3-ea419371e300/btw2017_strukturdaten.csv) als CSV-Datei zum Download zur Verfügung gestellt werden. Versucht die Datei manuell zu importieren. Achtet dabei auf den im Kapitel beschriebenen Ablauf und öffnet die Datei zunächst mit einem Texteditor: Welche Formatierung (encoding) hat sie? Ihr könnt die Formatierung anschließend beim manuellen Import unter "Locale" ändern. Die 2021er Strukturdaten lagen in der UTF-8 Kodierung vor. (Test: Was passiert, wenn wir die Locale nicht ändern?) Des Weiteren müsst Ihr natürlich wieder auf die Argumente *skip* und *delim* achten.
 
 # **Zusätzliche Ressourcen**
 - [How to Import Data Into R: A Tutorial](https://www.datacamp.com/tutorial/r-data-import-tutorial?utm_source=google&utm_medium=paid_search&utm_campaignid=19589720821&utm_adgroupid=157156375351&utm_device=c&utm_keyword=&utm_matchtype=&utm_network=s&utm_adpostion=&utm_creative=684592139663&utm_targetid=dsa-2218886984060&utm_loc_interest_ms=&utm_loc_physical_ms=9043008&utm_content=&utm_campaign=230119_1-sea~dsa~tofu_2-b2c_3-row-p1_4-prc_5-na_6-na_7-le_8-pdsh-go_9-nb-e_10-na_11-na&gad_source=5&gclid=EAIaIQobChMIqYmK_a6SiAMVjBCiAx2LsBUwEAAYASAAEgLnnfD_BwE){target="_blank"} von DataCamp (engl.) 
