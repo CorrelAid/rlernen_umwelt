@@ -190,6 +190,12 @@ quiz(caption = "Fragen zur Pressemitteilung",
 </center>
 </p>
 
+<p>
+<center>
+![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2021/07/PD21_N045_639.html>*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/verbraucherinnenpreise_bahn.png?raw=true){#id .class width=100%}
+</center>
+</p>
+
 ```{r 08_quiz2_v2, echo=FALSE}
 quiz(caption = "Fragen zur Pressemitteilung",
   question("Betrachten wir zunächst einmal die Kosten der PKW-Instandhaltung. Welcher Bereich weist zwischen 2015 und 2021 insgesamt die größte Preissteigerung auf? (Grafik 2)?",
