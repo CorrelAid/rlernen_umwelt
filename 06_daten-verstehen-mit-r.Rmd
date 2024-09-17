@@ -344,9 +344,6 @@ ggplot(data = community,
 Werfen wir also einen Blick auf unsere Grafik: Welche Gemeinsamkeiten und Unterschiede können wir feststellen? Wo gibt es Besonderheiten? Welche Dinge sind (noch) unklar? Sammelt Eure Ideen und Fragen, damit wir diese am Freitag in der Live-Session besprechen können!
 *Tipp: Wenn Ihr Euch nicht mehr sicher seid, schaut doch nochmal in die Lektion zu den Grundlagen der Statistik.*
 
-
-
-
 ---
 
 <details>
@@ -355,7 +352,7 @@ Werfen wir also einen Blick auf unsere Grafik: Welche Gemeinsamkeiten und Unters
 
 <h4><b>Exkurs: Beziehungen zwischen Variablen</b></h4> 
 
-Bislang haben wir uns vor allem die Verteilung einer einzelnen Variable (gesammelte Plastikteile) gewidmet. Man spricht in einem solchen Fall auch von einer **univeriaten** Verteilung, d.h. das lediglich eine Variable für sich betrachtet wird. Wir interessieren uns nun aber vor allem für die Beziehung zwischen verschiedenen Variablen: Welche Faktoren beeinflussen möglicherweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Vielleicht die Zahl an Events? Oder ist es vielleicht eher die Zahl an Freiwilligen im Land?
+Bislang haben wir uns vor allem die Verteilung einer einzelnen Variable (gesammelte Plastikteile) gewidmet. Man spricht in einem solchen Fall auch von einer **univariaten** Verteilung, d.h. dass lediglich eine Variable für sich betrachtet wird. Wir interessieren uns nun aber vor allem für die Beziehung zwischen verschiedenen Variablen: Welche Faktoren beeinflussen möglicherweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Vielleicht die Zahl an Events? Oder ist es vielleicht eher die Zahl an Freiwilligen im Land?
 Wenn wir in diesem Zusammenhang zwei Variablen (z.B. Anzahl Plastikteile und Anzahl Events) betrachten, sprechen wir dabei von einer **bivariaten** Beziehung. Wir könnten allerdings auch mehr als zwei Variablen betrachten (z.B. Anzahl Plastikteile, Anzahl Events und Anzahl der Freiwilligen im Land) - dann würden wir von einer **mutlivariaten** Beziehung sprechen. 
 
 Bleiben wir aber einmal bei den bivariaten Beziehungen (= zwei Variablen) und fragen uns, ob zwischen diesen beiden Variablen **ein Zusammenhang** besteht, d.h. ob sie möglicherweise miteinander **korrelieren**. Für Fragestellungen zu möglichen Korrelationen zwischen zwei Variablen kann uns ein Scatterplot Aufschluss geben. Damit testen wir, ob die Anzahl an Events und/oder die Anzahl an Freiwilligen möglicherweise einen Einfluss auf die Anzahl der gefundenen Plastikstücke. Die rote Hilfslinie zeigt uns die Korrelation dieser beiden Variablen. Vergleichen wir mal...
@@ -413,14 +410,13 @@ ggplot(data = community, aes( x = n_volunteers,
 ```
 </div>
 
-Betrachten wir also zunächst das rechte Punktediagramm, welches die Anzahl an Plastikstücken der Anzahl an Freiwilligen gegenüberstellt. Anhand der Steigung unserer roten Hilfslinie erkennenwir einen deutlicheren Zusammenhang als im rechten Diagramm, das Plastikstücke und Anzahl der Events gegenüberstellt. Die Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang aus**! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikstücken sind - wir beobachten beide Entwicklungen lediglich gleichzeitig. Wir müssen außerdem beachten, dass wir diese Aussage nur auf Länderebene treffen können. Wir können daher nicht darauf schließen, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. Wir erinnern uns an das Stichwort **"Ökologischer Fehlschluss"** von oben.
+Betrachten wir also zunächst das rechte Punktediagramm, welches die Anzahl an Plastikstücken der Anzahl an Freiwilligen gegenüberstellt. Anhand der Steigung unserer roten Hilfslinie erkennen wir einen größeren Zusammenhang als im rechten Diagramm, das Plastikstücke und Anzahl der Events gegenüberstellt. Die Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang aus**! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikstücken sind - wir beobachten beide Entwicklungen lediglich gleichzeitig. Wir müssen außerdem beachten, dass wir diese Aussage nur auf Länderebene treffen können. Wir können daher nicht darauf schließen, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. Wir erinnern uns an das Stichwort **"Ökologischer Fehlschluss"** von oben.
 
-Welche Aussagen können wir also nun anhand dieser bivariaten Analyse treffen? Wir sehen, dass die Anzahl durchgeführter Events nur sehr schwach positiv mit der Anzahl gesammelter Plastikstücke korreliert (schwache Steigung der Geraden). Die Anzahl der Freiwilligen korreliert im Gegensatz dazu relativ stark positiv mit der Anzahl an gesammelten Plastikstücken (große Steigung der Geraden). Allerdings kann es für diese unterschiedlichen Zusammenhänge viele verschiedene Ursachen geben, die wir mit unseren Daten überhaupt nicht betrachten können - zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, welche einzelene Freiwillige in die Aktion investiert haben. Welche anderen "Drittvariablen" fallen Euch noch ein?
+Welche Aussagen können wir also nun anhand dieser bivariaten Analyse treffen? Wir sehen, dass die Anzahl durchgeführter Events nur sehr schwach positiv mit der Anzahl gesammelter Plastikstücke korreliert (schwache Steigung der Geraden). Die Anzahl der Freiwilligen korreliert im Gegensatz dazu relativ stark positiv mit der Anzahl an gesammelten Plastikstücken (große Steigung der Geraden). Allerdings kann es für diese unterschiedlichen Zusammenhänge viele verschiedene Ursachen geben, die wir mit unseren Daten überhaupt nicht betrachten können - zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, welche einzelne Freiwillige in die Aktion investiert haben. Welche anderen "Drittvariablen" fallen Euch noch ein?
 
 </details>
 
 ---
-
 
 # **Und jetzt Ihr!**
 Diese Woche möchten wir die Präsenzzeit nutzen, um die folgenden Übungen zu besprechen. Ergänzt unseren Input gerne zudem mit Euren **Ideen, Fragen, Anregungen oder Kommentaren**. Es ist nicht schlimm, falls diese Woche noch gar nichts (komplexes) klappt, da wir das Gelernte in den nächsten Wochen wiederholen und vertiefen werden.
