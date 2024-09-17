@@ -59,7 +59,7 @@ Nachdem wir uns in den vergangenen Lektionen vor allem die jursitischen und theo
   - **Environment (zu dt. Umgebung)**: Hier werden alle akutell geladenen Daten, Variablen und Objekte unserer Arbeit angezeigt und gespeichert.
   - **File Explorer (zu dt. Dateimanager)**: Dieser befindet sich unter der Environment und ermöglicht das Durchsuchen von Dateien und Verzeichnissen auf dem Computer direkt innerhalb von RStudio. Zusätzlich werden dort Plots (zu dt. Abbildungen), geladene Packages und die **Dokumentation** ("Hilfe") angezeigt, die wir mit dem Befehl **help("Funktion")** oder **?Funktion** durchsuchen können.
   - **Shortcuts**: Es gibt eine ganze Menge Shortcuts, die uns das Leben in RStudio erleichtern - diese findet Ihr unter ("Menü Help -\> Keyboard Shortcuts Help)
-  - **Cheatsheets (zu dt. Schummelblätter): Für viele Packages und Themen in RStudio gibt es (überwiegend englische) Hilfestellungen. Diese werden uns auch im Laufe des Kurses immer wieder begegnen. Das erste Schummelblatt zur IDE RStudio findet ihr [hier](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"}!
+  - **Cheatsheets (zu dt. Schummelblätter): Für viele Packages und Themen in RStudio gibt es (überwiegend englische) Hilfestellungen. Diese werden uns auch im Laufe des Kurses immer wieder begegnen. Das erste Schummelblatt zur IDE RStudio findet ihr [hier](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"}!
 
 ## R Projekt (RProj)
 
@@ -183,7 +183,7 @@ Mit diesen Daten wollen wir also in Zukunft arbeiten und spannende Analysen durc
 
 ## **Syntax in R**
 
-In diesem Abschnitt stellen wir Euch die wichtigsten Grundlagen in R für die kommenden Wochen vor! Wir schauen uns an, wie wir ganz einfache Berechnung oder logische Operationen durchführen oder wie wir das Gedächtnis von R beeinflussen können. Wie bereits erwähnt, gibt es für (fast) alles in R ein **Schummelblatt**, so auch in diesem Fall! Wenn Ihr also einen Überblick über die grundlegenden Befehle immer abrufbereit haben möchtet, dann schaut doch einmal [hier](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} nach.
+In diesem Abschnitt stellen wir Euch die wichtigsten Grundlagen in R für die kommenden Wochen vor! Wir schauen uns an, wie wir ganz einfache Berechnung oder logische Operationen durchführen oder wie wir das Gedächtnis von R beeinflussen können. Wie bereits erwähnt, gibt es für (fast) alles in R ein **Schummelblatt**, so auch in diesem Fall! Wenn Ihr also einen Überblick über die grundlegenden Befehle immer abrufbereit haben möchtet, dann schaut doch einmal [hier](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} nach.
 
 ## **R als Taschenrechner**
 
@@ -449,7 +449,7 @@ Da haben wir nochmal Glück gehabt: Unser **regelbasiertes System** funktioniert
 
 Neben der Ausführung von Aktionen unter bestimmten Bedingungen können wir durch technische Implementierungen **Aktionen mehrfach ausführen**. Bleiben wir bei unserem Beispiel mit den Spenden: Wenn wir eine bestimmte Spendensummer erriechen, wollen wir uns mit einer kurzen Dankesnachricht bei allen Spender:innen für ihre Unterstützung bedanken. In der Programmierung bezeichnet man diese iterierenden (dt. sich wiederholenden) Verfahren als **Loop** (zu dt. Schleife). Sind alle Spender:innen bekannt (und somit die Liste der Elemente, über die man iteriert), nutzt man einen **For Loop** (zu dt. Für-Schleife).
 
-![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/03_einfuehrung-in-rstudio/forloop.png?raw=true){#id .class width="30%" height="100%"}
+![](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/04_einfuehrung-in-rstudio/forloop.png?raw=true){#id .class width="30%" height="100%"}
 
 ```{r fuerschleife, exercise = TRUE}
 # Aus der Liste "list("Lisa", "Hannah", "Amelie")" picken wir uns eine "Spenderin" raus...
@@ -461,7 +461,7 @@ for (spenderin in list("Lisa", "Hannah", "Amelie")) {
 
 Soll die Aktion ausgeführt werden, bis eine Bedingung eintritt, z.B. weil alle Spender:innen kontaktiert wurden, dann nutzt man einen **While Loop** (zu dt. Solange-Schleife).
 
-![](https://github.com/CorrelAid/lernplattform/blob/main/abbildungen/03_einfuehrung-in-rstudio/whileloop.png?raw=true){.class width="30%" height="100%"}
+![](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/04_einfuehrung-in-rstudio/whileloop.png?raw=true){.class width="30%" height="100%"}
 
 ```{r solangeschleife, exercise = TRUE}
 # Erstelle eine Liste deiner Spender:innen
@@ -502,7 +502,7 @@ Legt nun ein neues R Projekt (wie im Video) und eine neue R Markdown-Datei auf E
 -   [Data Structures in R (engl.)](https://app.dataquest.io/course/datastructure-in-r-rewrite){target="_blank"} von Dataquest
 -   [Control Flow, Iteration and Functions in R (engl.)](https://app.dataquest.io/course/intermediate-r){target="_blank"} von Dataquest
 -   [Tutorials for learning R](https://www.r-bloggers.com/2015/12/how-to-learn-r-2/#h.nl3rvdr3ycsc){target="_blank"} von R-bloggers und DataCamp
--   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
--   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
+-   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
+-   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
