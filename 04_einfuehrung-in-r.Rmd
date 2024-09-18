@@ -62,7 +62,7 @@ Nachdem wir uns in den vergangenen Lektionen vor allem die juristischen und theo
   - **Environment (dt. Umgebung)**: Hier werden alle aktuell geladenen Daten, Variablen und Objekte unserer Arbeit angezeigt und gespeichert.
   - **File Explorer (dt. Dateimanager)**: Dieser befindet sich unter der Environment und ermöglicht das Durchsuchen von Dateien und Verzeichnissen auf dem Computer direkt innerhalb von RStudio. Zusätzlich werden dort Plots (dt. Abbildungen), geladene Packages und die **Dokumentation** ("Hilfe") angezeigt, die wir mit dem Befehl **help("Funktion")** oder **?Funktion** durchsuchen können.
   - **Shortcuts**: Es gibt eine ganze Menge Shortcuts, die uns das Leben in RStudio erleichtern - diese findet Ihr unter (Menü Help -\> Keyboard Shortcuts Help).
-  - **Cheatsheets (dt. Schummelblätter)**: Für viele Packages und Themen in RStudio gibt es (überwiegend englische) Hilfestellungen. Diese werden uns auch im Laufe des Kurses immer wieder begegnen. Das erste Schummelblatt zur IDE RStudio findet ihr [hier](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"}!
+  - **Cheatsheets (dt. Schummelblätter)**: Für viele Packages und Themen in RStudio gibt es (überwiegend englische) Hilfestellungen. Diese werden uns auch im Laufe des Kurses immer wieder begegnen. Das erste Schummelblatt zur IDE RStudio findet ihr [hier](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"}!
 
 ## **R Projekt (RProj)**
 
@@ -506,7 +506,7 @@ Legt nun ein neues R Projekt (wie im Video) und eine neue R-Datei auf Eurem Rech
 -   [Control Flow, Iteration and Functions in R (engl.)](https://app.dataquest.io/course/intermediate-r){target="_blank"} von Dataquest
 -   [Tutorials for learning R](https://www.r-bloggers.com/2015/12/how-to-learn-r-2/#h.nl3rvdr3ycsc){target="_blank"} von R-bloggers und DataCamp
 -   [Zusammenfassung wichtiger R Befehle](https://hsrm-mathematik.de/SS2021/semester4/Stochastik2/R_Befehle_HTWSaar.pdf){target="_blank"}
--   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
--   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
+-   Schummelblatt zu den [Grundlagen in R](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} (dt.)
+-   Schummelblatt zur [IDE RStudio](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/03_cheatsheet-rstudio.pdf){target="_blank"} (engl.)
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
