@@ -1,5 +1,5 @@
 ---
-title: "Datenimport und APIs"
+title: "Datenimport"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
@@ -47,9 +47,9 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ## **1. Schritt: Dateiformat**
 
-Grundlegend gibt es **zwei Möglichkeiten**, Daten in R zu importieren. Entscheidend ist dabei, woher wir unsere Daten importieren wollen:
-    1. aus lokal oder remote gespeicherten **Dateiformaten** (XLSX, CSV, ...)
-    2. über **Datenabfragen** von Datenbanken und aus dem Internet (Abfragesprachen wie SQL oder über APIs und Web-Scraping; mehr hierzu in den Exkursen)
+Grundlegend gibt es **zwei Möglichkeiten**, Daten in R zu importieren. Entscheidend ist dabei, woher wir unsere Daten importieren wollen: <br>
+  1. aus lokal oder remote gespeicherten **Dateiformaten** (XLSX, CSV, ...) <br>
+  2. über **Datenabfragen** von Datenbanken und aus dem Internet (Abfragesprachen wie SQL oder über APIs und Web-Scraping; mehr hierzu in den Exkursen) <br>
 
 **Tabelle: Überblick Dateiformate**
 ```{r dateiformate_tabelle, results='asis'}
@@ -111,7 +111,7 @@ quiz(caption = NULL,
   question("Woran erkennt man CSV-Dateien?",
     answer('An dem Trennzeichen ","'),
     answer('An der Dateiendung ".csv"', correct = TRUE),
-    correct = "Richtig, vor allem die Dateiendung ist ein wichtiger Hinweis, wenn wir das Dateiformat herausfinden möchten. CSV steht übrigens für "comma separated values", also "durch Komma getrennte Werte").",
+    correct = "Richtig, vor allem die Dateiendung ist ein wichtiger Hinweis, wenn wir das Dateiformat herausfinden möchten. CSV steht übrigens für 'comma separated values', also 'durch Komma getrennte Werte').",
     incorrect = "Leider falsch, CSV-Dateien sind zwar in der Regel durch Kommata getrennt, es gibt allerdings auch CSV-Dateien, deren Spalten durch Semikolons, Pipes (senkrechte Striche) und Tabstopps getrennt werden. Daher werfen wir immer einen Blick auf die Dateiendung, wenn wir uns einmal unsicher sind.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
