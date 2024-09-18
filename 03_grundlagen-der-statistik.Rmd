@@ -3,10 +3,10 @@ title: "Grundlagen der Statistik"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
-  - Nina Hauser
+  - Michael Aydinbas
   - Zoé Wolter
   - Jonas Lorenz
-  - Michael Aydinbas
+  - Nina Hauser
 output: 
   html_document:
     toc: true
@@ -158,8 +158,8 @@ Achtet auf die Kommunikation sowie die verschiedenen Darstellungsarten. Welches 
 quiz(caption = "Fragen zur Pressemitteilung",
   question("Wie haben sich die Investitonen in Maßnahmen zur Nutzung erneuerbarer Energien von 2011 bis 2021 entwickelt?",
     answer("Sie haben sich zwischen 2011 und 2021 kontinuierlich erhöht."), 
-    answer("Sie haben sich zwischen 2011 und 2021 ingesamt erhöht, jedoch nicht kontinuierlich.", correct = TRUE),
-    answer("Sie haben sich zwischen 2011 und 2021 ingesamt reduziert."),
+    answer("Sie haben sich zwischen 2011 und 2021 insgesamt erhöht, jedoch nicht kontinuierlich.", correct = TRUE),
+    answer("Sie haben sich zwischen 2011 und 2021 insgesamt reduziert."),
     correct = "Richtig! Die Investitionen in Maßnahmen zur Nutzung erneuerbarer Energien hat sich zwischen 2011 und 2021 sogar nahezu verdoppelt. Beim Blick auf die hellblauen Balken wird jedoch sichtbar, dass die Investitionen vor allem in den Jahren 2016 bis 2018 etwas eingebrochen sind - von einer kontinuierlichen Steigerung kann also keine Rede sein.",
     incorrect = "Leider falsch. Wir müssen in diesem Fall die hellblauen Balken betrachten - die Legende unten Links gibt an, in welchem Bereich die Investitionen getätigt wurden (unterschiedliche Farben). Die y-Achse gibt in diesem Schaubild die Höhe der Investitionen an. Betrachten wir die hellblauen Balken, fällt auf, dass diese über den Zeitverlauf größer werden. Sie geben die Entwicklung der Investitionen in Maßnahmen zur Nutzung erneuerbarer Energien an, welche sich in den entsprechenden zehn Jahren sogar fast verdoppelt haben. Tipp: Behalte die Legenden und Beschriftungen der Achsen einer Grafik im Blick, diese sind zur Interpretation der Daten essenziell.",
     allow_retry = TRUE,
@@ -206,7 +206,7 @@ quiz(caption = "Fragen zur Pressemitteilung",
     answer("Kraftfahrzeugversicherung"),
     answer("Kraftfahrzeugsteuer"),
     correct = "Richtig! Vor allem die Preise für Reparatur, Inspektion, Parkgebühr und Ähnliches hat sich in den betrachteten Jahren kontinuierlich erhöht. Im Jahr 2021 liegen die Preise in diesem Bereich ganze 20 % über den Vergleichspreisen aus dem Jahr 2015. Die Preise für Ersatzteile, Zubehör und Pflegemittel sowie die Kraftfahrzeugsteuer haben sich im Gegensatz dazu so gut wie gar nicht verändert.",
-    incorrect = "Leider falsch. Blende gerne einzelne Balken aus, um die Grafik übersichtlicher zu machen. Dann wird deutlich, dass sich vor allem die Kosten für Reparatur, Inspektion, Parkgebühr und Ähnliches kontinuierlich erhöht hat. Auch die Krfatstoffpreise haben sich ingesamt erhöhnt - allerdings nicht ganz so dramatisch.",
+    incorrect = "Leider falsch. Blende gerne einzelne Balken aus, um die Grafik übersichtlicher zu machen. Dann wird deutlich, dass sich vor allem die Kosten für Reparatur, Inspektion, Parkgebühr und Ähnliches kontinuierlich erhöht hat. Auch die Krfatstoffpreise haben sich insgesamt erhöhnt - allerdings nicht ganz so dramatisch.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),

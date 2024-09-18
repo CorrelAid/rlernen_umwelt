@@ -187,7 +187,7 @@ Mit diesen Daten wollen wir also in Zukunft arbeiten und spannende Analysen durc
 
 ## **Syntax in R**
 
-In diesem Abschnitt stellen wir Euch die wichtigsten Grundlagen in R für die kommenden Wochen vor! Wir schauen uns an, wie wir ganz einfache Berechnung oder logische Operationen durchführen oder wie wir das Gedächtnis von R beeinflussen können. Wie bereits erwähnt, gibt es für (fast) alles in R ein **Schummelblatt**, so auch in diesem Fall! Wenn Ihr also einen Überblick über die grundlegenden Befehle immer abrufbereit haben möchtet, dann schaut doch einmal [hier](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} nach.
+In diesem Abschnitt stellen wir Euch die wichtigsten Grundlagen in R für die kommenden Wochen vor! Wir schauen uns an, wie wir ganz einfache Berechnung oder logische Operationen durchführen oder wie wir das Gedächtnis von R beeinflussen können. Wie bereits erwähnt, gibt es für (fast) alles in R ein **Schummelblatt**, so auch in diesem Fall! Wenn Ihr also einen Überblick über die grundlegenden Befehle immer abrufbereit haben möchtet, dann schaut doch einmal [hier](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/03_cheatsheet-base-r.pdf){target="_blank"} nach.
 
 ## **R als Taschenrechner**
 
