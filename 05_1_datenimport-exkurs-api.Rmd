@@ -44,12 +44,12 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 # **Was sind APIs?**
 
-Eine **API (Application Programming Interface)** ist ein Programm, das es zwei verschiedenen Anwendungen ermöglicht, miteinander zu kommunizieren und **Daten auszutauschen**. Wir machen uns das Leben also leichter und ersparen es uns, eine Anwendung komplett neu zu erstellen und zu entwickeln, um ihre Informationen hinzuzufügen. Daher greifen wir auf eine API zurück, um eine Verbindung zwischen bereits vorhandenen Daten und einem unabhängigen Programm herzustellen. Die Anwendung solcher APIs spielt im Zeitalter von Open Data und der Digitalisierung der Gesellschaft eine zentrale Rolle für das Funktionieren des Internets. Hast Du zum Beispiel schon mal darüber nachgedacht, wie die Wetter-App auf deinem Smartphone funktioniert? Nicht sie holt und analysiert die Wetterinformationen und gibt sie an Dich weiter, sondern eine API verbindet sich mit der Datenbank, in der sich diese Informationen befinden, um sie in deiner Anwendung anzuzeigen.
+Eine **API (Application Programming Interface)** ist ein Programm, das es zwei verschiedenen Anwendungen ermöglicht, miteinander zu kommunizieren und **Daten auszutauschen**. Wir erleichtern uns das Leben und ersparen uns die Arbeit, eine Anwendung komplett neu zu erstellen und zu entwickeln. Mithilfe einer API können wir also eine Verbindung zwischen bereits vorhandenen Daten und einem unabhängigen Programm herstellen. Die Anwendung solcher APIs spielt im Zeitalter von Open Data und der Digitalisierung der Gesellschaft eine zentrale Rolle für das Funktionieren des Internets. Hast Du zum Beispiel schon mal darüber nachgedacht, wie die Wetter-App auf deinem Smartphone funktioniert? Nicht sie holt und analysiert die Wetterinformationen und gibt sie an Dich weiter, sondern eine API verbindet sich mit der Datenbank, in der sich diese Informationen befinden, um sie in deiner Anwendung anzuzeigen.
 
 # **APIs in R-Packages**
 
-Allerdings kann der Umgang mit APIs besonders für Programmieranfänger:innen oft eine Herausforderung darstellen - aber auch hier steht uns R wieder zur Seite: Viele APIs sind nämlich bereits in passende **Packages** eingebettet, wodurch sich der Datenabruf deutlich leichter gestaltet. 
-Wenn wir gesellschaftliche Herausforderungen verstehen und analysieren wollen, können wir zum Beispiel das **Package `WDI`** laden, wodurch wir auf die Daten der **World Bank** zugreifen können. Wir können in dieser Datenbank unter anderem  den **Indikator "Terrestrial and marine protected areas (% of total territorial area)"** abrufen. Dieser soll für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und Fördernden genutzt werden und ist daher auch für das Netzwerk #Breakfreefromplastics besonders spannend. Gerade die Flora und Fauna in **Naturschutzgebieten** soll besser vor Plastikmüll geschützt werden. In Ländern, wo neben der hohen Müllmenge und der niedrigen Recyclingquoten, besonders wenige Gebiete als Naturschutzgebiete ausgezeichnet sind, könnte der Bedarf nach gemeinnützigen Organisationen wie #Breakfreefromplastic, die die Natur von schädlichen Plastikmüll befreien, also besonders hoch sein.
+Allerdings kann der Umgang mit APIs besonders für Programmieranfänger:innen oft eine Herausforderung darstellen. Doch auch hier können wir uns auf R verlassen, denn viele APIs sind nämlich bereits in passende **Packages** eingebettet, wodurch sich der Datenabruf deutlich leichter gestaltet. 
+Wenn wir gesellschaftliche Herausforderungen verstehen und analysieren wollen, können wir zum Beispiel das **Package `WDI`** laden, wodurch wir auf die Daten der **World Bank** zugreifen können. Wir können in dieser Datenbank unter anderem  den **Indikator "Terrestrial and marine protected areas (% of total territorial area)"** abrufen. Dieser soll für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und Fördernden genutzt werden und ist daher auch für das Netzwerk #Breakfreefromplastics besonders spannend. Gerade die Flora und Fauna in **Naturschutzgebieten** soll besser vor Plastikmüll geschützt werden. In Ländern, wo neben der hohen Müllmenge und der niedrigen Recyclingquoten, besonders wenige Gebiete als Naturschutzgebiete ausgezeichnet sind, könnte der Bedarf an gemeinnützigen Organisationen wie #Breakfreefromplastic schließlich besonders hoch sein.
 
 *Anmerkung: Genau wissen wir das natürlich nicht, wo der Bedarf besonders groß sein könnte - die Daten können hier lediglich als Hinweis interpretiert werden. Daher ist es wichtig, die Annahmen, auf denen unsere Entscheidungen basieren, genau zu definieren und sich darüber Gedanken zu machen, ob die Datengrundlage für eine Entscheidung überhaupt ausreichend ist. Unsere Thesen können wir dann ggf. in Interviews mit Expert:innen (hier z.B. Naturschützer:innen) verifizieren.*
 
@@ -150,10 +150,9 @@ Wenn wir nur Daten laden möchten, reicht `GET` meistens aus. Je nach API könne
 
 Wir kennen das zum Beispiel von einer Google-Suche: `https://www.google.com/search?q=CorrelAid`.
 
-- `BASIS_URL`: `https://www.google.com/`
-- `ROUTE`: `search`
-- `QUERY_PARAMETER`:
-  - `q`: `CorrelAid`
+- BASIS_URL: `https://www.google.com/`
+- ROUTE: `search`
+- QUERY_PARAMETER: `q=CorrelAid`
 
 **Analogie**: Im Restaurant bestellen (`GET`) wir bei Elmo (unsere API mit der Basis-URL `https://elmo.correlandfriends.de/`) auf der Route "Essen" (`essen`) das Gericht Risotto (Query-Parameter `gericht=risotto`). Die komplette Anfrage-URL wäre also: `https://elmo.correlandfriends.de/essen?gericht=risotto`. Das Fragezeichen signalisiert das Ende der Route und den Anfang der Query-Parameter. 
 
