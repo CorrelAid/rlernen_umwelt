@@ -46,7 +46,7 @@ Wir beschäftigen uns aber nicht mit der Statistik aus purem Selbstzweck, sonder
 <p style="border-width:1px; border-style:solid; border-color:#acc940; padding: 1em;">
   **Disclaimer** <br>
   Du hast alles direkt verstanden? Perfekt!
-  Du hast nicht alles direkt verstanden? Völlig normal! Nimm Deine Fragen gerne mit in die Livesession - die Tutor:innen freuen sich darüber, alle Deine Fragen zu beantworten und Dir weiterzuhelfen. Bei kleineren Fragen wende Dich natürlich auch gerne einfach direkt an Deine:n Mentor:in. Und wenn Du gar nicht weißt, wo Du anfangen sollst mit Deinen Fragen - ein kleiner Schritt nach dem anderen und nicht alles brauchst Du für jede Form der Datenanalyse oder -visualisierung. 
+  Du hast nicht alles direkt verstanden? Völlig normal! Nimm Deine Fragen gerne mit in die Livesession - die Tutor:innen freuen sich darüber, alle Deine Fragen zu beantworten und Dir weiterzuhelfen. Bei kleineren Fragen wende Dich natürlich auch gerne einfach direkt an Deine:n Lernduo-Partner:in oder unsere Tutor:innen. Und wenn Du gar nicht weißt, wo Du anfangen sollst mit Deinen Fragen - ein kleiner Schritt nach dem anderen und nicht alles brauchst Du für jede Form der Datenanalyse oder -visualisierung.  
 </p>
 
 Nachdem wir uns in der vergangenen Woche mit den juristischen und ethischen Hintergründen der Datenverarbeitung beschäftigt haben, werden wir uns in diesem Kapitel den **Grundlagen des statistischen Denkens** widmen.
@@ -150,7 +150,7 @@ Achtet auf die Kommunikation sowie die verschiedenen Darstellungsarten. Welches 
 
 <p>
 <center>
-![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/11/PD23_N062_32.html>*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/umweltschutzinvestitionen-klimaschutz.png?raw=true){#id .class width=100%}
+![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/11/PD23_N062_32.html> (Grafik 1)*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/umweltschutzinvestitionen-klimaschutz.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
@@ -186,13 +186,13 @@ quiz(caption = "Fragen zur Pressemitteilung",
 
 <p>
 <center>
-![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2021/07/PD21_N045_639.html>*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/verbraucherinnenpreise_pkw.png?raw=true){#id .class width=100%}
+![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2021/07/PD21_N045_639.html> (Grafik 2)*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/verbraucherinnenpreise_pkw.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
 <p>
 <center>
-![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2021/07/PD21_N045_639.html>*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/03_grundlagen-der-statistik/verbraucherinnenpreise_bahn.png?raw=true){#id .class width=100%}
+![*Quelle: <https://www.destatis.de/DE/Presse/Pressemitteilungen/2021/07/PD21_N045_639.html> (Grafik 3)*](https://github.com/CorrelAid/main/blob/jonas_überarbeitung/abbildungen/03_grundlagen-der-statistik/verbraucherinnenpreise_bahn.png?raw=true){#id .class width=100%}
 </center>
 </p>
 
