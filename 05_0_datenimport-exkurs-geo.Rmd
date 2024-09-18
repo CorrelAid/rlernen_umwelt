@@ -29,6 +29,7 @@ params <- yaml::yaml.load_file("www/app_parameters.yml")
 
 # Benötigte Daten laden
 source("R/setup/functions.R")
+polygons_welt <- get_poly_welt()
 
 basis_url <- "https://unstats.un.org/"
 initiale_anfrage <- get_initiale_anfrage(url = basis_url)
@@ -40,7 +41,7 @@ pages <- get_pages(content = waste_data)
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Um Karten zu erstellen, nutzen wir verschiedene geometrische Typen. Somit müssen wir unsere Datensätze somit um unterschiedliche geographische Daten ergänzen (**sog. Geocodierung**). Bei der Darstellung von Punkten auf der Karte benötigen wir **Längen- und Breitengrad** der Orte, die wir visualisieren möchten. Für eindimensionale Linien (z.B. Straßen) benötigen wir eine **Reihe an Punkten** mit dem jeweiligen Längen- und Breitengrad. Zweidimensionale Kartenbereiche werden mit Polygonen geocodiert. **Polygone** stellen kartographische Informationen dar - beispielsweise die Form und Lage von Deutschland auf einer Weltkarte. Diese Daten lesen wir mit dem Package **`sf`** und der Funktion **`st_read()`** ein. Das **`sf`**-Package ("sf = simple features") bietet uns viele Möglichkeiten zur Verarbeitung und Analyse räumlicher Daten. Mithilfe dieses Packages können wir Geodaten eigenständig erstellen, diese manipulieren, visualisieren, uvm. - außerdem lässt sich das `sf` mit anderen Packages wie dem `dplyr` kombinieren. Weitere Infos zum Package findet Ihr [hier](https://cran.r-project.org/web/packages/sf/sf.pdf){target="_blank"}.
+Um Karten zu erstellen, nutzen wir verschiedene geometrische Typen. Somit müssen wir unsere Datensätze um unterschiedliche geographische Daten ergänzen (**sog. Geocodierung**). Bei der Darstellung von Punkten auf der Karte benötigen wir **Längen- und Breitengrad** der Orte, die wir visualisieren möchten. Für eindimensionale Linien (z.B. Straßen) benötigen wir eine **Reihe an Punkten** mit den jeweiligen Längen- und Breitengraden. Zweidimensionale Kartenbereiche werden mit Polygonen geocodiert. **Polygone** stellen kartographische Informationen dar - beispielsweise die Form und Lage von Deutschland auf einer Weltkarte. Diese Daten lesen wir mit dem Package **`sf`** und der Funktion **`st_read()`** ein. Das **`sf`**-Package ("sf = simple features") bietet uns viele Möglichkeiten zur Verarbeitung und Analyse räumlicher Daten. Mithilfe dieses Packages können wir Geodaten eigenständig erstellen, diese manipulieren, visualisieren, uvm. - außerdem lässt sich das `sf` mit anderen Packages wie dem `dplyr` kombinieren. Weitere Infos zum Package findet Ihr [hier](https://cran.r-project.org/web/packages/sf/sf.pdf){target="_blank"}.
 
 *Achtung: Damit der Import funktioniert müsst Ihr die gesamte ZIP-Datei, die Ihr laden wollt, in einem Ordner mit der hier gewünschten .shp-Datei ablegen - also auch alle Dateien mit anderen Endungen.*
 
@@ -51,13 +52,13 @@ Um Karten zu erstellen, nutzen wir verschiedene geometrische Typen. Somit müsse
 polygons_welt <- sf::st_read(here::here("daten/geospatial/ne_50m_admin_0_countries.shp"))
 ```
 
-Unser Datensatz enthält zahlreiche Spalten mit zusätzlichen Informationen zu den Ländern der Welt. Uns interessiert hier die Spalte "`geometry`", die die kartographischen Informationen enthält.
+Unser Datensatz enthält zahlreiche Spalten mit zusätzlichen Informationen zu den Ländern der Welt, wobei wir uns vor allem für die Spalte "`geometry`" interessieren, die die kartographischen Informationen enthält.
 ```{r polygon_welt_exercise, exercise = TRUE}
 # Betrachtung der Daten
 head(polygons_welt$geometry)
 ```
 
-Zur Veranschaulichung können wir nun die Polygone des Datensatzes `polygons_welt` veranschaulichen. Wir nutzen hier die `baseR`-Funktion `plot()`. Wie wir mit kartographischen Daten schönere und insb. interaktive Karten gestalten, schauen wir uns in der Session zur Datenvisualisierung noch einmal genauer an!
+Zur Veranschaulichung können wir nun die Polygone des Datensatzes `polygons_welt` betrachten. Wir nutzen hier die `baseR`-Funktion `plot()`. Wie wir mit kartographischen Daten schönere und insb. interaktive Karten gestalten, schauen wir uns in der Session zur Datenvisualisierung noch einmal genauer an!
 ```{r polygon_welt__plot_exercise, exercise = TRUE}
 # Erstellung eines einfachen Kartenplots
 plot(polygons_welt$geometry)
