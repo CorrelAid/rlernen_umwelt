@@ -68,7 +68,7 @@ con <- dbConnect(RSQLite::SQLite(), tmpfile)                                    
 
 ## **Schritt 2: Verknüpfung mit RStudio**
 
-Die Live-Verknüpfung selbst funktioniert wie erklärt **für jede Datenbank anders** - dieser Code kann also nicht einfach übertragen werden. Für einen Großteil der verschiedenen DBMS und zugehörige Importmöglichkeiten gibt es jedoch von RStudio eine praktische [Übersicht](https://db.rstudio.com/tooling/pro-drivers/){target="_blank"}. Ist unser Analysetool mit der Datenbank verknüpft, können wir in der zugehörigen Abfragesprache **Abfragen** generieren. Schauen wir uns dazu zunächst an, wie das ERM (Entity-Relationship-Modell, zu dt. Datenbankschema) der Datenbank aussieht:
+Die Live-Verknüpfung selbst funktioniert **für jede Datenbank anders** - dieser Code kann also nicht einfach übertragen werden. Für einen Großteil der verschiedenen DBMS und zugehörige Importmöglichkeiten gibt es jedoch von RStudio eine praktische [Übersicht](https://db.rstudio.com/tooling/pro-drivers/){target="_blank"}. Ist unser Analysetool mit der Datenbank verknüpft, können wir in der zugehörigen Abfragesprache **Abfragen** generieren. Schauen wir uns dazu zunächst an, wie das ERM (Entity-Relationship-Modell, zu dt. Datenbankschema) der Datenbank aussieht:
 
 ![*ERM der Plastics-SQLite-Datenbank*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/05_datenimport/erm.png?raw=true){#id .class width=50% height=50%}
 
