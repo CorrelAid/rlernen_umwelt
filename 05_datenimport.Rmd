@@ -1,5 +1,5 @@
 ---
-title: "Datenimport und APIs"
+title: "Datenimport in R"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
@@ -43,13 +43,14 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ![*Video: Datenimport und APIs (30min)*](https://youtu.be/NA9QLeQsE9M)
 
-# **Datenimport in R**
+# **Datenimport in zwei Schritten**
 
 ## **1. Schritt: Dateiformat**
 
 Grundlegend gibt es **zwei Möglichkeiten**, Daten in R zu importieren. Entscheidend ist dabei, woher wir unsere Daten importieren wollen:
-    1. aus lokal oder remote gespeicherten **Dateiformaten** (XLSX, CSV, ...)
-    2. über **Datenabfragen** von Datenbanken und aus dem Internet (Abfragesprachen wie SQL oder über APIs und Web-Scraping; mehr hierzu in den Exkursen)
+
+  1. aus lokal oder remote gespeicherten **Dateiformaten** (XLSX, CSV, ...)
+  2. über **Datenabfragen** von Datenbanken und aus dem Internet (Abfragesprachen wie SQL oder über APIs und Web-Scraping; mehr hierzu in den Exkursen)
 
 **Tabelle: Überblick Dateiformate**
 ```{r dateiformate_tabelle, results='asis'}
@@ -68,11 +69,13 @@ Textdatei     | allgemeine Textdateien                                          
 cat(tabelle)
 ```
 
-Um die Daten anschließend richtig zu importieren ist es wichtig, einen Blick auf das **Dateiformat** zu werfen. Wenn wir nicht bereits wissen, in welchem Format unsere Daten vorliegen, gibt es (je nach Betriebssystem) mehrere Möglichkeiten, es herauszufinden: 
+Um die Daten anschließend richtig zu importieren, ist es wichtig, einen Blick auf das **Dateiformat** zu werfen. Wenn wir nicht bereits wissen, in welchem Format unsere Daten vorliegen, gibt es (je nach Betriebssystem) mehrere Möglichkeiten, es herauszufinden: 
+
   - **Windows-User** können sich die Dateiendung über die Multifunktionsleiste auf der Registerkarte "Ansicht" anzeigen lassen: Aktiviert dort das Feld "Dateinamenerweiterungen" im Abschnitt "Ein-/Ausblenden".
-  - **Mac-User** navigieren zu ihrem Schreibtisch und können sich dort die Dateiendung über "Finder" -> "Erweitert" -> Alle Dateinamensuffixe einblenden" anzeigen lassen.
+  - **Mac-User** navigieren zu ihrem Schreibtisch und können sich dort die Dateiendung über "Finder" -> "Erweitert" -> "Alle Dateinamensuffixe einblenden" anzeigen lassen.
     
 Um Fehlern vorzubeugen, solltet Ihr - wenn möglich - die Datei vorab in einem **Texteditor** öffnen und dabei Folgendes beachten:
+
   - **Dateiformat**: In welchem Format liegt die Datei vor?
   - **Speicherort**: Wo ist die Datei gespeichert?
   - **Dateistruktur**: Was gibt es hinsichtlich der Struktur zu beachten (Separatoren, fehlende Werte, etc.)?
@@ -83,7 +86,7 @@ Um Fehlern vorzubeugen, solltet Ihr - wenn möglich - die Datei vorab in einem *
 Einerseits können wir CSV-, XLSX-, SPSS-, SAS und Stata-Dateien ganz klassisch manuell und **ohne Code** in RStudio importieren. Dabei navigieren wir über "File" -> "Import Dataset" zum entsprechenden Dateiformat und können dann ganz einfach unseren File/URL eingeben und schon haben wir unseren Datensatz in R importiert!
 Alternativ können wir diese Dateien auch mit Funktionen diverser Packages importieren - wie genau wir das machen, schauen wir uns nach dem Quiz genauer an.
 
-### **Quiz**
+# **Quiz**
 ```{r quiz_datenimport, echo=FALSE}
 quiz(caption = NULL,
      
@@ -111,8 +114,8 @@ quiz(caption = NULL,
   question("Woran erkennt man CSV-Dateien?",
     answer('An dem Trennzeichen ","'),
     answer('An der Dateiendung ".csv"', correct = TRUE),
-    correct = "Richtig, vor allem die Dateiendung ist ein wichtiger Hinweis, wenn wir das Dateiformat herausfinden möchten. CSV steht übrigens für "comma separated values", also "durch Komma getrennte Werte").",
-    incorrect = "Leider falsch, CSV-Dateien sind zwar in der Regel durch Kommata getrennt, es gibt allerdings auch CSV-Dateien, deren Spalten durch Semikolons, Pipes (senkrechte Striche) und Tabstopps getrennt werden. Daher werfen wir immer einen Blick auf die Dateiendung, wenn wir uns einmal unsicher sind.",
+    correct = 'Richtig, vor allem die Dateiendung ist ein wichtiger Hinweis, wenn wir das Dateiformat herausfinden möchten. CSV steht übrigens für "comma separated values", also "durch Komma getrennte Werte").',
+    incorrect = 'Leider falsch, CSV-Dateien sind zwar in der Regel durch Kommata getrennt, es gibt allerdings auch CSV-Dateien, deren Spalten durch Semikolons, Pipes (senkrechte Striche) und Tabstopps getrennt werden. Daher werfen wir immer einen Blick auf die Dateiendung, wenn wir uns einmal unsicher sind.',
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -138,15 +141,13 @@ quiz(caption = NULL,
 )
 ```
 
-# **Interaktive Übung**
-
 Im restlichen Kapitel wollen wir nun anhand praktischer Übungen den Import unterschiedlicher CSV- und XLSX-Dateien üben.
 
-## **CSV-Dateien**
+# **CSV-Dateien**
 
-In einer **CSV-Datei (comma separated values, zu dt. Komma getrennte Werte)** werden - wie der Name bereits vermuten lässt - die verschiedenen **Datenwerte durch Kommata getrennt**. Wie wir bereits gelernt haben, entspricht dabei **jede Zeile einer Beobachtung**, wobei die **erste Zeile "Header"** genannt wird. Diese erste Zeile enthält keine Werte im eigentlichen Sinne, sondern die Bezeichnungen der einzelnen Spalten, also die Namen der Variablen. Wir nutzen den Header, um auf bestimmte Spalten und Werte zuzugreifen. 
+In einer **CSV-Datei (comma separated values, zu dt. Komma getrennte Werte)** werden - wie der Name bereits vermuten lässt - die verschiedenen **Datenwerte durch Kommata getrennt**. **Jede Zeile entspricht einer Beobachtung**, wobei die **erste Zeile "Header"** genannt wird. Diese erste Zeile enthält keine Werte im eigentlichen Sinne, sondern die Bezeichnungen der einzelnen Spalten, also die Namen der Variablen. Wir nutzen den Header, um auf bestimmte Spalten und Werte zuzugreifen. 
 
-### **Datenimport über URLs**
+## **Datenimport über URLs**
 
 Das **`readr`**-Package ist ein Paket, das uns den Import verschiedener Dateien ermöglicht. Innerhalb dieses Packages können wir die **`read.csv()`**-Funktion nutzen, um CSV-Dateien zu importieren. Wichtig ist, dass wir dabei das **Komma als Separator** zwischen den verschiedenen Argumenten und den **Punkt als Dezimaltrennzeichen** verwenden! Schauen wir uns nun einmal die verschiedenen Argumente der Funktion an, die wir entsprechend unserer Dateistruktur setzen können:
 
@@ -168,9 +169,9 @@ data_raw <- readr::read_csv(
 head(data_raw)
 ```
 
-### **Datenimport über lokale Dateipfade**
+## **Datenimport über lokale Dateipfade**
 
-Oben haben wir nun gesehen, wie wir relativ intuitiv, Daten über (offene) URLs (Uniform Resource Locator, zu dt. Link) importieren können. Nun wollen wir uns auch noch anschauen, wie wir Daten importieren, die wir bereits lokal auf unserem Rechner gespeichert haben, dazu müssen wir nämlich das **Path (dt. Dateipfad)** definieren. Hierfür gibt es verschiedene Methoden, von denen allerdings nur eine wirklich sinnvoll ist. Wichtig ist dabei, dass wir unsere **Ordnerstruktur ordentlich** halten. Wenn wir Daten in R analysieren wollen, erstellen wir also ein RProjekt, das sowohl einen **Ordner für unser Skript** also einen einen **Ordner für unsere Daten** enthält. Dort legen wir unseren Datensatz ab, nachdem wir diesen heruntergeladen haben. Wir verwenden zum Import wie gewohnt die **`read_csv()`**-Funktion des `readr`-Packages und können nun ganz einfach mithilfe der Funktion **`here::here()`** in unseren Ordner - der in diesem Fall 'daten' genannt wurde - navigieren. Anmerkung: Die `here()`- Funktion stammt aus dem `here`-Package, das wir verwenden können, um Dateipfade in Projekten auf eine einfache und robuste Weise zu verwalten - bei Interesse könnt Ihr Euch das Package [hier](https://cran.r-project.org/web/packages/here/vignettes/here.html){target="_blank"} noch einmal genauer anschauen. Und so würde dann der entsprechende Code aussehen (hier nur zum Zeigen):
+Oben haben wir nun gesehen, wie wir relativ intuitiv Daten über (offene) URLs (Uniform Resource Locator, dt. Link) importieren können. Nun wollen wir uns anschauen, wie wir Daten importieren, die wir bereits lokal auf unserem Rechner gespeichert haben, dazu müssen wir nämlich den **Path (dt. Dateipfad)** definieren. Hierfür gibt es verschiedene Methoden, von denen allerdings nur eine wirklich sinnvoll ist. Wichtig dabei ist, dass wir unsere **Ordnerstruktur ordentlich** halten. Wenn wir Daten in R analysieren wollen, erstellen wir also ein RProjekt, das sowohl einen **Ordner für unser Skript** also einen einen **Ordner für unsere Daten** enthält. Dort legen wir unseren Datensatz ab, nachdem wir diesen heruntergeladen haben. Wir verwenden zum Import wie gewohnt die **`read_csv()`**-Funktion des `readr`-Packages und können nun ganz einfach mithilfe der Funktion **`here::here()`** in unseren Ordner - der in diesem Fall 'daten' genannt wurde - navigieren. Anmerkung: Die `here()`- Funktion stammt aus dem `here`-Package, das wir verwenden können, um Dateipfade in Projekten auf eine einfache und robuste Weise zu verwalten - bei Interesse könnt Ihr Euch das Package [hier](https://cran.r-project.org/web/packages/here/vignettes/here.html){target="_blank"} noch einmal genauer anschauen. Und so würde dann der entsprechende Code aussehen (hier nur zum Zeigen):
 
 ``` {r daten_einlesen_lokal, exercise = TRUE}
 data_processed <- readr::read_csv(here::here('daten/bffp2019_plastics_processed.csv')) # Dateipfad
@@ -181,8 +182,9 @@ head(data_processed)
 ## **Vorsicht: Sprache!**
 
 Eine Sache, die wir beim Datenimport auf jeden Fall beachten müssen, ist die **Sprache unserer Programme**. Verwenden wir Programme (insb. Excel) in deutscher Sprache, werden CSV-Dateien häufig mit dem **Separator ";"** und dem **Dezimaltrennzeichen ","** exportiert. Da R allerdings das Komma als Separator und den Punkt als Dezimaltrennzeichen verwendet, kann das am Ende zu Fehlern führen. Allerdings bietet uns R auch dafür verschiedene Lösungsmöglichkeiten:
-  - 1. Verwendung der **`read.csv2()`**-Funktion für den Import deutschsprachiger CSV-Dateien
-  - 2. Verwendung der allgemeineren **`read_delim()`**-Funktion mit dem Argument **`delim = ";"` - somit legen wir das Semikolon als Separator fest.
+
+  1. Verwendung der **`read.csv2()`**-Funktion für den Import deutschsprachiger CSV-Dateien
+  2. Verwendung der allgemeineren **`read_delim()`**-Funktion mit dem Argument **`delim = ";"` - somit legen wir das Semikolon als Separator fest.
 
 Einen solchen Fall haben wir zum Beispiel hier, wenn wir die Strukturdaten für die Wahlkreise zur Bundestagswahl 2021 importieren möchten. Diese werden uns [hier](https://www.bundeswahlleiterin.de/bundestagswahlen/2021/strukturdaten.html) von der Bundeswahlleiterin zur Verfügung gestellt. Wir möchten diese Daten nun verwenden, um verschiedene Analysen durchzuführen - logischerweise handelt es sich dabei um deutschsprachige Daten. Die Funktion und ihre grundlegenden Argumente kennen wir bereits, aber schaut gerne noch einmal oben in die Funktion, wenn es etwas unklar ist. Versucht die Datei korrekt zu importieren - Tipp: verwendet das `delim = ";"` Argument.
 *Anmerkung zum Argument `skip = 8`: An dieser Stelle müssen wir acht Zeilen überspringen. Öffnet die CSV Datei doch einmal selbst mit einem Texteditor, um herauszufinden warum.*
@@ -219,14 +221,15 @@ grade_this_code()
 
 Das war es auch schon zum Import von CSV-Dateien, machen wir also weiter mit den Excel-Datein!
 
-## **Excel-Dateien**
+# **Excel-Dateien**
 
-Neben CSV-Daten, stehen uns viele Datensätze vor allem als **Excel-Dateien** zur Verfügung. Wahrscheinlich haben wir alle schon einmal (mehr oder weniger intensiv) mit Excel gearbeitet, weshalb wir uns direkt anschauen wollen, welche Excel-Daten wir beispielsweise nutzen und wie wir diese in R importieren können.
-Ein Beispiel für Excel-Dateien sind **Google Trends Daten**. Mit den Daten von Google Trends können wir erforschen, wonach die Welt gerade auf der Suchmaschine Google sucht. Das **Google Search Volume** (zu dt. Google Suchvolumen) bezieht sich dabei konkret auf die Anzahl der Suchanfragen, die Nutzer:innen zu einem bestimmten Suchbegriff innerhalb eines bestimmten Zeitraums eingeben. Ein hohes Volumen deutet also auf ein hohes Interesse an dem entsprechenden Thema hin.
-Wir haben für Euch zwei Dateien erstellt, die Daten zu den Suchbegriffen "beach clean up" (zu dt. Strand aufräumen), also Aktionen wie denen von "Break Free From Plastics", und "plastic pollution" (zu dt. Plastikverschmutzung) enthalten. Das entsprechende Arbeitsblatt "trends_over_time" stellt die Entwicklung des Suchvolumens im Zeitverlauf der vergangenen fünf Jahre dar, während das Arbeitsblatt "by_country" länderspezifische Entwicklung im Durchschnitt des letzten Jahres abbildet.
+Neben CSV-Daten stehen uns viele Datensätze vor allem als **Excel-Dateien** zur Verfügung. Wahrscheinlich haben wir alle schon einmal (mehr oder weniger intensiv) mit Excel gearbeitet, weshalb wir uns direkt anschauen wollen, welche Excel-Daten wir beispielsweise nutzen und wie wir diese in R importieren können.
+Ein Beispiel für Excel-Dateien sind **Google Trends Daten**. Mit den Daten von Google Trends können wir erforschen, wonach die Welt gerade auf der Suchmaschine Google sucht. Das **Google Search Volume** (dt. Google Suchvolumen) bezieht sich dabei konkret auf die Anzahl der Suchanfragen, die Nutzer:innen zu einem bestimmten Suchbegriff innerhalb eines bestimmten Zeitraums eingeben. Ein hohes Volumen deutet also auf ein hohes Interesse an dem entsprechenden Thema hin.
+Wir haben für Euch zwei Dateien erstellt, die Daten zu den Suchbegriffen "beach clean up" (dt. Strand aufräumen), also Aktionen wie denen von "Break Free From Plastics", und "plastic pollution" (dt. Plastikverschmutzung) enthalten. Das entsprechende Arbeitsblatt "trends_over_time" stellt die Entwicklung des Suchvolumens im Zeitverlauf der vergangenen fünf Jahre dar, während das Arbeitsblatt "by_country" länderspezifische Entwicklung im Durchschnitt des letzten Jahres abbildet.
+
 *Anmerkung zu Google Trends: Zur Live-Verknüpfung mit den aktuellen Daten von Google gibt es in R das `gtrendsR`-Package. Dazu mehr im Exkurs "API".*
 
-### **Import von Excel-Dateien**
+## **Import von Excel-Dateien**
 
 Zum Import von Excel-Dateien verwenden wir analog zu den CSV-Dateien die **`read_excel()`**-Funktion aus dem zugehörigen Package **`readxl`**. Auch hier wollen wir zunächst einmal einen Blick auf die verschiedenen Argumente dieser Funktion werfen:
 
@@ -278,7 +281,7 @@ Tatsächlich ist am Anfang einer jeden Arbeit erst einmal ein bisschen **Fleißa
 
 ![*Video: Datentransformation mit Tidyverse (30min)*](https://youtu.be/YWFLSovbha0)
 
-## **Zusammenfassung: Das `tidyverse`-Package**
+## **Das `tidyverse`-Package**
 
 <left>
 
@@ -290,22 +293,23 @@ Tatsächlich ist am Anfang einer jeden Arbeit erst einmal ein bisschen **Fleißa
   - Das [`tidyverse`](https://www.tidyverse.org/packages/){target="_blank"}-Package ist eine **Sammlung von verschiedenen R-Packages**, die aufeinander abgestimmt sind und dabei derselben Logik folgen. Es bietet uns unzählige Möglichkeiten, die wir uns in den kommenden Wochen im Detail anschauen werden - aber keine Sorge, einige der Packages und Funktionen kennen wir bereits aus den vergangenen Wochen!
   - **Installation**: Alle enthaltenen Packages können einzeln installiert und aufgerufen werden. Wir können aber auch alle gesammelt über `install_packages('tidyverse')` bzw. `library(tidyverse)` installieren und laden.
   - **Voraussetzung**: Um mit Tidyverse arbeiten zu können, benötigen wir "tidy" Datensätze:
+  
 ![Tidy Data](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/06_datentransformation/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
 
 *Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst*
 
 # **Und jetzt Ihr!**
 
-An dieser Stelle seid Ihr dran! Ihr dürft gerne veruchen, Eure **eigene Datensätze** in R zu importieren. Kommuniziert gerne über Slack, wenn Euch bestimmte Datensätze interessieren. Ansonsten (oder zusätzlich) gibt es die folgenden Aufgaben und das zugehörige **RMD 07_datenimport-uebung.Rmd** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"} unter 07_datenimport), das Ihr bearbeiten könnt:
+An dieser Stelle seid Ihr dran! Ihr dürft gerne veruchen, Eure **eigene Datensätze** in R zu importieren. Kommuniziert gerne über Slack, wenn Euch bestimmte Datensätze interessieren. Ansonsten (oder zusätzlich) gibt es die folgenden Aufgaben und das zugehörige **RMD 07_datenimport-uebung.Rmd** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter 07_datenimport), das Ihr bearbeiten könnt:
 
-1. Versucht, den "Plastics"-Datensatz (im Ordner `daten/plastics.csv` im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"}) mit diesem Code **lokal zu laden**.
+1. Versucht, den "Plastics"-Datensatz (im Ordner `daten/plastics.csv` im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"}) mit diesem Code **lokal zu laden**.
 2. Ladet den "Plastics"-Datensatz über einen [**Hyperlink**](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv){target="_blank"}.
 3. **Bonus:** Noch einmal zurück zur Bundeswahlleiterin und den Strukturdaten zur Bundestagswahl 20217, die uns [hier](https://www.bundeswahlleiterin.de/dam/jcr/f7566722-a528-4b18-bea3-ea419371e300/btw2017_strukturdaten.csv) als CSV-Datei zum Download zur Verfügung gestellt werden. Versucht die Datei manuell zu importieren. Achtet dabei auf den im Kapitel beschriebenen Ablauf und öffnet die Datei zunächst mit einem Texteditor: Welche Formatierung (encoding) hat sie? Ihr könnt die Formatierung anschließend beim manuellen Import unter "Locale" ändern. Die 2021er Strukturdaten lagen in der UTF-8 Kodierung vor. (Test: Was passiert, wenn wir die Locale nicht ändern?) Des Weiteren müsst Ihr natürlich wieder auf die Argumente *skip* und *delim* achten.
 
 # **Zusätzliche Ressourcen**
 - [How to Import Data Into R: A Tutorial](https://www.datacamp.com/tutorial/r-data-import-tutorial?utm_source=google&utm_medium=paid_search&utm_campaignid=19589720821&utm_adgroupid=157156375351&utm_device=c&utm_keyword=&utm_matchtype=&utm_network=s&utm_adpostion=&utm_creative=684592139663&utm_targetid=dsa-2218886984060&utm_loc_interest_ms=&utm_loc_physical_ms=9043008&utm_content=&utm_campaign=230119_1-sea~dsa~tofu_2-b2c_3-row-p1_4-prc_5-na_6-na_7-le_8-pdsh-go_9-nb-e_10-na_11-na&gad_source=5&gclid=EAIaIQobChMIqYmK_a6SiAMVjBCiAx2LsBUwEAAYASAAEgLnnfD_BwE){target="_blank"} von DataCamp (engl.) 
 - [R Data Import/Export](https://cran.r-project.org/doc/manuals/r-devel/R-data.html){target="_blank"}
-- [Cheat Sheet: Data import](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/05_cheatsheet-import.pdf){target="_blank"} (engl.)
+- [Cheat Sheet: Data import](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/05_cheatsheet-import.pdf){target="_blank"} (engl.)
 - [Web Scraping in R](https://app.dataquest.io/course/scraping-in-r){target="_blank"} auf DataQuest (engl.)
 - [Data tidying with tidyr - Cheatsheet](https://rstudio.github.io/cheatsheets/html/tidyr.html?_gl=1*emcbuk*_ga*ODMxNjY5MzM4LjE3MjQyNDU0MTE.*_ga_2C0WZ1JHG0*MTcyNDY2NTEwMi4yLjEuMTcyNDY2NTQ5Ny4wLjAuMA..){target="_blank"}
 
