@@ -39,11 +39,11 @@ con <- get_connection()
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-# **Was sind SQL?**
+# **Was ist SQL?**
 
 **SQL (Structured Query Language)** ist eine Programmiersprache für die **Bearbeitung von Daten und relationalen Datenbanksystemen**. Diese Sprache wird hauptsächlich für die Kommunikation mit Datenbanken verwendet, um die darin enthaltenen Daten zu verwalten. Es ermöglicht insbesondere die Speicherung, Bearbeitung und Abfrage dieser Daten. Wir können damit allerdings auch Abfragen durchführen, Daten aktualisieren und/oder reorganisieren, das Schema und die Struktur eines Datenbanksystems erstellen und ändern, sowie den Zugriff auf die Daten kontrollieren. Daten, die uns in unserem Alltag als Datenanalyst:innen begegnen, sind nämlich oft in **Datenbanken** gespeichert. Das sind **logisch modellierte, strukturierte Datenspeicher**, mit denen wir durch **Datenbankmanagementsysteme (kurz DBMS)**, also Softwaretools, interagieren können. 
 
-# **Interaktive Übung**
+# **Datenbanken mit R**
 Allerdings funktioniert diese Interaktion für jedes Datenbankmanagementsystem anders und ist **nicht trivial**. Während in einigen Fällen ein manueller Export als XLSX-, CSV- oder JSON-Datei möglich ist, kann es in einigen Fällen, auch aufgrund der Größe der Datensätze, nicht praktikabel sein, Daten manuell zu exportieren. Idealerweise sind Eure Daten nämlich **live** mit unseren Analysetools verknüpft, sodass sie beständig aktuell sind. Die populärsten Datenbankmanagementsysteme findet Ihr in dieser Übersicht einer Umfrage unter Entwickler:innen von [Stack Overflow](https://insights.stackoverflow.com/survey/2020#technology-databases-all-respondents4){target="_blank}.
 
 <center>
@@ -72,9 +72,13 @@ Die Live-Verknüpfung selbst funktioniert wie erklärt **für jede Datenbank and
 
 ![*ERM der Plastics-SQLite-Datenbank*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/05_datenimport/erm.png?raw=true){#id .class width=50% height=50%}
 
+<br>
+
+Was fällt Euch auf?
+
 ```{r quiz_dbdiagramm}
 quiz(
-  caption = "Was fällt Euch auf?",
+  caption = " ",
   question_numeric(
     "Wie viele Tabellen enthält das Datenbankschema?",
     answer(3, correct = TRUE),
@@ -99,7 +103,7 @@ quiz(
 
 In einer **idealen Welt** würde so auch unser Datensatz aussehen: Aufgeteilt nach Entitäten (identifizierbare Objekte) und ihren jeweiligen Attributen (Eigenschaften) in drei klar benannten Tabellen, in der jede Zeile für eine Beobachtung steht. In der realen Welt passiert das allerdings selten. Wichtig ist, dass wir auch mit solchen Daten arbeiten können und verstehen, dass unsere Datenbanken idealerweise dieser Grundlogik folgen.
 
-## **Schritt 3: Erste Abfragen mit SGL**
+## **Schritt 3: Erste Abfragen mit SQL**
 
 Für **SQL-basierte Datenbanken** werden Abfragen nun in der zugehörigen Abfragesprache SQL erstellt. Mit `dbListTables(Verbindung)` können wir uns die Tabelle, die das DBMS enthält **anzeigen** lassen. Mit `dbReadTable(Verbindung, Tabelle)` können wir die gewünschte **Gesamttabelle laden** und als Objekt in R **speichern**. Mit `dbGetQuery(Verbindung, "SQL Befehl")` könnt Ihr die Tabelle filtern und so **Teilmengen des Datensatzes laden** (und ggf. in R als Objekt speichern).
 
@@ -156,4 +160,5 @@ SQLite-Datenbanken benötigen in der Regel **kein Passwort** (und somit auch kei
 - [Database Queries With R](https://solutions.posit.co/connections/db/getting-started/database-queries/){target="_blank"}
 - Ihr wollt mehr SQL lernen? Dataquest bietet den Kurs [SQL Fundamentals](https://app.dataquest.io/course/sql-fundamentals){target="_blank"} und [Intermediate SQL in R](https://app.dataquest.io/course/sql-intermediate-r){target="_blank"} auf DataQuest (engl.)
 
+<br>
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
