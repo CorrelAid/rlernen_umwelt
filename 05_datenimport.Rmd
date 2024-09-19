@@ -294,13 +294,13 @@ Tatsächlich ist am Anfang einer jeden Arbeit erst einmal ein bisschen **Fleißa
   - **Installation**: Alle enthaltenen Packages können einzeln installiert und aufgerufen werden. Wir können aber auch alle gesammelt über `install_packages('tidyverse')` bzw. `library(tidyverse)` installieren und laden.
   - **Voraussetzung**: Um mit Tidyverse arbeiten zu können, benötigen wir "tidy" Datensätze:
   
-![Tidy Data](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/06_datentransformation/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
+![Tidy Data](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/05_datenimport/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
 
 *Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst*
 
 # **Und jetzt Ihr!**
 
-An dieser Stelle seid Ihr dran! Ihr dürft gerne veruchen, Eure **eigene Datensätze** in R zu importieren. Kommuniziert gerne über Slack, wenn Euch bestimmte Datensätze interessieren. Ansonsten (oder zusätzlich) gibt es die folgenden Aufgaben und das zugehörige **RMD 07_datenimport-uebung.Rmd** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter 07_datenimport), das Ihr bearbeiten könnt:
+An dieser Stelle seid Ihr dran! Ihr dürft gerne veruchen, Eure **eigene Datensätze** in R zu importieren. Kommuniziert gerne über Slack, wenn Euch bestimmte Datensätze interessieren. Ansonsten (oder zusätzlich) gibt es die folgenden Aufgaben und das zugehörige **R-Skript 05_datenimport-uebung.R** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter 05_datenimport), das Ihr bearbeiten könnt:
 
 1. Versucht, den "Plastics"-Datensatz (im Ordner `daten/plastics.csv` im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"}) mit diesem Code **lokal zu laden**.
 2. Ladet den "Plastics"-Datensatz über einen [**Hyperlink**](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv){target="_blank"}.
