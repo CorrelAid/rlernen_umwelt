@@ -1,5 +1,5 @@
 ---
-title: "Eigene API-Anfragen (Exkurs)"
+title: "Geo(-referenzierte) Daten (Exkurs)"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
@@ -41,7 +41,13 @@ pages <- get_pages(content = waste_data)
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Um Karten zu erstellen, nutzen wir verschiedene geometrische Typen. Somit müssen wir unsere Datensätze um unterschiedliche geographische Daten ergänzen (**sog. Geocodierung**). Bei der Darstellung von Punkten auf der Karte benötigen wir **Längen- und Breitengrad** der Orte, die wir visualisieren möchten. Für eindimensionale Linien (z.B. Straßen) benötigen wir eine **Reihe an Punkten** mit den jeweiligen Längen- und Breitengraden. Zweidimensionale Kartenbereiche werden mit Polygonen geocodiert. **Polygone** stellen kartographische Informationen dar - beispielsweise die Form und Lage von Deutschland auf einer Weltkarte. Diese Daten lesen wir mit dem Package **`sf`** und der Funktion **`st_read()`** ein. Das **`sf`**-Package ("sf = simple features") bietet uns viele Möglichkeiten zur Verarbeitung und Analyse räumlicher Daten. Mithilfe dieses Packages können wir Geodaten eigenständig erstellen, diese manipulieren, visualisieren, uvm. - außerdem lässt sich das `sf` mit anderen Packages wie dem `dplyr` kombinieren. Weitere Infos zum Package findet Ihr [hier](https://cran.r-project.org/web/packages/sf/sf.pdf){target="_blank"}.
+# **Daten für Karten**
+
+Um Karten zu erstellen, nutzen wir verschiedene geometrische Typen. Somit müssen wir unsere Datensätze um unterschiedliche geographische Daten ergänzen (**sog. Geocodierung**). Bei der Darstellung von Punkten auf der Karte benötigen wir **Längen- und Breitengrad** der Orte, die wir visualisieren möchten. Für eindimensionale Linien (z.B. Straßen) benötigen wir eine **Reihe an Punkten** mit den jeweiligen Längen- und Breitengraden. Zweidimensionale Kartenbereiche werden mit Polygonen geocodiert. **Polygone** stellen kartographische Informationen dar - beispielsweise die Form und Lage von Deutschland auf einer Weltkarte. 
+
+# **Geodaten in R**
+
+Diese Daten lesen wir mit dem Package **`sf`** und der Funktion **`st_read()`** ein. Das **`sf`**-Package ("sf = simple features") bietet uns viele Möglichkeiten zur Verarbeitung und Analyse räumlicher Daten. Mithilfe dieses Packages können wir Geodaten eigenständig erstellen, diese manipulieren, visualisieren, uvm. - außerdem lässt sich das `sf` mit anderen Packages wie dem `dplyr` kombinieren. Weitere Infos zum Package findet Ihr [hier](https://cran.r-project.org/web/packages/sf/sf.pdf){target="_blank"}.
 
 *Achtung: Damit der Import funktioniert müsst Ihr die gesamte ZIP-Datei, die Ihr laden wollt, in einem Ordner mit der hier gewünschten .shp-Datei ablegen - also auch alle Dateien mit anderen Endungen.*
 
@@ -77,5 +83,6 @@ Hier noch einmal eine Checkliste für den Import geographischer Daten:
       *Tipp: [Hier](http://www.naturalearthdata.com/features/){target="_blank"} findet Ihr globale und beim [Bundesamt für Kartographie](https://gdz.bkg.bund.de/index.php/default/nuts-gebiete-1-1-000-000-stand-31-12-nuts1000-31-12.html){target="_blank"} deutsche Shapefiles. Einige können auch über Packages und Links geladen werden.*
 3. Über welche **Schlüsselvariable** füge ich meinen Datensatz und die geographischen Daten zusammen? Gibt es (sprachliche) Hürden (Deutschland != Germany != DEU)?
 
+<br>
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
