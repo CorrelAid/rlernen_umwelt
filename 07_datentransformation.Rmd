@@ -113,8 +113,8 @@ quiz(caption = NULL,
     answer("Jede Variable hat eine eigene Spalte", correct = TRUE),
     answer("Jede Beobachtung hat eine eigene Zeile", correct = TRUE),
     answer("Jeder Wert hat eine eigene Zelle", correct = TRUE),
-    correct = "Richtig, bei einem "tidy" Datensatz sprechen wir auch von einem "aufgeräumten" Datensatz. Das Chaos, das möglicherweise einmal geherrscht hat ist beseitigt und es herrscht Ordnung: eine Variable von Spalte, eine Beobachtung pro Zeile und ein Wert pro Zelle!",
-    incorrect = "Leider falsch, bei einem "tidy" Datensatz sprechen wir auch von einem "aufgeräumten" Datensatz. Was könnte man darunter verstehen? Versuche es nochmal oder schaue im Video nach!",
+    correct = "Richtig, bei einem 'tidy' Datensatz sprechen wir auch von einem 'aufgeräumten' Datensatz. Das Chaos, das möglicherweise einmal geherrscht hat ist beseitigt und es herrscht Ordnung: eine Variable von Spalte, eine Beobachtung pro Zeile und ein Wert pro Zelle!",
+    incorrect = "Leider falsch, bei einem 'tidy' Datensatz sprechen wir auch von einem 'aufgeräumten' Datensatz. Was könnte man darunter verstehen? Versuche es nochmal oder schaue im Video nach!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -402,7 +402,7 @@ audit <- plastics_processed %>%
   tidyr::pivot_longer(
     cols = c(hdpe, ldpe, o, pet, pp, ps, pvc), # Betroffene Variablen
     names_to = "plastic_type",                 # Zielspalte
-    values_to = "n_pieces"                     # Wertspalte
+    values_to = "n_pieces",                    # Wertspalte
     names_to = "plastic_type", 	               # Zielspalte
     values_to = "n_pieces" 		                 # Wertspalte
     ) %>%
