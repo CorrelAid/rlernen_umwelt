@@ -81,7 +81,7 @@ Alle weiteren Informationen, Links, etc. findet Ihr auch [hier](https://www.tidy
 
 ## **Wiederholung: Die Pipe `%>%`**
 
-Bei der ersten Einführung in R haben wir bereits mit der Funktion `nrow()` Bekanntschaft gemacht. Diese können wir nutzen, um die Zeilenanzahl unseres Datensatzes herauszufinden. Zu Beginn des Kurses haben wir damals noch mit der Funktion `nrow(data_raw)` gearbeitet, die Teil von `base R` ist. In der Zwischenzeit haben wir eine ganze Menge R-Erfahrung gesammelt und sind einen Schritt weiter: Wir haben verschiedene Packages und darin enthaltene Funktionen kennengelernt. So auch die **Pipe-Operator `(%>%)`** aus dem `tidyverse`! Das ist ein sehr nützliches Tool mit dem wir die Lesbarkeit und Nachvollziehbarkeit unseres Codes verbessern können. Wir können den Output einer Funktion direkt als Input für die nächste Funktion weitergeben, d.h. mehrere Funktionen mit einer „Pipeline“ verknüpfen. Dadurch wird unser Code deutlich strukturierter und nachvollziehbarer, da die Daten in einem Schritt durch eine Reihe von Funktionen geleitet wird. Trotzdem ist jede Funktion klar und eigenständig, wodurch wir Fehler weiterhin einfach anpassen oder korrigieren können. Unsere Datenbearbeitung wird dadurch deutlich „flüssiger“, da die Daten durch die verschiedenen Schritte „fließen“, ohne dass wir uns um temporäre Variablen kümmern müssen. 
+Bei der ersten Einführung in R haben wir bereits mit der Funktion `nrow()` Bekanntschaft gemacht. Diese können wir nutzen, um die Zeilenanzahl unseres Datensatzes herauszufinden. In der Zwischenzeit haben wir eine Menge R-Erfahrung gesammelt und sind einen Schritt weiter: Wir haben verschiedene Packages und darin enthaltene Funktionen kennengelernt. So auch die **Pipe-Operator `(%>%)`** aus dem `tidyverse`! Das ist ein sehr nützliches Tool mit dem wir die Lesbarkeit und Nachvollziehbarkeit unseres Codes verbessern können. Wir können den Output einer Funktion direkt als Input für die nächste Funktion weitergeben, d.h. mehrere Funktionen mit einer „Pipeline“ verknüpft. Unser Code wird strukturierter und nachvollziehbarer, Fehler können wir weiterhin  anpassen oder korrigieren und insgesamt wird unsere Datenbearbeitung dadurch deutlich „flüssiger". 
 Wir können nun also den **Pipe-Operator** anstatt der Funktion `ncol(plastics)` verwenden, um die Spaltenanzahl zu bestimmen:
 
 ``` {r 07pipebeispiel, exercise = TRUE}
@@ -159,22 +159,23 @@ data_raw <- rio::import('https://raw.githubusercontent.com/rfordatascience/tidyt
 
 ## **2. Schritt: Definition der Bereinigungsschritte**
 
-Nachdem wir unsere Daten erfolgreich importiert haben, können wir einen ersten Blick in den Datensatz werfen: Sieht ganz schön unordentlich aus oder? Um ein bisschen Ordnung in das Chaos zu bringen, müssen wir die Daten bereinigen. Bevor wir aber wild drauf los coden, überlegen wir uns erst einmal, welche Informationen am Ende des Bereinigungsprozesses existieren sollen und wie wir dieses Ziel erreichen.
+Wir werfen einen ersten Blick in unseren Datensatz und stellen fest, dass dieser ganz schön unordnetlich aussieht! Wir müssen für Ordnung sorgen und die Daten bereinigen. Bevor wir einfach wild drauf los coden, überlegen wir uns erst einmal, welche Informationen am Ende des Bereinigungsprozesses existieren sollen und wie wir dieses Ziel erreichen.
 
 *Hinweis: Unser Rohdatensatz enthält Daten aus den Jahren 2019 und 2020. Da wir uns an dieser Stelle erst einmal mit den grundlegenden Funktionen beschäftigen und keinen komplexen Zeitvergleich durchführen wollen, werden wir uns auf die Daten aus dem Jahr 2019 beschränken. Aufgrund der Covid-19-Pandemie stehen für das Jahr 2020 außerdem auch nur sehr wenige Daten zur Verfügung.*
 
-Einerseits interessieren wir uns für Daten (aus dem Jahr 2019), die die #Breakfreefromplastic-Community betreffen. Wir möchten nämlich das Verhalten der Community in den verschiedenen Ländern vergleichen. Daher erstellen wir einen Datensatz  **`community`** in dem jedes Land eine Beobachtung bildet (= jede Zeile steht für ein Land). Als relevante "communitybezogene" Variablen identifizieren wir **Kontinent, Land, Countrycode, Anzahl Plastikteile, Events und Freiwillige**. Diese werden in unseren Spalten abgetragen, schließlich interessieren wir uns unter anderem dafür, wie viele Events in den verschiedenen Ländern stattgefunden haben oder wie viele Plastikteile jeweils gesammelt werden konnten.
-Andererseits interessieren wir uns auch für Daten (aus dem Jahr 2019), die die Firmen betreffen, die für den Plastikmüll verantwortlich sind und die wir somit einer Prüfung (engl. Audit) unterziehen. Daher erstellen wir einen zweiten Datensatz mit dem Namen **`audit`**. Weil wir uns neben der herstellenden Firma auch für die Art des Plastikmülls (Plastiktyp) und das Land interessieren, in dem der Müll gefunden wurde bildet **Jede Zeile eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land**. Als "auditbezogene" Daten identifizieren wir folgende Variablen: **Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke**. Diese werden in unseren Spalten abgetragen.
+Einerseits interessieren wir uns für Daten, die die #Breakfreefromplastic-Community betreffen. Wir möchten nämlich das Verhalten der Community in den verschiedenen Ländern vergleichen. Daher erstellen wir einen Datensatz  **`community`** in dem jedes Land eine Beobachtung bildet (= jede Zeile steht für ein Land). Als relevante "communitybezogene" Variablen identifizieren wir **Kontinent, Land, Countrycode, Anzahl Plastikteile, Events und Freiwillige**. Diese werden in unseren Spalten abgetragen.
 
-Folgende Datensätze wollen wir also am Ende dieser Session erstellen:
-- Datensatz `community`:
-  - Eine Zeile = Ein Land
-  - Variablen: Kontinent, Land, Countrycode, Anzahl Plastikstücke, Events und Freiwillige
-- Datensatz `audit`:
-  - Eine Zeile = Eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land
-  - Variablen: Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke
+Andererseits interessieren wir uns auch für Daten, die die verantwortlichen Firmen betreffen, da wir deren Müllproduktion einer Prüfung (engl. Audit) unterziehen wollen. Wir erstellen einen zweiten Datensatz mit dem Namen **`audit`**. Weil wir uns neben der herstellenden Firma auch für die Art des Plastikmülls (Plastiktyp) und das Land interessieren, in dem der Müll gefunden wurde bildet **Jede Zeile eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land**. Als "auditbezogene" Daten identifizieren wir folgende Variablen: **Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke**. Diese werden in unseren Spalten abgetragen.
 
-Unser Ziel ist nun also klar definiert. Nun müssen wir uns überlegen, wie wir dieses Ziel erreichen können. Zum einen wollen wir natürlich ausschließlich "vollständige" Daten betrachten, d.h. Fälle, in denen zum Beispiel kein Land angegeben ist ("EMPTY") sortieren wir aus - ebenso Beobachtungen aus dem Jahr 2020 (s. Hinweis). Auch die Ländernamen müssen wir bearbeiten, da diese nicht immer einheitlich angegeben wurden (z.B. ECUADOR, Ecuador) - manche Namen müssen wir auch zunächst übersetzen (z.B. Cote D_ivoire). Abschließend müssen wir die "community- bzw- auditbezogenen" Variablen auswählen und den Datensatz entsprechend umformen. Wir entscheiden und also für folgendes Vorgehen:
+Folgende Datensätze wollen wir also im Laufe dieser Session erstellen: <br>
+  - **Datensatz `community`**: <br>
+    - Eine Zeile = Ein Land <br>
+    - Variablen: Kontinent, Land, Countrycode, Anzahl Plastikstücke, Events und Freiwillige <br>
+  - **Datensatz `audit`**: <br>
+    - Eine Zeile = Eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land <br>
+    - Variablen: Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke <br>
+
+Nun müssen wir uns überlegen, wie wir dieses Ziel erreichen können. Zum einen wollen wir natürlich ausschließlich "vollständige" Daten betrachten, d.h. Fälle, in denen zum Beispiel kein Land angegeben ist ("EMPTY") sortieren wir aus - ebenso Beobachtungen aus dem Jahr 2020 (s. Hinweis). Auch die Ländernamen müssen wir bearbeiten, da diese nicht immer einheitlich angegeben wurden (z.B. ECUADOR, Ecuador) - manche Namen müssen wir auch zunächst übersetzen (z.B. Cote D_ivoire). Abschließend müssen wir die "community- bzw- auditbezogenen" Variablen auswählen und den Datensatz entsprechend umformen. Wir entscheiden und also für folgendes Vorgehen:
 
   1. Zeilen, in denen das Land "EMPTY" ist, Sammelzeilen und Beobachtungen aus dem Jahr 2020 aussortieren. <br>
   2. Ländernamen bereinigen und übersetzen. <br>
