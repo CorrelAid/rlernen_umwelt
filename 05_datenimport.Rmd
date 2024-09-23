@@ -217,7 +217,7 @@ head(strukturdaten)
 grade_this_code()
 ```
 
-Das war es auch schon zum Import von CSV-Dateien, machen wir also weiter mit den Excel-Datein!
+Das war es auch schon zum Import von CSV-Dateien, machen wir also weiter mit den Excel-Dateien!
 
 ## **Excel-Dateien**
 
@@ -253,7 +253,13 @@ Wenn wir den Code nun "übersetzen", laden wir mit der Funktion `readxl::read_ex
 Versucht nun einmal mithilfe der gleichen Funktion das zweite Arbeitsblatt "by_country" der Datei "Beach Clean Up - Google Trends.xlsx" zu laden. Ihr könnt dazu den oberen Code kopieren und dann die Namen der Datei und des Arbeitsblatts an der richtigen Stelle verändern!
 
 ```{r exercise_excel, exercise = TRUE}
-# Euer Code hier
+googletrendstime_plasticpollution <- readxl::read_excel(
+  path = here::here("daten/Plastic Pollution - Google Trends.xlsx"), # Dateipfad/-name
+  sheet = "???",                   # Arbeitsblatts
+  col_names = TRUE,                # Spaltennamen
+  na = c("", NA))                  # fehlende Werte
+
+head(googletrendstime_plasticpollution)
 ```
 
 ```{r exercise_excel-solution}
@@ -300,7 +306,7 @@ An dieser Stelle seid Ihr dran! Ihr dürft gerne veruchen, Eure **eigene Datens�
 
 1. Versucht, den "Plastics"-Datensatz (im Ordner `daten/plastics.csv` im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"}) mit diesem Code **lokal zu laden**.
 2. Ladet den "Plastics"-Datensatz über einen [**Hyperlink**](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv){target="_blank"}.
-3. **Bonus:** Noch einmal zurück zur Bundeswahlleiterin und den Strukturdaten zur Bundestagswahl 20217, die uns [hier](https://www.bundeswahlleiterin.de/dam/jcr/f7566722-a528-4b18-bea3-ea419371e300/btw2017_strukturdaten.csv) als CSV-Datei zum Download zur Verfügung gestellt werden. Versucht die Datei manuell zu importieren. Achtet dabei auf den im Kapitel beschriebenen Ablauf und öffnet die Datei zunächst mit einem Texteditor: Welche Formatierung (encoding) hat sie? Ihr könnt die Formatierung anschließend beim manuellen Import unter "Locale" ändern. Die 2021er Strukturdaten lagen in der UTF-8 Kodierung vor. (Test: Was passiert, wenn wir die Locale nicht ändern?) Des Weiteren müsst Ihr natürlich wieder auf die Argumente *skip* und *delim* achten.
+3. **Bonus:** In der interaktiven Übung habne wir uns die Strukturdaten zur Bundestagswahl 2021 angeschaut - diese lagen uns in der **UTF-8** Kodierung vor. Kommen wir nun noch einmal zurück zu diesen Sturkturdaten, wobei wir uns nun die Daten aus dem Jahr 2017 anschauen möchten, die wir [hier](https://www.bundeswahlleiterin.de/dam/jcr/f7566722-a528-4b18-bea3-ea419371e300/btw2017_strukturdaten.csv) als CSV-Datei downloaden können. Versucht die Datei manuell zu importieren. Achtet dabei auf den im Kapitel beschriebenen Ablauf und öffnet die Datei zunächst mit einem Texteditor: Welche Formatierung (encoding) hat sie? Ihr könnt die Formatierung anschließend beim manuellen Import unter "Locale" ändern. (Test: Was passiert, wenn wir die Locale nicht ändern?) Des Weiteren müsst Ihr natürlich wieder auf die Argumente *skip* und *delim* achten.
 
 # **Zusätzliche Ressourcen**
 - [How to Import Data Into R: A Tutorial](https://www.datacamp.com/tutorial/r-data-import-tutorial?utm_source=google&utm_medium=paid_search&utm_campaignid=19589720821&utm_adgroupid=157156375351&utm_device=c&utm_keyword=&utm_matchtype=&utm_network=s&utm_adpostion=&utm_creative=684592139663&utm_targetid=dsa-2218886984060&utm_loc_interest_ms=&utm_loc_physical_ms=9043008&utm_content=&utm_campaign=230119_1-sea~dsa~tofu_2-b2c_3-row-p1_4-prc_5-na_6-na_7-le_8-pdsh-go_9-nb-e_10-na_11-na&gad_source=5&gclid=EAIaIQobChMIqYmK_a6SiAMVjBCiAx2LsBUwEAAYASAAEgLnnfD_BwE){target="_blank"} von DataCamp (engl.) 
