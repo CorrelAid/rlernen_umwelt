@@ -458,7 +458,7 @@ Ihr kennt alle `dplyr`-Verben und seid fit für die Datentransformation! Mit dem
 
 # **Und jetzt Ihr**
 
-Wenn Ihr einen **eigenen Datensatz** habt - den Ihr letzte Woche bereits in R importiert habt - dann könnt Ihr jetzt versuchen, diesen zu bereinigen. Wenn Ihr nicht genug von Datenbereinigung bekommen könnt oder Ihr keinen eigenen Datensatz habt, dann schaut Euch das **R Markdown: 06_datentransformation-uebung.Rmd** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter 06_datentransformation) an und versucht die Aufgaben darin zu bearbeiten. 
+Wenn Ihr einen **eigenen Datensatz** habt - den Ihr letzte Woche bereits in R importiert habt - dann könnt Ihr jetzt versuchen, diesen zu bereinigen. Wenn Ihr nicht genug von Datenbereinigung bekommen könnt oder Ihr keinen eigenen Datensatz habt, dann schaut Euch das **R Markdown: 07_datentransformation-uebung.R** (im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter 07_datentransformation) an und versucht die Aufgaben darin zu bearbeiten. 
 
 # **Zusätzliche Ressourcen**
 
