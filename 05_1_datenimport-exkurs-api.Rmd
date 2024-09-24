@@ -4,6 +4,7 @@ author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
   - Nina Hauser
+  - Leo Preu
   - Zoé Wolter
   - Jonas Lorenz
 output: 
@@ -41,6 +42,8 @@ pages <- get_pages(content = waste_data)
 ```{r results='asis'}
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
+
+![*Video: Eigene API-Anfragen (10min)*](https://youtu.be/DePm6F_6YMA)
 
 # **Was sind APIs?**
 
@@ -109,19 +112,10 @@ Daten mit APIs, die in R-Packages eingebettet sind, zu importieren, ist sehr ein
 Schaut gerne,  ob Eure Lieblingsdatenquelle ein zugehöriges R-Package hat! Ihr könnt dazu eine eigene Suchmaschinenrecherche durchführen oder einen Blick in diese Liste aller R-Packages, über [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html){target="_blank"} werfen - vielleicht ist da etwas für Euch dabei. "CRAN" steht übrigens für **Comprehensive R Archive Network (dt. Umfassendes R-Archivnetzwerk)** und ist die zentrale Stelle für geprüfte Package-Distribution, die installiert werden können. <br>
 *Hinweis: Manche Packages wurden (noch) nicht in die Liste der von RStudio geprüften CRAN-Packages aufgenommen. Ihre Installation erfolgt zumeist über den Befehl `remotes::install_github("Link zum Github-Repository")`.*
 
-# **Interaktive Übung**
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/deed.de)
+# **Eigene API Anfragen**
 
-*"Eigene API-Anfragen (Exkurs)" von Leo Preu in "R Lernen - Der Datenkurs von und für die Zivilgesellschaft" von CorrelAid e.V. Lizensiert unter [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.de).*
-
-![*Video: Eigene API-Anfragen (10min)*](https://youtu.be/DePm6F_6YMA)
-
-## **Eigene API Anfragen**
-
-Eine API (Application Programming Interface) ist eine Schnittstelle, die ein System bereitstellt, um anderen Programmen die Interaktion zu ermöglichen. 
-
-Eine Interaktion sieht so aus:
+Eine Interaktion mit Hilfe einer API sieht so aus:
 
 1. Der Client macht eine **Anfrage (engl. Request**) an die API
 2. Die API verarbeitet die Anfrage und gibt eine **Antwort (engl.: Response)** zurück. 
@@ -331,5 +325,7 @@ Aus Sicherheitsgründen ist es zudem sehr wichtig, dass wir unseren Token oder s
 # **Zusätzliche Ressourcen**
 - [APIs in R](https://app.dataquest.io/course/apis-in-r){target="_blank"} auf DataQuest (engl.)
 - Ihr wollt mehr darüber lernen, wie man API-Anfragen selbst schreibt? Dataquest bietet den Kurs ["APIs in R"](https://app.dataquest.io/course/apis-in-r){target="_blank"} an.
+
+<br>
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>

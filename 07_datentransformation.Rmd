@@ -1,5 +1,5 @@
 ---
-title: "Datentransformation"
+title: "Datentransformation Basics"
 author: CorrelAid e.V.
 date: "`r Sys.Date()`"
 authors:
@@ -81,7 +81,7 @@ Alle weiteren Informationen, Links, etc. findet Ihr auch [hier](https://www.tidy
 
 ## **Wiederholung: Die Pipe `%>%`**
 
-Bei der ersten Einführung in R haben wir bereits mit der Funktion `nrow()` Bekanntschaft gemacht. Diese können wir nutzen, um die Zeilenanzahl unseres Datensatzes herauszufinden. Zu Beginn des Kurses haben wir damals noch mit der Funktion `nrow(data_raw)` gearbeitet, die Teil von `base R` ist. In der Zwischenzeit haben wir eine ganze Menge R-Erfahrung gesammelt und sind einen Schritt weiter: Wir haben verschiedene Packages und darin enthaltene Funktionen kennengelernt. So auch die **Pipe-Operator `(%>%)`** aus dem `tidyverse`! Das ist ein sehr nützliches Tool mit dem wir die Lesbarkeit und Nachvollziehbarkeit unseres Codes verbessern können. Wir können den Output einer Funktion direkt als Input für die nächste Funktion weitergeben, d.h. mehrere Funktionen mit einer „Pipeline“ verknüpfen. Dadurch wird unser Code deutlich strukturierter und nachvollziehbarer, da die Daten in einem Schritt durch eine Reihe von Funktionen geleitet wird. Trotzdem ist jede Funktion klar und eigenständig, wodurch wir Fehler weiterhin einfach anpassen oder korrigieren können. Unsere Datenbearbeitung wird dadurch deutlich „flüssiger“, da die Daten durch die verschiedenen Schritte „fließen“, ohne dass wir uns um temporäre Variablen kümmern müssen. 
+Bei der ersten Einführung in R haben wir bereits mit der Funktion `nrow()` Bekanntschaft gemacht. Diese können wir nutzen, um die Zeilenanzahl unseres Datensatzes herauszufinden. In der Zwischenzeit haben wir eine Menge R-Erfahrung gesammelt und sind einen Schritt weiter: Wir haben verschiedene Packages und darin enthaltene Funktionen kennengelernt. So auch die **Pipe-Operator `(%>%)`** aus dem `tidyverse`! Das ist ein sehr nützliches Tool mit dem wir die Lesbarkeit und Nachvollziehbarkeit unseres Codes verbessern können. Wir können den Output einer Funktion direkt als Input für die nächste Funktion weitergeben, d.h. mehrere Funktionen mit einer „Pipeline“ verknüpft. Unser Code wird strukturierter und nachvollziehbarer, Fehler können wir weiterhin  anpassen oder korrigieren und insgesamt wird unsere Datenbearbeitung dadurch deutlich „flüssiger". 
 Wir können nun also den **Pipe-Operator** anstatt der Funktion `ncol(plastics)` verwenden, um die Spaltenanzahl zu bestimmen:
 
 ``` {r 07pipebeispiel, exercise = TRUE}
@@ -113,8 +113,8 @@ quiz(caption = NULL,
     answer("Jede Variable hat eine eigene Spalte", correct = TRUE),
     answer("Jede Beobachtung hat eine eigene Zeile", correct = TRUE),
     answer("Jeder Wert hat eine eigene Zelle", correct = TRUE),
-    correct = "Richtig, bei einem "tidy" Datensatz sprechen wir auch von einem "aufgeräumten" Datensatz. Das Chaos, das möglicherweise einmal geherrscht hat ist beseitigt und es herrscht Ordnung: eine Variable von Spalte, eine Beobachtung pro Zeile und ein Wert pro Zelle!",
-    incorrect = "Leider falsch, bei einem "tidy" Datensatz sprechen wir auch von einem "aufgeräumten" Datensatz. Was könnte man darunter verstehen? Versuche es nochmal oder schaue im Video nach!",
+    correct = "Richtig, bei einem 'tidy' Datensatz sprechen wir auch von einem 'aufgeräumten' Datensatz. Das Chaos, das möglicherweise einmal geherrscht hat ist beseitigt und es herrscht Ordnung: eine Variable von Spalte, eine Beobachtung pro Zeile und ein Wert pro Zelle!",
+    incorrect = "Leider falsch, bei einem 'tidy' Datensatz sprechen wir auch von einem 'aufgeräumten' Datensatz. Was könnte man darunter verstehen? Versuche es nochmal oder schaue im Video nach!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -159,22 +159,23 @@ data_raw <- rio::import('https://raw.githubusercontent.com/rfordatascience/tidyt
 
 ## **2. Schritt: Definition der Bereinigungsschritte**
 
-Nachdem wir unsere Daten erfolgreich importiert haben, können wir einen ersten Blick in den Datensatz werfen: Sieht ganz schön unordentlich aus oder? Um ein bisschen Ordnung in das Chaos zu bringen, müssen wir die Daten bereinigen. Bevor wir aber wild drauf los coden, überlegen wir uns erst einmal, welche Informationen am Ende des Bereinigungsprozesses existieren sollen und wie wir dieses Ziel erreichen.
+Wir werfen einen ersten Blick in unseren Datensatz und stellen fest, dass dieser ganz schön unordnetlich aussieht! Wir müssen für Ordnung sorgen und die Daten bereinigen. Bevor wir einfach wild drauf los coden, überlegen wir uns erst einmal, welche Informationen am Ende des Bereinigungsprozesses existieren sollen und wie wir dieses Ziel erreichen.
 
 *Hinweis: Unser Rohdatensatz enthält Daten aus den Jahren 2019 und 2020. Da wir uns an dieser Stelle erst einmal mit den grundlegenden Funktionen beschäftigen und keinen komplexen Zeitvergleich durchführen wollen, werden wir uns auf die Daten aus dem Jahr 2019 beschränken. Aufgrund der Covid-19-Pandemie stehen für das Jahr 2020 außerdem auch nur sehr wenige Daten zur Verfügung.*
 
-Einerseits interessieren wir uns für Daten (aus dem Jahr 2019), die die #Breakfreefromplastic-Community betreffen. Wir möchten nämlich das Verhalten der Community in den verschiedenen Ländern vergleichen. Daher erstellen wir einen Datensatz  **`community`** in dem jedes Land eine Beobachtung bildet (= jede Zeile steht für ein Land). Als relevante "communitybezogene" Variablen identifizieren wir **Kontinent, Land, Countrycode, Anzahl Plastikteile, Events und Freiwillige**. Diese werden in unseren Spalten abgetragen, schließlich interessieren wir uns unter anderem dafür, wie viele Events in den verschiedenen Ländern stattgefunden haben oder wie viele Plastikteile jeweils gesammelt werden konnten.
-Andererseits interessieren wir uns auch für Daten (aus dem Jahr 2019), die die Firmen betreffen, die für den Plastikmüll verantwortlich sind und die wir somit einer Prüfung (engl. Audit) unterziehen. Daher erstellen wir einen zweiten Datensatz mit dem Namen **`audit`**. Weil wir uns neben der herstellenden Firma auch für die Art des Plastikmülls (Plastiktyp) und das Land interessieren, in dem der Müll gefunden wurde bildet **Jede Zeile eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land**. Als "auditbezogene" Daten identifizieren wir folgende Variablen: **Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke**. Diese werden in unseren Spalten abgetragen.
+Einerseits interessieren wir uns für Daten, die die #Breakfreefromplastic-Community betreffen. Wir möchten nämlich das Verhalten der Community in den verschiedenen Ländern vergleichen. Daher erstellen wir einen Datensatz  **`community`** in dem jedes Land eine Beobachtung bildet (= jede Zeile steht für ein Land). Als relevante "communitybezogene" Variablen identifizieren wir **Kontinent, Land, Countrycode, Anzahl Plastikteile, Events und Freiwillige**. Diese werden in unseren Spalten abgetragen.
 
-Folgende Datensätze wollen wir also am Ende dieser Session erstellen:
-- Datensatz `community`:
-  - Eine Zeile = Ein Land
-  - Variablen: Kontinent, Land, Countrycode, Anzahl Plastikstücke, Events und Freiwillige
-- Datensatz `audit`:
-  - Eine Zeile = Eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land
-  - Variablen: Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke
+Andererseits interessieren wir uns auch für Daten, die die verantwortlichen Firmen betreffen, da wir deren Müllproduktion einer Prüfung (engl. Audit) unterziehen wollen. Wir erstellen einen zweiten Datensatz mit dem Namen **`audit`**. Weil wir uns neben der herstellenden Firma auch für die Art des Plastikmülls (Plastiktyp) und das Land interessieren, in dem der Müll gefunden wurde bildet **Jede Zeile eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land**. Als "auditbezogene" Daten identifizieren wir folgende Variablen: **Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke**. Diese werden in unseren Spalten abgetragen.
 
-Unser Ziel ist nun also klar definiert. Nun müssen wir uns überlegen, wie wir dieses Ziel erreichen können. Zum einen wollen wir natürlich ausschließlich "vollständige" Daten betrachten, d.h. Fälle, in denen zum Beispiel kein Land angegeben ist ("EMPTY") sortieren wir aus - ebenso Beobachtungen aus dem Jahr 2020 (s. Hinweis). Auch die Ländernamen müssen wir bearbeiten, da diese nicht immer einheitlich angegeben wurden (z.B. ECUADOR, Ecuador) - manche Namen müssen wir auch zunächst übersetzen (z.B. Cote D_ivoire). Abschließend müssen wir die "community- bzw- auditbezogenen" Variablen auswählen und den Datensatz entsprechend umformen. Wir entscheiden und also für folgendes Vorgehen:
+Folgende Datensätze wollen wir also im Laufe dieser Session erstellen: <br>
+  - **Datensatz `community`**: <br>
+    - Eine Zeile = Ein Land <br>
+    - Variablen: Kontinent, Land, Countrycode, Anzahl Plastikstücke, Events und Freiwillige <br>
+  - **Datensatz `audit`**: <br>
+    - Eine Zeile = Eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land <br>
+    - Variablen: Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke <br>
+
+Nun müssen wir uns überlegen, wie wir dieses Ziel erreichen können. Zum einen wollen wir natürlich ausschließlich "vollständige" Daten betrachten, d.h. Fälle, in denen zum Beispiel kein Land angegeben ist ("EMPTY") sortieren wir aus - ebenso Beobachtungen aus dem Jahr 2020 (s. Hinweis). Auch die Ländernamen müssen wir bearbeiten, da diese nicht immer einheitlich angegeben wurden (z.B. ECUADOR, Ecuador) - manche Namen müssen wir auch zunächst übersetzen (z.B. Cote D_ivoire). Abschließend müssen wir die "community- bzw- auditbezogenen" Variablen auswählen und den Datensatz entsprechend umformen. Wir entscheiden und also für folgendes Vorgehen:
 
   1. Zeilen, in denen das Land "EMPTY" ist, Sammelzeilen und Beobachtungen aus dem Jahr 2020 aussortieren. <br>
   2. Ländernamen bereinigen und übersetzen. <br>
@@ -201,9 +202,9 @@ Hier eine kurze Übersicht über die Funktionen:
 
 ![Graphische Veranschaulichung der filter()-Funktion](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/filter.png?raw=true){#id .class width=60% height=60%}
 
-Beginnen wir also einmal mit der Funktion **`dplyr::filter()`** mit der wir - wie der Name bereits vermuten lässt - **Zeilen bzw. Beobachtungen filtern** können. Wir betrachten also zunächst den gesamten Datensatz und lesen dann mithilfe der Funktion die Zeilen aus, die wir behalten wolllen. Dazu definieren wir bestimmte Bedingung(en), die die entsprechenden Zeilen erfüllen müssen. Die Grammatik, um diese Bedingungen festzulegen, haben wir bereits in der Session "Einführung in (R)Studio" unter dem Namen **"Kontrollstrukturen"** kennengelernt - vielleicht erinnert Ihr Euch. Wir schauen uns das Ganze aber auch direkt einmal an einem Beispiel an.
+Beginnen wir also einmal mit der Funktion **`dplyr::filter()`** mit der wir - wie der Name bereits vermuten lässt - **Zeilen bzw. Beobachtungen filtern** können. Wir betrachten also zunächst den gesamten Datensatz und lesen dann mithilfe der Funktion die Zeilen aus, die wir behalten wolllen. Dazu definieren wir bestimmte Bedingung(en), die die entsprechenden Zeilen erfüllen müssen.
 
-Da wir für die Analyse des Datensatzes einen **Ländervergleich** planen, wollen wir alle Beobachtungen aussortieren, für die kein Land hinterlegt wurde. Wenn kein Land hinterlegt ist, ist die Zeile `country` leer. Dafür formulieren wir folgende Bedingung: `country != "EMPTY"` *(Sprich: Die Spalte 'country' darf NICHT leer sein)*. In manchen Fällen wurden außerdem die Firmen, die für den Plasikmüll verantwortlich sind "aufsummiert" bzw. vermischt. In diesen Fällen wird in der Zeile `parent_company` der Wert "Grand Total" angegeben. Um diese Fälle ebenfalls auszusortieren formulieren wir die zweite Bedingung `parent_company != "Grand Total"` *(Sprich: Die Spalte 'parent_company' darf NICHT den Wert 'Grand Total' haben)*. Entsprechend sieht unser Code wie folgt aus:
+Für unseren geplanten Ländervergleich, wollen wir einerseits alle Beobachtungen **aussortieren**, für die kein Land hinterlegt wurde und andererseits alle Beobachtungen, bei denen die Firmen "aufsummiert" bzw. vermischt wurden. Wenn kein Land hinterlegt ist, ist die Zeile `country` leer. Im Falle der Firmen hat die Zeile `parent_company`den Wert "Grand Total". Mithilfe des Ausdrucks **`variable != wert`** (*Sprich: "Variable **ist ungleich** Wert X."*) können wir entsprechenden Beobachtungen aussortieren:
 
 ``` {r 07overview_data, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
@@ -213,7 +214,7 @@ data_raw %>%
                 parent_company != "Grand Total")
 ```
 
-Der erste Schritt ist geschafft! Wie bereits erwähnt, müssen wir aufgrund der Covid-19-Pandemie auch die Daten für das Jahr 2020 von unseren Analysen ausschließen, da diese unsere Ergebnisse verfälschen würden. Versucht das doch einmal selbst und ergänzt dazu den oberen Code um die entsprechende Bedingung:
+Der erste Schritt ist geschafft! Wie bereits erwähnt, müssen wir aufgrund der Covid-19-Pandemie auch die Daten für das Jahr 2020 von unseren Analysen ausschließen, da diese unsere Ergebnisse verfälschen würden. Versucht das doch einmal selbst und ergänzt dazu den Code um die entsprechende Bedingung:
 
 ``` {r exercise_07filter_data_exercise, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
@@ -243,16 +244,15 @@ grade_this_code()
 
 ### **Die `mutate()`-Funktion**
 
-![Graphische Veranschaulichung der mutate()-Funktion](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/mutate.png?raw=true){#id .class width=60% height=60%}
+![*Graphische Veranschaulichung der mutate()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/mutate.png?raw=true){#id .class width=60% height=60%}
 
-Nun wollen wir die die Variable `country` (zu dt. Land) bereinigen. Denn es herrscht wieder einmal Unordnung: Die Länderbezeichnungen für Großbritannien und die USA sind nicht standardisiert, die Groß- und Kleinschreibung ist vollkommen durcheinander und außerdem wollen wir die deutschen Bezeichnungen verwenden, sowie Kontinent und Countrycode ergänzen. Klingt nach sehr viel Arbeit, aber zum Glück bietet uns das `dplyr`-Package mit der Funktion **`mutate`** die Möglichkeit, Berechnungen auf Spaltenebene durchzuführen. Oder einfach gesagt: Wir können unserem Datensatz neue Variablen hinzufügen oder bestehende Variablen bearbeiten. Die grundlegende Syntax folgt folgender Logik: `dplyr::mutate(name_der_neuen_spalte = bedingung1 + bedingung2 + ...)`.
+Nun wollen wir die die Variable `country` (zu dt. Land) bereinigen. Denn es herrscht wieder einmal Unordnung: Die Länderbezeichnungen für Großbritannien und die USA sind nicht standardisiert, die Groß- und Kleinschreibung ist vollkommen durcheinander und außerdem wollen wir die deutschen Bezeichnungen verwenden, sowie Kontinent und Countrycode ergänzen. Klingt nach sehr viel Arbeit, aber zum Glück bietet uns das `dplyr`-Package mit der Funktion **`mutate`** die Möglichkeit, Berechnungen auf Spaltenebene durchzuführen, d.h. wir können unserem Datensatz neue **Variablen hinzufügen** oder bestehende **Variablen bearbeiten**. Die grundlegende Syntax folgt folgender Logik: `dplyr::mutate(name_der_neuen_spalte = bedingung1 + bedingung2 + ...)`.
 
-In diesem fall brauchen wir allerdings noch zwei weitere Funktionen, die wir mit der `mutate()`-Funktion kombinieren können. Zunächst einmal möchten wir die Ländernamen vereinheitlichen ("United Kingdom" und "United States"). Dafür verwenden wir die Funktion **`case_when()`** aus dem `dplyr` Package. Mit dieser Funktion können wir bestimmte Werte in einen anderen Wert transformieren - das Einzige, was wir dafür festlegen müssen, ist die entsprechende Wenn-Dann-Bedingung. Beispiel: `dplyr::case_when(country == "United Kingdom of Great Britain & Northern Ireland" ~ "United Kingdom", TRUE ~ country).
-*(Sprich: Wenn (`dplyr::case_when()`) die Ländervariable `country == ...` den Wert `"United Kingdom of Great Britain & Northern Ireland"` hat, dann (`~`) erzeuge daraus den Wert `"United Kingdom"`. Dann füge diesen Wert der Variable "country" hinzu (`TRUE ~ country`)).*
+In diesem fall brauchen wir allerdings noch zwei weitere Funktionen, die wir mit der `mutate()`-Funktion kombinieren können. Zunächst einmal möchten wir die Ländernamen vereinheitlichen ("United Kingdom" und "United States"). Dafür verwenden wir die Funktion **`case_when()`** aus dem `dplyr` Package. Mit dieser Funktion können wir bestimmte Werte in einen anderen Wert transformieren - das Einzige, was wir dafür festlegen müssen, ist die entsprechende Wenn-Dann-Bedingung *(Sprich: "Wenn die Variable 'country' den Wert X hat, dann weise dieser Variable den Wert Y zu.")*. 
 
-In einem zweiten Schritt bedienen wir uns am Package **`stringr`**, das ebenfalls im Tidyverse enthalten ist und uns dabei hilft, Zeichenketten (engl. Strings) relativ einfach zu manipulieren und analysieren. Mit der darin enthaltenen Funktion **`str_to_title()`** wird nämlich ein "Titel" erzeugt, d.h. der Anfangsbuchstabe wird großgeschrieben. Mithilfe des Packages **`countrycode`** können wir außerdem nun die deutschen Bezeichnungen verwenden, da es uns das Übersetzen und Kodieren der Ländernamen ermöglicht.
+In einem zweiten Schritt können wir mithilfe dea **`stringr`**-Packages (ebenfalls im Tidyverse enthalten), Zeichenketten (engl. Strings) relativ einfach manipulieren und analysieren. Mit der darin enthaltenen Funktion **`str_to_title()`** können wir "Titel" (= großer Anfangsbuchstabe) erzeugen und somit die Ländernamen vereinheitlichen. Mithilfe des Packages **`countrycode`** können wir außerdem nun die deutschen Bezeichnungen verwenden.
 
-Wichtig: Welche Funktionen Ihr am Ende für Eure Bereinigungsschritte braucht, hängt auch immer vom Datensatz ab. Gerade am Anfang kann das etwas unübersichtlich werden - vor allem mit den verschiedenen Funktionen aus unterschiedlichen Packages. Keine Sorge, mit etwas mehr Erfahrung und einer Googlerecherche lassen sich für die meisten Herausforderungen wirklich tolle Hilfsmittel finden!*
+**Wichtig:** Welche Funktionen Ihr am Ende für Eure Bereinigungsschritte braucht, hängt auch immer vom Datensatz ab. Gerade am Anfang kann das etwas unübersichtlich werden - vor allem mit den verschiedenen Funktionen aus unterschiedlichen Packages. Keine Sorge, mit etwas mehr Erfahrung und einer Googlerecherche lassen sich für die meisten Herausforderungen wirklich tolle Hilfsmittel finden!
 
 Nun wollen wir das Ganze aber auch selbst einmal ausprobieren! Der Code ist bereits schon geschrieben, allerdings fehlen an manchen Stellen (gekennzeichnet durch: ???) Funktionen und Variablennamen. Ergänzt diese an den entsprechenden Stellen, um alle Stellen zu finden, müsst Ihr etwas scrollen.
 
@@ -340,14 +340,16 @@ Ein Großteil unserer Datenbereinigung ist nun abgeschlossen - das Ergebnis steh
 
 ### **Die `group_by()`- und `summarise()`-Funktion**
 
-![Graphische Veranschaulichung der group_by()-Funktion](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/groupby.png?raw=true){#id .class width=60% height=60%}
-![Graphische Veranschaulichung der summarise()-Funktion](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/summarize.png?raw=true){#id .class width=60% height=60%}
+![*Graphische Veranschaulichung der group_by()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/groupby.png?raw=true){#id .class width=60% height=60%}
+![*Graphische Veranschaulichung der summarise()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/summarize.png?raw=true){#id .class width=60% height=60%}
 
-Nach wie vor verfolgen wir mit unserer Datenbereinigung das Ziel der **Ländervergleiche**: Wir möchten herausfinden, in welchen Ländern die meisten Plastikteile gesammelt und die meisten Events durchgeführt wurden oder wo die meisten Freiwilligen aktiv sind. Dazu müssen wir innerhalb des `community` Datensatzes eine Struktur erschaffen, in dem eine Beobachtung pro Land vorhanden ist - wir müssen unsere bereinigten Daten also pro Land **gruppieren**. Denn aktuell gibt es für die meisten Länder unzählige verschiedene Beobachtungen, wodurch diese länderübergreifenden Vergleiche (noch) nicht möglich sind. 
+Wir möchten weiterhin herausfinden, in welchen Ländern die meisten Plastikteile gesammelt, die meisten Events durchgeführt und die meisten Freiwilligen aktiv sind. Dazu müssen wir innerhalb des `community` Datensatzes eine Struktur erschaffen, in dem eine Beobachtung pro Land vorhanden ist - wir müssen unsere bereinigten Daten also pro Land **gruppieren**.
 
-Um unserem Ziel näher zu kommen greifen wir auf zwei weitere Funktionen aus dem `dplyr` zurück, die und häufig miteinander kombiniert werden: Die Funktionen **`group_by()`** und **`summarise()`** (auch: `summarize()`). Zusammen sind sie besonders nützlich für das Erstellen von Gruppenzusammenfassungen und die Berechnung von Statistiken für verschiedene Kategorien innerhalb eines Datensatzes. 
-Die Funktion **`group_by()`** wird dabei  verwendet, um Daten nach einer oder mehreren Variablen zu gruppieren, wodurch wir im Anschluss Berechnungen oder Zusammenfassungen auf Gruppenebene durchführen können. Die **`summarise()`**-Funktion  (oder: `summarize()`) kennen wir bereits. In Kombination mit der `group_by()`-Funktion können wir die gewohnten zusammenfassenden Statistiken oder Berechnungen nun für jede Gruppe im Datensatz erstellen.
-In der Praxis gruppieren wir also zuerst entsprechend der Kontinente und Länder (`dplyr::group_by(continent, country, countrycode)`). Anschließend müssen wir ebenfalls entscheiden, wie die anderen Variablen zusammengefasst werden (`dplyr::summarise(…)`). In diesem Fall addieren wir die Plastikteile und wählen für die Anzahl der Events und Freiwilligen genau einen Wert aus. Diese sind im Originaldatensatz mehrfach vorhanden - etwas, das typischerweise beim Zusammenfügen von Datensätzen entsteht. Aber schauen wir uns das ganze Vorgehen doch einmal direkt in unserem R-Code an:
+Dafür verwenden wir zwei neue Funktionen, die und häufig miteinander kombiniert werden: **`group_by()`** und **`summarise()`** (auch: `summarize()`). Zusammen sind sie besonders nützlich für das Erstellen von Zusammenfassungen und die Berechnung von Statistiken auf Gruppenebene. 
+Die Funktion `group_by()` wird dabei  verwendet, um Daten nach einer oder mehreren Variablen zu gruppieren, damit wir im Anschluss mit der `summarise()`-Funktion die bereits bekannten zusammenfassenden **Statistiken** berechnen können. <br> 
+
+In der Praxis gruppieren wir also zuerst entsprechend der Kontinente und Länder, bevor  wir entscheiden müssen, wie die anderen Variablen zusammengefasst werden. In diesem Fall addieren wir die Plastikteile und wählen für die Anzahl der Events und Freiwilligen genau einen Wert aus. Diese sind im Originaldatensatz mehrfach vorhanden - etwas, das typischerweise beim Zusammenfügen von Datensätzen entsteht. Aber schauen wir uns das ganze Vorgehen doch einmal direkt in unserem R-Code an:
+
 
 ``` {r 07group_by_summarise1, exercise = TRUE}
 # Ihr nehmt Euren Datensatz, ...
@@ -382,9 +384,9 @@ grade_this_code()
 ```
 
 ## **Die `select()`-Funktion**
-![Graphische Veranschaulichung der select()-Funktion](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/select.png?raw=true){#id .class width=60% height=60%}
+![*Graphische Veranschaulichung der select()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/select.png?raw=true){#id .class width=60% height=60%}
 
-Bislang haben wir Zeilen bzw. Beobachtungen gefiltert, aber dabei soll es nicht bleiben. Denn das `dplyr` liefert uns glücklicherweise auch direkt eine Funktion, mit der wir auch **Spalten bzw. Variablen filtern** können: Die **`select()`**-Funktion. Sie ist also ein durchaus hilfreiches Werkzeug, weil sie es ermöglicht, den Datensatz auf die **relevanten Spalten zu reduzieren**. Wir können einerseits bestimmte Spalten auswählen, aber auch Spalten umbenennen und nach verschiedenen Kriterien auswählen, wie z. B. nach dem Namen, dem Typ oder der Position der Spalten. Dabei können wir entweder die Variablen auswählen, die im Datensatz enthalten bleiben sollen oder aber mit einem `-` die Variablen auswählen, die aus Eurem Datensatz gelöscht werden sollen. Der folgende Code löscht so zum Beispiel die Variable `grand_total` aus dem `data_raw`-Datensatz:
+Bislang haben wir Zeilen bzw. Beobachtungen gefiltert, aber dabei soll es nicht bleiben. Denn mithilfe der **`select()`**-Funktion können wir auch **Spalten bzw. Variablen filtern** und somit (große) Datensätze auf die **relevanten Spalten reduzieren**. Dabei können einerseits bestimmte Spalten nach verschiedenen Kriterien (z.B. Namen, Typ oder Position) auswählen oder umbenennen. Wir können entweder die Variablen auswählen, die im Datensatz enthalten bleiben sollen oder aber mit einem `-` die Variablen auswählen, die aus Eurem Datensatz gelöscht werden sollen. Der folgende Code löscht so zum Beispiel die Variable `grand_total` aus dem `data_raw`-Datensatz:
 
 ``` {r 07select_data1, exercise = TRUE}
 # Spalte "grand_total" NICHT auswählen
@@ -402,9 +404,7 @@ audit <- plastics_processed %>%
   tidyr::pivot_longer(
     cols = c(hdpe, ldpe, o, pet, pp, ps, pvc), # Betroffene Variablen
     names_to = "plastic_type",                 # Zielspalte
-    values_to = "n_pieces"                     # Wertspalte
-    names_to = "plastic_type", 	               # Zielspalte
-    values_to = "n_pieces" 		                 # Wertspalte
+    values_to = "n_pieces",                    # Wertspalte
     ) %>%
   # … faktorisiert sicherheitshalber die anderen Variablen (nicht immer notwendig)
   dplyr::mutate(dplyr::across( # Zu Faktor konvertieren
@@ -425,15 +425,15 @@ sum(audit$n_pieces, na.rm = TRUE) == sum(plastics_processed$grand_total)
 sort(unique(community$country)) == sort(unique(audit$country))
 ```
 
-Das sieht doch sauber aus - gut gemacht!
+Das sieht doch sauber aus - gut gemacht! <br> 
+Unsere Daten sind bereinigt und wir haben einen großen Schritt nach vorne gemacht, denn häufig ist dieser Teil tatsächlich aufwändiger als die späteren Visualisierungen oder Berechnungen.
 
 <br>
 
 ## **Die `arrange()`-Funktion**
-![Graphische Veranschaulichung der arrange()-Funktion](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/arrange.png?raw=true){#id .class width=60% height=60%}
+![*Graphische Veranschaulichung der arrange()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/arrange.png?raw=true){#id .class width=60% height=60%}
 
-Unsere Daten sind erst einmal bereinigt und das ist ein riesiger Schritt, häufig ist die Bereinigung nämlich deutlich mehr Arbeit als die anschließenden Visualisierungen oder Berechnungen - Ihr könnt also wirklich stolz auf Euch sein! 
-Und dennoch sind wir noch nicht ganz fertig mit den `dplyr`-Package. Denn das hat einfach unglaublich viel zu bieten. Eine Funktion, die wir Euch definitiv nicht vorenthalten möchten ist die **`arrange()`**-Funktion. Diese wird eher für die Transformation unserer Daten als für deren Bereinigung genutzt. Mit dieser Funktion kann man die Zeilen eines Datensatzes nach den Werten einer oder mehrerer Spalten sortieren bzw. **Ranglisten ausgeben**. Sie ist also eine große Hilfe, wenn wir Daten in einer bestimmten Reihenfolge analysieren und präsentieren oder für Berichte vorbereiten möchten. Wenn wir uns also für die „Top 10“ der Firmen interessieren, die am meisten Plastikmüll produzieren, können wir zunächst alle Firmen auswählen und gruppieren, uns eine Zusammenfassung ausgeben lassen und dann auf die „Top 10“ beschränken. Anschließend können wir mit `dplyr::arrange()` die Werte in absteigender Reihenfolge sortieren:
+Eine letzte Funktion aus dem `dplyr` wollen wir Euch dennoch nicht vorenthalten: Die **`arrange()`**-Funktion. Diese wird eher für Transformation unserer Daten als für deren Bereinigung genutzt und hilft uns dabei, Zeilen eines Datensatzes nach den Werten einer oder mehrerer Spalten zu sortieren bzw. **Ranglisten auszugeben**. Sie ist also eine große Hilfe, wenn wir Daten in einer bestimmten Reihenfolge analysieren und präsentieren oder für Berichte vorbereiten möchten. Wir können beispielsweise eine Rangliste der zehn Firmen erstellen, die am meisten Plastikmüll produzieren. Dafür wählen wir alle Firmen aus und gruppieren diese. Anschließend erstellen eine Zusammenfassung und beschränken uns dann auf die ersten zehn Firmen, die wir mit `dplyr::arrange()` in absteigender Reihenfolge sortieren:
 
 ```{r arrange, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
@@ -454,7 +454,7 @@ audit %>%
 
 Nun können wir das gefundene Plastik den verschiedenen Firmen zuordnen: LaDoo, Coca-Cola und Barna sind dabei offensichtlich die drei Firmen, die mit 15.221, 9.988 bzw. 6.225 gefundenen Plastikteilen in hohem Maße für die Umweltverschmutzung durch Plastikmüll verantwortlich sind. Diese Ergebnisse könnten wir nun vielleicht für unsere nächste Kampagne verwenden oder was meint Ihr?
 
-Nun sind wir aber wirklich durch. Ihr kennt alle `dplyr`-Verben und seid fit für die Datentransformation! Mit dem neuen Wissen können wir direkt in die Übungsaufgabe einsteigen und nochmal alles ausprobieren. Vorher aber noch einmal ein kleiner Hinweis: Auf einige Themen sind wir hier nur am Rande eingegangen, allerdings werden wir uns einige davon (z.B. den Umgang mit fehlenden Werte (NAs, die Umformung von Textdaten und das Zusammenfügen von Datensätzen) bereits in der kommenden Woche im Detail anschauen. Lasst Euch also davon nicht beirren!
+Ihr kennt alle `dplyr`-Verben und seid fit für die Datentransformation! Mit dem neuen Wissen können wir direkt in die Übungsaufgabe einsteigen und nochmal alles ausprobieren. Vorher aber noch einmal ein kleiner Hinweis: Auf einige Themen sind wir hier nur am Rande eingegangen (z.B. den Umgang mit fehlenden Werte (NAs, die Umformung von Textdaten und das Zusammenfügen von Datensätzen). Lasst Euch davon nicht beirren, wir werden uns diese in den kommenden Wochen noch im Detail anschauen!
 
 # **Und jetzt Ihr**
 
