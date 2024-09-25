@@ -34,7 +34,6 @@ params <- yaml::yaml.load_file("www/app_parameters.yml")
 
 # Benötigte Daten laden
 source("R/setup/functions.R")
-polygons_welt <- get_poly_welt()
 ```
 
 ```{r results='asis'}
