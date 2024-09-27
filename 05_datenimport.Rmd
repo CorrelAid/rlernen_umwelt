@@ -34,6 +34,12 @@ params <- yaml::yaml.load_file("www/app_parameters.yml")
 
 # Benötigte Daten laden
 source("R/setup/functions.R")
+
+
+```
+
+```{r, include=FALSE}
+data_processed <- get_data_processed()
 ```
 
 ```{r results='asis'}
