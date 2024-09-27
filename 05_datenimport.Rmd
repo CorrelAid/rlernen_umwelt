@@ -255,7 +255,7 @@ Versucht nun einmal mithilfe der gleichen Funktion das zweite Arbeitsblatt "by_c
 
 ```{r exercise_excel, exercise = TRUE}
 googletrendstime_plasticpollution <- readxl::read_excel(
-  path = here::here("daten/Plastic Pollution - Google Trends.xlsx"), # Dateipfad/-name
+  path = here::here("???"), # Dateipfad/-name
   sheet = "???",                   # Arbeitsblatts
   col_names = TRUE,                # Spaltennamen
   na = c("", NA))                  # fehlende Werte
