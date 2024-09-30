@@ -35,13 +35,14 @@ params <- yaml::yaml.load_file("www/app_parameters.yml")
 # Benötigte Daten laden
 source("R/setup/functions.R")
 community <- get_community()
+data_raw <- get_data_raw()
 ```
 
 ```{r results='asis'}
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Wir wollen uns heute mithilfe von R einen Überblick über unsere Daten verschaffen. Wie uns das mit ein paar grundlegenden Schritten gelingt, werden wir anhand einiger Codes "in action" sehen. Wer möchte, kann diesen Code direkt replizieren, ansonsten soll es und erst einmal darum gehen, mit kleinen Handgriffen die Daten mithilfe von Funktionen und Kontextwissen greifbar zu machen. Beginnen wir mit dem Video:
+Wir wollen uns heute mithilfe von R einen Überblick über unsere Daten verschaffen. Wie uns das mit ein paar grundlegenden Schritten gelingt, werden wir anhand einiger Codes "in action" sehen. Wer möchte, kann diesen Code direkt replizieren, ansonsten soll es und erst einmal darum gehen, mit kleinen Handgriffen die Daten greifbar zu machen. Beginnen wir mit dem Video:
 
 ![*Video: Daten mit R verstehen (20min)*](https://youtu.be/nEbiJ4EZ3OE)
 
@@ -55,14 +56,14 @@ Wir wollen uns heute mithilfe von R einen Überblick über unsere Daten verschaf
       2. Untersuchung der Variablen mithilfe **einfacher Datenvisualisierungen**
       3. Weiterführende Analysen auf Basis der Berechnung **statistischer Kennzahlen**, (d.h. Lage- und Verteilungsparameter)
 
-So weit so gut. Allerdings gibt es noch eine Sache, die wir bei der Datenanalyse und -interpretation immer beachten müssen: **Den Kontext**! Ganz nach dem Grundsatz **Context is key!** achten wir also immer darauf, dass wir unsere Daten und die angewandten statistischen und visuellen Auswertungen immer im Zusammenhang zueinander bewerten. Dazu gehört ebenfalls, dass wir externe Rahmenbedingungen unserer Daten berücksichtigen: Woher kommen unsere Daten? Zu welchem Zweck wurden die Daten erhoben und aus welcher Zeit stammen die Daten? Wie könnten sich diese Aspekte auf unsere Daten auswirken?
+So weit so gut. Allerdings gibt es noch eine Sache, die wir bei der Datenanalyse und -interpretation immer beachten müssen: **Den Kontext**! Ganz nach dem Grundsatz **Context is key!** achten wir immer darauf, dass wir unsere Daten immer im Kontext zu den angewandten statistischen und visuellen Auswertungen bewerten. Dazu gehört ebenfalls, dass wir externe Rahmenbedingungen unserer Daten berücksichtigen: Woher kommen unsere Daten? Zu welchem Zweck wurden die Daten erhoben und aus welcher Zeit stammen die Daten? Wie könnten sich diese Aspekte auf unsere Daten auswirken?
 
 ## **Einstieg: Unsere Tools in R**
 
-Keine Sorge, wir werden uns zu einem späteren Zeitpunkt noch einmal ganz ausführlich anschauen, wie wir spannende Visualisierungen erstellen, Daten(-formate) bearbeiten oder Reports erstellen und automatisieren können. Hier an dieser Stelle wollen wir uns erst einmal anschauen, wie wir in relativ kurzer Zeit mithilfe von R, Erkenntnisse aus unseren Daten ziehen können, um eine Fragen gezielt zu beantworten.
+Keine Sorge, wir werden uns zu einem späteren Zeitpunkt noch einmal ganz ausführlich anschauen, wie wir spannende Visualisierungen erstellen, Daten(-formate) bearbeiten oder Reports erstellen können. Hier an dieser Stelle wollen wir uns erst einmal anschauen, wie wir in relativ kurzer Zeit einige Fragen gezielt beantworten können.
 
 Dafür benötigen wir zunächst einmal zwei Packages: **`dplyr`** und **`ggplot2`**. Beide Packages sind Teil des sogenannten `tidyverse`-Packages. Vergangene Woche haben wir bereits einmal davon gehört und auch in den beiden Sessions zur "Datentransformation" wird uns dieses Package wieder begleiten - es kommen also noch viele spannende Dinge auf uns zu!
-Für diese Woche werden wir zu allererst einmal wie gewohnt, die beiden Packages mit `install.packages("")`- und der `library()`-Funktion installieren und laden:
+Für diese Woche werden wir zu allererst einmal wie gewohnt, die beiden Packages installieren und laden:
 
 ```{r pakete_ersteanalysen, exercise = TRUE}
 # install.packages("dplyr")
@@ -71,8 +72,9 @@ Für diese Woche werden wir zu allererst einmal wie gewohnt, die beiden Packages
 library(dplyr)
 library(ggplot2)
 ```
+---
 
-Bevor wir nun direkt in unsere praktische Übung starten ein kleiner Test - aber nur ein kleiner! Für diese Session ist es nämlich praktisch, wenn wir uns wieder an unsere Lektion zu den **Grundlagen der Statistik** zurück erinnern. Viele Themen, Begriffe und Konzepte, die wir dort bereits kennengelernt haben, werden wir nämlich in dieser Woche mit R umsetzen. Erinnern wir uns also noch einmal zurück...
+Bevor wir nun direkt in unsere praktische Übung starten, wollen wir uns einmal kurz an unsere Lektion zu den **Grundlagen der Statistik** zurück erinnern. Denn viele Themen, Begriffe und Konzepte, die wir dort bereits kennengelernt haben, werden wir nun mit R umsetzen. 
 
 ## **Quiz**
 
@@ -114,7 +116,7 @@ quiz(caption = NULL,
 
 ## **1. Schritt der Datenanalyse: Fragen**
 
-Am Anfang jeder Datenanalyse steht etwas, dass zunächst gar nichts mit Daten zu tun haben muss: **Fragen**. Wie wir bereits gelernt haben, sind Daten letztlich nichts anderes als **formalisierte Informationen**. Sie sollen uns also in erster Linie dabei helfen, durch die Analyse dieser Daten, einen **Erkenntnisgewinn** zu erlangen. Egal, ob wir zunächst einmal eigene Daten erheben wollen oder bereits Daten zur Verfügung haben, strategische Überlegungen helfen uns dabei, bestimmte Fragestellungen zu formulieren auf die wir uns anschließend fokussieren können.
+Am Anfang jeder Datenanalyse steht etwas, dass zunächst gar nichts mit Daten zu tun haben muss: **Fragen**. Daten sind schließlich nichts anderes als **formalisierte Informationen**, die uns in erster Linie zum **Erkenntnisgewinn** verhelfen sollen. Strategische Überlegungen helfen uns dabei, bestimmte Fragestellungen zu formulieren, auf die wir uns anschließend fokussieren können.
 Bleiben wir also bei unserem [Datensatz](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-01-26){target="_blank"} von [#Break Free From Plastic](https://www.breakfreefromplastic.org/){target="_blank"} und versetzen uns in die Rolle der Organisator:innen - welche Fragen könnten und müssen wir uns vielleicht sogar stellen? Wir haben hier ein paar Beispiele, ergänzt diese Liste gerne um Eure eigenen Ideen!
 
   1.  Wie viel Plastik wurde insgesamt gesammelt? <br>
@@ -126,13 +128,13 @@ Bleiben wir also bei unserem [Datensatz](https://github.com/rfordatascience/tidy
 
 Nachdem wir diese Fragen formuliert haben, geht es darum, diese bestmöglich zu beantworten. Wir müssen also auf die Informationen schauen, die uns vorliegen. Das machen wir, indem wir unsere **Daten analysieren und interpretieren**! 
 
-*Anmerkung: Da es in dieser Einheit darum geht, in den **Analyse-Spirit** zu kommen und R als Analysetool kennenzulernen, haben wir den Datensatz "Break Free from Plastic" bereits **bereinigt** und in **zwei Datensätze** aufgeteilt: Einen `community`- und einen `audit`-Datensatz.
+*Anmerkung:* Da es in dieser Einheit darum geht, in den **Analyse-Spirit** zu kommen und R als Analysetool kennenzulernen, haben wir den Datensatz "Break Free from Plastic" bereits **bereinigt** und in **zwei Datensätze** aufgeteilt: Einen `community`- und einen `audit`-Datensatz.
   - **`community´**: Dieser Datensatz enhtählt vor allem die Variablen, welche für Fragestellungen rund um die Community-Perspektive nützlich sind. Dazu zählen unter anderem die Anzahl an gesammelten Plastikteilen, die Anzahl der Events und freiwillig Engagierten.
   - **`audit`**: Dieser Datensatz umfasst vor allem jene Variablen, die für Fragen zur Audit-Perspektive nützlich sind. Dazu zählen unter anderem der Name der Firma und die Klassifizierung der Kunststoffe.*
 
 ### **Die `glimpse()`-Funktion**
 
-Eine Funktion, die wir verwenden können, um uns einen ersten Überblick zu verschaffen, ist die **`glimpse()`-Funktion** aus dem Package **`dplyr`** (einem Package des `tidyverse` - mehr dazu in der kommenden Woche). Mit dieser Funktion erhalten wir Informationen über die Struktur des Datensatzes (Anzahl der Beobachtungen, Anzahl der Variablen, Name und Datentyp der Variablen). Der `community` Datensatz enthält geographische und zeitliche Variablen sowie Daten zur gesammelten Plastikmenge, Veranstaltungen und Freiwilligen. Wenn wir nun die Funktion **`dplyr::glimpse()`** ausführen und den Output betrachten, können wir verschiedene Dinge herauslesen, aber veruscht das einmal selbst:
+Eine Funktion, die wir verwenden können, um uns einen ersten Überblick zu verschaffen, ist die **`glimpse()`-Funktion** aus dem Package **`dplyr`** (einem Package des `tidyverse` - mehr dazu in der kommenden Woche). Mit dieser Funktion erhalten wir Informationen über die Struktur des Datensatzes wie z.B. die Anzahl der Beobachtungen und Variablen, sowie die Namen und Datentypen der Variablen). Wenn wir nun die Funktion **`dplyr::glimpse()`** ausführen und den Output betrachten, können wir verschiedene Dinge herauslesen, aber versucht das einmal selbst:
 
 ```{r exercise_community, exercise = TRUE}
 dplyr::glimpse(community)
@@ -172,15 +174,15 @@ Fassen wir also noch einmal die Informationen zusammen, die wir auf den ersten B
 
   - Anzahl der Zeilen (Rows: 51) und Spalten (Columns: 6): Eine Zeile ist eine Beobachtung, also in diesem Fall ein Land und eine Spalte steht für eine Variable
   - Bezeichnungen der Spalten, also die Namen der Variablen ($ continent, $ country, ...)
-  - Ausschnitt der Ausprägungen der Variablen (z.B. für n_pieces: 988, 5818, 53)
+  - Ausschnitt der Ausprägungen der Variablen (z.B. für n_pieces: 988, 5818, 53, ...)
 
 ## **3. Schritt der Datenanalyse: Inhaltlicher Überblick**
 
-Wir haben nun also mithilfe der `glimpse()`-Funktion einen ersten Überblick über die Grundstruktur unseres Datensatzes und den darin enthaltenen Informationen erhalten, aber so richtig detailliert ist das Ganze jetzt noch nicht, oder? Mehr Informationen liefert uns eine neue Funktion!
+Einen ersten Überblick über die Grundstruktur unseres Datensatzes konnten wir uns bereits verschaffen, aber so richtig detailliert ist das Ganze jetzt noch nicht. Mehr Informationen liefert uns eine neue Funktion!
 
 ### **Die `summary()`-Funktion**
 
-Die **`summary()`-Funktion** ist eine grundlegende und vielseitige Funktion, die uns in kurzer Zeit eine **Zusammenfassung** über die Datenstruktur und -inhalte ermöglicht. Sie ist Teil des Base R-Packages - sie ist also bereits automatisch vorinstalliert und steht und zur Verfügung, ohne dass wir ein zusätzliches Package laden müssen. Sie fasst dabei grundlegende statistische Informationen zusammen und kann für Vektoren, Listen und Modelle verwendet werden - oder eben ganze Datensätze. Dabei gibt sie einen Überblick für jede einzelne Spalte unseres Datensatzes, wobei die tatsächlichen Informationen vom Datentyp (factor, numeric, etc.) abhängig sind. Schaut Euch doch den folgenden Output selbst einmal an: Welche Datentypen gibt es und welche Informationen stehen uns somit zur Verfügung? Welche Aussagen lassen sich treffen?
+Die **`summary()`-Funktion** ermöglicht uns in kurzer Zeit eine **Zusammenfassung** über die Datenstruktur und -inhalte. Sie ist Teil des Base R-Packages, also bereits automatisch vorinstalliert. Sie fasst dabei grundlegende statistische Informationen zusammen und kann für Vektoren, Listen, Modelle oder ganze Datensätze verwendet werden. Sie fasst einzelne Spalten zusammen und liefert uns, je nach Datentyp, verschiedene Informationen. Schaut Euch doch den folgenden Output selbst einmal an: Welche Datentypen gibt es und welche Informationen stehen uns somit zur Verfügung? Welche Aussagen lassen sich treffen?
 
 ```{r summary_community, exercise = TRUE}
 # Zusammenfassung
@@ -218,11 +220,11 @@ quiz(
   )
 ```
 
-Wir haben also auf einen Schlag schon eine ganze Menge Informationen erhalten. Beim Blick auf den Output fällt uns auch direkt auf, dass die verschiedenen Variablen unterschiedliche Formate (auch: Datentypen) haben. Die Merkmale `continent`, `country` und `countrycode` sind Variablen der Klasse "character". Sie bestehen aus Text/Buchstaben und sind statistisch gesehen **nominal skalierte** Variablen. Das bedeutet, dass wir sie zwar in Kategorien einsortieren, ihnen aber keine numerischen Werte zuweisen oder die in eine Rangliste bringen können. Dies können wir allerdings mit allen anderen Variablen tun, denn die `n_...` sind **metrisch skalierte** Variablen, die wir eben auch der Größe nach sortieren und für unsere weiteren Berechnungen verwenden dürfen.
+Wir sehen, dass die Variablen, also die Spalten in unserem Datensatz, unterschiedliche Formate haben. `continent`, `country` und `countrycode` haben die Class “character”, weil sie aus Text/ Buchstaben bestehen. Statistisch gesehen sind sie **nominal skalierte** Variablen, da sie Kategorien sind, ohne Ranking und ohne numerischen Wert. Alle anderen Variablen `n_...` sind **metrisch skalierte** Variablen. Wir können sie der Größe nach sortieren und mit ihnen ganz natürlich rechnen.
 
 ### **Die `sum()`-Funktion**
 
-Mithilfe der `summary()`-Funktion haben wir schon viele spannende Informationen über die numerischen Werte (`n_...`) erhalten. Allerdings fehlen uns noch ein paar spannende Informationen, u.a. die **Gesamtsumme** der gesammelten Plastikteile, durchgeführten Events oder freiwillig Engagierten. Müssen wir dafür nun Zeile für Zeile durchgehen und die Gesamtzahl mühsam mit dem Taschenrechner berechnen? Natürlich nicht, auch hier können wir eine einzige Funktion verwenden, die auch bereits in R vorinstalliert ist: Die **`sum()`**-Funktion. Innerhalb der Funktion verwenden wir an dieser Stelle auch das `$`-Zeichen, das wir bereits einmal kurz ausprobiert hatten. Damit können wir auf bestimmte **Variablen verweisen**. Dazu geben wir lediglich den Datensatz, in dem unsere Variable enthalten ist, sowie den Namen der entsprechenden Variable an:
+Durch die `summary()`-Funktion haben wir schon einige Informationen über die numerischen Werte (`n_...`) erhalten. Allerdings fehlen uns noch ein paar spannende Informationen wie die **Gesamtsumme** der gesammelten Plastikteile, durchgeführten Events oder freiwillig Engagierten. Die **`sum()`**-Funktion ist ebenfalls bereits vorinstalliert und liefert uns eben all diese Informationen. Mit dem `$`-Zeichen können wir innerhalb der Funktion auf bestimmte **Variablen verweisen** (Logik: `sum(datensatz$variable)`).
 
 ```{r berechnung_summen, exercise = TRUE}
 # Gesamtsumme
@@ -233,19 +235,19 @@ sum(community$n_volunteers)
 
 ### **Die `summarize()`-Funktion** 
 
-Wir haben nun mithilfe der `glimpse()`-, `summary()`- und `sum()`-Funktion eine erste Überischt über unsere Struktur und Inhalte des Datensatzes erhalten. Als nächstes wollen wir wir Daten in Tabellen zusammenfassen, um beispielsweise neue Datenobjekte zu erstellen. Dabei greifen wir auf eine weitere Funktion aus dem `dplyr`-Package zurück: Die **`summarize()-Funktion** (auch: `summarise()`). Mit dieser Funktion können wir auf Basis der bereits vorhandenen Variablen neue **Hilfsvariablen** erstellen, die Berechnungen für uns zusammenfassen. Im folgenden Beispiel erstellen wir eine Übersicht, welche die Gesamtzahl, sowie die Spannweite der gesammelten Plastikteile berechnet. Hierzu erstellen wir zwei neue **Hilfsvariablen 'Gesamt' und 'Spannweite'** und weisen diesen dann die gewünschte Funktion oder Funktionskombination zu:
+Als nächstes wollen wir wir Daten in Tabellen zusammenfassen, um beispielsweise neue Datenobjekte zu erstellen. Dabei greifen wir auf eine weitere Funktion aus dem `dplyr`-Package zurück: Die **`summarize()`**-Funktion (auch: `summarise()`). Mit dieser Funktion können wir auf Basis der bereits vorhandenen Variablen neue **Hilfsvariablen** erstellen, die Berechnungen für uns zusammenfassen. Im folgenden Beispiel erstellen wir eine Übersicht, über die Gesamtzahl, sowie die Spannweite der gesammelten Plastikteile. Hierzu erstellen wir die neuen Hilfsvariablen "Gesamt" und "Spannweite" und weisen diesen dann die gewünschte Funktion oder Funktionskombination zu:
 
 ```{r summarise, exercise = TRUE}
 dplyr::summarize(community, 
                  Gesamt = sum(community$n_pieces),
                  Spannweite = max(community$n_pieces) - min(community$n_pieces))
 ```
-*Übersetzung: Nutze den Datensatz 'community' und erstelle eine Variable 'Gesamt', die alle gesammelten Plastikteile aufsummiert und eine Variable 'Spannweite', die sich aus der Differenz aus Maximum und Minimum der Variable 'n_pieces' berechnet.* 
+*Übersetzung: Nutze den Datensatz 'community' und erstelle eine Variable "Gesamt", die alle gesammelten Plastikteile aufsummiert und eine Variable "Spannweite", die die Differenz aus Maximum und Minimum der Variable 'n_pieces' berechnet.* 
 
 ### **`summarize()` und `group_by()`**
 
-Was hier nun passiert ist: Alle Länder wurden natürlich zusammengeschmissen... - und obwohl uns das natürlich auch einen Einblick in unsere Daten verschafft, können wir hiermit noch lange keine Muster erkennen. Dafür müssen wir die `summarize()`-Funktion um eine weitere ergänzen: Die **`group_by()`**-Funktion aus dem `dplyr`-Package. Beide Funktionen werden gerne miteinander kombiniert, da sie uns gemeinsam in recht kurzer Zeit etwas umfassendere Zusammenfassungen über die Daten erstellen. Die `group-by`-Funktion erlaubt es uns, Daten nach den Werten einer oder mehrerer Spalten zu kategorisieren und somit Gruppenanalysen zu erstellen. 
-Wenn wir also sehen möchten, wie viele Länder pro Kontinent an den Aktionen teilgenommen haben, wie viel insgesamt gesammelt wurde, und wie groß der Unterschied zwischen den Ländern ist, müssen wir lediglich den oberen Code ein wenig ergänzen. Zunächst einmal müssen wir mithilfe von `group_y()` festlegen, auf welchen Datensatz wir zugreifen (`community`) und dass wir diese Daten anhand der neuen Hilfsvariable 'Kontinent' kategorisieren wollen. Danach folgt noch die neue Hilfsvariable 'Länder', da wir uns für die länderübergreifenden Unterschiede interessieren, sowie die beiden Hilfsvariablen, die wir bereits kennen.
+Leider wurden nun alle Länder zusammengeschmissenwodurch wir natürlich keine Muster erkennen können. Dafür müssen wir die `summarize()`-Funktion um die **`group_by()`**-Funktion ergänzen. Beide werden gerne miteinander kombiniert, da sie in recht kurzer Zeit etwas umfassendere Zusammenfassungen über die Daten erstellen. Die `group-by`-Funktion erlaubt es uns, Daten nach den Werten einer oder mehrerer Spalten zu kategorisieren und somit Gruppenanalysen zu erstellen. 
+Wir müssen also lediglich den oberen Code ein wenig ergänzen:
 
 ```{r Vorschau_group_by, exercise = TRUE}
 # Kombination group_by und summarize
@@ -255,25 +257,26 @@ dplyr::summarize(group_by(community, Kontinent = community$continent), # aus den
                  Spannweite = max(n_pieces) - min(n_pieces)) # Differenz max() und min()
 ```
 
-Somit können wir auf jeden Fall einige weitere Informationen aus unseren Daten gewinnen: In Asien wurde beispielsweise am meisten Plastik gesammelt, jedoch finden wir hier auch die größten Unterschiede zwischen den Ländern (d.h. eine hohe Streuung der Beobachtungen). In Europa wurde zwar insgesamt nicht so viel gesammelt, wobei die teilnehmenden Länder hier alle ähnlich viel gesammelt haben. Mithilfe dieser Zahlen können wir also bereits einige unserer Fragen beantworten und eigene Erkenntnisse gewinnen. Wir sollten allerdings auch die Hinweise erkennen, die uns die Daten darüberhinaus liefern, nämlich dass es nicht ganz so einfach ist, sie miteinander zu vergleichen - zumindest nicht auf dieser Ebene.
+Mit `group_y()` legen wir fest, wir auf den Datensatz `community` zurückgreifen die Daten anhand der neuen Hilfsvariable 'Kontinent' kategorisieren wollen. Da wir uns fürländerübergreifende Unterschiede interesseieren, erstellen wir eine weitere Hilfsvariable 'Länder'.
 
 ## **Vorsicht: Interpretation der Daten!**
 
-Wie gesagt, wir können bereits jetzt schon wertvolle Erkenntnisse aus unseren Daten gewinnen, aber: Besonders bei der der Interpretation unserer Daten müssen wir auch stets deren **Aggregationsebene** im Auge behalten. Man verweist in diesem Zuge auch auf die **Granularität der Daten**: Je aggregierter Daten vorliegen, desto schwieriger wird es, Zusammenhänge korrekt zu bestimmen. Es kommt also auch hier wieder auf den **Kontext** drauf an!
-Wir müssen uns also Gedanken darüber machen, wie wir den Kontext unserer Daten an dieser Stelle beschreiben können. In unserem Datensatz können wir beispielsweise lediglich Vergleiche zwischen verschiedenen Ländern anstellen - aber können wir auch Aussagen über individuelle Events treffen? Nein, denn auf dieser Ebene liegen uns schlicht keine Informationen vor! Diese Schwankungen und ihre möglichen Ursachen müssen wir also stets bedenken. Die Anzahl der durchgeführten Events weicht beispielsweise stark von der Anzahl involvierter Helfer:innen ab. Wie genau diese Unterschiede zu werten sind, ob beide Zahlen von anderen Variablen (sog. Störfaktoren, engl. *confounding variables*) beeinflusst werden und ob wir diese überhaupt auf Basis unserer Daten bewerten können müssen wir noch herausfinden. 
-Ein Schlagwort welches häuftig in Verbindung mit der Aggregation von Daten fällt, ist der **"Ökologische Fehlschluss"**. Dieser beschreibt, wie auf der Basis von Aggregatdaten, die Merkmale eines Kollektivs abbilden, unzulässigerweise auf die Individualebene geschlossen wird. Mehr dazu findet Ihr [hier](https://martin-grellmann.de/oekologischer-fehlschluss).
+Wir können bereits jetzt schon wertvolle Erkenntnisse aus unseren Daten gewinnen, dennoch müssen wir bei der Interpretation unserer Daten stets deren **Aggregationsebene** im Auge behalten. Man verweist in diesem Zuge auch auf die **Granularität der Daten**: Je aggregierter Daten vorliegen, desto schwieriger wird es, Zusammenhänge korrekt zu bestimmen. Es kommt also auch hier wieder auf den **Kontext** drauf an!
+In unserem Datensatz können wir beispielsweise lediglich Vergleiche zwischen verschiedenen Ländern anstellen - aber können wir auch Aussagen über individuelle Events treffen? Nein, denn auf dieser Ebene liegen uns schlicht keine Informationen vor! Diese Schwankungen und ihre möglichen Ursachen müssen wir also stets bedenken. Die Anzahl der durchgeführten Events weicht beispielsweise stark von der Anzahl involvierter Helfer:innen ab. Wie genau diese Unterschiede zu werten sind, ob beide Zahlen von anderen Variablen (sog. Störfaktoren, engl. *confounding variables*) beeinflusst werden und wir diese überhaupt auf Basis unserer Daten bewerten können müssen wir noch herausfinden. 
+Ein Schlagwort welches häuftig in Verbindung mit der Aggregation von Daten fällt, ist der **"Ökologische Fehlschluss"**. Dieser beschreibt, wie auf der Basis von Aggregatdaten unzulässigerweise auf die Individualebene geschlossen wird. Mehr dazu findet Ihr [hier](https://martin-grellmann.de/oekologischer-fehlschluss).
 
 ## **4. Schritt der Datenanalyse: Visualisierung**
 
-Wir haben nun bereits verschiedene Funktionen kennengelernt, mit deren Hilfe wir uns in relativ kurzer Zeit einen generellen Überblick über unsere Daten verschaffen können. Diese liefern uns in der Regel Tabellen, die mit statistischen Kennzahlen gefüllt sind. Diese Werte sind wichtig, aber bei so vielen verschiedenen Zahlen kann es doch schnell mal passieren, dass wir ein wenig durcheinander kommen. Einfache **Datenvisualisierungen** wären an dieser Stelle also auf jeden Fall hilfreich! Mithilfe von R lassen Daten grafisch darstellen und statistische Muster sichtbar machen und wir müssen uns eben nicht durch lauter Kennzahlen kämpfen. Da wir uns allerdings noch immer in einem explorativen Schritt der Datenanalyse befinden, wollen wir an dieser Stelle unsere Aufmerksamkeit nicht unbedingt auf den genauen Codes der Diagramme (engl. Plots) legen - vorrangig soll es nämlich um das Erkennen von Datenverhalten und -muster gehen. Wie wir die verschiedenen grafischen Darstellungsmöglichkeiten selbst erstellen, werden wir uns in einer späteren Session noch im Detail anschauen!
+Wir haben uns nun bereits in Form von Tabellen einen generellen Überblick verschaffen können. Diese Kennzahlen sind wichtig. Jedoch kann es bei so vielen Zahlen schnell mal etwas unüberischtlich werden. Mit einfachen **Datenvisualisierungen** können wir unsere Daten grafisch darstellen und statistische Muster sichtbar machen. <br>
+In diesem explorativen Schritt der Datenanalyse, wollen wir uns also einmal mit dem Erkennen von Datenverhalten und -mustern beschäftigen - der technische Hintergrund der Diagramme (engl. Plots) wird uns dann in einer eigenen Session beschäftigen.
 
 ### **Grafik: Das Punktdiagramm**
 
-Bleiben wir an dieser Stelle einmal bei den verschiedenen Kontinenten. Mithilfe des Packages **`ggplot2`** können wir hierfür ein sogenanntes **Punktediagramm (engl. Scatterplott)** erstellen. Mit diesem Package kann man verschiedene Grafiken über eine Art **Schichtsystem** erstellen:
-  - 1. Schicht: Verweis auf den verwendeten Datensatz (`data = community`) und die Variablen, die entlang der x- und y-Achsen dargestellt werden sollen (`aes(x = continent, y = n_pieces)`).
-  - 2. Schicht: Bestimmung der Art der Visualisierung durch die **`geom_jitter()`-Funktion**. 'jitter' beschreibt eine besondere Art von Punktediagramm, bei dem Datenpunkte sich ausweichen um die Lesbarkeit bei Überlagerung zu ermöglichen.
-  - 3. Schicht: Beschriftung der Grafik mithilfe der **`labs()`-Funktion**. In diesem Schritt werden Überschrift(en), Achsen und Bilderunterschrift mit Labels versehen.
-  - 4. Schritt: Feinschliff und Layout durch andere Schichten, die mit einem "+" hinzugefügt werden. Diese beinhalten in der Regel Funktionen zur Gestaltung (z.B. Annotation, Layout, etc.).
+Bleiben wir an dieser Stelle einmal bei den verschiedenen Kontinenten. Mithilfe des Packages **`ggplot2`** können wir hierfür ein sogenanntes **Punktediagramm (engl. Scatterplott)** erstellen. Mit diesem Package kann man verschiedene Grafiken über eine Art **Schichtsystem** erstellen: <br>
+1. Schicht: Verweis auf den verwendeten Datensatz (`data = community`) und die Variablen, die entlang der x- und y-Achsen dargestellt werden sollen (`aes(x = continent, y = n_pieces)`).<br>
+2. Schicht: Bestimmung der Art der Visualisierung durch die **`geom_jitter()`-Funktion**. 'jitter' beschreibt eine besondere Art von Punktediagramm, bei dem Datenpunkte sich ausweichen um die Lesbarkeit bei Überlagerung zu ermöglichen.<br>
+3. Schicht: Beschriftung der Grafik mithilfe der **`labs()`-Funktion**. In diesem Schritt werden Überschrift(en), Achsen und Bilderunterschrift mit Labels versehen.<br>
+4. Schritt: Feinschliff und **Layout** durch andere Schichten, die mit einem "+" hinzugefügt werden. Diese beinhalten in der Regel Funktionen zur Gestaltung (z.B. Annotation, Layout, etc.)
 
 Betrachtet nun die folgende Visualisierung, die sowohl die Verteilung als auch die Häufigkeit von Beobachtungen über die Verteilung darstellt. Nehmt Euch einen Moment und beschreibt den Plot in Euren Worten.
 
@@ -313,7 +316,7 @@ question(
 
 ### **Grafik: Der Boxplot**
 
-Den **Boxplot** kennen wir bereits (Session: "Grundlagen der Statsitk")! Mithilfe dieser grafischen Darstellungsform können wir die **fünf Punkte der Verteilung (Minimum, 25%-Quartil, Median, 75%-Quartil, Maximum)** auf einen Schlag zusammenfassen und veranschaulichen. Aber Vorsicht: "einfache" Boxplots zeigen ausschließlich die statistischen Werte, nicht aber die einzelnen Datenpunkte. Diese sind aber wichtig um zu erkennen, wie die tatsächliche Verteilung ausschaut (bspw. ob sich die "Box" aus 4 oder 400 Werten zusammensetzt), Stichwort: **Kontext**! In R lassen sich Boxplots und Scatterplots zum Glück gut kombinieren.
+Den **Boxplot** zur Darstellung der **fünf Punkte einer Verteilung** (Minimum, 25%-Quartil, Median, 75%-Quartil, Maximum) kennen wir bereits! Aber Vorsicht, denn "einfache" Boxplots zeigen ausschließlich die statistischen Werte, nicht aber die einzelnen Datenpunkte. Diese sind aber wichtig um zu erkennen, wie unsere Verteilung tatsächlich aussieht (bspw. ob sich die "Box" aus 4 oder 400 Werten zusammensetzt) - Stichwort: **Kontext**! In R lassen sich Boxplots und Scatterplots zum Glück gut kombinieren.
 
 *(Hinweis: wie Ihr auch so einen Boxplot erstellen könnt, lernt Ihr in der Lektion zu Datenvisualisierung! Hier geht's ja erstmal darum, zu sehen, wie uns R helfen kann Daten zu lesen, zu kontextualisieren und zu interpretieren.)*
 
@@ -347,15 +350,13 @@ Werfen wir also einen Blick auf unsere Grafik: Welche Gemeinsamkeiten und Unters
 ---
 
 <details>
-  <summary><h4>&#10145; Exkurs: Beziehungen zwischen Variablen</h4></summary>
-  <br>
+<summary><h1><b>Exkurs: Beziehungen zwischen Variablen</b></h1></summary>
+  <br> 
 
-<h4><b>Exkurs: Beziehungen zwischen Variablen</b></h4> 
-
-Bislang haben wir uns vor allem die Verteilung einer einzelnen Variable (gesammelte Plastikteile) gewidmet. Man spricht in einem solchen Fall auch von einer **univariaten** Verteilung, d.h. dass lediglich eine Variable für sich betrachtet wird. Wir interessieren uns nun aber vor allem für die Beziehung zwischen verschiedenen Variablen: Welche Faktoren beeinflussen möglicherweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Vielleicht die Zahl an Events? Oder ist es vielleicht eher die Zahl an Freiwilligen im Land?
+Bislang haben wir uns vor allem die Verteilung einer einzelnen Variable (z.B. `n_pieces`) gewidmet. Man spricht in einem solchen Fall auch von einer **univariaten** Verteilung, d.h. dass lediglich eine Variable für sich betrachtet wird. Häufig interessieren wir uns nun aallerdings für die Beziehung zwischen verschiedenen Variablen: Welche Faktoren beeinflussen beispielsweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Die Anzahl durchgeführter Events? Oder doch eher die Anzahl an Freiwilligen im Land?
 Wenn wir in diesem Zusammenhang zwei Variablen (z.B. Anzahl Plastikteile und Anzahl Events) betrachten, sprechen wir dabei von einer **bivariaten** Beziehung. Wir könnten allerdings auch mehr als zwei Variablen betrachten (z.B. Anzahl Plastikteile, Anzahl Events und Anzahl der Freiwilligen im Land) - dann würden wir von einer **mutlivariaten** Beziehung sprechen. 
 
-Bleiben wir aber einmal bei den bivariaten Beziehungen (= zwei Variablen) und fragen uns, ob zwischen diesen beiden Variablen **ein Zusammenhang** besteht, d.h. ob sie möglicherweise miteinander **korrelieren**. Für Fragestellungen zu möglichen Korrelationen zwischen zwei Variablen kann uns ein Scatterplot Aufschluss geben. Damit testen wir, ob die Anzahl an Events und/oder die Anzahl an Freiwilligen möglicherweise einen Einfluss auf die Anzahl der gefundenen Plastikstücke. Die rote Hilfslinie zeigt uns die Korrelation dieser beiden Variablen. Vergleichen wir mal...
+Wir fragen uns also zum Beispiel, ob zwischen zwei Variablen ein Zusammenhang besteht, d.h. ob diese Variablen miteinander **korrelieren**. Mithilfe eines Scatterplots können wir diese Frage beantworten. Wir testen nämlich, ob die Anzahl an Events und/oder die Anzahl an Freiwilligen einen Einfluss auf die Anzahl der gefundenen Plastikstücke haben. Die rote Hilfslinie zeigt uns das Ausmaß der Korrelation an. Vergleichen wir mal...
 
 <div style='float: left; width: 50%;'>
 ```{r scatter_plot_n_events, fig.width=4,fig.height=3}
@@ -410,9 +411,9 @@ ggplot(data = community, aes( x = n_volunteers,
 ```
 </div>
 
-Betrachten wir also zunächst das rechte Punktediagramm, welches die Anzahl an Plastikstücken der Anzahl an Freiwilligen gegenüberstellt. Anhand der Steigung unserer roten Hilfslinie erkennen wir einen größeren Zusammenhang als im rechten Diagramm, das Plastikstücke und Anzahl der Events gegenüberstellt. Die Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang aus**! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikstücken sind - wir beobachten beide Entwicklungen lediglich gleichzeitig. Wir müssen außerdem beachten, dass wir diese Aussage nur auf Länderebene treffen können. Wir können daher nicht darauf schließen, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. Wir erinnern uns an das Stichwort **"Ökologischer Fehlschluss"** von oben.
+Uns fällt direkt auf, dass die rote Gerade im rechten Diagramm deutlich steiler ist, als die Gerade im linken Diagramm. Anhand der Steigung erkennen wir, dass der Zusammenhang zwischen der Anuahl an Helfer:innen und der Anzahl an Plastikteilen deutlich größer ist als zwischen der Anzahl an Events und den gefundenen Plastikteilen. Diese Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang aus**! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikstücken sind - wir beobachten beide Entwicklungen lediglich gleichzeitig. Wir müssen außerdem beachten, dass wir diese Aussage nur auf Länderebene treffen können. Wir können daher nicht darauf schließen, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. Wir erinnern uns an das Stichwort **"Ökologischer Fehlschluss"** von oben.
 
-Welche Aussagen können wir also nun anhand dieser bivariaten Analyse treffen? Wir sehen, dass die Anzahl durchgeführter Events nur sehr schwach positiv mit der Anzahl gesammelter Plastikstücke korreliert (schwache Steigung der Geraden). Die Anzahl der Freiwilligen korreliert im Gegensatz dazu relativ stark positiv mit der Anzahl an gesammelten Plastikstücken (große Steigung der Geraden). Allerdings kann es für diese unterschiedlichen Zusammenhänge viele verschiedene Ursachen geben, die wir mit unseren Daten überhaupt nicht betrachten können - zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, welche einzelne Freiwillige in die Aktion investiert haben. Welche anderen "Drittvariablen" fallen Euch noch ein?
+Für diese Unterschiede kann es vielfältige Gründe geben, die wir so nicht unbedingt beobachten können - zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, welche einzelne Freiwillige in die Aktion investiert haben. Welche anderen "Drittvariablen" fallen Euch noch ein?
 
 </details>
 
@@ -429,10 +430,10 @@ Diese Woche möchten wir die Präsenzzeit nutzen, um die folgenden Übungen zu b
 
 2.  Überlegt: Mit welchen Daten und Datenanalysen könnte die Frage "Wie erfolgreich war der Audit?" noch beantwortet werden? Wie könnte eine Visualisierung oder eine zusammenfassende Statistik dabei helfen? Skizziert Eure Fragen gerne schriftlich.
 
-3.  Versucht, das zugehörige **R Markdown: 04_daten-verstehen-mit-r-uebung.Rmd** im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter 04_daten-verstehen-mir-r-uebung.Rmd zum Laufen zu bringen und es nachzuvollziehen.
+3.  Versucht, die zugehörige **R Datei: 06_daten-verstehen-mit-r-uebung.R** im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter 06_daten-verstehen-mir-r-uebung.R zum Laufen zu bringen und nachzuvollziehen.
 
 4.  In der ersten Einheit haben wir uns bei der Visualisierung vor allem der `n_pieces`-Variable gewidmet. Nun blicken wir auf die **`n_volunteers`**: Wie sehr unterscheiden sich die Freiwilligenzahlen nach Kontinenten? Erstellt in dem heruntergeladenen RMarkdown ein **Punktediagramm** (Scatterplot) mit dem Datensatz `community` für diesen Blickwinkel auf den Erfolg der "Break Free from Plastic" Aktion. Die Graphik soll `n_volunteers` auf der y-Achse und `continents`auf der x-Achse abbilden. Verseht beide Achsen mit den entsprechenden Labels **"Anzahl der Freiwilligen"** und **"Kontinente"**.
-*Hinweis: Versucht dazu im RMarkdown in der finalen Version der Graphik die entsprechenden Variablen auszutauschen.*
+*Hinweis: Versucht dazu in der Übungsdatei in der finalen Version der Graphik die entsprechenden Variablen auszutauschen.*
 
 5.  Versuchen wir uns an der Interpretation der Graphik. Was können wir aus unseren Darstellungen ablesen?
 
