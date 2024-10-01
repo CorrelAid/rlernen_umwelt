@@ -239,7 +239,7 @@ In diesem explorativen Schritt der Datenanalyse, wollen wir uns also einmal mit 
 ### **Grafik: Das Punktdiagramm**
 
 Bleiben wir an dieser Stelle einmal bei den verschiedenen Kontinenten. Mithilfe des Packages **`ggplot2`** können wir hierfür ein sogenanntes **Punktediagramm (engl. Scatterplott)** erstellen. Mit diesem Package kann man verschiedene Grafiken, die uns dabei helfen, die Daten zu verstehen. Das **Schichtsystem** zur Erstellung dieser Grafiken schauen wir uns in der Session zur Datenvisualisierung noch im Detail an.<br>
-Betrachtet nun die folgende Visualisierung, die sowohl die Verteilung als auch die Häufigkeit von Beobachtungen über die Verteilung darstellt. Nehmt Euch einen Moment und beschreibt den Plot in Euren Worten. 
+Betrachtet nun die folgende Visualisierung, die sowohl die Verteilung als auch die Häufigkeit von Beobachtungen über die Verteilung darstellt. Nehmt Euch einen Moment und beschreibt den Plot in Euren Worten. Kleine Erinnerung: den Code hier müsst Ihr aktuell noch nicht nachvollziehen können! 
 
 ```{r geom_point_n_pieces_bericht, exercise = TRUE}
 # Erstellung eines jitter plots zur Anzahl gesammelter Plastikstücke pro Kontinent
