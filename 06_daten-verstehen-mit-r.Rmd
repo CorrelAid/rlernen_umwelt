@@ -126,10 +126,9 @@ Bleiben wir also bei unserem [Datensatz](https://github.com/rfordatascience/tidy
 
 Nachdem wir diese Fragen formuliert haben, geht es darum, diese bestmöglich zu beantworten. Wir müssen also auf die Informationen schauen, die uns vorliegen. Das machen wir, indem wir unsere **Daten analysieren und interpretieren**! 
 
-*Anmerkung:* Da es in dieser Einheit darum geht, in den **Analyse-Spirit** zu kommen und R als Analysetool kennenzulernen, haben wir den Datensatz "Break Free from Plastic" bereits **bereinigt** und in **zwei Datensätze** aufgeteilt: Einen `community`- und einen `audit`-Datensatz.
+*Anmerkung:* Da es in dieser Einheit darum geht, in den **Analyse-Spirit** zu kommen und R als Analysetool kennenzulernen, haben wir den Datensatz "Break Free from Plastic" bereits **bereinigt** und einen Subset `community` erstellt - dieser enthält folgende Informationen:
 
-  - **`community´**: Dieser Datensatz enthält vor allem die Variablen, welche für Fragestellungen rund um die Community-Perspektive nützlich sind. Dazu zählen unter anderem die Anzahl an gesammelten Plastikteilen, die Anzahl der Events und freiwillig Engagierten.
-  - **`audit`**: Dieser Datensatz umfasst vor allem jene Variablen, die für Fragen zur Audit-Perspektive nützlich sind. Dazu zählen unter anderem der Name der Firma und die Klassifizierung der Kunststoffe.
+  - **`community`**: Dieser Datensatz enthält vor allem die Variablen, welche für Fragestellungen rund um die Community-Perspektive nützlich sind. Dazu zählen unter anderem die Anzahl an gesammelten Plastikteilen, die Anzahl der Events und freiwillig Engagierten.
 
 ### **Die `glimpse()`-Funktion**
 
@@ -239,14 +238,8 @@ In diesem explorativen Schritt der Datenanalyse, wollen wir uns also einmal mit 
 
 ### **Grafik: Das Punktdiagramm**
 
-Bleiben wir an dieser Stelle einmal bei den verschiedenen Kontinenten. Mithilfe des Packages **`ggplot2`** können wir hierfür ein sogenanntes **Punktediagramm (engl. Scatterplott)** erstellen. Mit diesem Package kann man verschiedene Grafiken über eine Art **Schichtsystem** erstellen: 
-
-- 1.Schicht: Verweis auf den verwendeten Datensatz (`data = community`) und die Variablen, die entlang der x- und y-Achsen dargestellt werden sollen (`aes(x = continent, y = n_pieces)`).<br>
-- 2.Schicht: Bestimmung der Art der Visualisierung durch die **`geom_jitter()`-Funktion**. 'jitter' beschreibt eine besondere Art von Punktediagramm, bei dem Datenpunkte sich ausweichen um die Lesbarkeit bei Überlagerung zu ermöglichen.<br>
-- 3.Schicht: Beschriftung der Grafik mithilfe der **`labs()`-Funktion**. In diesem Schritt werden Überschrift(en), Achsen und Bilderunterschrift mit Labels versehen.<br>
-- 4.Schritt: Feinschliff und **Layout** durch andere Schichten, die mit einem "+" hinzugefügt werden. Diese beinhalten in der Regel Funktionen zur Gestaltung (z.B. Annotation, Layout, etc.).
-
-Betrachtet nun die folgende Visualisierung, die sowohl die Verteilung als auch die Häufigkeit von Beobachtungen über die Verteilung darstellt. Nehmt Euch einen Moment und beschreibt den Plot in Euren Worten. Kleine Erinnerung: den Code hier müsst Ihr aktuell noch nicht nachvollziehen können! 
+Bleiben wir an dieser Stelle einmal bei den verschiedenen Kontinenten. Mithilfe des Packages **`ggplot2`** können wir hierfür ein sogenanntes **Punktediagramm (engl. Scatterplott)** erstellen. Mit diesem Package kann man verschiedene Grafiken, die uns dabei helfen, die Daten zu verstehen. Das **Schichtsystem** zur Erstellung dieser Grafiken schauen wir uns in der Session zur Datenvisualisierung noch im Detail an.<br>
+Betrachtet nun die folgende Visualisierung, die sowohl die Verteilung als auch die Häufigkeit von Beobachtungen über die Verteilung darstellt. Nehmt Euch einen Moment und beschreibt den Plot in Euren Worten. 
 
 ```{r geom_point_n_pieces_bericht, exercise = TRUE}
 # Erstellung eines jitter plots zur Anzahl gesammelter Plastikstücke pro Kontinent
