@@ -232,38 +232,6 @@ sum(community$n_events)
 sum(community$n_volunteers)
 ```
 
-### **Die `summarize()`-Funktion** 
-
-Als Nächstes wollen wir die Daten in Tabellen zusammenfassen, um beispielsweise neue Datenobjekte zu erstellen. Dabei greifen wir auf eine weitere Funktion aus dem `dplyr`-Package zurück: Die **`summarize()`**-Funktion (auch: `summarise()`). Mit dieser Funktion können wir auf Basis der bereits vorhandenen Variablen neue **Hilfsvariablen** erstellen, die Berechnungen für uns zusammenfassen. Im folgenden Beispiel erstellen wir eine Übersicht, über die Gesamtzahl, sowie die Spannweite der gesammelten Plastikteile. Hierzu erstellen wir die neuen Hilfsvariablen "Gesamt" und "Spannweite" und weisen diesen dann die gewünschte Funktion oder Funktionskombination zu:
-
-```{r summarise, exercise = TRUE}
-dplyr::summarize(community, 
-                 Gesamt = sum(community$n_pieces),
-                 Spannweite = max(community$n_pieces) - min(community$n_pieces))
-```
-*Übersetzung: Nutze den Datensatz 'community' und erstelle eine Variable "Gesamt", die alle gesammelten Plastikteile aufsummiert und eine Variable "Spannweite", die die Differenz aus Maximum und Minimum der Variable 'n_pieces' berechnet.* 
-
-### **`summarize()` und `group_by()`**
-
-Leider wurden nun alle Länder zusammengeschmissen, wodurch wir natürlich keine Muster erkennen können. Dafür müssen wir die `summarize()`-Funktion um die **`group_by()`**-Funktion ergänzen. Beide werden gerne miteinander kombiniert, da sie in recht kurzer Zeit etwas umfassendere Zusammenfassungen über die Daten erstellen. Die `group-by`-Funktion erlaubt es uns, Daten nach den Werten einer oder mehrerer Spalten zu kategorisieren und somit Gruppenanalysen zu erstellen. 
-Wir müssen also lediglich den oberen Code ein wenig ergänzen:
-
-```{r Vorschau_group_by, exercise = TRUE}
-# Kombination group_by und summarize
-dplyr::summarize(group_by(community, Kontinent = community$continent), # aus den Daten 'community' eine Kategorie nach 'continent'
-                 Länder = n(), # Anzahl der Zeilen
-                 Gesamt = sum(n_pieces), # Summe der Werte
-                 Spannweite = max(n_pieces) - min(n_pieces)) # Differenz max() und min()
-```
-
-Mit `group_y()` legen wir fest, wir auf den Datensatz `community` zurückgreifen die Daten anhand der neuen Hilfsvariable 'Kontinent' kategorisieren wollen. Da wir uns fürländerübergreifende Unterschiede interesseieren, erstellen wir eine weitere Hilfsvariable 'Länder'.
-
-### **Vorsicht: Interpretation der Daten!**
-
-Wir können bereits jetzt schon wertvolle Erkenntnisse aus unseren Daten gewinnen, dennoch müssen wir bei der Interpretation unserer Daten stets deren **Aggregationsebene** im Auge behalten. Man verweist in diesem Zuge auch auf die **Granularität der Daten**: Je aggregierter Daten vorliegen, desto schwieriger wird es, Zusammenhänge korrekt zu bestimmen. Es kommt also auch hier wieder auf den **Kontext** drauf an!
-In unserem Datensatz können wir beispielsweise lediglich Vergleiche zwischen verschiedenen Ländern anstellen - aber können wir auch Aussagen über individuelle Events treffen? Nein, denn auf dieser Ebene liegen uns schlicht keine Informationen vor! Diese Schwankungen und ihre möglichen Ursachen müssen wir also stets bedenken. Die Anzahl der durchgeführten Events weicht beispielsweise stark von der Anzahl involvierter Helfer:innen ab. Wie genau diese Unterschiede zu werten sind, ob beide Zahlen von anderen Variablen (sog. Störfaktoren, engl. *confounding variables*) beeinflusst werden und wir diese überhaupt auf Basis unserer Daten bewerten können müssen wir noch herausfinden. 
-Ein Schlagwort welches häuftig in Verbindung mit der Aggregation von Daten fällt, ist der **"Ökologische Fehlschluss"**. Dieser beschreibt, wie auf der Basis von Aggregatdaten unzulässigerweise auf die Individualebene geschlossen wird. Mehr dazu findet Ihr [hier](https://martin-grellmann.de/oekologischer-fehlschluss).
-
 ## **4. Schritt: Visualisierung**
 
 Wir haben uns nun bereits in Form von Tabellen einen generellen Überblick verschaffen können. Diese Kennzahlen sind wichtig. Jedoch kann es bei so vielen Zahlen schnell mal etwas unüberischtlich werden. Mit einfachen **Datenvisualisierungen** können wir unsere Daten grafisch darstellen und statistische Muster sichtbar machen. <br>
@@ -415,7 +383,7 @@ ggplot(data = community, aes( x = n_volunteers,
 
 <br>
 
-Uns fällt direkt auf, dass die rote Gerade im rechten Diagramm deutlich steiler ist, als die Gerade im linken Diagramm. Anhand der Steigung erkennen wir, dass der Zusammenhang zwischen der Anuahl an Helfer:innen und der Anzahl an Plastikteilen deutlich größer ist als zwischen der Anzahl an Events und den gefundenen Plastikteilen. Diese Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang aus**! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikstücken sind - wir beobachten beide Entwicklungen lediglich gleichzeitig. Wir müssen außerdem beachten, dass wir diese Aussage nur auf Länderebene treffen können. Wir können daher nicht darauf schließen, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. Wir erinnern uns an das Stichwort **"Ökologischer Fehlschluss"** von oben.
+Uns fällt direkt auf, dass die rote Gerade im rechten Diagramm deutlich steiler ist, als die Gerade im linken Diagramm. Anhand der Steigung erkennen wir, dass der Zusammenhang zwischen der Anuahl an Helfer:innen und der Anzahl an Plastikteilen deutlich größer ist als zwischen der Anzahl an Events und den gefundenen Plastikteilen. Diese Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang aus**! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikstücken sind - wir beobachten beide Entwicklungen lediglich gleichzeitig. Wir müssen außerdem beachten, dass wir diese Aussage nur auf Länderebene treffen können. Wir können daher nicht darauf schließen, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. 
 
 Für diese Unterschiede kann es vielfältige Gründe geben, die wir so nicht unbedingt beobachten können - zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, welche einzelne Freiwillige in die Aktion investiert haben. Welche anderen "Drittvariablen" fallen Euch noch ein?
 
