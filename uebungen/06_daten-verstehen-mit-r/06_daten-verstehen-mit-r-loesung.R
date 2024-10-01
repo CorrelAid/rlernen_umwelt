@@ -53,38 +53,6 @@ dplyr::glimpse(community)
 # Überblick über den Plastik-Audit verschaffen
 dplyr::glimpse(audit)
 
-### Schritt 5: Statistische Kennzahlen ----
-
-# Tabelle mit statistischen Kennzahlen
-dplyr::summarize(dplyr::group_by(community, Kontinent = community$continent), 
-                 "Anzahl Länder" = n(),
-                 "Anzahl Plastikstücke" = sum(n_pieces),
-                 "Mittelwert" = mean(n_pieces),
-                 "Standardabweichung" = sd(n_pieces),
-                 "Varianz" = var(n_pieces),
-                 "Median" = median(n_pieces),
-                 "Quartil (25%)" = quantile(n_pieces, .25),
-                 "Quartil (75%)" = quantile(n_pieces, .75),
-                 "Interquartilsabstand (IQR)" = IQR(n_pieces),
-                 "Spannweite" = max(n_pieces) - min(n_pieces)) 
-
-### Schritt 6: Visuelle Exploration ----
-
-# Erstellung eines jitter plots zur Anzahl gesammelter Plastikstücke pro Kontinent
-ggplot(data = community, 
-       aes(x = continent, # x-Achse soll Kontinente zeigen
-           y = n_pieces)) +  # y-Achse soll Stücke zeigen
-  geom_jitter(size = 3, # Größe der Punkte
-              alpha = 0.6, # Transparenz der Punkte
-              width = 0.2) +  # Breite der Punkt-jitter pro Kategorie
-  labs(title = "Auch die Anzahl gesammelter Plastikstücke von 'Break Free From Plastic' ..." ,
-       subtitle = "... unterscheidet sich nach Kontinent und Land.",
-       y = "Anzahl gefundener Plastikstücke pro Land",
-       x = "Kontinent",
-       caption = "Datenquelle: TidyTuesday und BFFP") + # Festlegung der Achsenbezeichungen, Überschriften und Titel
-  theme_minimal() + # Festlegung des Layout-Designs  
-  theme(legend.position="none") # Ausblenden der Legende
-
 
 ## Übung 4.1: Variable 'n_volunteers' ------------------------------------------
 # Bislang haben wir uns der Variable 'n_pieces' gewidmet und möchten nun die Variable der Freiwilligen 'n_volunteers' betrachten: Wie sehr unterscheiden sich beispielsweise die Freiwilligenzahlen nach Kontinenten? Beantworten wir diese Frage doch mit einem Punktediagramm (Scatterplot)! Ergänzt dazu den folgenden Code, sodass die Graphik auf der y-Achse die Anzahl der Freiwilligen ('n_volunteers') und auf der x-Achse die Kontinente ('continent') anzeigen. Tauscht dafür an relevanten Stellen die ??? durch die entsprechende Variable aus und passt die Beschriftungen an:
