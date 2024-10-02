@@ -33,13 +33,10 @@ library(dplyr)
 library(countrycode)
 
 ### Schritt 2: Daten laden ----
-# Im Ordner 'daten' findet Ihr die Dateien 'bffp2019_community_by_country.csv' und 'daten/bffp2019_audit_by_country_and_company.csv', die Ihr für diese Übung in R ladet. 
+# Im Ordner 'daten' findet Ihr die Datei 'bffp2019_community_by_country.csv', die Ihr für diese Übung in R ladet. 
 
 ### Community Datensatz laden
 community <- rio::import(here::here('daten/bffp2019_community_by_country.csv'))
-
-### Audit Datensatz laden
-audit <- rio::import(here::here('daten/bffp2019_audit_by_country_and_company.csv'))
 
 ### Schritt 3: Daten bereinigen ---
 # Diesen Schritt haben wir an dieser Stelle schon einmal für Euch übernommen. Ihr müsst hier also nichts weiter tun. Aber denkt dran: Normalerweise ist dieser Schritt super wichtig, weshalb wir uns diesen in den beiden Sessions zum Thema 'Datentransformation' noch genauer anschauen werden!
@@ -50,23 +47,20 @@ audit <- rio::import(here::here('daten/bffp2019_audit_by_country_and_company.csv
 # Überblick über die Community verschaffen
 dplyr::glimpse(community)
 
-# Überblick über den Plastik-Audit verschaffen
-dplyr::glimpse(audit)
-
 
 ## Übung 4.1: Variable 'n_volunteers' ------------------------------------------
-# Bislang haben wir uns der Variable 'n_pieces' gewidmet und möchten nun die Variable der Freiwilligen 'n_volunteers' betrachten: Wie sehr unterscheiden sich beispielsweise die Freiwilligenzahlen nach Kontinenten? Beantworten wir diese Frage doch mit einem Punktediagramm (Scatterplot)! Ergänzt dazu den folgenden Code, sodass die Graphik auf der y-Achse die Anzahl der Freiwilligen ('n_volunteers') und auf der x-Achse die Kontinente ('continent') anzeigen. Tauscht dafür an relevanten Stellen die ??? durch die entsprechende Variable aus und passt die Beschriftungen an:
+# Bislang haben wir uns der Variable 'n_pieces' gewidmet und möchten nun die Variable der Freiwilligen 'n_volunteers' betrachten: Wie sehr unterscheiden sich beispielsweise die Freiwilligenzahlen nach Kontinenten? Beantworten wir diese Frage doch mit einem Punktediagramm (Scatterplot)! Führt dazu einmal den folgenden Code aus und versucht, die Grafik in eigenen Worten zu beschreiben und zu interpretieren:
 
 ggplot(data = community, 
-       aes(x = ???, # x-Achse soll Kontinente zeigen
-           y = ???)) +  # y-Achse soll Stücke zeigen
+       aes(x = continent, # x-Achse zeigt die Kontinente
+           y = n_volunteers)) +  # y-Achse zeigt die Freiwilligenanzahl
   geom_jitter(size = 3, # Größe der Punkte
               alpha = 0.6, # Transparenz der Punkte
               width = 0.2) +  # Breite der Punkt-jitter pro Kategorie
   labs(title = "Auch die Anzahl freiwillig Engagierter bei 'Break Free From Plastic' ..." ,
        subtitle = "... unterscheidet sich nach Kontinent und Land.",
-       y = "???", # Ergänzt die korrekte y-Achsenbezeichnung 
-       x = "???", # Ergänzt die korrekte x-Achsenbezeichnung
+       y = "Anzahl freiwilliger Helfer*innen", # y-Achsenbezeichnung 
+       x = "Kontinente", # x-Achsenbezeichnung
        caption = "Datenquelle: TidyTuesday und BFFP") + # Festlegung der Achsenbezeichungen, Überschriften und Titel
   theme_minimal() + # Festlegung des Layout-Designs  
   theme(legend.position ="none") # Ausblenden der Legende
