@@ -25,6 +25,7 @@ library(gradethis)
  
 source("R/setup/gradethis-setup.R")
 source("R/setup/tutorial-setup.R")
+source("R/setup/functions.R")
 # Read app parameters
 params <- yaml::yaml.load_file("www/app_parameters.yml")
 ```
