@@ -55,7 +55,7 @@ Wir wollen uns heute mithilfe von R einen Überblick über unsere Daten verschaf
       2. Untersuchung der Variablen mithilfe **einfacher Datenvisualisierungen**.
       3. Weiterführende Analysen auf Basis der Berechnung **statistischer Kennzahlen**, (d.h. Lage- und Verteilungsparameter).
 
-So weit so gut. Allerdings gibt es noch eine Sache, die wir bei der Datenanalyse und -interpretation immer beachten müssen: **Den Kontext**! Ganz nach dem Grundsatz "**Context is key!**" achten wir immer darauf, dass wir unsere Daten immer im Kontext zu den angewandten statistischen und visuellen Auswertungen bewerten. Dazu gehört ebenfalls, dass wir externe Rahmenbedingungen unserer Daten berücksichtigen: Woher kommen unsere Daten? Zu welchem Zweck wurden die Daten erhoben und aus welcher Zeit stammen die Daten? Wie könnten sich diese Aspekte auf unsere Daten auswirken?
+So weit so gut. Allerdings gibt es noch eine Sache, die wir bei der Datenanalyse und -interpretation immer beachten müssen: **Den Kontext**! Ganz nach dem Grundsatz "**Context is key**" achten wir immer darauf, dass wir unsere Daten immer im Kontext zu den angewandten statistischen und visuellen Auswertungen bewerten. Dazu gehört ebenfalls, dass wir externe Rahmenbedingungen unserer Daten berücksichtigen: Woher kommen unsere Daten? Zu welchem Zweck wurden die Daten erhoben und aus welcher Zeit stammen die Daten? Wie könnten sich diese Aspekte auf unsere Daten auswirken?
 
 # **Unsere Tools in R**
 
@@ -102,7 +102,7 @@ quiz(caption = NULL,
     answer("Die Erstellung von Visualisierungen reicht aus, um Aussagen über die Bedeutung erhobener Daten zu treffen."),
     answer("Der Kontext ist bei der Analyse und Interpretation von Daten nicht so wichtig."),
     answer("Als Grundlage der Analyse und Interpreationen von Daten dienen uns die Berechnung statistischer Kennzahlen, sowie die Visualisierung und Kontextualisierung.", correct = TRUE),
-    correct = "Richtig, es reicht eben nicht aus, Kennzahlen zu berechnen und bunte Grafiken zu erstellen. Statistische Maße und qualitative Visualisierungen sind wichtig und sind Teil einer umfassenden Datenanalyse. Während des gesamten Prozesses von der Datenanalyse bis hin zur Interpretation dürfen wir allerdings eines nicht aus den Augen verlieren: Den Kontext!",
+    correct = "Richtig, es reicht eben nicht aus, Kennzahlen zu berechnen und bunte Grafiken zu erstellen. Statistische Maße und qualitative Visualisierungen sind wichtig und Teil einer umfassenden Datenanalyse. Während des gesamten Prozesses von der Datenanalyse bis hin zur Interpretation dürfen wir allerdings eines nicht aus den Augen verlieren: Den Kontext!",
     incorrect = "Leider falsch, die Berechnung statistischer Kennzahlen und die Visualisierung dieser sind ein wichtiger Teil einer umfassenden Datenanalyse. Während des gesamten Prozesses von der Datenanalyse bis hin zur Interpretation dürfen wir aber eines nicht vergessen: Den Kontext. Alle drei Dinge sind die Grundlage unserer Arbeit!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
@@ -114,7 +114,7 @@ quiz(caption = NULL,
 
 ## **1. Schritt: Fragen**
 
-Am Anfang jeder Datenanalyse steht etwas, dass zunächst gar nichts mit Daten zu tun haben muss: **Fragen**. Daten sind schließlich nichts anderes als **formalisierte Informationen**, die uns in erster Linie zum **Erkenntnisgewinn** verhelfen sollen. Strategische Überlegungen helfen uns dabei, bestimmte Fragestellungen zu formulieren, auf die wir uns anschließend fokussieren können.
+Am Anfang jeder Datenanalyse steht etwas das zunächst gar nichts mit Daten zu tun haben muss: **Fragen**. <br> Daten sind schließlich nichts anderes als **formalisierte Informationen**, die uns in erster Linie zum **Erkenntnisgewinn** verhelfen sollen. Strategische Überlegungen helfen uns dabei, bestimmte Fragestellungen zu formulieren, auf die wir uns anschließend fokussieren können.
 Bleiben wir also bei unserem [Datensatz](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-01-26){target="_blank"} von [#Break Free From Plastic](https://www.breakfreefromplastic.org/){target="_blank"} und versetzen uns in die Rolle der Organisator:innen - welche Fragen könnten und müssen wir uns vielleicht sogar stellen? Wir haben hier ein paar Beispiele, ergänzt diese Liste gerne um Eure eigenen Ideen!
 
   1.  Wie viel Plastik wurde insgesamt gesammelt? <br>
@@ -266,8 +266,8 @@ question(
     answer("Afrika und Europa"),
     answer("Afrika und Asien", correct = TRUE),
     answer("Afrika und Ozeanien"),
-    correct = "Richtig, wir können ganz deutlich erkennen, dass die meisten Punkte für alle Kontinente relativ nah aneinander liegen. Lediglich für Afrika und Asien stellen wir einzelne (positive) Ausreißer fest.",
-    incorrect = "Leider falsch, beztrachte noch einmal die Grafik: Wo liegen die Punkte alle relativ nah aneinander und wo gibt es einzelne Datenpunkte, die ziemlich weit von den anderen entfernt sind?",
+    correct = "Richtig, wir können ganz deutlich erkennen, dass die meisten Punkte für alle Kontinente relativ nah beieinander liegen. Lediglich für Afrika und Asien stellen wir einzelne (positive) Ausreißer fest.",
+    incorrect = "Leider falsch, betrachte noch einmal die Grafik: Wo liegen die Punkte alle relativ nah beieinander und wo gibt es einzelne Datenpunkte, die ziemlich weit von den anderen entfernt sind?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen",
     random_answer_order = TRUE
@@ -279,7 +279,7 @@ question(
 
 Den **Boxplot** zur Darstellung der **fünf Punkte einer Verteilung** (Minimum, 25%-Quartil, Median, 75%-Quartil, Maximum) kennen wir bereits! Aber Vorsicht, denn "einfache" Boxplots zeigen ausschließlich die statistischen Werte, nicht aber die einzelnen Datenpunkte. Diese sind aber wichtig um zu erkennen, wie unsere Verteilung tatsächlich aussieht (bspw. ob sich die "Box" aus 4 oder 400 Werten zusammensetzt) - Stichwort: **Kontext**! In R lassen sich Boxplots und Scatterplots zum Glück gut kombinieren.
 
-*(Hinweis: wie Ihr auch so einen Boxplot erstellen könnt, lernt Ihr in der Lektion zu Datenvisualisierung! Hier geht's ja erstmal darum, zu sehen, wie uns R helfen kann Daten zu lesen, zu kontextualisieren und zu interpretieren.)*
+*(Hinweis: Wie Ihr auch so einen Boxplot erstellen könnt, lernt Ihr in der Lektion zu Datenvisualisierung! Hier geht's ja erstmal darum, zu sehen, wie uns R dabei helfen kann Daten zu lesen, zu kontextualisieren und zu interpretieren.)*
 
 ```{r boxplot_plastik}
 # Erstellung eines Boxplots mit Scatterplot zur Anzahl gesammelter Plastikstücke pro Kontinent
@@ -314,8 +314,8 @@ Werfen wir also einen Blick auf unsere Grafik: Welche Gemeinsamkeiten und Unters
 <summary><h1><b>Exkurs: Beziehungen zwischen Variablen</b></h1></summary>
   <br> 
 
-Bislang haben wir uns vor allem die Verteilung einer einzelnen Variable (z.B. `n_pieces`) gewidmet. Man spricht in einem solchen Fall auch von einer **univariaten** Verteilung, d.h. dass lediglich eine Variable für sich betrachtet wird. Häufig interessieren wir uns nun aallerdings für die Beziehung zwischen verschiedenen Variablen: Welche Faktoren beeinflussen beispielsweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Die Anzahl durchgeführter Events? Oder doch eher die Anzahl an Freiwilligen im Land?
-Wenn wir in diesem Zusammenhang zwei Variablen (z.B. Anzahl Plastikteile und Anzahl Events) betrachten, sprechen wir dabei von einer **bivariaten** Beziehung. Wir könnten allerdings auch mehr als zwei Variablen betrachten (z.B. Anzahl Plastikteile, Anzahl Events und Anzahl der Freiwilligen im Land) - dann würden wir von einer **mutlivariaten** Beziehung sprechen. 
+Bislang haben wir uns vor allem der Verteilung einer einzelnen Variable (z.B. `n_pieces`) gewidmet. Man spricht in einem solchen Fall auch von einer **univariaten** Verteilung (= eine Variable). Häufig interessieren wir uns nun allerdings für die Beziehung zwischen verschiedenen Variablen: Welche Faktoren beeinflussen beispielsweise die Unterschiede in der Anzahl an Plastikstücken, die gesammelt wurden? Die Anzahl durchgeführter Events oder doch eher die Anzahl an Freiwilligen im Land?
+Wenn wir in diesem Zusammenhang zwei Variablen (z.B. Anzahl Plastikteile und Anzahl Events) betrachten, sprechen wir dabei von einer **bivariaten** Beziehung. Wir könnten allerdings auch mehr als zwei Variablen betrachten (z.B. Anzahl Plastikteile, Anzahl Events und Anzahl der Freiwilligen im Land) - dann würden wir von einer **multivariaten** Beziehung sprechen. 
 
 Wir fragen uns also zum Beispiel, ob zwischen zwei Variablen ein Zusammenhang besteht, d.h. ob diese Variablen miteinander **korrelieren**. Mithilfe eines Scatterplots können wir diese Frage beantworten. Wir testen nämlich, ob die Anzahl an Events und/oder die Anzahl an Freiwilligen einen Einfluss auf die Anzahl der gefundenen Plastikstücke haben. Die rote Hilfslinie zeigt uns das Ausmaß der Korrelation an. Vergleichen wir mal...
 
@@ -376,9 +376,9 @@ ggplot(data = community, aes( x = n_volunteers,
 
 <br>
 
-Uns fällt direkt auf, dass die rote Gerade im rechten Diagramm deutlich steiler ist, als die Gerade im linken Diagramm. Anhand der Steigung erkennen wir, dass der Zusammenhang zwischen der Anuahl an Helfer:innen und der Anzahl an Plastikteilen deutlich größer ist als zwischen der Anzahl an Events und den gefundenen Plastikteilen. Diese Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang aus**! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikstücken sind - wir beobachten beide Entwicklungen lediglich gleichzeitig. Wir müssen außerdem beachten, dass wir diese Aussage nur auf Länderebene treffen können. Wir können daher nicht darauf schließen, dass Events mit mehr Freiwilligen mehr Plastikstücke sammeln. 
+Uns fällt direkt auf, dass die rote Gerade im rechten Diagramm deutlich steiler ist, als die Gerade im linken Diagramm. Anhand der Steigung erkennen wir, dass der Zusammenhang zwischen der Anzahl an Helfer:innen und den gefundenen Plastikteilen deutlich größer ist als zwischen der Anzahl an Events und den gefundenen Plastikteilen. Diese Trendlinie zeigt nämlich an, dass mit der Zunahme von einem Faktor, auch der andere ansteigt. Aber Achtung, denn unser Diagramm sagt Nichts über einen **Ursache-Wirkungs-Zusammenhang** aus! Wir können also nicht mit Sicherheit sagen, dass mehr Freiwillige die **Ursache** für mehr gesammelte Plastikteile sind. Wir können beide Entwicklungen lediglich gleichzeitig beobachten. Außerdem müssen wir beachten, dass wir diese Aussage nur auf Länderebene treffen können. Daher können wir nicht darauf schließen, dass auf Events mit mehr Freiwilligen mehr Plastikstücke gesammelt werden. 
 
-Für diese Unterschiede kann es vielfältige Gründe geben, die wir so nicht unbedingt beobachten können - zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, welche einzelne Freiwillige in die Aktion investiert haben. Welche anderen "Drittvariablen" fallen Euch noch ein?
+Für diese Unterschiede kann es vielfältige Gründe geben, die wir so nicht unbedingt beobachten können - zum Beispiel die Bevölkerungsanzahl oder auch die Zeit, die einzelne Freiwillige in die Aktion investiert haben. Welche anderen "Drittvariablen" fallen Euch noch ein?
 
 </details>
 
@@ -397,10 +397,7 @@ Diese Woche möchten wir die Präsenzzeit nutzen, um die folgenden Übungen zu b
 
 3.  Versucht, die zugehörige **R Datei: 06_daten-verstehen-mit-r-uebung.R** im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter "06_daten-verstehen-mir-r" zum Laufen zu bringen und nachzuvollziehen.
 
-4.  In der ersten Einheit haben wir uns bei der Visualisierung vor allem der `n_pieces`-Variable gewidmet. Nun blicken wir auf die **`n_volunteers`**: Wie sehr unterscheiden sich die Freiwilligenzahlen nach Kontinenten? Erstellt in dem heruntergeladenen RMarkdown ein **Punktediagramm** (Scatterplot) mit dem Datensatz `community` für diesen Blickwinkel auf den Erfolg der "Break Free from Plastic" Aktion. Die Graphik soll `n_volunteers` auf der y-Achse und `continents`auf der x-Achse abbilden. Verseht beide Achsen mit den entsprechenden Labels **"Anzahl der Freiwilligen"** und **"Kontinente"**.
-*Hinweis: Versucht dazu in der Übungsdatei in der finalen Version der Graphik die entsprechenden Variablen auszutauschen.*
-
-5.  Versuchen wir uns an der Interpretation der Graphik. Was können wir aus unseren Darstellungen ablesen?
+4.  In der ersten Einheit haben wir uns bei der Visualisierung vor allem der `n_pieces`-Variable gewidmet. Nun blicken wir auf die **`n_volunteers`**: Wie sehr unterscheiden sich die Freiwilligenzahlen nach Kontinenten? Führt in der heruntergeladenen R-Datei den Code zur Erstellung eines **Punktediagramms** (Scatterplot) durch. Versucht diese Grafik zu beschreiben und zu interpretieren. Den Code müsst Ihr Euch erst einmal nicht näher anschauen, das machen wir noch gemeinsam!
 
 # **Zusätzliche Ressourcen**
 
