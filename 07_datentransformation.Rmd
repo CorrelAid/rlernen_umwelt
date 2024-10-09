@@ -61,8 +61,10 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 - Einige der Packages und Funktionen kennen wir bereits aus den letzten Wochen!
 - "tidy" Datensätze sind die Voraussetzung, um mit dem Tidyverse arbeiten zu können:
 
-![Tidy Data](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/tidy-data.jpeg?raw=true){#id .class width=60% height=60%}
-*Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst*
+<div style="text-align: center;">
+  <img src="https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/tidy-data.jpeg?raw=true" alt="Beschreibung des Bildes" style="max-width: 100%; height: auto;">
+  <p style="margin-top: 0.5em; font-style: italic;">Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst</p>
+</div>
 
 ## **Die Bestandteile**
 
@@ -124,7 +126,7 @@ quiz(caption = NULL,
     answer("Ein Werkzeug zur Strukturierung von mehrfachen Operationen in R", correct = TRUE),
     answer("Ein Werkzeug zur verbesserten Lesbarkeit von Code in R", correct = TRUE),
     answer("Syntax des ggplot2-Packages"),
-    answer("Eine Besonderheit des dplyr-Packages", correct = TRUE),
+    answer("Eine Besonderheit des tidyverse-Packages", correct = TRUE),
     correct = "Richtig, der Pipe-Operator ist eine kleine Sache, die eine große Wirkung zeigt und uns das Leben sehr viel leichter macht! Mit diesem Ausdruck können wir verschiedene Funktionen miteinander verknüpfen. Dadurch werden unsere Daten automatisch durch diese Funktionen geleitet, wodurch unser Code deutlich strukturierter und lesbarer wird.",
     incorrect = "Leider falsch, versuche es nochmal oder schaue im Video nach!",
     allow_retry = TRUE,
