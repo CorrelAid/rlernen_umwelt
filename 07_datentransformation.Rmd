@@ -167,21 +167,29 @@ Einerseits möchten wir das Verhalten der #Breakfreefromplastic-Community in den
 
 Andererseits interessieren wir uns auch für Daten, die die verantwortlichen Firmen betreffen. Da wir deren Müllproduktion einer Prüfung (engl. Audit) unterziehen wollen, erstellen wir einen zweiten Datensatz mit dem Namen **`audit`**. Weil wir uns neben der herstellenden Firma auch für die Art des Plastikmülls (Plastiktyp) und das Land interessieren, in dem der Müll gefunden wurde, bildet **jede Zeile eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land**. Als "auditbezogene" Variablen identifizieren wir **Kontinent, Land, Countrycode, Hersteller und die Anzahl der Plastikstücke**. Diese werden wieder in unseren Spalten abgetragen.
 
-Folgende Datensätze wollen wir also im Laufe dieser Session erstellen: <ul>
-- **Datensatz `community`**:
-  - Eine Zeile = Ein Land
-  - Variablen: Kontinent, Land, Countrycode, Anzahl Plastikstücke, Events und Freiwillige 
-
-- **Datensatz `audit`**:
-  - Eine Zeile = Eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land
-  - Variablen: Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke
+Folgende Datensätze wollen wir also im Laufe dieser Session erstellen:
 <ul>
+<li><strong>Datensatz `community`</strong>:
+   <ul>
+      <li><strong>Eine Zeile:</strong> Ein Land</li>
+      <li><strong>Variablen:</strong> Kontinent, Land, Countrycode, Anzahl Plastikstücke, Events und Freiwillige.</li>
+    </ul>
+  </li>
+<li><strong>Datensatz `audit`</strong>:
+    <ul>
+      <li><strong>Eine Zeile:</strong> Eine einzigartige Kombination aus Hersteller und Plastiktyp pro Land</li>
+      <li><strong>Variablen:</strong> Kontinent, Land, Countrycode, Hersteller, Anzahl Plastikstücke.</li>
+    </ul>
+  </li>
+</ul>
 
-Wir müssen uns überlegen, wie wir diese Ziele erreichen können. Da wir ausschließlich "vollständige" Daten betrachten wollen, sortieren wir Fälle aus, bei denen zum Beispiel kein Land angegeben ist ("EMPTY") oder die Beobachtung aus dem jahr 2020 stammt (s. Hinweis). Auch die Ländernamen müssen wir bearbeiten, weil diese nicht immer einheitlich angegeben wurden (z.B. ECUADOR, Ecuador) - manche Namen müssen auch erst einmal übersetzt werden (z.B. Cote D_ivoire). Abschließend müssen wir die "community- bzw- auditbezogenen" Variablen auswählen und den Datensatz entsprechend umformen. Wir entscheiden und also für folgendes Vorgehen:
+<div style="margin-left: 0;">
+<p>Wir müssen uns überlegen, wie wir diese Ziele erreichen können. Da wir ausschließlich "vollständige" Daten betrachten wollen, sortieren wir Fälle aus, bei denen zum Beispiel kein Land angegeben ist ("EMPTY") oder die Beobachtung aus dem jahr 2020 stammt (s. Hinweis). Auch die Ländernamen müssen wir bearbeiten, weil diese nicht immer einheitlich angegeben wurden (z.B. ECUADOR, Ecuador) - manche Namen müssen auch erst einmal übersetzt werden (z.B. Cote D_ivoire). Abschließend müssen wir die "community- bzw- auditbezogenen" Variablen auswählen und den Datensatz entsprechend umformen. Wir entscheiden und also für folgendes Vorgehen: <p>
 
-  1. Zeilen, in denen das Land "EMPTY" ist, Sammelzeilen und Beobachtungen aus dem Jahr 2020 aussortieren. <br>
-  2. Ländernamen bereinigen und übersetzen. <br>
-  3. Entsprechende Variablen auswählen und ggf. Datensatz umformen. <br>
+1. Zeilen, in denen das Land "EMPTY" ist, Sammelzeilen und Beobachtungen aus dem Jahr 2020 aussortieren. <br>
+2. Ländernamen bereinigen und übersetzen. <br>
+3. Entsprechende Variablen auswählen und ggf. Datensatz umformen. <br>
+</div>
 
 ## **3. Schritt: Die Datenbereinigung mit dem `dplyr`-Package**
 
