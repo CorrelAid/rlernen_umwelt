@@ -466,9 +466,9 @@ Wenn Ihr einen **eigenen Datensatz** habt, den Ihr bereits in R importiert habt,
 
 # **Zusätzliche Ressourcen**
 
-- [Schummelblatt: dplyr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-dplyr.pdf){target="_blank"} (engl.)
-- [Schummelblatt: stringr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-stringr.pdf){target="_blank"} (engl.)
-- [Schummelblatt: tidyr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-tidyr.pdf){target="_blank"} (engl.)
+- [Schummelblatt: dplyr](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/06_cheatsheet-dplyr.pdf){target="_blank"} (engl.)
+- [Schummelblatt: stringr](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/06_cheatsheet-stringr.pdf){target="_blank"} (engl.)
+- [Schummelblatt: tidyr](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/06_cheatsheet-tidyr.pdf){target="_blank"} (engl.)
 - [Data Cleaning in R](https://app.dataquest.io/course/r-data-cleaning){target="_blank"} auf DataQuest (engl.)
 - [Advanced Data Cleaning in R](https://app.dataquest.io/course/r-data-cleaning-advanced){target="_blank"} auf DataQuest (engl.)
 - Ein noch etwas holpriger Spielplatz, der zeigt, wie Eure Schritte in der Datenbereinigung aussehen: [Tidy Data Tutor](https://tidydatatutor.com){target="_blank"} (engl.)
