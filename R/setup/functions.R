@@ -16,6 +16,12 @@ get_poly_welt <- function() {
   )
 }
 
+get_data_processed <- function() {
+  readr::read_csv(
+    here::here('daten/bffp2019_plastics_processed.csv')
+    )
+}
+
 get_initiale_anfrage <- function(url) {
   httr::GET( # Initialisierung
     url, # URL verlinken

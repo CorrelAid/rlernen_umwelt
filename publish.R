@@ -74,7 +74,7 @@ rsconnect::deployApp(appDir = here::here(),
 
 # 05_0 Datenimport geodaten
 rsconnect::deployApp(appDir = here::here(),
-                     appFiles = c("05_0_datenimport-exkurs-geo.Rmd", files_every_time),
+                     appFiles = c("05_0_datenimport-exkurs-geo.Rmd", files_every_time, "daten/geospatial/"),
                      appName = "05_0_datenimport-exkurs-geodaten")
 
 # 05_1 Datenimport api

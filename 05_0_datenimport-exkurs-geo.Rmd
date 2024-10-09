@@ -30,11 +30,6 @@ params <- yaml::yaml.load_file("www/app_parameters.yml")
 # Benötigte Daten laden
 source("R/setup/functions.R")
 polygons_welt <- get_poly_welt()
-
-basis_url <- "https://unstats.un.org/"
-initiale_anfrage <- get_initiale_anfrage(url = basis_url)
-waste_data <- get_waste_data(anfrage = initiale_anfrage)
-pages <- get_pages(content = waste_data)
 ```
 
 ```{r results='asis'}
