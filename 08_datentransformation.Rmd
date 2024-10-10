@@ -43,13 +43,13 @@ wb_processed <- process_wb_areas(wb_data = wb_areas)
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Nachdem wir uns in der vergangenen Woche mit den Funktionen des **dplyr-Package** die Grundlagen der Datentransformation angeschaut haben, werden wir nun einen Schritt weiter gehen und uns mit den **fortgeschrittenen Methoden der Datentranformation** beschäftigen. Wir werden uns überlegen, wie wir mit fehlenden Werten umgehen und Datensätze zusammenfügen können - und was versteckt sich eigentlich hinter dem Begriff "Pivotisierung"? Finden wir's heraus!
+Nachdem wir uns in der vergangenen Woche mit den Funktionen des **dplyr-Packages** die Grundlagen der Datentransformation angeschaut haben, werden wir nun einen Schritt weiter gehen und uns mit den **fortgeschrittenen Methoden der Datentranformation** beschäftigen. Wir werden uns überlegen, wie wir mit fehlenden Werten umgehen und Datensätze zusammenfügen können - und was versteckt sich eigentlich hinter dem Begriff "Pivoting"? Finden wir's heraus!
 
 ---
 
 # **Umgang mit fehlenden Werten (NAs)**
 
-Aus dem `dplyr`-Package kennen wir nun die verschiedenen Funktionen, mit deren Hilfe wir Variablen und Beachtungen auswählen, filtern oder verändern können. Dabei setzen wir voraus, dass die Daten, die wir tranformieren möchten, auch tatsächlich in unserem Datensatz vorhanden sind. Doch was, wenn uns bestimmte Daten fehlen - wie gehen wir damit um?
+Aus dem `dplyr`-Package kennen wir nun die verschiedenen Funktionen, mit deren Hilfe wir Variablen und Beobachtungen auswählen, filtern oder verändern können. Dabei setzen wir voraus, dass die Daten, die wir tranformieren möchten, auch tatsächlich in unserem Datensatz vorhanden sind. Doch was, wenn uns bestimmte Daten fehlen?
 
 ## **Schritt 1: Überprüfung**
 
@@ -78,7 +78,7 @@ sum(audit$n_pieces)
 grade_this_code()
 ```
 
-Ups - wir erhalten ein NA? NA steht für "**N**ot **A**vailable" (zu dt. "nicht verfügbar"). Mit diesem Ausdruck gibt uns R das Zeichen, dass **ein (oder mehrere) Wert(e) fehlen** und die gewünschte Berechnung somit nicht ausgeführt werden kann. Wir wissen nun also schon einmal, dass im Datensatz `audit` fehlende Werte für die Variable `n_pieces`vorliegen. Was wir jetzt noch nicht wissen ist, um wie viele fehlende Werte es sich dabei handelt. Aber auch das können wir herausfinden - versucht das doch einmal selbst! <br>
+Ups - wir erhalten ein NA. Das steht für "**N**ot **A**vailable" (zu dt. "nicht verfügbar"). Mit diesem Ausdruck gibt uns R das Zeichen, dass **ein (oder mehrere) Wert(e) fehlen** und die gewünschte Berechnung somit nicht ausgeführt werden kann. Wir wissen nun also schon einmal, dass im Datensatz `audit` fehlende Werte für die Variable `n_pieces`vorliegen. Noch wissen wir nicht, um wie viele fehlende Werte es sich dabei handelt, aber auch das können wir herausfinden - versucht das doch einmal selbst! <br>
 
 *Tipp: Experimentiert mit der Funktion `summary()`!*
 
@@ -96,7 +96,7 @@ summary(audit)
 grade_this_code()
 ```
 
-Sehr gut! Mit der `summary()`-Funktion können wir uns einen Überblick über alle Variablen unseres Datensatzes verschaffen. Da es sich bei der Variable `n_pieces`um eine numerische Variable handelt wird uns neben den üblichen Kennzahlen (Minumum, Maximum, Median, etc.) auch die Anzahl der **NAs** angegeben: In diesem Fall handelt es sich dabie um ganze 11.821 fehlende Werte. Klingt erst einmal nach sehr viel, aber trotzdem wollen wir in solchen Fällen durchaus statistische Kennzahlen berechnen. Wie das funktioniert, schauen wir uns jetzt an! <br>
+Sehr gut! Uns wird neben den üblichen Kennzahlen (Minumum, Maximum, Median, etc.) auch die Anzahl der **NAs** angegeben: In diesem Fall betrifft das 11.821 Werte. Klingt erst einmal nach sehr viel, aber trotzdem wollen wir in solchen Fällen durchaus statistische Kennzahlen berechnen. Wie das funktioniert, schauen wir uns jetzt an! <br>
 
 ## **Schritt 2: Berücksichtigung**
 
@@ -121,13 +121,13 @@ na_rows <- which(is.na(audit$n_pieces))
 new_df <- na.omit(audit)
 ```
 
-Für die Variable `n_pieces`in unserem `audit` Datensatz summieren wir also zunächst alle fehlenden Werte und listen die betroffenen Beobachtungen anschließend aus. Auf Basis dieser Transformation können wir dann einen neuen Datensatz ohne die fehlenden Werte erstellen. Die Funktion `**na.omit()**` entfernt dabei alle Zeilen oder Beobachtungen, die fehlende Werte (NA) enthalten, sodass nur vollständige Daten(sätze), d.h. ohne fehlende Werte, übernommen werden. 
+Für die Variable `n_pieces`in unserem `audit` Datensatz summieren wir also zunächst alle fehlenden Werte und listen die betroffenen Beobachtungen anschließend aus. Auf Basis dieser Transformation können wir dann einen neuen Datensatz ohne die fehlenden Werte erstellen. Die Funktion `**na.omit()**` entfernt dabei alle Zeilen oder Beobachtungen, die fehlende Werte (NA) enthalten, sodass nur vollständige Daten(sätze) übernommen werden. 
 
 ## **Besonderheiten**
 
-Der Umgang mit fehlenden Werten ist allerdings nicht immer gleich, denn manchmal können diese Werte nicht einfach so ausgeschlossen werden, weil wir sonst die **Aussagekraft unserer Analysen** beeinträchtigen würden. Bei [Allison 2010](https://statisticalhorizons.com/wp-content/uploads/Allison_MissingData_Handbook.pdf){target="_blank"} findet Ihr eine gute Übersicht gängiger Herausforderungen und Lösungen. Unser Tipp: Schon bei der Datenerhebung ansetzen und während der Datenerhebung beständig auf genau solche Vorkommnisse prüfen, sodass Ihr rechtzeitig reagieren könnt.
+Der Umgang mit fehlenden Werten ist allerdings nicht immer gleich, denn manchmal können diese Werte nicht einfach so ausgeschlossen werden, weil das sonst die **Aussagekraft unserer Analysen** beeinträchtigen würde. Bei [Allison 2010](https://statisticalhorizons.com/wp-content/uploads/Allison_MissingData_Handbook.pdf){target="_blank"} findet Ihr eine gute Übersicht gängiger Herausforderungen und Lösungen. Unser Tipp: Schon bei der Datenerhebung ansetzen und von Beginn an auf genau solche Vorkommnisse prüfen, sodass Ihr rechtzeitig reagieren könnt.
 
-Häufig kommt es zudem vor, dass **fehlende Werte nicht als "NAs" codiert** sind: Wie Ihr vielleicht schon mal gesehen habt, werden fehlende Werte häufig auch als **“N/A”, “N A”, und “Not Available”, oder -99, oder -1** (oder wie bei uns mit etwas ganz anderem wie "EMPTY") angegeben. Deshalb schauen wir vor der Datenbereinigung und -analyse immer ins zugehörige **Codebuch** des Datensatzes. Ansonsten berechnen wir möglicherweise einen Mittelwert, in den fälschlicherweise diese Zahlen einfließen! Aber auch in einem solchen Fall können wir uns wieder auf das `dplyr`-Package verlassen, das eine einfache Lösung parat hat: die Funktion **`dplyr::na_if()`**. Diese wenden wir mithilfe von **`dplyr::mutate_all()`** auf alle Spalten an:
+Häufig kommt es zudem vor, dass **fehlende Werte nicht als "NAs" codiert** sind: Wie Ihr vielleicht schon mal gesehen habt, werden fehlende Werte häufig auch als **“N/A”, “N A”, und “Not Available”, oder -99, oder -1** (oder in unserem Fall: "EMPTY") angegeben. Deshalb schauen wir vor der Datenbereinigung und -analyse immer ins zugehörige **Codebuch** des Datensatzes, in dem die Codierung der Variablen erläutert wird. Ansonsten berechnen wir möglicherweise einen Mittelwert, in den fälschlicherweise diese Zahlen einfließen. Aber auch in einem solchen Fall können wir uns wieder auf das `dplyr`-Package verlassen, das eine einfache Lösung parat hat: Die Funktion **`dplyr::na_if()`**. Diese wenden wir mithilfe von **`dplyr::mutate_all()`** auf alle Spalten an:
 
 ``` {r 08mean_na6, exercise = TRUE}
 # Erstellung eines Beispieldataframes mit NAs als "NA" und "-99"
