@@ -152,11 +152,42 @@ Wir sehen, dass alle Werte, die uns zuvor als *-99* ausgegeben wurden, nun ebenf
 
 # **Pivoting**
 
-Das **Pivoting von Daten** (zu dt. schwenken) ist eine weitere Möglichkeit, um unsere Daten zu transformieren. Das Pivoting geht dabei über die Bereinigung und das Filtern von Werten im Datensatz hinaus, da wir die gesamte **Form eines Datensatzes verändern**, indem wir die Spalten und Zeilen neu anordnen. Wir können also Objekte und die damit verbundenen Informationen von den Spalten in die Zeilen (bzw. von den Zeilen in die Spalten) bewegen oder die Reihenfolge der Objekte in den Spalten und Zeilen verändern. Diese Form der Datentransformation ist nicht zwingend notwendig, aber manchmal durchaus sinnvoll, da manche Datensatze dadurch lesbarer werden - ein kleines Beispiel seht ihr [hier](https://www2.microstrategy.com/producthelp/Current/BasicReporting/WebHelp/Lang_1033/Content/BasicReporting/Pivoting_data.htm){target="_blank"}. <br> 
+## **Was ist Pivoting?**
 
-In R können wir zwei Funktionen des `tidyr`-Packages nutzen, um unseren Datensatz zu pivotieren: `pivot_longer()` und `pivot_wider`. <br>
-Mit der Funktion **`pivot_longer()`** können wir Datensätze **verlängern** indem wir die Spaltenanzahl reduzieren und die Zeilenanzahl erhöhen. Daher wird die Funktion vor allem dafür verwendet, chaotische Datensätze zu bereinigen und einfache Vergleiche vorzunehmen. Wie das in der Realtiät aussehen kann, könnt Ihr auch noch einmal [hier](https://tidyr.tidyverse.org/articles/pivot.html#longer){target="_blank"} nachlesen. <br>
-Im Gegensatz dazu können wir mit der Funktion **`pivot_wider()`** Datensätze **breiter machen**, indem wir die Spaltenanzahl erhöhen und die Zeilenanzahl reduzieren. Das kann durchaus nützlich sein, wenn wir Daten in Form von Tabellen für eine Präsentation vorbereiten möchten - tatsächlich wird diese Funktion aber eher selten verwendet. Mehr dazu findet Ihr ebenfalls [hier](https://tidyr.tidyverse.org/articles/pivot.html#wider){target="_blank"}.<br>
+**Pivoting von Daten** (zu dt. schwenken) ist ein Begriff, der in der Datenanalyse verwendet wird, um eine Umstrukturierung oder Neuorganisation von Daten darzustellen, insbesondere bei Tabellen. Es ermöglicht es, Daten in verschiedenen Perspektiven oder Formen zu betrachten, was bei der Analyse hilfreich sein kann. Es gibt zwei Hauptarten des Pivoting:
+
+1. Pivoting von **breit zu lang** (Long-Format)
+2. Pivoting von **lang zu breit** (Wide-Format) 
+
+Diese Form der Datentransformation ist nicht zwingend notwendig, aber manchmal durchaus sinnvoll, da manche Datensatze dadurch lesbarer werden. Deshalb schauen wir uns beide Formen des Pivoting einmal genauer an!
+
+## **Pivoting in RStudio**
+
+Zur Pivotierung unserer Daten können wir zwei Funktionen des `tidyr`-Packages nutzen: `pivot_longer()` und `pivot_wider`. <br>
+
+### **Pivoting: Lang zu Breit (Wide-Format)**
+
+Bei dieser Form des Pivoting werden Zeilen in Spalten umgewandelt, um eine kompaktere Darstellung zu schaffen.
+In R nutzen wir dafür die Funktion **`pivot_wider()`**, um Datensätze **breiter zu machen**, d.h. wir erhöen die Anzahl der Zeilen und reduzieren die Anzahl der Spalten. Diese Form der Datenmanipulation ist dann hilfreich, wenn wir eine übersichtliche Zusammenfassung unserer Daten brauchen, z. B. für Präsentationen oder Tabellenkalkulationsprogramme wie Excel.
+
+Beispiel: Wir haben eine Tabelle, in der je eine Spalte Informationen zu unseren Produkten, den Monaten und den entsprechenden Verkaufszahlen entält. Diese Tabelle können wir entsprechend umformen, ohne Informationen zu verlieren:
+
+![*Graphische Veranschaulichung der pivot_wider()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_wider().jpg){#id .class width=60% height=60%}<br>
+
+Wenn Ihr mehr darüber wissen willt, könnt Ihr noch einmal in die [R-Dokumentation des tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#wider){target="_blank"} noch einmal reinschauen. <br>
+
+### **Pivoting von "Breit" zu "Lang" (Long-Format)**
+
+Bei dieser Form des Pivoting werden Spalten in Zeilen umgewandelt, was durchaus sinnvoll ist, wenn wir mehrere Spalten haben, die die gleichen Informationen für verschiedene Kategorien enthalten.
+In R nutzen wir dafür die Funktion **`pivot_longer()`**, um Datensätze zu **verlängern**, d.h. wir reduzieren die Anzahl der Spalten und erhöhen die Anzahl der Zeilen. Diese Form der Datenmanipulation ist dann hilfreich, wenn wir Daten mit verschiedenen Zeitpunkten oder Kategorien haben und diese einfach in Visualisierungen oder Analysen verwenden möchten, z. B. für Zeitreihenanalysen.
+
+Beispiel: Wir haben eine Tabelle, in der jede Spalte für einen Monat steht und die Zeilen die Verkaufszahlen pro Produkt für die jeweiligen Monate enthalten. Durch Pivoting von breit zu lang entsteht eine Tabelle mit den Spalten Produkt, Monat und Verkäufe:
+
+![*Graphische Veranschaulichung der pivot_longer()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_longer().jpg){#id .class width=60% height=60%}<br>
+
+Mehr dazu findet Ihr ebenfalls in der  [R-Dokumentation zum tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#longer){target="_blank"}. <br>
+
+## **Interaktive Übung**
 
 Auch in unserem `audit` Datensatz könnte das Pivoting hilfreich sein: In diesem Datensatz gibt es nämlich eine Reihe kryptischer Variablen, die für die **Plastikarten** stehen, aus denen der gesammelte Müll besteht. Um den Datensatz zu bereinigen, müssen wir beispielsweise noch die verschiedenen Plastikarten so transformieren, dass sie als eine einzige Variable **`plastic_type`** im Datensatz vorkommen:
 
