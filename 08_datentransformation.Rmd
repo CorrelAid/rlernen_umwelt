@@ -174,7 +174,7 @@ Beispiel: Wir haben eine Tabelle, in der je eine Spalte Informationen zu unseren
 
 ![*Graphische Veranschaulichung der pivot_wider()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_wider().jpg){#id .class width=60% height=60%}<br>
 
-Wenn Ihr mehr darüber wissen willt, könnt Ihr noch einmal in die [R-Dokumentation des tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#wider){target="_blank"} noch einmal reinschauen. <br>
+Wenn Ihr mehr darüber wissen wollt, könnt Ihr noch einmal in die [R-Dokumentation des tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#wider){target="_blank"} schauen. <br>
 
 ### **Pivoting von "Breit" zu "Lang" (Long-Format)**
 
@@ -185,7 +185,7 @@ Beispiel: Wir haben eine Tabelle, in der jede Spalte für einen Monat steht und 
 
 ![*Graphische Veranschaulichung der pivot_longer()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_longer().jpg){#id .class width=60% height=60%}<br>
 
-Mehr dazu findet Ihr ebenfalls in der  [R-Dokumentation zum tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#longer){target="_blank"}. <br>
+Mehr dazu findet Ihr ebenfalls in der [R-Dokumentation zum tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#longer){target="_blank"}. <br>
 
 ## **Interaktive Übung**
 
@@ -213,7 +213,11 @@ Mit `dyplr::pivot_wider()` könnten wir den Datensatz auch wieder in das breite 
 
 # **Datensätze zusammenfügen**
 
-Häufig ist es auch der Fall, dass mehrere Datensätze zu einem zusammengefügt werden sollen. Im Exkurs "APIs" zwei Session "Datenimport" haben wir bereits mit einem Datensatz der Weltbank zu Naturschutzgebieten (`wb_areas`) gearbeitet. Falls Ihr den Exkurs (noch) nicht angeschaut habt, ist das auch kein Problem! Verschafft Euch zuerst nochmal einen kleinen Überblick über den Datensatz `wb_areas`: 
+Es kann allerdings auch vorkommen, dass ein einzelner Datensatz uns nicht alle Informationen liefert, die wir für unsere Arbeite brauchen. In einem solchen Fall müssen wir **mehrere Datensätze zusammenfügen** - mit R kein Problem! <br>
+
+## **Interaktive Übung**
+
+Im Exkurs ["Eigene API-Anfragen" zur Session Datenimport](https://correlaid.shinyapps.io/05_1_datenimport-exkurs-api/){target="_blank"} haben wir bereits mit einem Datensatz der Weltbank zu Naturschutzgebieten (`wb_areas`) gearbeitet. In Form von verschidenen Indikatoren, liefert uns dieser Datensatz verschiedene umweltbezogene Daten, die für unsere Analyse oder die Arbeit von Breakfreefromplastic interessant sein könnten - z.B. bedrohte Fischarten, Anteil Naturschutzgebiete, usw. Wir werden nun wieder mit diesem Datensatz arbeiten, allerdings ist es auch kein Problem, wenn Ihr den Exkurs (noch) nicht angeschaut habt! Verschafft Euch doch zuerst nochmal einen kleinen Überblick über den Datensatz `wb_areas`: 
 
 ``` {r 08gdppc, exercise = TRUE}
 # Hier Euer Code!
@@ -229,11 +233,9 @@ summary(wb_areas)
 grade_this_code()
 ```
 
-Der Datensatz soll für für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und Fördernden genutzt werden und ist daher auch für das Netzwerk #Breakfreefromplastics besonders spannend. Der Indikator *ER.PTD.TOTL.ZS* gibt beispielsweise an, wie viel Prozent der Landes- und Wasserfläche aus Naturschutzgebieten besteht.
+Die Indikatoren liefern uns verschiedene umweltbezogene Datenn: **ER.PTD.TOTL.ZS** gibt beispielsweise an, wie viel Prozent der Landes- und Wasserfläche aus Naturschutzgebieten besteht. Somit ist dieser Datensatz vor allem für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und/oder Fördernden wertvoll und daher auch für das Netzwerk #Breakfreefromplastics besonders spannend.
 
-## **Interkative Übung**
-
-Diesen Datensatz `wb_areas` wollen wir nun mit dem `community`-Datensatz zusammenfügen. Dafür brauchen wir eine **gemeinsame Variable**, die R dafür verwenden kann, um die Länder einander zuzuordnen. Die gemeinsame Variable muss in beiden Datensätzen den **gleichen Namen** haben oder von uns zugeordnet werden. Dabei muss die Kodierung (hier ISO2C) übereinstimmen. Da Ländernamen fehleranfällig sind, fokussieren wir uns auf die **Country Codes**:
+Den Datensatz `wb_areas` wollen wir nun mit dem `community`-Datensatz zusammenfügen. Damit das gelingen kann, brauchen wir eine **gemeinsame Variable**, die R dafür verwenden kann, um die Länder einander zuzuordnen. Diese gemeinsame Variable muss in beiden Datensätzen den **gleichen Namen** haben oder von uns zugeordnet werden. Außerdem muss die Kodierung (hier ISO2C) übereinstimmen. Da Ländernamen fehleranfällig sind, fokussieren wir uns auf die **Country Codes**:
 
 ``` {r 08wb_clean, exercise = TRUE}
 # Umbennung der Spalten
@@ -248,45 +250,48 @@ Versucht jetzt einmal herauszufinden, wie viele Länder in beiden Datensätzen `
 
 ```
 
-```{r 08quiz_datenbereinigung5}
+```{r 07quiz_datenbereinigung5}
 quiz(caption = NULL,
   question("Wie viele Länder sind im Datensatz der World Bank enthalten?",
     answer("3"),
     answer("266", correct = TRUE),
     answer("51"),
     answer("4084"),
-    correct = "Gut gemacht!",
-    incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
+    correct = "Richtig, im Datensatz der World Bank sind insgesamt 266 Länder enthalten!",
+    incorrect = "Leider nicht ganz richtig, versuche es nochmal!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
 )
 ```
 
-```{r 08quiz_datenbereinigung6}
+```{r 07quiz_datenbereinigung6}
 quiz(caption = NULL,
-  question("Wie viele Länder sind in Community enthalten?",
+  question("Wie viele Länder sind im Datensatz von Breakfreefromplastic enthalten?",
     answer("51", correct = TRUE),
     answer("4"),
     answer("9296"),
     answer("4084"),
-    correct = "Gut gemacht!",
-    incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
+    correct = "Richtig, wir kennen den Datensatz von Breakfreefromplastic bereits. Darin sind insgesamt 51 Länder enthalten!",
+    incorrect = "Leider nicht ganz richtig, versuche es nochmal!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
 )
 ```
 
-Nun können wir die beiden Datensätze zusammenfügen. Da in dem Datensatz `wb_areas` viel mehr Länder vorkommen, gibt es verschiedene Möglichkeiten:
+Wir wissen nun, wie viele Länder in den jeweiligen Datensätzen vorhanden sind und können jetzt die beiden Datensätze zusammenfügen.Da in dem Datensatz `wb_areas` viel mehr Länder vorkommen, gibt es verschiedene Möglichkeiten:
 
-- `inner_join`: nur die Länder werden beibehalten, die **in beiden Datensätzen** enthalten sind
+- `inner_join`: nur die Länder, die **in beiden Datensätzen** enthalten sind, werden beibehalten
 - `full_join`: **alle Länder** aus beiden Datensätzen sind enthalten
 - `left_join`/`right_join`: nur die **Länder aus dem zuerst bzw. zuletzt genannten Datensatz** bleiben enthalten
+  - `left_join()`: Länder aus dem **zuerst** genannten Datensatz bleiben enthalten
+  - `right_join()`: Länder aus dem **zuletzt** genannten Datensatz bleiben enthalten
 
 ![](https://d33wubrfki0l68.cloudfront.net/aeab386461820b029b7e7606ccff1286f623bae1/ef0d4/diagrams/join-venn.png){#id .class width=80% height=100%}
 
-Führt die folgenden Codeblöcke nacheinander aus und schaut Euch an, wie diese verschiedenen Joins für Euren Datensatz in der Praxis funktionieren:
+Führt die folgenden Codeblöcke nacheinander aus und schaut Euch an, wie diese verschiedenen Joins für unseren Datensatz in der Praxis funktionieren. Was könnt Ihr erkennen? <br>
+*Tipp: Um einen kompletten Überblick über den "neuen" Datensatz zu bekommen, müsst Ihr ein bisschen scrollen.*
 
 ``` {r 08inner_join, exercise = TRUE}
 # Ihr nehmt Euren ersten Datensatz...
@@ -319,11 +324,11 @@ community %>%
 ```{r 08quiz_datenbereinigung8}
 quiz(
   caption = NULL,
-  question("Wie Ihr sehen könnt, führt der full_join natürlich zu den meisten Zeilen im Datensatz und der inner_join zur geringsten Anzahl an Ländern. Welcher der beiden anderen Joins führt zu einer höheren Anzahl an Ländern im Datensatz?",
+  question("Wie Ihr sehen könnt, führt der full_join zu den meisten Zeilen im Datensatz und der inner_join zur geringsten Anzahl an Ländern. Welcher der beiden anderen Joins führt zu einer höheren Anzahl an Ländern im Datensatz?",
     answer("left_join"),
     answer("right_join", correct = TRUE),
-    correct = "Gut gemacht!",
-    incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
+    correct = "Gut gemacht! Da wir mit dem Befehl `right_join()` bestimmen, dass die Länder des zuletzt genannten Datensatzes `wb_areas` enthalten bleiben sollen, kommen wir auf insgesamt 266 Länder.",
+    incorrect = "Das ist leider nicht ganz richtig. `left_join()` bedeutet, dass die Länder des zuerst genannten Datensatzes enthalten bleiben, wohingegen `right_join()` bedeutet, dass die Länder des zuletzt genannten Datensatzes enthalten bleiben. Welcher Datensatz wird hier zuerst bzw. zuletzt genannt?",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -333,7 +338,7 @@ quiz(
     answer ("Beim Left Join bleiben alle Zeilen des links referenzierten Datensatzes (community) bestehen, passende werden zusammengefügt (n = 51)", correct = TRUE),
     answer ("Beim Right Join bleiben alle Zeilen des rechts referenzierten Datensatzes (wb_areas) bestehen, passende werden zusammengefügt (n = 266)", correct = TRUE),
     correct = "Gut gemacht!",
-    incorrect = "Das ist leider nicht ganz richtig. Probiert es nochmal!",
+    incorrect = "Leider nicht ganz richtig, versuche es nochmal! Wenn Du dir unsicher bist, kannst Du oben noch einmal die verschiedenen Möglichkeiten des Joinings nachlesen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
@@ -342,7 +347,7 @@ quiz(
 
 ---
 
-# **Und jetzt Ihr**
+# **Und jetzt Ihr!**
 ...
 
 ---
