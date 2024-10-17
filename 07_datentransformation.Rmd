@@ -23,6 +23,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(learnr)
 library(gradethis)
 library(forcats)
+library(tidyr)
  
 source("R/setup/gradethis-setup.R")
 source("R/setup/tutorial-setup.R")
@@ -244,7 +245,7 @@ data_raw %>%
   # ..filtert "EMPTY", "Grand Total" und alle Jahre außer 2019 heraus
   dplyr::filter(country != "EMPTY",
                 parent_company != "Grand Total", 
-                year == 2019 
+                year != 2020 
                 )
 ```
 
@@ -258,7 +259,7 @@ grade_this_code()
 
 ![*Graphische Veranschaulichung der mutate()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/07_datentransformation/mutate.png?raw=true){#id .class width=60% height=60%}
 
-Nun wollen wir die die Variable `country` (zu dt. Land) bereinigen, denn es herrscht wieder einmal Unordnung: Die Länderbezeichnungen für Großbritannien und die USA sind nicht standardisiert, die Groß- und Kleinschreibung ist vollkommen durcheinander und außerdem wollen wir die deutschen Bezeichnungen verwenden, sowie Kontinent und Countrycode ergänzen. Klingt erstmal nach ganz schön viel Arbeit.... Zum Glück bietet uns das `dplyr`-Package mit der Funktion **`mutate`** die Möglichkeit, Berechnungen auf Spaltenebene durchzuführen, d.h. wir können unserem Datensatz neue **Variablen hinzufügen** oder bestehende **Variablen bearbeiten**. Die grundlegende Syntax folgt folgender Logik: `dplyr::mutate(name_der_neuen_spalte = bedingung1 + bedingung2 + ...)`.
+Nun wollen wir die die Variable `country` (zu dt. Land) bereinigen, denn es herrscht wieder einmal Unordnung: Die Länderbezeichnungen für Großbritannien und die USA sind nicht standardisiert, die Groß- und Kleinschreibung ist vollkommen durcheinander und außerdem wollen wir die deutschen Bezeichnungen verwenden, sowie Kontinent und Countrycode ergänzen. Klingt erstmal nach ganz schön viel Arbeit.... Zum Glück bietet uns das `dplyr`-Package mit der Funktion **`mutate`** die Möglichkeit, Berechnungen auf Spaltenebene durchzuführen, d.h. wir können unserem Datensatz neue **Variablen hinzufügen** oder bestehende **Variablen bearbeiten**. Dafür geben wir den Namen der neuen Spalte und die Berechnung an, die durchgeführt werden soll - nach folgender Logik: `dplyr::mutate(datensatz, name_der_neuen_spalte = x + y)`.
 
 In diesem fall brauchen wir allerdings noch zwei weitere Funktionen, die wir mit der `mutate()`-Funktion kombinieren können. Zunächst einmal möchten wir die Ländernamen vereinheitlichen ("United Kingdom" und "United States"). Dafür verwenden wir die Funktion **`case_when()`** aus dem `dplyr` Package. Mit dieser Funktion können wir bestimmte Werte in einen anderen Wert transformieren - das Einzige, was wir dafür festlegen müssen, ist die entsprechende Wenn-Dann-Bedingung *(Sprich: "Wenn die Variable 'country' den Wert X hat, dann weise dieser Variable den Wert Y zu.")*. 
 
@@ -409,6 +410,7 @@ data_raw %>%
 ```
 
 Um die Bereinigung des `audit`-Datensatzes zu finalisieren, wählen wir also in einem letzten Schritt noch alle relevanten Variablen aus:
+*Anmerkung: Pivoting beschreibt ein Verfahren mit dem wir unsere Datensätze lesbarer machen können, indem wir die Anordnung der Zeilen und Spalten verändern. In der kommenden Sitzung werden wir uns auch noch einmal anschauen, wie wir selbst unsere Daten pivotieren können!*
 
 ```{r 07select_data2, exercise = TRUE}
   # Ihr nehmt Euren Datensatz ...
