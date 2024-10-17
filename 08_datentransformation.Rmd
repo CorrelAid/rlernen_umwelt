@@ -140,7 +140,7 @@ df <- tibble::tribble(
 
 # Definition der NAs
 df2 <- df %>% 
-  dplyr::mutate_all(dplyr::na_if, -99)
+  dplyr::mutate_if(is.numeric, dplyr::na_if, -99)
 
 # Erste fünf Zeilen anzeigen
 head(df2)
