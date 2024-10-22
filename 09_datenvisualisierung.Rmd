@@ -162,7 +162,7 @@ Daten +
     geometrische Formen (z.B. Punkte, Linien, Balken...)
 ```
 
-Man kann es aber auch komplexer gestalten und erweitern:
+Man kann es aber auch komplexer gestalten und erweitern. Jedoch sollte man unbedingt auf die Reihenfolge der Schichten achten, denn diese können einen Unterschied machen:
 
 ```
 Daten + 
