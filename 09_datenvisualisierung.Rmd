@@ -139,7 +139,7 @@ In dieser Sitzung lernt Ihr zunächst verschiedene Visualisierungsformen- und M�
 
 #### **Wiederholung: `ggplot2`-Basics**
 
-Erinnert Ihr Euch noch an die [Lektion zu Daten verstehen mit R](https://correlaid.shinyapps.io/lernplattform/#section-daten-verstehen-mit-r)?
+Erinnert Ihr Euch noch an die [Lektion zu Daten verstehen mit R](https://correlaid.shinyapps.io/06_daten-verstehen-mit-r/)?
 
 `ggplot2` orientiert sich an der Philosophie des ["Grammar of Graphics"](https://ggplot2-book.org/introduction#what-is-the-grammar-of-graphics) (daher auch der Name **gg**plot), das uns mit einer grundlegenden Definition einer Visualisierung ausstattet:
 
@@ -181,7 +181,7 @@ Für diese Lektion benötigt Ihr also `ggplot2`.
 library(ggplot2)
 ```
 
-Alle wichtigen `ggplot2` Befehle findet Ihr in diesem [Schummelzettel](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/07_cheatsheet-ggplot2.pdf){target="_blank"}.
+Alle wichtigen `ggplot2` Befehle findet Ihr in diesem [Schummelzettel](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/07_cheatsheet-ggplot2.pdf){target="_blank"}.
 
 Wenn man nur die `ggplot()`-Funktion alleine aufruft, produziert das einen leeren Plot:
 
@@ -496,7 +496,7 @@ Diesmal werden wir Euch kein Rmd vorgeben - es ist Zeit zu testen, was Ihr geler
 ### **Zusätzliche Ressourcen**
 
 - Dataquest bietet auch einen [Kurs zu Datenvisualisierungen in R](https://app.dataquest.io/course/r-data-viz){target="_blank"} an
-- [Schummelzettel zu `ggplot2`](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/07_cheatsheet-ggplot2.pdf){target="_blank"}
+- [Schummelzettel zu `ggplot2`](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/07_cheatsheet-ggplot2.pdf){target="_blank"}
 - Mehr dazu, wie ihr ggplot-Grafiken mit [`plotly` interaktiv werden lasst](https://plotly.com/ggplot2/getting-started/)
 - [RStudios Tutorial zu interaktiven Karten mit leaflet (engl.)](https://rstudio.github.io/leaflet/){target="_blank"}
 - [Data to Viz](https://www.data-to-viz.com/){target="_blank"}
