@@ -104,6 +104,7 @@ joined_inner <- dplyr::???(audit, country_info, by = "???")
 ---
   
 ### Übung 2.4: Interpretation --------------------------------------------------
+# Zum Abschluss haben wir noch drei Fragen zum Joining von Datensätzen. Versucht diese zu beantworten. Nutzt dazu die Lernplattform, andere Ressourcen und/oder tauscht Euch untereinander aus!
 
 # Welchen Einfluss haben die verschiedenen Join-Arten auf die Größe des resultierenden Datensatzes?
 
