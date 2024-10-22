@@ -170,7 +170,9 @@ In R nutzen wir dafür die Funktion **`pivot_wider()`**, um Datensätze **breite
 
 Beispiel: Wir haben eine Tabelle, in der je eine Spalte Informationen zu unseren Produkten, den Monaten und den entsprechenden Verkaufszahlen entält. Diese Tabelle können wir entsprechend umformen, ohne Informationen zu verlieren:
 
-![*Graphische Veranschaulichung der pivot_wider()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_wider().jpg){#id .class width=60% height=60%}<br>
+```{r, echo=FALSE, fig.cap="Graphische Veranschaulichung von `pivot_wider()`", out.width="60%"}
+knitr::include_graphics("https://raw.githubusercontent.com/CorrelAid/rlernen_umwelt/main/abbildungen/08_datentransformation/pivot_wider().jpg")
+```
 
 Wenn Ihr noch mehr über diese Funktion wissen wollt, könnt Ihr noch einmal in die [R-Dokumentation des tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#wider){target="_blank"} schauen. <br>
 
@@ -181,7 +183,9 @@ In R nutzen wir dafür die Funktion **`pivot_longer()`**, um Datensätze zu **ve
 
 Beispiel: Wir haben eine Tabelle, in der jede Spalte für einen Monat steht und die Zeilen die Verkaufszahlen pro Produkt für die jeweiligen Monate enthalten. Durch Pivoting von breit zu lang entsteht eine Tabelle mit den Spalten Produkt, Monat und Verkäufe:
 
-![*Graphische Veranschaulichung der pivot_longer()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_longer().jpg){#id .class width=60% height=60%}<br>
+```{r, echo=FALSE, fig.cap="Graphische Veranschaulichung von `pivot_longer()`", out.width="60%"}
+knitr::include_graphics("https://raw.githubusercontent.com/CorrelAid/rlernen_umwelt/main/abbildungen/08_datentransformation/pivot_longer().jpg")
+```
 
 Mehr zu dieser Funktion findet Ihr ebenfalls in der  [R-Dokumentation zum tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#longer){target="_blank"}. <br>
 
@@ -217,7 +221,7 @@ Es kann allerdings auch vorkommen, dass ein einzelner Datensatz uns nicht alle I
 
 Im Exkurs ["Eigene API-Anfragen" zur Session Datenimport](https://correlaid.shinyapps.io/05_1_datenimport-exkurs-api/){target="_blank"} haben wir bereits mit einem Datensatz der Weltbank zu Naturschutzgebieten (`wb_areas`) gearbeitet. In Form von verschidenen Indikatoren, liefert uns diese Datenbank verschiedene umweltbezogene Daten, die für unsere Analyse oder die Arbeit vom #Breakfreefromplastic-Netzwerk interessant sein könnten - z.B. bedrohte Fischarten, Anteil Naturschutzgebiete, usw. Wir werden nun wieder mit diesem Datensatz arbeiten, allerdings ist es auch kein Problem, wenn Ihr den Exkurs (noch) nicht angeschaut habt! Verschafft Euch doch zuerst nochmal einen kleinen Überblick über den Datensatz `wb_areas`, den wir bereits für Euch geladen haben: 
 
-``` {r 08gdppc, exercise = TRUE}
+``` {r exercise_08gdppc, exercise = TRUE}
 # Hier Euer Code!
 
 ```
@@ -252,10 +256,6 @@ Versucht jetzt einmal herauszufinden, wie viele Länder in beiden Datensätzen `
 # NAs bestimmen
 summary(community$country)
 summary(wb_areas$country)
-
-# Alternative Bestimmung über die Variable 'countrycode'
-summary(community$countrycode)
-summary(wb_areas$countrycode)
 ```
 
 ``` {r 08_datenbereinigung-check}
