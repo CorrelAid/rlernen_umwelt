@@ -23,6 +23,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(learnr)
 library(gradethis)
 library(forcats)
+library(tidyr)
  
 source("R/setup/gradethis-setup.R")
 source("R/setup/tutorial-setup.R")
@@ -53,7 +54,7 @@ Aus dem `dplyr`-Package kennen wir nun die verschiedenen Funktionen, mit deren H
 
 ## **Schritt 1: Überprüfung**
 
-Zunächst einmal müssen wir natürlich unsere Daten importieren - wir haben das an dieser Stelle bereits für Euch gemacht. Anschließend sollten wir **überprüfen**, ob denn tatsächlich alle Daten vorliegen oder Werte fehlen. Schließlich müssen wir herausfinden, wo Handlungsbedarf ist und wo wir direkt weitermachen können. Dafür checken wir mithilfe der **`sum()`**-Funktion einzelne Werte in unseren beiden Datensätzen, die wir vergangenen Woche erstellt haben. <br>
+Zunächst einmal müssen wir natürlich unsere Daten importieren - wir haben das an dieser Stelle bereits für Euch gemacht. Anschließend sollten wir **überprüfen**, ob denn tatsächlich alle Daten vorliegen oder Werte fehlen. Schließlich müssen wir herausfinden, wo Handlungsbedarf ist und wo wir direkt weitermachen können. Dafür checken wir mithilfe der **`sum()`**-Funktion einzelne Werte in unseren beiden Datensätzen, die wir vergangene Woche erstellt haben. <br>
 
 Versucht zuerst einmal, die Summe für die Variable `n_pieces` im Datensatz `community` zu berechnen.
 
@@ -62,7 +63,7 @@ Versucht zuerst einmal, die Summe für die Variable `n_pieces` im Datensatz `com
 sum(community$n_pieces)
 ```
 
-Sieht gut aus - im Datensatz `community` sind keine fehlenden Werte enthalten, die bei der Berechnung der Summe stören könnten! Versucht das gleiche jetzt mal für den `audit`-Datensatz in folgendem Codeblock:
+Sieht gut aus - im Datensatz `community` sind keine fehlenden Werte enthalten, die bei der Berechnung der Summe stören könnten! Versucht in folgendem Codeblock das Gleiche noch einmal für den `audit`-Datensatz:
 
 ``` {r exercise_08mean_na2, exercise = TRUE}
 # Hier Euer Code!
@@ -121,7 +122,7 @@ na_rows <- which(is.na(audit$n_pieces))
 new_df <- na.omit(audit)
 ```
 
-Für die Variable `n_pieces`in unserem `audit` Datensatz summieren wir also zunächst alle fehlenden Werte und listen die betroffenen Beobachtungen anschließend aus. Auf Basis dieser Transformation können wir dann einen neuen Datensatz ohne die fehlenden Werte erstellen. Die Funktion `**na.omit()**` entfernt dabei alle Zeilen oder Beobachtungen, die fehlende Werte (NA) enthalten, sodass nur vollständige Datensätze erstellt werden. 
+Für die Variable `n_pieces`in unserem `audit` Datensatz summieren wir also zunächst alle fehlenden Werte und listen die betroffenen Beobachtungen anschließend auf. Auf Basis dieser Transformation können wir dann einen neuen Datensatz ohne die fehlenden Werte erstellen. Die Funktion `**na.omit()**` entfernt dabei alle Zeilen oder Beobachtungen, die fehlende Werte (NA) enthalten, sodass nur vollständige Datensätze erstellt werden. 
 
 ## **Besonderheiten**
 
@@ -146,7 +147,7 @@ df2 <- df %>%
 head(df2)
 ```
 
-Wir sehen, dass alle Werte, die uns zuvor als *-99* ausgegeben wurden, nun ebenfalls als *NAs* codiert sind. 
+Wir sehen, dass alle Werte, die uns zuvor als **-99** ausgegeben wurden, nun ebenfalls als **NAs** codiert sind. 
 
 ---
 
@@ -253,7 +254,7 @@ Versucht jetzt einmal herauszufinden, wie viele Länder in beiden Datensätzen `
 ```
 
 ``` {r 08_datenbereinigung-solution}
-# NAs bestimmen
+# Länder bestimmen
 summary(community$country)
 summary(wb_areas$country)
 ```
