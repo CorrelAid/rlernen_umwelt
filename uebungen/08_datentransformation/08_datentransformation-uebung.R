@@ -106,20 +106,10 @@ joined_inner <- dplyr::???(audit, country_info, by = "???")
 ### Übung 2.4: Interpretation --------------------------------------------------
 
 # Welchen Einfluss haben die verschiedenen Join-Arten auf die Größe des resultierenden Datensatzes?
-  1. Full Join: Ein full_join kombiniert alle Einträge aus beiden Datensätzen. Das Ergebnis wird so groß sein wie die Anzahl der eindeutigen Länder aus beiden Datensätzen. Fehlende Werte werden mit NA gefüllt. Dies führt oft zu einem Datensatz, der mehr Zeilen enthält als beide ursprünglichen Datensätze, insbesondere wenn Länder nur in einem der beiden Datensätze vorhanden sind.
-  2. Left Join: Ein left_join behält alle Einträge aus dem audit-Datensatz bei, selbst wenn es keine passenden Einträge im country_info-Datensatz gibt. Das Ergebnis wird also mindestens so groß sein wie der audit-Datensatz. Fehlende Werte im country_info-Datensatz werden als NA angezeigt, was bedeutet, dass das Ergebnis mehr Zeilen enthalten kann, je nachdem, wie viele Länder im country_info nicht vorhanden sind.
-  3. Inner Join: Bei einem inner_join werden nur die Einträge behalten, die in beiden Datensätzen einen passenden Wert haben. Das bedeutet, dass nur Länder, die sowohl im audit-Datensatz als auch im country_info-Datensatz vorhanden sind, in das Ergebnis aufgenommen werden. Daher ist die Größe des resultierenden Datensatzes in der Regel kleiner als die der beiden ursprünglichen Datensätze, insbesondere wenn einer der Datensätze viele Länder oder Einträge ohne Übereinstimmung enthält.
 
 # Welche Länder fallen bei einem inner_join weg und warum?
-Bei einem inner_join werden nur die Länder, die in beiden Datensätzen vorhanden sind, berücksichtigt. Das bedeutet, dass Länder im audit-Datensatz, die nicht im country_info-Datensatz aufgeführt sind, wegfallen. Beispielsweise könnte ein Land wie "China" im audit-Datensatz aufgeführt sein, aber nicht im country_info-Datensatz. In diesem Fall würde "China" aus dem Ergebnis des inner_join entfernt werden. Ebenso könnten Länder im country_info-Datensatz, die im audit-Datensatz keine Daten haben, ebenfalls nicht im Ergebnis erscheinen. Dies ist wichtig für die Analyse, da wir möglicherweise relevante Informationen über bestimmte Länder verlieren.
 
 # Wie könnte man fehlende Werte nach einem full_join sinnvoll behandeln?
-Nach einem full_join ist es üblich, dass einige Werte in den Spalten des country_info-Datensatzes NA sein können, insbesondere für Länder, die nur in einem der beiden Datensätze vorhanden sind. Hier sind einige Ansätze, um mit fehlenden Werten umzugehen:
-  
-  1. Ersetzen mit Standardwerten: Man könnte NA-Werte durch Standardwerte ersetzen, wie z.B. einen Median oder Durchschnitt, um die Analyse nicht zu verzerren. Zum Beispiel könnte man für das BIP den globalen Durchschnitt verwenden, um fehlende Werte aufzufüllen.
-  2. Datenanalyse nur mit vollständigen Fällen: In einigen Fällen könnte es sinnvoll sein, nur vollständige Fälle zu betrachten. Das kann durch die Verwendung von na.omit() erreicht werden, was alle Zeilen mit mindestens einem fehlenden Wert entfernt.
-  3. Visualisierung der fehlenden Werte: Vor der Entscheidung, wie man mit fehlenden Werten umgeht, könnte man eine Visualisierung der fehlenden Werte durchführen, z.B. mit der VIM-Bibliothek, um besser zu verstehen, wie viele und welche Werte fehlen.
-  4. Separate Analyse der fehlenden Werte: Es könnte auch hilfreich sein, eine separate Analyse der Länder mit fehlenden Werten durchzuführen, um zu verstehen, warum diese Informationen fehlen, und zu prüfen, ob diese Länder für die Analyse von Bedeutung sind.
-  5. Imputation: Eine fortgeschrittene Methode zur Behandlung fehlender Werte ist die Imputation, bei der fehlende Werte basierend auf den vorhandenen Daten geschätzt werden, z.B. durch lineare Regression oder andere statistische Methoden.
-  
+
+
   
