@@ -43,17 +43,17 @@ wb_processed <- process_wb_areas(wb_data = wb_areas)
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
-Nachdem wir uns in der vergangenen Woche mit den Funktionen des **dplyr-Packages** die Grundlagen der Datentransformation angeschaut haben, werden wir nun einen Schritt weiter gehen und uns mit den **fortgeschrittenen Methoden der Datentranformation** beschäftigen. Wir werden uns überlegen, wie wir mit fehlenden Werten umgehen und Datensätze zusammenfügen können - und was versteckt sich eigentlich hinter dem Begriff "Pivoting"? Finden wir's heraus!
+Nachdem wir uns in der vergangenen Woche mit den Grundverben des **dplyr-Packages** die Basics der Datentransformation angeschaut haben, werden wir nun einen Schritt weiter gehen und uns mit den **fortgeschrittenen Methoden der Datentransformation** beschäftigen. Wie gehen wir mit fehlenden Werten um oder fügen ganze Datensätze zusammen - und was versteckt sich eigentlich hinter dem Begriff "Pivoting"? Finden wir's heraus!
 
 ---
 
 # **Umgang mit fehlenden Werten (NAs)**
 
-Aus dem `dplyr`-Package kennen wir nun die verschiedenen Funktionen, mit deren Hilfe wir Variablen und Beobachtungen auswählen, filtern oder verändern können. Dabei setzen wir voraus, dass die Daten, die wir tranformieren möchten, auch tatsächlich in unserem Datensatz vorhanden sind. Doch was, wenn uns bestimmte Daten fehlen?
+Aus dem `dplyr`-Package kennen wir nun die verschiedenen Funktionen, mit deren Hilfe wir Variablen und Beobachtungen auswählen, filtern oder verändern können. Dabei setzen wir voraus, dass die Daten, die wir transformieren möchten, auch tatsächlich in unserem Datensatz vorhanden sind. Doch was, wenn uns bestimmte Daten fehlen?
 
 ## **Schritt 1: Überprüfung**
 
-Zunächst einmal müssen wir natürlich unsere Daten importieren - wir haben das an dieser Stelle breits einmal für Euch gemacht. Anschließend sollten wir **überprüfen**, ob denn tatsächlich alle Daten vorliegen oder Werte fehlen. Schließlich müssen wir herausfinden, wo Handlungsbedarf ist und wo wir direkt weitermachen können. Dafür checken wir mithilfe der **`sum()`**-Funktion einzelne Werte in unseren beiden Datensätzen, die wir vergangene Woche erstellt haben. <br>
+Zunächst einmal müssen wir natürlich unsere Daten importieren - wir haben das an dieser Stelle bereits für Euch gemacht. Anschließend sollten wir **überprüfen**, ob denn tatsächlich alle Daten vorliegen oder Werte fehlen. Schließlich müssen wir herausfinden, wo Handlungsbedarf ist und wo wir direkt weitermachen können. Dafür checken wir mithilfe der **`sum()`**-Funktion einzelne Werte in unseren beiden Datensätzen, die wir vergangenen Woche erstellt haben. <br>
 
 Versucht zuerst einmal, die Summe für die Variable `n_pieces` im Datensatz `community` zu berechnen.
 
@@ -78,7 +78,7 @@ sum(audit$n_pieces)
 grade_this_code()
 ```
 
-Ups - wir erhalten ein NA. Das steht für "**N**ot **A**vailable" (zu dt. "nicht verfügbar"). Mit diesem Ausdruck gibt uns R das Zeichen, dass **ein (oder mehrere) Wert(e) fehlen** und die gewünschte Berechnung somit nicht ausgeführt werden kann. Wir wissen nun also schon einmal, dass im Datensatz `audit` fehlende Werte für die Variable `n_pieces`vorliegen. Noch wissen wir nicht, um wie viele fehlende Werte es sich dabei handelt, aber auch das können wir herausfinden - versucht das doch einmal selbst! <br>
+Ups - wir erhalten ein NA. Das steht für "**N**ot **A**vailable" (zu dt. "nicht verfügbar"). Mit diesem Ausdruck gibt uns R das Zeichen, dass **ein (oder mehrere) Wert(e) fehlen** und die gewünschte Berechnung somit nicht ausgeführt werden kann. Wir wissen nun also schon einmal, dass im Datensatz `audit` fehlende Werte für die Variable `n_pieces`vorliegen. Noch wissen wir allerdings nicht, um wie viele fehlende Werte es sich dabei handelt, aber auch das können wir herausfinden - versucht das doch einmal selbst! <br>
 
 *Tipp: Experimentiert mit der Funktion `summary()`!*
 
@@ -107,7 +107,7 @@ Denn trotz der fehlenden Werte, können wir in R die statistischen Kennzahlen be
 sum(audit$n_pieces, na.rm = TRUE)
 ```
 
-Perfekt - jetzt weiß R, dass die entsprechenden **NAs ignoriert** werden sollen! Neben dieser einen Möglichkeit, gibt es noch viele weitere Wege, NA's in Datensätzen zu entdecken und zu filtern - versucht dafür mal den folgenden Codeblock zu verstehen: 
+Perfekt - jetzt weiß R, dass die entsprechenden **NAs ignoriert** werden sollen! Neben dieser einen Möglichkeit, gibt es noch viele weitere Wege, NAs in Datensätzen zu entdecken und zu filtern - versucht dafür mal den folgenden Codeblock zu verstehen: 
 
 ``` {r 08mean_na5, exercise = TRUE}
 # Anzahl an fehlenden Werten (is.na gibt für eine Beobachtung TRUE (1) oder FALSE (0) zurück, deshalb können wir das hier aufsummieren)
@@ -121,7 +121,7 @@ na_rows <- which(is.na(audit$n_pieces))
 new_df <- na.omit(audit)
 ```
 
-Für die Variable `n_pieces`in unserem `audit` Datensatz summieren wir also zunächst alle fehlenden Werte und listen die betroffenen Beobachtungen anschließend aus. Auf Basis dieser Transformation können wir dann einen neuen Datensatz ohne die fehlenden Werte erstellen. Die Funktion `**na.omit()**` entfernt dabei alle Zeilen oder Beobachtungen, die fehlende Werte (NA) enthalten, sodass nur vollständige Daten(sätze) übernommen werden. 
+Für die Variable `n_pieces`in unserem `audit` Datensatz summieren wir also zunächst alle fehlenden Werte und listen die betroffenen Beobachtungen anschließend aus. Auf Basis dieser Transformation können wir dann einen neuen Datensatz ohne die fehlenden Werte erstellen. Die Funktion `**na.omit()**` entfernt dabei alle Zeilen oder Beobachtungen, die fehlende Werte (NA) enthalten, sodass nur vollständige Datensätze erstellt werden. 
 
 ## **Besonderheiten**
 
@@ -154,12 +154,10 @@ Wir sehen, dass alle Werte, die uns zuvor als *-99* ausgegeben wurden, nun ebenf
 
 ## **Was ist Pivoting?**
 
-**Pivoting von Daten** (zu dt. schwenken) ist ein Begriff, der in der Datenanalyse verwendet wird, um eine Umstrukturierung oder Neuorganisation von Daten darzustellen, insbesondere bei Tabellen. Es ermöglicht es, Daten in verschiedenen Perspektiven oder Formen zu betrachten, was bei der Analyse hilfreich sein kann. Es gibt zwei Hauptarten des Pivoting:
+**Pivoting von Daten** (zu dt. schwenken) ist ein Begriff, der in der Datenanalyse verwendet wird, um eine Umstrukturierung oder Neuorganisation von Daten darzustellen - insbesondere bei Tabellen. Diese Form der Datentransformation ist nicht zwingend notwendig, manchmal aber durchaus nützlich, weil wir Daten somit aus verschiedenen Perspektiven oder Formen betrachten können. Manche Datensätze werden somit durchaus lesbarer, was für die Analyse hilfreich sein kann. Wir unterscheiden zwischen zwei Hauptarten des Pivoting:
 
 1. Pivoting von **breit zu lang** (Long-Format)
 2. Pivoting von **lang zu breit** (Wide-Format) 
-
-Diese Form der Datentransformation ist nicht zwingend notwendig, aber manchmal durchaus sinnvoll, da manche Datensatze dadurch lesbarer werden. Deshalb schauen wir uns beide Formen des Pivoting einmal genauer an!
 
 ## **Pivoting in RStudio**
 
@@ -174,7 +172,7 @@ Beispiel: Wir haben eine Tabelle, in der je eine Spalte Informationen zu unseren
 
 ![*Graphische Veranschaulichung der pivot_wider()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_wider().jpg){#id .class width=60% height=60%}<br>
 
-Wenn Ihr mehr darüber wissen wollt, könnt Ihr noch einmal in die [R-Dokumentation des tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#wider){target="_blank"} schauen. <br>
+Wenn Ihr noch mehr über diese Funktion wissen wollt, könnt Ihr noch einmal in die [R-Dokumentation des tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#wider){target="_blank"} schauen. <br>
 
 ### **Pivoting von "Breit" zu "Lang" (Long-Format)**
 
@@ -185,11 +183,11 @@ Beispiel: Wir haben eine Tabelle, in der jede Spalte für einen Monat steht und 
 
 ![*Graphische Veranschaulichung der pivot_longer()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_longer().jpg){#id .class width=60% height=60%}<br>
 
-Mehr dazu findet Ihr ebenfalls in der [R-Dokumentation zum tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#longer){target="_blank"}. <br>
+Mehr zu dieser Funktion findet Ihr ebenfalls in der  [R-Dokumentation zum tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#longer){target="_blank"}. <br>
 
 ## **Interaktive Übung**
 
-Auch in unserem `audit` Datensatz könnte das Pivoting hilfreich sein: In diesem Datensatz gibt es nämlich eine Reihe kryptischer Variablen, die für die **Plastikarten** stehen, aus denen der gesammelte Müll besteht. Um den Datensatz zu bereinigen, müssen wir beispielsweise noch die verschiedenen Plastikarten so transformieren, dass sie als eine einzige Variable **`plastic_type`** im Datensatz vorkommen:
+Auch in unserem `audit` Datensatz könnte das Pivoting hilfreich sein: In diesem Datensatz gibt es nämlich eine Reihe kryptischer Variablen, die für die **verschiedenen Plastikarten** stehen, aus denen der gesammelte Müll besteht. Um den Datensatz zu bereinigen, müssen wir diese Variablen so transformieren, dass sie als eine einzige Variable **`plastic_type`** im Datensatz vorkommen:
 
 ``` {r 08pivot_longer, exercise = TRUE}
 # Ihr nehmt Euren Datensatz...
@@ -213,11 +211,11 @@ Mit `dyplr::pivot_wider()` könnten wir den Datensatz auch wieder in das breite 
 
 # **Datensätze zusammenfügen**
 
-Es kann allerdings auch vorkommen, dass ein einzelner Datensatz uns nicht alle Informationen liefert, die wir für unsere Arbeite brauchen. In einem solchen Fall müssen wir **mehrere Datensätze zusammenfügen** - mit R kein Problem! <br>
+Es kann allerdings auch vorkommen, dass ein einzelner Datensatz uns nicht alle Informationen liefert, die wir für unsere Arbeit brauchen. In einem solchen Fall müssen wir **mehrere Datensätze zusammenfügen** - mit R kein Problem! <br>
 
 ## **Interaktive Übung**
 
-Im Exkurs ["Eigene API-Anfragen" zur Session Datenimport](https://correlaid.shinyapps.io/05_1_datenimport-exkurs-api/){target="_blank"} haben wir bereits mit einem Datensatz der Weltbank zu Naturschutzgebieten (`wb_areas`) gearbeitet. In Form von verschidenen Indikatoren, liefert uns dieser Datensatz verschiedene umweltbezogene Daten, die für unsere Analyse oder die Arbeit von Breakfreefromplastic interessant sein könnten - z.B. bedrohte Fischarten, Anteil Naturschutzgebiete, usw. Wir werden nun wieder mit diesem Datensatz arbeiten, allerdings ist es auch kein Problem, wenn Ihr den Exkurs (noch) nicht angeschaut habt! Verschafft Euch doch zuerst nochmal einen kleinen Überblick über den Datensatz `wb_areas`: 
+Im Exkurs ["Eigene API-Anfragen" zur Session Datenimport](https://correlaid.shinyapps.io/05_1_datenimport-exkurs-api/){target="_blank"} haben wir bereits mit einem Datensatz der Weltbank zu Naturschutzgebieten (`wb_areas`) gearbeitet. In Form von verschidenen Indikatoren, liefert uns diese Datenbank verschiedene umweltbezogene Daten, die für unsere Analyse oder die Arbeit vom #Breakfreefromplastic-Netzwerk interessant sein könnten - z.B. bedrohte Fischarten, Anteil Naturschutzgebiete, usw. Wir werden nun wieder mit diesem Datensatz arbeiten, allerdings ist es auch kein Problem, wenn Ihr den Exkurs (noch) nicht angeschaut habt! Verschafft Euch doch zuerst nochmal einen kleinen Überblick über den Datensatz `wb_areas`, den wir bereits für Euch geladen haben: 
 
 ``` {r 08gdppc, exercise = TRUE}
 # Hier Euer Code!
@@ -233,9 +231,9 @@ summary(wb_areas)
 grade_this_code()
 ```
 
-Die Indikatoren liefern uns verschiedene umweltbezogene Datenn: **ER.PTD.TOTL.ZS** gibt beispielsweise an, wie viel Prozent der Landes- und Wasserfläche aus Naturschutzgebieten besteht. Somit ist dieser Datensatz vor allem für die Planung von zukünftigen Aktivitäten und die Kommunikation mit Freiwilligen und/oder Fördernden wertvoll und daher auch für das Netzwerk #Breakfreefromplastics besonders spannend.
+Die Indikatoren liefern uns verschiedene umweltbezogene Datenn: **ER.PTD.TOTL.ZS** gibt beispielsweise an, wie viel Prozent der Landes- und Wasserfläche aus Naturschutzgebieten besteht.
 
-Den Datensatz `wb_areas` wollen wir nun mit dem `community`-Datensatz zusammenfügen. Damit das gelingen kann, brauchen wir eine **gemeinsame Variable**, die R dafür verwenden kann, um die Länder einander zuzuordnen. Diese gemeinsame Variable muss in beiden Datensätzen den **gleichen Namen** haben oder von uns zugeordnet werden. Außerdem muss die Kodierung (hier ISO2C) übereinstimmen. Da Ländernamen fehleranfällig sind, fokussieren wir uns auf die **Country Codes**:
+Den Datensatz `wb_areas` wollen wir nun mit dem `community`-Datensatz zusammenfügen. Damit das gelingen kann, brauchen wir eine **gemeinsame Variable**, die R dafür verwenden kann, um die Länder einander zuordnen zu können. Diese gemeinsame Variable muss in beiden Datensätzen den **gleichen Namen** haben oder von uns zugeordnet werden. Außerdem muss die Kodierung (hier ISO2C) übereinstimmen. Da Ländernamen fehleranfällig sind, fokussieren wir uns auf die **Country Codes**:
 
 ``` {r 08wb_clean, exercise = TRUE}
 # Umbennung der Spalten
@@ -248,6 +246,20 @@ Versucht jetzt einmal herauszufinden, wie viele Länder in beiden Datensätzen `
 ``` {r 08_datenbereinigung, exercise = TRUE}
 # Hier Euer Code!
 
+```
+
+``` {r 08_datenbereinigung-solution}
+# NAs bestimmen
+summary(community$country)
+summary(wb_areas$country)
+
+# Alternative Bestimmung über die Variable 'countrycode'
+summary(community$countrycode)
+summary(wb_areas$countrycode)
+```
+
+``` {r 08_datenbereinigung-check}
+grade_this_code()
 ```
 
 ```{r 07quiz_datenbereinigung5}
@@ -280,7 +292,7 @@ quiz(caption = NULL,
 )
 ```
 
-Wir wissen nun, wie viele Länder in den jeweiligen Datensätzen vorhanden sind und können jetzt die beiden Datensätze zusammenfügen.Da in dem Datensatz `wb_areas` viel mehr Länder vorkommen, gibt es verschiedene Möglichkeiten:
+Wir wissen nun, wie viele Länder in den jeweiligen Datensätzen vorhanden sind und können jetzt die beiden Datensätze zusammenfügen. Da in dem Datensatz `wb_areas` viel mehr Länder vorkommen als in `comunity`, gibt es verschiedene Möglichkeiten, wie wir beide zusammenfügen können:
 
 - `inner_join`: nur die Länder, die **in beiden Datensätzen** enthalten sind, werden beibehalten
 - `full_join`: **alle Länder** aus beiden Datensätzen sind enthalten
