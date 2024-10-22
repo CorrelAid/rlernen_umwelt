@@ -10,7 +10,7 @@ library(tidyverse)
 library(tidyr)
 
 # Import des audit-Datensatzes
-audit <- read_csv("rlernen_umwelt/daten/bffp2019_audit_by_country_and_company.csv")
+audit <- read_csv("https://raw.githubusercontent.com/CorrelAid/rlernen_umwelt/refs/heads/main/daten/bffp2019_audit_by_country_and_company.csv")
 
 ## Übung 1: Pivoting von Datensätzen -------------------------------------------
 # Wir wollen uns anschauen, wie viele Plastikteile pro Marke und Land gesammelt wurden. Da unser Datensatz insgesamt über 7.000 Firmen enthält, wollen wir uns einmal auf die "Top 10" der Firmen beschränken, die am meisten Plastikmüll verursachen. Wir verwenden die Funktion pivot_longer(), um die Daten zu pivotieren, sodass die Marken ("brand") die Spalten und die Länder ("country") die Zeilen darstellen.
