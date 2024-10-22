@@ -360,15 +360,16 @@ quiz(
 ---
 
 # **Und jetzt Ihr!**
-...
+
+Nun ist es wieder an der Zeit, das Gelernte praktisch anzuwenden. Versucht, die **R Datei: 08_datentransformation-uebung.R** im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter "08_datentransformation" zum Laufen zu bringen. Darin sind noch einmal ein paar Übungen zum Pivoting und Joining von Datensätzen, mit denen Ihr alles noch einmal ausprobieren könnt. Versucht diese Übungen nachzuvollziehen und zu bearbeiten. Wie immer: Kein Problem, wenn nicht alles auf Anhieb klappt - bringt alle offenen Fragen gerne mit in die nächste Live-Session! 
 
 ---
 
 # **Zusätzliche Ressourcen**
+
 - [Schummelblatt: tidyr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-tidyr.pdf){target="_blank"} (engl.)
 - [Data Cleaning in R](https://app.dataquest.io/course/r-data-cleaning){target="_blank"} auf DataQuest (engl.)
 - [Advanced Data Cleaning in R](https://app.dataquest.io/course/r-data-cleaning-advanced){target="_blank"} auf DataQuest (engl.)
-- ...
 
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
