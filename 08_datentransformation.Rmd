@@ -23,6 +23,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(learnr)
 library(gradethis)
 library(forcats)
+library(tidyr)
  
 source("R/setup/gradethis-setup.R")
 source("R/setup/tutorial-setup.R")
@@ -53,7 +54,7 @@ Aus dem `dplyr`-Package kennen wir nun die verschiedenen Funktionen, mit deren H
 
 ## **Schritt 1: Überprüfung**
 
-Zunächst einmal müssen wir natürlich unsere Daten importieren - wir haben das an dieser Stelle bereits für Euch gemacht. Anschließend sollten wir **überprüfen**, ob denn tatsächlich alle Daten vorliegen oder Werte fehlen. Schließlich müssen wir herausfinden, wo Handlungsbedarf ist und wo wir direkt weitermachen können. Dafür checken wir mithilfe der **`sum()`**-Funktion einzelne Werte in unseren beiden Datensätzen, die wir vergangenen Woche erstellt haben. <br>
+Zunächst einmal müssen wir natürlich unsere Daten importieren - wir haben das an dieser Stelle bereits für Euch gemacht. Anschließend sollten wir **überprüfen**, ob denn tatsächlich alle Daten vorliegen oder Werte fehlen. Schließlich müssen wir herausfinden, wo Handlungsbedarf ist und wo wir direkt weitermachen können. Dafür checken wir mithilfe der **`sum()`**-Funktion einzelne Werte in unseren beiden Datensätzen, die wir vergangene Woche erstellt haben. <br>
 
 Versucht zuerst einmal, die Summe für die Variable `n_pieces` im Datensatz `community` zu berechnen.
 
@@ -62,7 +63,7 @@ Versucht zuerst einmal, die Summe für die Variable `n_pieces` im Datensatz `com
 sum(community$n_pieces)
 ```
 
-Sieht gut aus - im Datensatz `community` sind keine fehlenden Werte enthalten, die bei der Berechnung der Summe stören könnten! Versucht das gleiche jetzt mal für den `audit`-Datensatz in folgendem Codeblock:
+Sieht gut aus - im Datensatz `community` sind keine fehlenden Werte enthalten, die bei der Berechnung der Summe stören könnten! Versucht in folgendem Codeblock das Gleiche noch einmal für den `audit`-Datensatz:
 
 ``` {r exercise_08mean_na2, exercise = TRUE}
 # Hier Euer Code!
@@ -121,7 +122,7 @@ na_rows <- which(is.na(audit$n_pieces))
 new_df <- na.omit(audit)
 ```
 
-Für die Variable `n_pieces`in unserem `audit` Datensatz summieren wir also zunächst alle fehlenden Werte und listen die betroffenen Beobachtungen anschließend aus. Auf Basis dieser Transformation können wir dann einen neuen Datensatz ohne die fehlenden Werte erstellen. Die Funktion `**na.omit()**` entfernt dabei alle Zeilen oder Beobachtungen, die fehlende Werte (NA) enthalten, sodass nur vollständige Datensätze erstellt werden. 
+Für die Variable `n_pieces`in unserem `audit` Datensatz summieren wir also zunächst alle fehlenden Werte und listen die betroffenen Beobachtungen anschließend auf. Auf Basis dieser Transformation können wir dann einen neuen Datensatz ohne die fehlenden Werte erstellen. Die Funktion `**na.omit()**` entfernt dabei alle Zeilen oder Beobachtungen, die fehlende Werte (NA) enthalten, sodass nur vollständige Datensätze erstellt werden. 
 
 ## **Besonderheiten**
 
@@ -146,7 +147,7 @@ df2 <- df %>%
 head(df2)
 ```
 
-Wir sehen, dass alle Werte, die uns zuvor als *-99* ausgegeben wurden, nun ebenfalls als *NAs* codiert sind. 
+Wir sehen, dass alle Werte, die uns zuvor als **-99** ausgegeben wurden, nun ebenfalls als **NAs** codiert sind. 
 
 ---
 
@@ -170,7 +171,9 @@ In R nutzen wir dafür die Funktion **`pivot_wider()`**, um Datensätze **breite
 
 Beispiel: Wir haben eine Tabelle, in der je eine Spalte Informationen zu unseren Produkten, den Monaten und den entsprechenden Verkaufszahlen entält. Diese Tabelle können wir entsprechend umformen, ohne Informationen zu verlieren:
 
-![*Graphische Veranschaulichung der pivot_wider()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_wider().jpg){#id .class width=60% height=60%}<br>
+```{r, echo=FALSE, fig.cap="Graphische Veranschaulichung von `pivot_wider()`", out.width="60%"}
+knitr::include_graphics("https://raw.githubusercontent.com/CorrelAid/rlernen_umwelt/main/abbildungen/08_datentransformation/pivot_wider().jpg")
+```
 
 Wenn Ihr noch mehr über diese Funktion wissen wollt, könnt Ihr noch einmal in die [R-Dokumentation des tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#wider){target="_blank"} schauen. <br>
 
@@ -181,7 +184,9 @@ In R nutzen wir dafür die Funktion **`pivot_longer()`**, um Datensätze zu **ve
 
 Beispiel: Wir haben eine Tabelle, in der jede Spalte für einen Monat steht und die Zeilen die Verkaufszahlen pro Produkt für die jeweiligen Monate enthalten. Durch Pivoting von breit zu lang entsteht eine Tabelle mit den Spalten Produkt, Monat und Verkäufe:
 
-![*Graphische Veranschaulichung der pivot_longer()-Funktion*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/08_datentransformation/pivot_longer().jpg){#id .class width=60% height=60%}<br>
+```{r, echo=FALSE, fig.cap="Graphische Veranschaulichung von `pivot_longer()`", out.width="60%"}
+knitr::include_graphics("https://raw.githubusercontent.com/CorrelAid/rlernen_umwelt/main/abbildungen/08_datentransformation/pivot_longer().jpg")
+```
 
 Mehr zu dieser Funktion findet Ihr ebenfalls in der  [R-Dokumentation zum tidyverse](https://tidyr.tidyverse.org/articles/pivot.html#longer){target="_blank"}. <br>
 
@@ -217,7 +222,7 @@ Es kann allerdings auch vorkommen, dass ein einzelner Datensatz uns nicht alle I
 
 Im Exkurs ["Eigene API-Anfragen" zur Session Datenimport](https://correlaid.shinyapps.io/05_1_datenimport-exkurs-api/){target="_blank"} haben wir bereits mit einem Datensatz der Weltbank zu Naturschutzgebieten (`wb_areas`) gearbeitet. In Form von verschidenen Indikatoren, liefert uns diese Datenbank verschiedene umweltbezogene Daten, die für unsere Analyse oder die Arbeit vom #Breakfreefromplastic-Netzwerk interessant sein könnten - z.B. bedrohte Fischarten, Anteil Naturschutzgebiete, usw. Wir werden nun wieder mit diesem Datensatz arbeiten, allerdings ist es auch kein Problem, wenn Ihr den Exkurs (noch) nicht angeschaut habt! Verschafft Euch doch zuerst nochmal einen kleinen Überblick über den Datensatz `wb_areas`, den wir bereits für Euch geladen haben: 
 
-``` {r 08gdppc, exercise = TRUE}
+``` {r exercise_08gdppc, exercise = TRUE}
 # Hier Euer Code!
 
 ```
@@ -249,13 +254,9 @@ Versucht jetzt einmal herauszufinden, wie viele Länder in beiden Datensätzen `
 ```
 
 ``` {r 08_datenbereinigung-solution}
-# NAs bestimmen
+# Länder bestimmen
 summary(community$country)
 summary(wb_areas$country)
-
-# Alternative Bestimmung über die Variable 'countrycode'
-summary(community$countrycode)
-summary(wb_areas$countrycode)
 ```
 
 ``` {r 08_datenbereinigung-check}
@@ -360,15 +361,16 @@ quiz(
 ---
 
 # **Und jetzt Ihr!**
-...
+
+Nun ist es wieder an der Zeit, das Gelernte praktisch anzuwenden. Versucht, die **R Datei: 08_datentransformation-uebung.R** im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} unter "08_datentransformation" zum Laufen zu bringen. Darin sind noch einmal ein paar Übungen zum Pivoting und Joining von Datensätzen, mit denen Ihr alles noch einmal ausprobieren könnt. Versucht diese Übungen nachzuvollziehen und zu bearbeiten. Wie immer: Kein Problem, wenn nicht alles auf Anhieb klappt - bringt alle offenen Fragen gerne mit in die nächste Live-Session! 
 
 ---
 
 # **Zusätzliche Ressourcen**
+
 - [Schummelblatt: tidyr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-tidyr.pdf){target="_blank"} (engl.)
 - [Data Cleaning in R](https://app.dataquest.io/course/r-data-cleaning){target="_blank"} auf DataQuest (engl.)
 - [Advanced Data Cleaning in R](https://app.dataquest.io/course/r-data-cleaning-advanced){target="_blank"} auf DataQuest (engl.)
-- ...
 
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
