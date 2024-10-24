@@ -368,7 +368,7 @@ Nun ist es wieder an der Zeit, das Gelernte praktisch anzuwenden. Versucht, die 
 
 # **Zusätzliche Ressourcen**
 
-- [Schummelblatt: tidyr](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/06_cheatsheet-tidyr.pdf){target="_blank"} (engl.)
+- [Schummelblatt: tidyr](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/06_cheatsheet-tidyr.pdf){target="_blank"} (engl.)
 - [Data Cleaning in R](https://app.dataquest.io/course/r-data-cleaning){target="_blank"} auf DataQuest (engl.)
 - [Advanced Data Cleaning in R](https://app.dataquest.io/course/r-data-cleaning-advanced){target="_blank"} auf DataQuest (engl.)
 
