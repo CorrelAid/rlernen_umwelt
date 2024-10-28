@@ -54,67 +54,67 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ## **Zusammenfassung**
 
-- Visualisierungen **vereinfachen und beschleunigen** die Vermittlung von (komplexen) Inhalten, weil Menschen visuelle Zusammenhänge oft schneller begreifen können als Text.
-- Sie erlauben uns, in Daten **Muster** zu erkennen (z.B. zur Verteilung von und zu Beziehungen zwischen Variablen).
-- Auch **Fehler und Ausreißer** in den Daten können mit ihnen schnell identifiziert werden.
-- Mit der Möglichkeit der interaktiven Gestaltung haben wir die Möglichkeit, **spannende Narrative** zu entwickeln (sog. Storytelling) - nicht zuletzt werden sie deshalb auch häufig im [Datenjournalismus](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/telling-stories-with-data/){target="_blank"} genutzt.
+- **Vereinfachen und Beschleunigen** der Vermittlung (komplexer) Inhalte, weil Menschen visuelle Zusammenhänge oft schneller begreifen können als Text.
+- Helfen bei der **Erkennung von Datenmustern** (z.B. zur Verteilung von und zu Beziehungen zwischen Variablen).
+- Ermöglichen eine schnelle **Identifizierung von Fehlern und Ausreißern**.
+- Interaktive Gestaltungsoptionen ermöglichen die **Entwicklung spannender Narrative (sog. Storytelling)** - nicht zuletzt werden sie deshalb auch häufig im [Datenjournalismus](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/telling-stories-with-data/){target="_blank"} genutzt.
 - Die Entscheidung für eine **Visualisierungsart** hängt von vielen Faktoren ab:
   - **Art der Variablen** (kontinuierlich oder diskret)
   - **Anzahl an Variablen**, die visualisiert werden sollen
   - **Botschaft**, die vermittelt werden soll
-- Die Webseite [From-Data-to-Viz](https://www.data-to-viz.com){target="_blank"} bietet einen hervorragenden **Ausgangspunkt**, um sich für eine Visualisierung zu entscheiden und liefert auch gleichzeitig Code-Schnipsel zur praktischen Implementierung.
-- Wir schauen uns in dieser Lektion gemeinsam die R-Packages `ggplot2` und `plotly` (für interaktive Visualisierungen) an und werden kurz über das `sf`-Package sprechen, welches die Arbeit mit Geodaten ermöglicht (praktisch z.B. um Karten zu erstellen).
+- Falls Ihr Probleme dabei habt, Euch für die passende Darstellungsform zu entscheiden, dann schaut doch gerne einmal auf der Website [From-Data-to-Viz](https://www.data-to-viz.com){target="_blank"} vorbei. Diese bietet Euch hervorragende Hilfestellungen und liefert gleichzeitig Code-Schnipsel zur praktischen Implementierung.
+- In R nutzen wir vor allem die Packages `ggplot2` und `plotly` zur Datenvisualisierung. Das `sf`-Package ermöglicht uns die Arbeit mit Geodaten (z.B. um Karten zu erstellen) - daher werden wir auch kurz darüber sprechen.
 
 ## **Quiz**
 
 ```{r 10visualisierung}
 quiz(caption = NULL,
   question("Wofür kann und sollte man Datenvisualisierung nutzen?",
-    answer("Zur interaktiven Informationsweitergabe", correct = TRUE),
-    answer("Um Stories zu untermauern", correct = TRUE),
-    answer("Um überfrachtete Graphiken zu präsentieren"),
-    answer("Um Muster zu erkennen", correct = TRUE),
-    correct = "Richtig, die Möglichkeiten der Datensisualisierung sind nahezu unbegrenzt! Jedoch sollten wir immer darauf achten, dass wir die Grafiken so einfach wie möglich halten."",
-    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
+    answer("Zur interaktiven Informationsweitergabe.", correct = TRUE),
+    answer("Um Stories zu untermauern.", correct = TRUE),
+    answer("Um überfrachtete Graphiken zu präsentieren."),
+    answer("Um Muster zu erkennen.", correct = TRUE),
+    correct = "Richtig, die Möglichkeiten der Datensisualisierung sind nahezu unbegrenzt! Jedoch sollten wir immer darauf achten, dass wir die Grafiken so einfach wie möglich halten.",
+    incorrect = "Leider falsch, versuche es einfach nochmal oder schau im Video nach!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
 
   question("Was gilt auch für Datenvisualisierungen?",
-    answer("Function follows form (Funktion folgt Form)"),
-    answer("Form follows function (Form folgt Funktion)", correct = TRUE),
-    correct = "Richtig! Leider sehen wir häufig Datenvisualisierungen, die zwar toll aussehen - aber von einer Vereinfachung der Botschaft kann keine Rede sein. Beim Betrachten bleiben wir dann leider mit vielen Fragezeichen zurück.",
-    incorrect = "Leider falsch: Form folgt Funktion! Leider sehen wir häufig Datenvisualisierungen, die zwar toll aussehen - aber von einer Vereinfachung der Botschaft kann keine Rede sein. Beim Betrachten bleiben wir dann leider mit vielen Fragezeichen zurück.",
+    answer("Function follows form (Funktion folgt Form)."),
+    answer("Form follows function (Form folgt Funktion).", correct = TRUE),
+    correct = "Richtig, leider sehen wir häufig Datenvisualisierungen, die zwar toll aussehen, die eigentliche Botschaft aber nicht wirklich vereinfachen! Beim Betrachten bleiben wir dann leider mit vielen Fragezeichen zurück.",
+    incorrect = "Leider falsch, Form folgt Funktion! Leider sehen wir häufig bunte Datenvisualisierungen, die die eigentliche Botschaft aber nicht wirklich vereinfachen! Beim Betrachten bleiben wir dann leider mit vielen Fragezeichen zurück.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
 
-  question("Wie schon in Sitzung 'Daten verstehen mit R' besprochen, können Boxplots eine nützliche Darstellung sein. Aber warum genau sind sie so nützlich?",
-    answer("Sie sind leicht zu lesen"),
-    answer("Sie stellen die fünf Punkte der Verteilung (statistische Kennzahlen) visuell da", correct = TRUE),
-    answer("Sie zeigen die genaue Lage der Beobachtungspunkte an"),
-    correct = "Richtig! Sie fassen die fünf Punkte der Verteilung (Minimum, 25%-Quartil, Median, 75%-Quartil, Maximum) zusammen und geben damit einen sehr guten Überblick über Daten.",
-    incorrect = "Leider falsch: Boxplots stellen die fünf Punkte der Verteilung visuell dar, sind deshalb aber nur gut zu verstehen, wenn man diese auch kennt. Wie einzelne Beobachtungen liegen, kann man nicht erkennen.",
+  question("Wie schon in der Sitzung 'Daten verstehen mit R' besprochen, können Boxplots eine nützliche Darstellung sein. Aber warum genau sind sie so nützlich?",
+    answer("Sie sind leicht zu lesen."),
+    answer("Sie stellen die fünf Punkte der Verteilung (statistische Kennzahlen) visuell da.", correct = TRUE),
+    answer("Sie zeigen die genaue Lage der Beobachtungspunkte an."),
+    correct = "Richtig, sie fassen die fünf Punkte der Verteilung (Minimum, 25%-Quartil, Median, 75%-Quartil, Maximum) zusammen und geben damit einen sehr guten Überblick über die Daten.",
+    incorrect = "Leider falsch, Boxplots stellen die fünf Punkte der Verteilung visuell dar - sie sind deshalb aber nur gut zu verstehen, wenn man diese auch kennt. Rückschlüsse auf die Verteilung einzelner Beobachtungen sind allerdings nicht möglich.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ), 
 
   question("Warum haben Kreisdiagramme oft einen schlechten Ruf?",
-    answer("Weil sie altmodisch sind"),
-    answer("Weil sie nur schwer zu lesen sind"),
-    answer("Weil sie oft überfrachtet werden", correct = TRUE),
-    correct = "Richtig! Kreisdiagramme sollten nur für Variablen mit zwei bis drei Kategorien erstellt werden, z.B. Ja, Nein, NA. Bei mehr Kategorien können wir Verhältnisse nicht mehr richtig abschätzen.",
-    incorrect = "Leider falsch: Kreisdiagramme sollten nur für Variablen mit zwei bis drei Kategorien erstellt werden, z.B. Ja, Nein, NA. Bei mehr Kategorien können wir Verhältnisse nicht mehr richtig abschätzen.",
+    answer("Weil sie altmodisch sind."),
+    answer("Weil sie nur schwer zu lesen sind."),
+    answer("Weil sie oft überfrachtet werden.", correct = TRUE),
+    correct = "Richtig, Kreisdiagramme sollten nur für Variablen mit zwei bis drei Kategorien erstellt werden, z.B. Ja, Nein, NA. Bei mehr Kategorien können wir Verhältnisse nicht mehr richtig abschätzen.",
+    incorrect = "Leider falsch, Kreisdiagramme sollten nur für Variablen mit zwei bis drei Kategorien erstellt werden, z.B. Ja, Nein, NA. Bei mehr Kategorien können wir Verhältnisse nicht mehr richtig abschätzen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
 
   question("Wie heißt die erste Empfehlung von From-Data-to-Viz für mehrere geordnete, numerische Variablen? (Tipp: Geht zu data-to-viz.com und schaut dort nach.)",
-    answer("Boxplots"),
-    answer("Liniendiagramme"),
-    answer("Geschichtete Flächendiagramme", correct = TRUE),
-    correct = "Richtig! Auf Englisch heißen diese stacked area plots.",
-    incorrect = "Leider falsch: Es werden geschichtete Flächendiagramme (engl. stacked area plots) empfohlen.",
+    answer("Boxplots."),
+    answer("Liniendiagramme."),
+    answer("Geschichtete Flächendiagramme.", correct = TRUE),
+    correct = "Richtig, auf Englisch heißen diese stacked area plots.",
+    incorrect = "Leider falsch, es werden geschichtete Flächendiagramme (engl. stacked area plots) empfohlen.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
@@ -126,8 +126,8 @@ quiz(caption = NULL,
     answer("geom_*", correct = TRUE),
     answer("labs"),
     answer("coord_cartesian"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: ggplots benötigen zumindest Daten (data), Variablen (aes) und eine Darstellungsform (geom_xxx)",
+    correct = "Richtig, an erster Stelle müssen wir den Datensatz (data), Achsenattribute (aes) und Darstellungsform (geom_xxx) definieren - alles andere ist optional und kann später hinzugefügt werden.",
+    incorrect = "Leider falsch, an erster Stelle müssen wir den Datensatz (data), Achsenattribute (aes) und Darstellungsform (geom_xxx) definieren - alles andere ist optional und kann später hinzugefügt werden.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
@@ -142,26 +142,25 @@ quiz(caption = NULL,
 </right>
 <br>
 
-In dieser Sitzung werden wir uns vor allem mit dem Package **`ggplot2`** beschäftigen, das ebenfalls im Tidyverse enthalten ist und uns viele Visualisierungsmöglichkeiten bietet. Am Ende wissen wir, wie wir einigermaßen selbstständig Visualisierungen erstellen (wie die in [unserer App](https://correlaid.shinyapps.io/breakfreefromplastic/){target="_blank"}) - oder wo wir nachschauen müssen, wenn wir einmal nicht weiter wissen.  
-
-#### **Wiederholung: `ggplot2`-Basics**
+In dieser Sitzung werden wir uns vor allem mit dem Package **`ggplot2`** beschäftigen, das ebenfalls im Tidyverse enthalten ist und uns viele Visualisierungsmöglichkeiten bietet. Am Ende wissen wir, wie wir einigermaßen selbstständig Visualisierungen erstellen (wie die in [unserer App](https://correlaid.shinyapps.io/breakfreefromplastic/){target="_blank"}) - oder wo wir nachschauen müssen, wenn wir einmal nicht weiter wissen.
 
 ## **Wiederholung: `ggplot2`-Basics**
 
-Erinnert Ihr Euch noch an die [Lektion zu Daten verstehen mit R](https://rlernen.correlaid.org/06_daten-verstehen-mit-r.html){target="_blank"}? In Dieser Session haben wir nämlich schon einmal von dem ggplot2-Package gehört.
+## **Wiederholung: `ggplot2`-Basics**
 
-`ggplot2` orientiert sich an der Philosophie des ["Grammar of Graphics"](https://ggplot2-book.org/introduction#what-is-the-grammar-of-graphics) (daher auch der Name **gg**plot), das uns mit einer grundlegenden Definition einer Visualisierung ausstattet:
+Erinnert Ihr Euch noch an die [Lektion zu Daten verstehen mit R](https://rlernen.correlaid.org/06_daten-verstehen-mit-r.html){target="_blank"}? In Dieser Session haben wir nämlich schon einmal von dem ggplot2-Package gehört. `ggplot2` orientiert sich an der Philosophie des ["Grammar of Graphics"](https://ggplot2-book.org/introduction#what-is-the-grammar-of-graphics) (daher auch der Name **gg**plot), das uns mit einer grundlegenden Definition einer Visualisierung ausstattet:
 
 > a graphic maps the *data* to the *aesthetic attributes* (colour, shape, size) of *geometric objects* (points, lines, bars)
 
 Wir stellen also unsere Daten als "geometrische Objekte" mit "ästhetischen Eigenschaften" dar.  `ggplot2` folgt dabei einer **Lagen- bzw. Schichtlogik**, nach der eine Visualisierung Stück für Stück aufgebaut wird.
 
-- Für einen ganz simplen Plot benötigen wir immer:
-    - `data` (der **Datensatz**)
-    - `aes()` (die **"ästhetischen Attribute"** wie beispielsweise die x- oder y-Achse)
-    - `geom_*()` (die **geometrische Form**, d.h. mit welcher Visualisierungsform unsere Daten dargestellt werden sollen z.B. in einem Balkendiagramm oder Histogramm) 
-    
-- **Wichtig**: Die einzelne Bestandteile werden bei `ggplot2` mit einem **"+" verknüpft**. Und auch wenn das Package selbst `ggplot2` heißt, ist der erste Befehl, wenn Ihr Eure Visualisierung aufbaut, immer `ggplot()` (ohne die "2").
+Für einen ganz simplen Plot benötigen wir immer:
+
+- `data()` = **Datensatz**
+- `aes()` = **"ästhetische Attribute"** (z.B. die x- oder y-Achse)
+- `geom_*()` = **geometrische Form**, also die Darstellungsform unserer Daten (z.B. Balkendiagramm, Histogramm, etc.)
+
+**Wichtig**: Die einzelnen Lagen bzw. Schichten werden bei `ggplot2` mit einem **"+" verknüpft**. Und auch wenn das Package selbst `ggplot2` heißt, ist der erste Befehl, wenn wir unsere Visualisierung aufbauen, immer `ggplot()` (ohne die "2").
 
 Eine ganz einfache Visualisierung mit `ggplot2` erfolgt immer über folgendes Prinzip:
 
@@ -183,7 +182,7 @@ Daten +
     Visuelle Anpassung der Darstellungsform ("theme")
 ```
 
-Für diese Lektion benötigt Ihr also `ggplot2`.
+Wir starten von Anfang an und werden uns Schritt für Schritt steigern! Zunächst einmal benötigen wir natürlich unser Werkzeug: Das Package `ggplot2`.
 
 ```{r package_prep_ggplot2, exercise = TRUE}
 # install.packages("ggplot2")
@@ -200,7 +199,7 @@ Wenn man nur die `ggplot()`-Funktion alleine aufruft, produziert das einen leere
 ggplot()
 ```
 
-Dies ist quasi die **Basisebene**, die wir nun nach und nach füllen können. Dafür müssen wir festlegen, welche Daten wir verwenden und wie diese dargestellt werden sollen (= `mapping`):
+Dies ist quasi die **Basisebene**, die wir nun nach und nach füllen können. Dafür müssen wir als Erstes festlegen, welche Daten wir verwenden und wie diese dargestellt werden sollen (= `mapping`):
 
 ```{r ggplot_axes, exercise = TRUE}
 ggplot(data = community, mapping = aes(x = n_volunteers, y = n_pieces))
@@ -208,13 +207,13 @@ ggplot(data = community, mapping = aes(x = n_volunteers, y = n_pieces))
 
 ## **Zusatzebene: Grafiktyp**
 
-Die `aes()`-Funktion kontrolliert alle **ästhetischen Zuweisungen**. Wir haben jetzt also schon einmal einen Graphen mit Achsen erstellt, den wir nun füllen müssen. Je nachdem, welche Daten uns vorliegen, kommen dafür verschiedene Grafiktypen infrage, die wir uns gleich auch nochmal anschauen werden. An dieser Stelle entscheiden wir uns für das **Punktdiagramm** als "geometrische Objekt" (`geom_point()`). Dazu fügen wir mit `+` eine weitere Ebene hinzu:
+Die `aes()`-Funktion kontrolliert alle **ästhetischen Zuweisungen**. Wir haben jetzt also schon einmal einen Graphen mit Achsen erstellt, den wir nun füllen müssen. Je nachdem, welche Daten uns vorliegen, kommen dafür verschiedene Grafiktypen infrage, die wir uns gleich auch nochmal anschauen werden. An dieser Stelle entscheiden wir uns für das **Punktdiagramm** als "geometrisches Objekt" (`geom_point()`). Dazu fügen wir mit `+` eine weitere Ebene hinzu:
 
 ```{r ggplot_geom, exercise = TRUE}
 ggplot(community, aes(x = n_volunteers, y = n_pieces)) +
   geom_point()
 ```
-So wie sich die Position der Punkte durch `x` und `y` bestimmen lässt, können wir auch ihre Farbe etwas darstellen lassen; z.B. welchem Kontinent eine Beobachtung zugehörig ist. Dazu einfach innerhalb von `aes()` ein weiteres "mapping" hinzufügen:
+So wie sich die Position der Punkte durch `x` und `y` bestimmen lässt, können wir auch ihre Farbe etwas darstellen lassen; z.B. welchem Kontinent eine Beobachtung zugehörig ist. Dazu fügen wir innerhalb von `aes()` ein weiteres "mapping" (`color = continent`) hinzu:
 
 ```{r ggplot_color, exercise = TRUE}
 ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent)) +
@@ -230,7 +229,9 @@ Wir sehen schon, dass es hier einige Ausreißer nach oben gibt, was die Teilnehm
 
 Da wir unsere Daten vollständig präsentieren wollen, entscheiden wir uns für Option 2 und stellen unsere Daten auf einer logarithmischen Skala dar. Hierfür fügen wir neue Ebenen hinzu: `scale_x_log10()` für eine logarithmische x-Achse, und `scale_y_log10()` für eine logarithmische y-Achse:
 
-*Hinweis: Häufig sind unsere Daten nicht normalverteilt, obwohl das die meisten statistischen Modelle voraussetzen - wir haben darüber bereits einmal kurz in den [Grundlagen der Statistik](https://rlernen.correlaid.org/03_grundlagen-der-statistik.html){target="_blank"} dazu gesprochen. Mithilfe verschiedener Transformationsverfahren (u.a. der Logarithmierung) können wir unsere Daten in eine annähernde Normalverteilung umformen. Anschließende Analysen führen wir dann mit den transformierten Daten durch.*
+*Hinweis: Häufig sind unsere Daten nicht normalverteilt, obwohl das die meisten statistischen Modelle voraussetzen - wir haben darüber bereits einmal kurz in den [Grundlagen der Statistik](https://rlernen.correlaid.org/03_grundlagen-der-statistik.html){target="_blank"} dazu gesprochen. Mithilfe verschiedener Transformationsverfahren (u.a. der Logarithmierung) können wir unsere Daten in eine annähernde Normalverteilung umformen. Anschließende Analysen führen wir dann mit den transformierten Daten durch. Eine kurze Zusammenfassung dazu, findet Ihr auch [hier](https://www.ibm.com/docs/de/cognos-analytics/11.1.0?topic=visualizations-logarithmic-scale){target="_blank"}.*
+
+Und so sehen unsere logarithmierten Daten aus - deutlich übersichtlicher und aussagekräftiger, oder?
 
 ```{r ggplot_scale, exercise = TRUE}
 ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent)) +
@@ -239,7 +240,7 @@ ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent)) +
   scale_y_log10()
 ```
 
-Neben der Farbe (`color`) der Punkte gibt es noch zahlreiche weitere Eigenschaften, z.B. ihre Größe (`size`). Diese können wir hier zum Beispiel nutzen, um ebenfalls die Anzahl der Events in unserem Plot darzustellen. Dazu erweitern wir `aes()`:
+Neben der Farbe der Punkte (`color`) gibt es noch zahlreiche weitere Eigenschaften, z.B. ihre Größe (`size`). Diese können wir hier zum Beispiel nutzen, um ebenfalls die Anzahl der Events in unserem Plot darzustellen. Dazu erweitern wir `aes()`:
 
 ```{r ggplot_size, exercise = TRUE}
 ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent, size = n_events)) +
@@ -248,7 +249,7 @@ ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent, size = 
   scale_y_log10()
 ```
 
-Allerdings könnten jetzt sehr große Punkte kleinere verdecken. Eine weitere Eigenschaft der Punkte ist `alpha`, also ihre Deckkraft. Wenn wir einer ästhetischen Eigenschaft einen festen Wert geben wollen, können wir ihn **außerhalb** von `aes()` zuweisen (entweder innerhalb `ggplot()` oder `geom_point()`):
+Allerdings könnten jetzt kleinere Datenpunkte von sehr großen verdeckt werden. Dieses Problem können wir mithilfe einer weiteren Eigenschaft der Punkte lösen: Ihrer Deckkraft (`alpha`). Wenn wir einer ästhetischen Eigenschaft einen festen Wert geben wollen, können wir ihn **außerhalb** von `aes()` zuweisen (entweder innerhalb `ggplot()` oder `geom_point()`):
 
 ```{r ggplot_alpha, exercise = TRUE}
 ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent, size = n_events)) +
@@ -259,7 +260,7 @@ ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent, size = 
 
 ## **Zusatzebene: Layout**
 
-Das sieht doch schon gut aus! Wenden wir uns nun dem Feinschliff zu. `ggplot2()` hat mehrere eingebaute **"themes"**, also voreingestellte Layout-Formate, die wir verwenden können. Falls uns der Standard-Look nicht gefällt können wir einfach eine weitere Ebene für das theme mit `+` hinzufügen und diesen ändern:
+Das sieht doch schon gut aus! Nun können wir uns dem Feinschliff zuwenden. `ggplot2()` hat mehrere eingebaute **"themes"**, also voreingestellte Layout-Formate, die wir verwenden können. Falls uns der Standard-Look nicht gefällt können wir einfach eine weitere Ebene für das `theme_*` hinzufügen und diesen ändern:
 
 ```{r ggplot_themes, exercise = TRUE}
 ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent, size = n_events)) +
@@ -269,9 +270,9 @@ ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent, size = 
   theme_minimal()
 ```
 
-Noch besser - als nächstes sehen wir uns die Achsen an. Die y-Achse ist aktuell aufgrund der Logarithmierung unserer Daten nicht optimal formatiert (wir hätten gern 1,000 statt 1e+03). Damit alles einheitlich ist, bringen wir die x-Achse am besten noch in das selbe Format. Das Format der **Labels** können wir mit Hilfe des `scales`-Packages innerhalb der entsprechenden Ebenen ändern:
+Noch besser - als nächstes sehen wir uns die Achsen an. Die y-Achse ist aktuell aufgrund der Logarithmierung unserer Daten nicht optimal formatiert (wir hätten gern 1,000 statt 1e+03). Damit alles einheitlich ist, bringen wir die x-Achse am besten noch in das selbe Format. Das Format der **Labels** können wir mit Hilfe des `scales`-Packages innerhalb der entsprechenden Ebenen ändern.
 
-*Anmerkung: Das `scales`-Package ist ein Zusatz, das Funktionen enthält, die wir dafür verwenden können, um Achsenbeschriftungen, Farben und andere Merkmale unserer Grafiken anzupassen.*
+*Anmerkung: Das `scales`-Package ist ein Zusatz, das Funktionen enthält, die wir dafür verwenden können, um Achsenbeschriftungen, Farben und andere Merkmale unserer Grafiken anzupassen. Schaut doch gerne noch einmal in die [Dokumentation des Packages](https://scales.r-lib.org/){target="_blank"} rein, wenn Ihr noch mehr dazu wissen möchtet!*
 
 ```{r ggplot_axlabels, exercise = TRUE}
 ggplot(community, aes(x = n_volunteers, y = n_pieces, color = continent, size = n_events)) +
@@ -317,14 +318,14 @@ ggsave(filename = "MeinPlot.png", plot = final_plot)
 
 Nehmen wir an, wir wollen den vorherigen Plot nun für alle Kontinente einzeln erstellen. Müssten wir dann nach `continent` filtern, alle Plots einzeln erstellen und dann wieder zusammenstückeln? 
 
-Nein, natürlich nicht. `ggplot` kann einen Plot "facettieren", also den selben Plot für unterschiedliche Gruppen erstellen. Dazu müssen wir eine Ebene `facet_wrap()` hinzufügen und ggplot mitteilen, nach welcher Variable es "facettieren" soll (die Syntax: `~variable`):
+Nein, natürlich nicht! `ggplot` kann einen Plot "facettieren", also den selben Plot für unterschiedliche Gruppen erstellen. Dazu müssen wir eine Ebene `facet_wrap()` hinzufügen und ggplot mitteilen, nach welcher Variable es "facettieren" soll (die Syntax: `~variable`):
 
 ```{r ggplot_facets, exercise = TRUE, exercise.setup = "ggplot_labels"}
 final_plot +
   facet_wrap(~continent)
 ```
 
-Ein Tipp am Rande: Falls sich eure Achsenlabels überlappen, lassen sich diese durch etwas interne ggplot-Trickserei innerhalb einer `theme()`-Ebene anwinkeln:
+Ein Tipp am Rande: Falls sich - wie in diesem Fall - die (x-) Achsenlabels überlappen, lassen sich diese durch etwas interne ggplot-Trickserei innerhalb einer `theme()`-Ebene anwinkeln:
 
 ```{r ggplot_facets_axis_text, exercise = TRUE, exercise.setup = "ggplot_labels"}
 final_plot +
@@ -333,13 +334,14 @@ final_plot +
 ```
 
 Zugegeben: Die Syntax für diese **Nicht-Daten-Komponenten**, die man innerhalb von `theme()` modifizieren kann ist etwas gewöhnungsbedürftig. [Hier](https://ggplot2.tidyverse.org/reference/theme.html){target="_blank"} gibt es allerdings eine gute Einführung in der ggplot2-Dokumentation.
+
 ---
 
-## **Weitere Darstellungsformen**
+# **Zusätzliche Darstellungsformen**
 
 In unserem Beispiel haben wir uns das Punktdiagramm als eine Darstellungsform angeschaut, doch natürlich gibt es noch viel mehr Möglichkeiten um Daten graphisch zu veranschaulichen - einige kennt Ihr bereits!
 
-* **Balken:** `geom_col()` & `geom_bar()`:
+* **Balkendiagramm:** `geom_col()` & `geom_bar()`:
 
 ```{r ggplot_geoms_col, exercise = TRUE}
 community %>% 
@@ -365,11 +367,11 @@ ggplot(community, aes(x = n_events)) +
   geom_histogram()
 ```
 
-Ein weiteres häufig genutzes "geom" ist `geom_line()`, ein **Liniendiagramm**, das sich vor allem für die Darstellung von Zeitreihen eignet. Wir haben es bereits in der Session [Grundlagen der Statistik](https://rlernen.correlaid.org/03_grundlagen-der-statistik.html){target="_blank"} im Rahmen der verschiedenen Pressemitteilungen kennengelernt - vielleicht erinnert Ihr Euch.
+An dieser Stelle können wir natürlich nur einen kleinen Teil aller graphischen Darstelllungsformen betrachten. Ein weiteres häufig genutzes "geom" ist `geom_line()`, ein **Liniendiagramm**, das sich vor allem für die Darstellung von Zeitreihen eignet. Wir haben es bereits in der Session [Grundlagen der Statistik](https://rlernen.correlaid.org/03_grundlagen-der-statistik.html){target="_blank"} im Rahmen der verschiedenen Pressemitteilungen kennengelernt - vielleicht erinnert Ihr Euch. Die [R Graph Gallery](https://r-graph-gallery.com/ggplot2-package.html){target="_blank"} bietet Euch darüberhinaus noch einen umfassenden Einblick in alle möglichen Graphiken - Codes inklusive! 
 
-### **Kombination von `geom_*()`s**
+## **Kombinierte Darstellungsformen**
 
-Die Visualierungsmoöglichkeiten in R sind mithilfe des `ggplot2`-Packages nahezu unbegrenzt, da sich auch mehrere Darstellungsformen miteinander kombinieren lassen. Natürlich müssen wir dabei immer darauf achten, dass eine solche Kombination auch Sinn ergibt und unsere Grafik weiterhin übersichtlich bleibt. Hier ein Beispiel:
+Die Visualierungsmoöglichkeiten in R sind mithilfe des `ggplot2`-Packages nahezu unbegrenzt, da sich auch mehrere Darstellungsformen miteinander kombinieren lassen. Natürlich müssen wir dabei immer darauf achten, dass eine solche Kombination auch Sinn ergibt und unsere Grafik weiterhin übersichtlich bleibt. Hier ein Beispiel: 
 
 ```{r ggplot_geoms_combining, exercise = TRUE}
 ggplot(community, aes(x = continent, y = n_pieces, fill = continent)) +
@@ -404,7 +406,7 @@ world <- world %>%
 tibble(world)
 ```
 
-In diesem Datensatz mit "simple features" haben wir neben dem `countrycode` noch eine weitere Spalte, `geometry`, in der die **Form jedes Landes** enthalten ist. In beiden Datensätzen ist also der **`countrycode`** der einzelnen Länder enthalten. Diesen können wir nutzen, um unsere Beobachtungen mit der Karte zusammenzufügen:
+In diesem Datensatz mit "simple features" haben wir neben dem `countrycode` noch eine weitere Spalte, `geometry`, in der die **Form jedes Landes** enthalten ist. Nun müssen wir beide Datensätze anhand der gemeinsamen Variable **`countrycode`** zusammenfügen:
 
 ```{r ggplot_maps_merging, exercise = TRUE, exercise.setup = "ggplot_maps_data"}
 map <- world %>% 
@@ -414,7 +416,7 @@ map <- world %>%
   dplyr::mutate(dplyr::across(dplyr::starts_with("n_"), function(x) tidyr::replace_na(x, 0)))
 ```
 
-Es gibt ein eigenes `geom` für ggplot2, um nun aus diesen Daten ganz einfach eine Karte zu erstellen: **`geom_sf()`**. Die anderen `aes()`, wie zum Beispiel `fill` (Füllfarbe) funktionieren wie gehabt:
+Für ggplot2 gibt es ein eigenes `geom`, um nun aus diesen Daten ganz einfach eine Karte zu erstellen: **`geom_sf()`**. Die anderen `aes()`, wie zum Beispiel `fill` (Füllfarbe) funktionieren wie gehabt:
 
 ```{r ggplot_maps_plot, exercise = TRUE, exercise.setup = "ggplot_maps_merging"}
 worldmap <- ggplot(map, aes(fill = n_events)) +
@@ -443,18 +445,23 @@ worldmap +
 <summary><h1><b>Exkurs 2: Interaktive Plots mit plotly</b></h1></summary>
   <br>
 
+In R lassen sich mithilfe des **`plotly`**-Packages auch interaktive Grafiken erstellen. Das Package bietet uns neue Möglichkeiten, um dynamische und flexible Visualisierungen als HTML-Dateien zu erstellen und abzuspeichern. Somit lassen sie sich problemlos auf Websites einfügen oder teilen. `plotly` unterstützt verschiedene Diagrammtypen (z.B. Linien-, Balken- und Streudigramme) und ermöglicht u.a. ebenfalls die Erstellung komplexerer 3D-Modelle. Das Package lässt sich sehr gut mit dem `gglot2`-Package kombinieren und ist daher besonders praktisch, wenn wir bereits bestehende Visualisierungen bearbeiten wollen. Mehr dazu findet Ihr [hier](https://plotly-r.com/){target="_blank"}.
+
+Zunächst laden wir also wie gewohnt das neue Package:
+
 ```{r ggplot_plotly_setup, exercise = TRUE, exercise.setup = "ggplot_maps_plot"}
 library(plotly)
 ```
 
-In R lassen sich mithilfe des **`plotly`**-Packages auch interaktive Grafiken erstellen. Die einfachste Variante ist, die `ggplotly()`-Funktion auf einen bestehenden ggplot anzuwenden, um diesen in einen interaktiven Plot zu konvertieren:
+Die einfachste Variante, einen interaktiven Graphen zu erstellen, ist die Anwendung der **`ggplotly()`-Funktion** auf einen bestehenden ggplot, um diesen in einen interaktiven Plot zu konvertieren.
 
 ```{r ggplot_plotly_ggplotly, exercise = TRUE, exercise.setup = "ggplot_plotly_setup"}
 worldmap %>%
   plotly::ggplotly()
 ```
 
-`ggplotly()` versucht möglichst alle Elemente weiterzureichen. Wenn wir zum Beispiel weitere `aes()` setzen, werden diese - nach Möglichkeit - auch von plotly berücksichtigt:
+Schnell merken wir den Unterschied: Im Vergleich zu unserer vorherigen Graphik können wir nun mit dem Curser über unsere Karte navigieren, mithilfe der Toolleiste die Datei downloaden oder zoomen. Unsere ursprünglich komplexen Daten werden trotzdem noch überischtlich dargestellt und lassen sich somit viel einfacher Erkunden.
+`ggplotly()` versucht dabei möglichst alle Elemente weiterzureichen. Wenn wir zum Beispiel weitere `aes()` setzen, werden diese - nach Möglichkeit - auch von plotly berücksichtigt. Dafür müssen wir allerdings zunächst einmal die Labels festlegen und diese mithilfe der Funktion zuweisen. Die Logik ist hierbei (noch) analog zum ggplot2-Package:
 
 ```{r ggplot_plotly_labels, exercise = TRUE, exercise.setup = "ggplot_plotly_setup"}
 with_labels <- map %>%
@@ -471,10 +478,10 @@ with_labels_plotly <- with_labels %>%
   # angezeigten "Tooltips" anpassen:
   plotly::ggplotly(tooltip = c("Land", "Events"))
 
-with_labels_plotly 
+with_labels_plotly
 ```
 
-Allerdings lassen sich manchmal **nicht** alle Elemente aus einem ggplot nahtlos in einen plotly-Plot übersetzen. Plotly hat auch eine eigene Syntax:
+Manchmal lassen sich allerdings **nicht** alle Elemente aus einem ggplot nahtlos in einen plotly-Plot übersetzen. Plotly hat nämlich auch eine eigene Syntax:
 
 ```{r ggplot_plotly_plotly, exercise = TRUE, exercise.setup = "ggplot_plotly_setup"}
 community %>%
@@ -508,7 +515,7 @@ community %>%
   )
 ```
 
-Die plotly-Plots könnt Ihr als HTML Datei speichern und dann im Browser öffnen.<br> **Achtung:** Im Plot wird der gesamte Datensatz verwendet (und nicht nur die verwendeten Variablen), sodass die exportierte HTML-Datei ggf. sehr groß wird. Also selektiert vor dem Erstellen der plotly-Visualisierung Euren Datensatz, sodass er nur die Variablen enthält, die Ihr benötigt - dann kann die HTML-Datei vielleicht auch wieder per Mail versendet werden, weil sie eine geringere Dateigröße hat und Ihr versendet nicht aus Versehen personenbezogene Daten etc.
+Die plotly-Plots könnt Ihr als HTML-Datei speichern und dann im Browser öffnen.<br> **Achtung:** Im Plot wird der gesamte Datensatz verwendet (und nicht nur die verwendeten Variablen), sodass die exportierte HTML-Datei ggf. sehr groß wird. **Selektiert** idealerweise vor dem Erstellen der plotly-Visualisierung Euren Datensatz, sodass er nur die Variablen enthält, die Ihr benötigt - dann kann die HTML-Datei vielleicht auch wieder per Mail versendet werden, weil sie eine geringere Dateigröße hat und Ihr versendet nicht aus Versehen personenbezogene Daten etc.
 
 ```{r ggplot_plotly_save, exercise = TRUE, exercise.setup = "ggplot_plotly_labels"}
 htmlwidgets::saveWidget(with_labels_plotly, 'events-weltweit.html')
@@ -525,14 +532,14 @@ Diesmal werden wir Euch keine R-Datei vorgeben, denn es ist Zeit, das Gelernte a
 # **Zusätzliche Ressourcen**
 
 - Dataquest bietet auch einen [Kurs zu Datenvisualisierungen in R](https://app.dataquest.io/course/r-data-viz){target="_blank"} an
-- [Schummelzettel zu `ggplot2`](https://github.com/CorrelAid/lernplattform/blob/main/cheatsheets/07_cheatsheet-ggplot2.pdf){target="_blank"}
+- [Schummelzettel zu `ggplot2`](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/07_cheatsheet-ggplot2.pdf){target="_blank"}
 - Mehr dazu, wie ihr ggplot-Grafiken mit [`plotly` interaktiv werden lasst](https://plotly.com/ggplot2/getting-started/)
+- [Schummelzettel zu `plotly`](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/09_cheatsheet-plotly.pdf){target="_blank"}
 - [RStudios Tutorial zu interaktiven Karten mit leaflet (engl.)](https://rstudio.github.io/leaflet/){target="_blank"}
 - [Data to Viz](https://www.data-to-viz.com/){target="_blank"}
-- [R Graph Gallery ](https://www.r-graph-gallery.com/){target="_blank"}(Übersicht über verschiedene Visualisierungen)
+- [R Graph Gallery ](https://www.r-graph-gallery.com/){target="_blank"}
 - Online-Version von ["ggplot2: Elegant Graphics for Data Analysis"](https://ggplot2-book.org/index.html){target="_blank"}  von Hadley Wickham (engl.)
 - Einblicke in den [Datenjournalismus (engl.)](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/telling-stories-with-data/){target="_blank"}
 - [Visual Inference with R (engl.)](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/visinference/){target="_blank"} (engl.)
 - [Datenvisualisierung (Wieso, warum und wie?)](https://www.skala-campus.org/artikel/tipps-daten-visualisieren/146){target="_blank"}
-
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
