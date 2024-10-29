@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 authors:
   - Cosima Meyer
   - Lennart Kasserra
+  - Jonas Lorenz
 output: 
   html_document:
     toc: true
@@ -367,11 +368,11 @@ ggplot(community, aes(x = n_events)) +
   geom_histogram()
 ```
 
-An dieser Stelle können wir natürlich nur einen kleinen Teil aller graphischen Darstelllungsformen betrachten. Ein weiteres häufig genutzes "geom" ist `geom_line()`, ein **Liniendiagramm**, das sich vor allem für die Darstellung von Zeitreihen eignet. Wir haben es bereits in der Session [Grundlagen der Statistik](https://rlernen.correlaid.org/03_grundlagen-der-statistik.html){target="_blank"} im Rahmen der verschiedenen Pressemitteilungen kennengelernt - vielleicht erinnert Ihr Euch. Die [R Graph Gallery](https://r-graph-gallery.com/ggplot2-package.html){target="_blank"} bietet Euch darüberhinaus noch einen umfassenden Einblick in alle möglichen Graphiken - Codes inklusive! 
+An dieser Stelle können wir natürlich nur einen kleinen Teil aller graphischen Darstellungsformen betrachten. Ein weiteres häufig genutzes "geom" ist `geom_line()`, ein **Liniendiagramm**, das sich vor allem für die Darstellung von Zeitreihen eignet. Wir haben es bereits in der Session [Grundlagen der Statistik](https://rlernen.correlaid.org/03_grundlagen-der-statistik.html){target="_blank"} im Rahmen der verschiedenen Pressemitteilungen kennengelernt - vielleicht erinnert Ihr Euch. Die [R Graph Gallery](https://r-graph-gallery.com/ggplot2-package.html){target="_blank"} bietet Euch darüberhinaus noch einen umfassenden Einblick in alle möglichen Graphiken - Codes inklusive! 
 
 ## **Kombinierte Darstellungsformen**
 
-Die Visualierungsmoöglichkeiten in R sind mithilfe des `ggplot2`-Packages nahezu unbegrenzt, da sich auch mehrere Darstellungsformen miteinander kombinieren lassen. Natürlich müssen wir dabei immer darauf achten, dass eine solche Kombination auch Sinn ergibt und unsere Grafik weiterhin übersichtlich bleibt. Hier ein Beispiel: 
+Die Visualierungsmöglichkeiten in R sind mithilfe des `ggplot2`-Packages nahezu unbegrenzt, da sich auch mehrere Darstellungsformen miteinander kombinieren lassen. Natürlich müssen wir dabei immer darauf achten, dass eine solche Kombination auch Sinn ergibt und unsere Grafik weiterhin übersichtlich bleibt. Hier ein Beispiel: 
 
 ```{r ggplot_geoms_combining, exercise = TRUE}
 ggplot(community, aes(x = continent, y = n_pieces, fill = continent)) +
@@ -460,7 +461,7 @@ worldmap %>%
   plotly::ggplotly()
 ```
 
-Schnell merken wir den Unterschied: Im Vergleich zu unserer vorherigen Graphik können wir nun mit dem Curser über unsere Karte navigieren, mithilfe der Toolleiste die Datei downloaden oder zoomen. Unsere ursprünglich komplexen Daten werden trotzdem noch überischtlich dargestellt und lassen sich somit viel einfacher Erkunden.
+Schnell merken wir den Unterschied: Im Vergleich zu unserer vorherigen Graphik können wir nun mit dem Cursor über unsere Karte navigieren, mithilfe der Toolleiste die Datei downloaden oder zoomen. Unsere ursprünglich komplexen Daten werden trotzdem noch überischtlich dargestellt und lassen sich somit viel einfacher Erkunden.
 `ggplotly()` versucht dabei möglichst alle Elemente weiterzureichen. Wenn wir zum Beispiel weitere `aes()` setzen, werden diese - nach Möglichkeit - auch von plotly berücksichtigt. Dafür müssen wir allerdings zunächst einmal die Labels festlegen und diese mithilfe der Funktion zuweisen. Die Logik ist hierbei (noch) analog zum ggplot2-Package:
 
 ```{r ggplot_plotly_labels, exercise = TRUE, exercise.setup = "ggplot_plotly_setup"}
