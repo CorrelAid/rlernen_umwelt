@@ -383,10 +383,11 @@ ggplot(community, aes(x = continent, y = n_pieces, fill = continent)) +
   scale_y_log10(labels = scales::comma_format())
 ```
 
+<h1>**Exkurse**</h1>
 ---
 
 <details>
-<summary><h1><b>Exkurs 1: Karten</b></h1></summary>
+<summary><h2><b>Exkurs 1: Karten</b></h2></summary>
   <br>
 
 Mit Geodaten haben wir uns bereits im Zuge des Kapitels ["Datenimport - Exkurs: Geo"](https://rlernen.correlaid.org/05_0_datenimport-exkurs-geodaten.html){target="_blank"} beschäftigt. Daran setzen wir an dieser Stelle wieder an. Das [`sf`-Package](https://r-spatial.github.io/sf/){target="_blank"} verwenden wir, um erfolgreich mit Geodaten zu arbeiten und z.B. Karten zu erstellen:
@@ -443,7 +444,7 @@ worldmap +
 ---
 
 <details>
-<summary><h1><b>Exkurs 2: Interaktive Plots mit plotly</b></h1></summary>
+<summary><h2><b>Exkurs 2: Interaktive Plots mit plotly</b></h2></summary>
   <br>
 
 In R lassen sich mithilfe des **`plotly`**-Packages auch interaktive Grafiken erstellen. Das Package bietet uns neue Möglichkeiten, um dynamische und flexible Visualisierungen als HTML-Dateien zu erstellen und abzuspeichern. Somit lassen sie sich problemlos auf Websites einfügen oder teilen. `plotly` unterstützt verschiedene Diagrammtypen (z.B. Linien-, Balken- und Streudigramme) und ermöglicht u.a. ebenfalls die Erstellung komplexerer 3D-Modelle. Das Package lässt sich sehr gut mit dem `gglot2`-Package kombinieren und ist daher besonders praktisch, wenn wir bereits bestehende Visualisierungen bearbeiten wollen. Mehr dazu findet Ihr [hier](https://plotly-r.com/){target="_blank"}.
