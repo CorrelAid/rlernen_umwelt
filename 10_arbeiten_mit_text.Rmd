@@ -42,9 +42,7 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ![*Video: Arbeiten mit Text (20min)*](https://youtu.be/NOHyED9u3x0)
 
-### **Kernaussagen**
-
-#### Das stringr Package
+# **Das stringr-Package**
 
 <left>
 
@@ -52,114 +50,189 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 </left> <br>
 
--   stringr ist Teil des Tidyverse und beinhaltet viele nützliche Funktionen rund um die Arbeit mit Textvariablen.
+## **Zusammenfassung**
 
-#### Die wichtigsten Funktionen von stringr
+- Textdaten, können in verschiedenen Formen vorliegen - als **kategoriale Variablen**, **falsch eingelesene numerische Daten**, **kombinierte Variablen aus Text und Zahl** oder **komplexe, lange Texte**. 
+- Zur Verarbeitung von Textdaten in R verwenden wir das **`stringr`-Package**.
+- `stringr` ist ein Package mit einer konsistenten Syntax für die **Arbeit mit Zeichenketten (engl. Strings)**.
+- Als **Teil des Tidyverse** lassen sich die Funktionen gut mit den dplyr-Verben kombinieren.
+- Alle Funktionen **beginnen mit `str_`**, was die Anwendung erleichtert und konsistent macht.
+- **Regex (reguläre Ausdrücke)** sind spezielle Muster, die verwendet werden, um Text zu suchen, zu überprüfen und zu manipulieren, indem sie komplexe Bedingungen für die Übereinstimmung von Zeichenfolgen definieren.
 
--   `stringr::str_to_upper()`, `stringr::str_to_lower()`, `str_to_title()`: **Änderung der Groß-/Kleinschreibung** von Zeilen im Datensatz
--   `stringr::str_c()`: **Zusammenfügen** von mehreren Textvariablen, Vektoren oder einfachen Texten
--   `stringr::str_split()`: **Trennen** von Textvariablen anhand definierter Trennzeichen
--   `stringr::str_sub()`: **Extrahieren von Zeichenfolgen** von Textvariablen anhand der Position im Text
--   `stringr::str_detect()`, `str_match()`, `str_extract()`,`str_replace()`, `str_remove()`: **Erkennen, Extrahieren, Ersetzten** von expliziten Texten oder regulären Ausdrücken aus Textvariablen
--   `stringr::str_length()`: **Messen** der Zeichenlänge eines Texts
--   `stringr::str_pad()`, `str_trunc()`, `str_trim()`, `str_squish()`: **Erweitern/Verkürzen** von Texten, **Entfernung** unnötiger Leerzeichen
+## **Die wichtigsten Funktionen von stringr**
 
-### **Quiz**
+Das `stringr`-Package enthält viele verschiedene Funktionen, die wir mit anderem Funktionen des tidyverse kombinieren können (z.B. mit den Verben des `dplyr`-Packages). Das sind die wichtigsten Funktionen des `stringr`:
+
+<style>
+table {
+  width: 100%;
+}
+th {
+  text-align: left;  /* Linksbündige Ausrichtung der Überschriften */
+}
+</style>
+
+| Funktion                         | Verwendung                                                        |
+|----------------------------------|-------------------------------------------------------------------|
+| `stringr::str_to_upper()`       | Wandelt alle Zeichen in einer Zeichenkette in Großbuchstaben um.  |
+| `stringr::str_to_lower()`       | Wandelt alle Zeichen in einer Zeichenkette in Kleinbuchstaben um. |
+| `stringr::str_to_title()`       | Wandelt den ersten Buchstaben jedes Wortes in einer Zeichenkette in Großbuchstaben um. |
+| `stringr::str_sub()`            | Extrahiert einen Teil einer Zeichenkette basierend auf Start- und Endposition. |
+| `stringr::str_detect()`         | Überprüft, ob eine bestimmte Zeichenfolge in einer Zeichenkette vorhanden ist (gibt TRUE oder FALSE zurück). |
+| `stringr::str_match()`          | Findet Übereinstimmungen mit einem regulären Ausdruck und gibt die gefundene Übereinstimmung zurück. |
+| `stringr::str_extract()`        | Extrahiert die erste Übereinstimmung eines regulären Ausdrucks aus einer Zeichenkette. |
+| `stringr::str_replace()`        | Ersetzt die erste Übereinstimmung eines regulären Ausdrucks durch eine neue Zeichenkette. |
+| `stringr::str_length()`         | Gibt die Länge einer Zeichenkette zurück (Anzahl der Zeichen).     |
+
+## **Quiz**
 
 ```{r 15quiz_arbeiten_mit_text1}
 quiz(caption = NULL,
-  question("Was macht die stringr-Funktion `str_length()`?",
-    answer("Sie zählt die Anzahl der Zeichen eines Texts", correct = TRUE),
-    answer("Sie entfernt unnötige Leerzeichen aus einem Text"),
-    answer("Sie wandelt den Text in Großbuchstaben um"),
-    answer("Sie findet die Position einer Zeichenfolge innerhalb von einem Text"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
+  question("Bei welchen Daten handelt es sich tatsächlich um Textdaten?",
+    answer("Namen von Personen, Städten, etc. (z. B. 'Laura', 'Berlin')", correct = TRUE),
+    answer("Alter in Jahren (z. B. 28, 34)", correct = FALSE),
+    answer("Postleitzahlen (z. B. '04109', '80331')", correct = TRUE),
+    answer("Umsatz in Euro (z. B. 2500, 4500)", correct = FALSE),
+    answer("Produktbeschreibungen (z. B. 'Hochwertiger Laptop')", correct = TRUE),
+    answer("Durchschnittstemperatur in °C (z. B. 22.5)", correct = FALSE),
+    correct = "Richtig, bei normalem Text in Form von Produktbeschreibungen und Namen handelt es sich logischerweise um Textdaten! Aufgrund ihrer Formatierung (z.B. '04109' = Leipzig Stadtmitte) werden Postleitzahlen allerdings auch häufig als Textdaten gelesen. Da die anfängliche 0 bei numerischen Variablen verloren gehen würde, wählt man häufig die Codierung in Textform.",
+    incorrect = "Leider falsch, versuche es noch einmal. Überlege Dir, welche Daten ausschließlich in Form von Text bzw. ausschließlich in Form von Zahlen vorliegen. Bei welcher Antwortmöglichkeit könnte es womöglich etwas komplizierter sein?",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+     
+  question("Wozu dient die Funktion `str_length()`?",
+    answer("Zum Zählen der Zeichenanzahl eines Texts.", correct = TRUE),
+    answer("Zum entfernen unnötiger Leerzeichen in einem Text.", correct = FALSE),
+    answer("Zur Umwandlung des texts von Klein- in Großbuchstaben.", correct = FALSE),
+    answer("Zur Bestimmung der Position einer Zeichenfolge innerhalb des Textes.", correct = FALSE),
+    correct = "Richtig, die Funktion `str_length()` können wir verwenden, um die Länge (engl. length) eines Textes zu bestimmen!",
+    incorrect = "Leider falsch, versuche es noch einmal oder schaue oben in der Übersicht nach!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
-  question("Welche stringr-Funktion wird benutzt um zwei oder mehr Texte zusammen zu führen?",
-    answer("`str_concat()`"),
-    answer("`str_c()`", correct = TRUE),
-    answer("`str_combine()`"),
-    answer("`str_join()`"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
+  
+
+  question("Welche Funktion verwenden wir, um sicherzustellen, dass der erste Buchstabe einer Zeichenkette groß geschrieben wird?",
+    answer("str_to_lower()", correct = FALSE),
+    answer("str_to_title()", correct = TRUE),  
+    answer("str_to_upper()", correct = FALSE),
+    answer("str_sub()", correct = FALSE),
+    correct = "Richtig, die Funktion str_to_title() sorgt dafür, dass der erste Buchstabe in jedem Wort groß geschrieben wird! Somit können wir Namen von Personen, Städten oder eben Ländern in ein einheitliches Format bringen.",
+    incorrect = "Leider falsch, versuche es noch einmal oder schaue oben in der Übersicht nach!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   ),
+  
+  question("Was ist ein regulärer Ausdruck (Regex)?",
+    answer("Ein Werkzeug, um Textvariablen in numerische Variablen umzuwandeln.", correct = FALSE),
+    answer("Eine Methode, um Muster in Texten zu finden oder zu beschreiben.", correct = TRUE),
+    answer("Eine Funktion, die im stringr enthalten ist.", correct = FALSE),
+    answer("Eine zufällige Aneinanderreihung von Symbolen.", correct = FALSE),
+    correct = "Richtig, bei der Arbeit mit Textdaten können uns die regulären Ausdrücke (Regex's) eine große Hilfe sein. Wir können diese Methode nutzen, um Muster in Texten zu finden oder zu beschreiben.",
+    incorrect = "Leider falsch, versuche es einfach nochmal oder schaue im Video nach.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+  ),
+  
   question("Welcher reguläre Ausdruck passt zu einer gültigen deutschen Telefonnummer im Format `01234/567890`?",
     answer("`\\d{5}/\\d{6}`", correct = TRUE),
-    answer("`\\d{5}-\\d{6}`"),
-    answer("`\\d{5}\\d{6}`"),
-    answer("`\\d{5}/\\d{5}`"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-  ),
-  question("Mit welcher stringr-Funktion kann man eine Zeichenfolge oder einen regulären Ausdruck in einem Text mit einer anderen Zeichenfolge ersetzen?",
-    answer("`str_replace()`", correct = TRUE),
-    answer("`str_substitute()`"),
-    answer("`str_change()`"),
-    answer("`str_modify()`"),
-    correct = "Richtig!",
-    incorrect = "Leider falsch: Versuche es einfach nochmal oder schau im Video nach!",
+    answer("`\\d{5}-\\d{6}`", correct = FALSE),
+    answer("`\\d{5}\\d{6}`", correct = FALSE),
+    answer("`\\d{5}/\\d{5}`", correct = FALSE),
+    correct = "Richtig, mit dem entsprechenden Ausdruck können wir nach einer Zeichenkette suchen, die einmal aus fünf Ziffern (= '\\d{5}') und  sechs Ziffern (= '\\d{6}') besteht, die durch ein '/' gestrennt werden!",
+    incorrect = "Leider falsch, versuche es einfach nochmal - an dieser Stelle muss genau gezählt werden!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
   )
 )
 ```
 
-### **Interaktive Übung**
+Soweit einmal der Einstieg in das `stringr`-Package. natürlich gibt es noch viele weitere spannende Funktionen und Möglichkeiten, um mit Textdaten zu arbeiten. Wenn Ihr Euch dafür interessiert, schaut doch gerne einmal in der [Dokumentation des `stringr`-Packages](https://stringr.tidyverse.org/) oder den Zusatzressourcen dieser Session nach. Für den Einstieg in das Thema werden wir uns an dieser Stelle auf einige der Grundfunktionen beschränken müssen!
 
+---
 
-#### **Import der Rohdaten**
+# **Interaktive Übung**
 
-Zuerst laden wir - wie immer - den Datensatz. Das kennt Ihr ja bereits! Hier ziehen wir uns über den Hyperlink einen ziemlich unordentlichen Rohdatensatz, aus dem wir gemeinsam zwei bereinigte Datentabellen (`community` und `audit`) generieren.
+Nachdem wir uns nun ein wenig damit vertraut gemacht haben, wie wir mit Daten arbeiten können und welche Möglichkeiten und das R dabei bietet, wollen wir das Ganze einmal selbst ausprobieren!
+
+## **1. Schritt: Import der Rohdaten**
+
+Wie gewohnt laden wir zu allererst unseren Datensatz. Wir werden an dieser Stelle noch einmal auf unseren Ausgangsdatensatzes `plastic` zurückgreifen. In diesem sind noch die unformatierten Rohdaten enthalten. Lasst Euch davon nicht verunsichern, denn in erster Linie soll es einmal darum gehen, die verschiedenen Funktionen kennzulernen und auszuprobieren. 
 
 ```{r 15load_data, exercise = TRUE}
 # Laden des Datensatzes
-data_raw <- rio::import('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')
+plastic <- rio::import("https://raw.githubusercontent.com/CorrelAid/lernplattform/main/daten/plastics.csv")
+
 ```
 
+## **2. Schritt: Groß- und Kleinschreibung**
 
-#### **Groß- und Kleinschreibung**
+### **Die `str_to_upper()`- Funktion**
 
-Die Variablennamen 5-11 im `data_raw`-Datensatz beschreiben die Anzahl gefundener Kunststoffsorten, die üblicherweise in Großbuchstaben angegeben werden. Nutzen wir die Base-R Funktion `names()` um die Variablennamem aufzurufen und `stringr::str_to_upper()`, um sie in Großbuchstaben umzuwandeln.
+In unserem Datensatz sind verschiedene Plastikarten vorhanden, diese werden von den Variablen 5-11 dargestellt. Noch werden diese Kunststoffarten in Kleinbuchstaben angegeben. Generell ist es allerdings eher üblich, diese in Großbuchstaben anzugeben, weshalb wir die Funktion **`str_to_upper()** dafür verwenden wollen, um die Variablen in Großbuchstaben umzuwandeln:
+
+Üblicherweise werden Kunststoffsorten in Großbuchstaben angegeben, die üblicherweise in Großbuchstaben angegeben werden. Nutzen wir die Base-R Funktion `names()` um die Variablennamem aufzurufen und `stringr::str_to_upper()`, um sie in Großbuchstaben umzuwandeln.
 
 ```{r 15to_upper_beispiel, exercise = TRUE}
-# Umwandlung der Spaltennamen zu Großbuchstaben
-names(data_raw)[5:11]  %>%
-  stringr::str_to_upper()
+# Wir rufen zuerst die Spalten der entsprechenden Variablen auf. Die `names()`-Funktion ist Teil von Base-R und bereits vorinstalliert
+names(plastic)[5:11] 
+
+# Damit wir einfacher mit diesen Variablen arbeiten können, speichern wir sie in einem neuen Datensatz 'plastic_names' ab
+plastic_names <- names(plastic)[5:11] 
+
+# Nun nutzen wir die Funktion str_to_upper() aus dem stringr-Paket, um die ausgewählten Spaltennamen in Großbuchstaben umzuwandeln
+plastic_names <- stringr::str_to_upper(plastic_names)
+
+# Anschließend überprüfen wir die Änderung
+table(plastic_names)
 ```
 
-Nutzt nun `str_to_title()`, um die Variable `country` einheitlich im sogenannten Title Case auszugeben (erster Buchstabe jedes Wortes jeweils großgeschrieben). Zur Erinnerung: Ecuador und Nigeria sind in Großbuchstaben codiert.
+Das sieht doch schon ganz gut aus! Die Namen unserer Variablen enthalten ausschließlich Großbuchstaben. Wollen wir uns nun einmal anschauen, wie das für die Variable `country` funktioniert!
+
+---
+
+### **Die `str_to_title()`- Funktion**
+
+Im Gegensatz zu den Variablen der Kunststoffarten, wollen wir an dieser Stelle nicht den Namen unserer Variable `country` verändern. Stattdessen wollen wir die Gelegenheit nutzen, um die Ländernamen in einem einheitlichen Format auszugeben. Bislang haben wir nämlich noch das Problem, dass diese völlig unterschiedlich angegeben sind (z.B. "Ecuador", "ECUADOR", etc.).
+
+An dieser Stelle können wir die **`str_to_title()`**-Funktion dafür verwenden, um die Variable `country` zu vereinheitlichen. Die Funktion sorgt nämlich dafür, dass Zeichenketten einheitlich im sogenannten Title Case ausgegeben werden. Das Title Case ist eine **Textformatierung**, bei der der erste Buchstabe eines Wortes großgeschrieben wird. Wenn ein Satz mehrere Wörter enthält, werden die Anfangsbuchstaben aller Wörter groß geschrieben. Versucht das doch einmal selbst:
+
+*Hinweis: In diesem Fall müssen wir die Funktion mutate() aus dem dplyr-Package verwenden, weil wir R damit signalisieren, dass wir eine bestehende Variable aktualisieren wollen.*
 
 ```{r exercise_15to_title, exercise = TRUE}
+# Zunächst verschaffen wir uns einen Überblick über die verschiedenen Ausprägungen der Variable.
+table(plastic$country)
 
-data_raw  %>%
-  dplyr::mutate(
-    # Hier Euer Code!
-  )
+# Anschließend nehmen wir unseren Datensatz ...
+plastic <- plastic %>%  
+  
+# ... und transformieren die Ausprägungen unserer Variable 'country' in das Title Case
+    dplyr::mutate(country = stringr::???(???))
 ```
 
 ```{r exercise_15to_title-solution}
-# Berechnung der Zeilenanzahl
-data_raw  %>%
-  dplyr::mutate(
-    country = stringr::str_to_title(country)
-  )
+# Zunächst verschaffen wir uns einen Überblick über die verschiedenen Ausprägungen der Variable.
+table(plastic$country)
+
+# Anschließend nehmen wir unseren Datensatz ...
+plastic <- plastic %>%
   
+# ... und transformieren die Ausprägungen unserer Variable 'country' in das Title Case.
+    dplyr::mutate(country = stringr::str_to_title(country))
+
+# Anschließend überprüfen wir unsere Veränderungen.
+table(plastic$country)
+
 ```
 
 ```{r exercise_15to_title-check}
 grade_this_code()
 ```
 
+---
 
-#### **Zeichenfolgen ersetzen**
-
+### **Die `str_replace()`- Funktion**
 Als nächstes möchten wir die Namen einiger multinationaler Konzerne im Datensatz vereinfachen. Um den Code kurz und flexibel zu halten, nutzen wir hierzu `str_replace()` zusammen mit regulären Ausdrücken.
 
 Als erstes Beispiel bearbeiten wir die Einträge von `parent_company` welche zu PepsiCo gehören. Mit dem regulären Ausdruck`'.*[Pp]epsi.*'` erfassen wir alle, Einträge die `Pepsi` oder `pepsi` und von einer unbestimmten Menge weiterer Zeichen umschlossen sind. Dies erfasst die drei folgenden im Datensatz vorhandenen Varianten:
