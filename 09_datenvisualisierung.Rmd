@@ -147,8 +147,6 @@ In dieser Sitzung werden wir uns vor allem mit dem Package **`ggplot2`** beschä
 
 ## **Wiederholung: `ggplot2`-Basics**
 
-## **Wiederholung: `ggplot2`-Basics**
-
 Erinnert Ihr Euch noch an die [Lektion zu Daten verstehen mit R](https://rlernen.correlaid.org/06_daten-verstehen-mit-r.html){target="_blank"}? In Dieser Session haben wir nämlich schon einmal von dem ggplot2-Package gehört. `ggplot2` orientiert sich an der Philosophie des ["Grammar of Graphics"](https://ggplot2-book.org/introduction#what-is-the-grammar-of-graphics) (daher auch der Name **gg**plot), das uns mit einer grundlegenden Definition einer Visualisierung ausstattet:
 
 > a graphic maps the *data* to the *aesthetic attributes* (colour, shape, size) of *geometric objects* (points, lines, bars)
@@ -171,7 +169,7 @@ Daten +
     geometrische Formen (z.B. Punkte, Linien, Balken...)
 ```
 
-Man kann es aber auch komplexer gestalten und erweitern:
+Man kann es aber auch komplexer gestalten und erweitern. Jedoch sollte man unbedingt auf die Reihenfolge der Schichten achten, denn diese können einen Unterschied machen:
 
 ```
 Daten + 
