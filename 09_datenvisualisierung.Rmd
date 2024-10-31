@@ -28,6 +28,8 @@ library(ggplot2)
 library(ggbeeswarm)
 library(countrycode)
 library(leaflet)
+library(tidyr)
+library(plotly)
  
 source("R/setup/gradethis-setup.R")
 source("R/setup/tutorial-setup.R")
