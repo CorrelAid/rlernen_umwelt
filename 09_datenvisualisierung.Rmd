@@ -529,7 +529,10 @@ htmlwidgets::saveWidget(with_labels_plotly, 'events-weltweit.html')
 
 # **Und jetzt Ihr! (optional)**
 
-Diesmal werden wir Euch keine R-Datei vorgeben, denn es ist Zeit, das Gelernte auszuprobieren! In Session 07 ["Datentransformation Basics"](https://rlernen.correlaid.org/07_datentransformation.html){target="_blank"} haben wir eine **"Top 10 der Müllproduzenten"** aus dem Datensatz gefiltert. Verwendet diese Rangliste, um ein **Balkendiagramm** zu erstellen. In unserer [Beispielapplikation](https://correlaid.shinyapps.io/breakfreefromplastic/){target="_blank"} könnt Ihr die Visualisierung live sehen und nachbauen. Als Layoutoptionen haben wir die Farbe `#4E97AC` und `theme_minimal()` genutzt. Experimentiert gerne mit weiteren Gestaltungsoptionen. Wie würden wir beispielsweise Beschriftungen für die Datenpunkte hinzufügen?
+Es ist Zeit, das Gelernte auszuprobieren! In Session 07 ["Datentransformation Basics"](https://rlernen.correlaid.org/07_datentransformation.html){target="_blank"} haben wir eine **"Top 10 der Müllproduzenten"** aus dem Datensatz gefiltert. Versucht einmal, diese Rangliste in ein **Balkendiagramm geom_bar()** zu übertragen. Ihr könnt Euch dabei an den Codes dieser Session orientieren. In unserer [Beispielapplikation](https://correlaid.shinyapps.io/breakfreefromplastic/){target="_blank"} könnt Ihr die Visualisierung live sehen und nachbauen. Als Layoutoptionen haben wir die Farbe `#4E97AC` und `theme_minimal()` genutzt. Experimentiert gerne mit weiteren Gestaltungsoptionen. Wie würden wir beispielsweise Beschriftungen für die Datenpunkte hinzufügen?
+Probiert das zunächst einmal selbst. Solltet Ihr dabei Probleme haben, könnt Ihr allerdings auch die **R-Datei: 09_datenvisualisierung-uebung.R** im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} verwenden!
+
+---
 
 # **Zusätzliche Ressourcen**
 
