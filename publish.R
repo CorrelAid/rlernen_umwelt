@@ -104,7 +104,7 @@ rsconnect::deployApp(appDir = here::here(),
 
 # 09 Datenvisualisierung
 rsconnect::deployApp(appDir = here::here(),
-                     appFiles = c("09_datenvisualisierung.Rmd", files_every_time),
+                     appFiles = c("09_datenvisualisierung.Rmd", files_every_time, "daten/geospatial/"),
                      appName = "09_datenvisualisierung")
 
 # 10 Arbeiten mit Text 
