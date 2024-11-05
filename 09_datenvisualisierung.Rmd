@@ -140,7 +140,7 @@ quiz(caption = NULL,
 # **Interaktive Übung**
 
 <right>
-![*ggplot2](https://www.tidyverse.org/css/images/hex/ggplot2.png){#id .class width=20% height=60%}
+![*ggplot2](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/09_datenvisualisierung/ggplot2.png){#id .class width=20% height=60%}
 
 </right>
 <br>
