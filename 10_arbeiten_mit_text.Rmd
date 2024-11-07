@@ -455,13 +455,13 @@ Das sieht doch schon ganz gut aus - nun können wir auf jeden Fall erkennen, wel
 
 ---
 
-## **Und jetzt Ihr!**
+<h1><strong>Und jetzt Ihr!</strong></h1>
 
 Wir haben für Euch wieder eine Übungsdatei vorbereitet! Im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} findet Ihr wie geohnt die **R-Datei:10_arbeiten_mit_text_uebungen.R**. Versucht die darin enthaltenen Übungs zur Bereinigung von Textdaten zu bearbeiten und am Ende eine Wordcloud zu erstellen. Ist es etwas unklar oder gibt es andere Probleme: Nutzt weiterhin gerne den Slack-Channel oder bringt die Fragen wie gewohnt mit in Live-Session am Freitag!
 
 ---
 
-## **Zusätzliche Ressourcen**
+<h1><strong>Zusätzliche Ressourcen</strong></h1>
 
 -   [Schummelblatt: stringr](https://github.com/CorrelAid/rlernen_umwelt/blob/main/cheatsheets/06_cheatsheet-stringr.pdf){target="_blank"} (engl.)
 -   [Buch: Text Mining in R](https://www.tidytextmining.com/){target="_blank"}
