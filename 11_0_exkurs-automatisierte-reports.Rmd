@@ -402,14 +402,12 @@ Tolle Tipps, Tricks und mehr Input findet Ihr auf der [Website von R-Studio](htt
 
 Wenn Ihr einen **eigenen Report** habt - den Ihr in der [Hauptsession](https://rlernen.correlaid.org/11_reports.html){target="_blank"} erstellt habt - dann könnt Ihr versuchen, diesen mit Hilfe der `rmarkdown::render()` Funktion zu generieren und die Funktion so anzupassen, dass der Dateiname nach euren Wünschen angepasst wird. 
 
-Wenn Ihr nicht genug vom Report fabrizieren bekommen könnt oder Ihr keinen eigenen Report habt, dann schaut einmal in den [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} und ladet Euch folgende zip-Datei herunter: **uebungen/10_automatisierte-reports/10_automatisierte-reports.zip**. Darin sind verschiedene Dateien enthalten. Öffnet das R Projekt **10_AutomatisierteReports** und ladet darin das Markdown Dokument `Report_Factory.Rmd`. Versucht die darin enthaltenen Aufgaben zu bearbeiten und den automatischen Report mithilfe der Parameter zu erstellen. 
-
-
-*alt: Wenn Ihr nicht genug vom Report fabrizieren bekommen könnt oder Ihr keinen eigenen Report habt, dann schaut in den Ordner `10_automatisierte-reports/10_automatisiertereports` im [Übungsordner](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/CorrelAid/lernplattform/tree/main/uebungen){target="_blank"}, öffnet das R Projekt und versucht die Aufgaben in `Report_Factory.Rmd` zu bearbeiten.* 
+Wenn Ihr nicht genug vom Report fabrizieren bekommen könnt oder keinen eigenen Report habt, dann schaut in den Ordner `10_automatisierte-reports/10_automatisiertereports` im [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"}, öffnet das **R Projekt `11_automatisierteReports.Rproj`** und versucht die Aufgaben in **`Report_Factory.Rmd`** zu bearbeiten.* 
 
 ---
 
 # **Zusätzliche Ressourcen**
+
 - [RStudio Webinar: **Rethink Reporting with Automation**](https://www.rstudio.com/resources/webinars/rethink-reporting-with-automation/){target="_blank"}
 - Yihui Xie et al. [**RMarkdown: The Definitive Guide**](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html){target="_blank"} (engl.)
 - RStudios [Hilfeseite](https://rmarkdown.rstudio.com/lesson-6.html){target="_blank"}
