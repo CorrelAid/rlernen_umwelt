@@ -27,6 +27,7 @@ library(gutenbergr)
 library(wordcloud)
 #install.packages("stopwords")
 library(stopwords)
+library(tidytext)
 
 source("R/setup/gradethis-setup.R")
 source("R/setup/tutorial-setup.R")
@@ -344,24 +345,25 @@ Die Syntax der Funktion lautet: `str_detect(string, pattern)`. Dabei bezeichnet 
 
 Als Ergebnis erhalten wir einen logischen Vektor für jedes einzelne Element. **TRUE** bedeutet, dass das gesuchte Muster in unseren Daten vorhanden ist, während **FALSE** angibt, dass das gesuchte Muster nicht vorhanden ist.
 
-Schauen wir uns doch einmal an, wie wir mithilfe der Funktion gezielt nach einem bestimmten KFZ-Kennzeichen suchen können – in diesem Fall konzentrieren wir uns auf das Kennzeichen **"B-BG 200"**. Die `mutate()`-Funktion aus dem dplyr-Package verwenden wir, um eine neue Variable `kfz_valide` zu erstellen, die angibt, ob das KFZ-Kennzeichen dem Format für "B-BG 200" entspricht. Anschließend können wir mit `str_detect()` und dem entsprechenden Regex das Suchmuster festlegen:
+Schauen wir uns doch einmal an, wie wir mithilfe der Funktion gezielt nach einem bestimmten KFZ-Kennzeichen suchen können – in diesem Fall konzentrieren wir uns auf das Kennzeichen **"B-BG 200"**. Die `mutate()`-Funktion aus dem dplyr-Package verwenden wir, um eine neue Variable `kfz_b_valide` zu erstellen, die angibt, ob das KFZ-Kennzeichen dem Format für "B-BG 200" entspricht. Anschließend können wir mit `str_detect()` und dem entsprechenden Regex das Suchmuster festlegen. Wir werden an dieser Stelle direkt die expliziten Zeichen (ohne eckige Klammern) verwenden, da wir nur nach diesem einen Kennzeichen suchen:
+
+*Erinnerung: Wenn wir keinen Quantifizierer verwenden, ist das äquivalent zu {1}*
 
 ```{r str_detect_example, exercise = TRUE}
 regex_df <- regex_df %>%
   dplyr::mutate(
-    kfz_valide = stringr::str_detect(kfz, '[A-C]{1}-[A-ZÄÖÜ0-9]{1,2} \\d{1,3}')
+    kfz_b_valide = stringr::str_detect(kfz, 'B-[A-ZÄÖÜ0-9]{1,2} \\d{1,3}')
   )
 
 # Ergebnis anzeigen
 print(regex_df)
 ```
 
-Hier ist eine kurze Erläuterung der einzelnen Bestandteile unseres Ausdrucks `[A-C]{1}-[A-ZÄÖÜ0-9]{1,2} \\d{1,3}`:
+Hier ist eine kurze Erläuterung der einzelnen Bestandteile unseres Ausdrucks `B-[A-ZÄÖÜ0-9]{1,2} \\d{1,3}`:
 
-- **`[A-C]{1}`**: Wir suchen nach einem Zeichen (= `{1}`), das ein Großbuchstabe zwischen A und C (= `[A-C]`) ist (d.h. "A", "B" oder "C"). Durch diese Einschränkung legen wir fest, dass wir nach dem Berliner KFZ-Kennzeichen suchen – **F**rankfurt und **S**tuttgart werden mit diesem Argument ausgeschlossen.
-- **`-`**: Wir legen fest, dass die verschiedenen Bestandteile unseres Kennzeichens durch einen Bindestrich voneinander getrennt werden.
-- **`[A-Z0-9]{1,2}`**: Wir suchen nach ein oder zwei Zeichen (= `{1,2}`), die entweder ein Großbuchstabe (A-Z) oder eine Ziffer (0-9) sind (= `[A-Z0-9]`).
-- **`\\d{1,3}`**: Mit (= `\\d`) suchen wir  nach einer Ziffer von 0 bis 9. Die geschweiften Klammern (= `{1,4}`) bedeuten, dass an dieser Stelle 1 bis 3 Ziffern erlaubt sind.
+- **`B-`**: Beginnen wir unsere Suche mit dem Buchstaben "B", womit wir uns gezielt auf Berliner KFZ-Kennzeichen beschränken. Der Bindestrich "-" ist ebenfalls festgelegt und muss genauso vorhanden sein.
+- **`[A-ZÄÖÜ0-9]{1,2}`**: Wir suchen nach ein oder zwei Zeichen (= `{1,2}`), die entweder ein Großbuchstabe inklusive Umlaute (A-ZÄÖÜ) oder eine Ziffer (0-9) sind.
+- **`\\d{1,3}`**: Mit (= `\\d`) suchen wir  nach einer Ziffer von 0 bis 9. Die geschweiften Klammern (= `{1,3}`) bedeuten, dass an dieser Stelle 1 bis 3 Ziffern erlaubt sind.
 
 Ganz schön praktisch, oder etwa nicht? Ihr könnt die Funktion unter anderem auch dafür verwenden, um E-Mail-Adressen oder Postleitzahlen (z.B. in Mitgliederlisten) zu identifizieren, Produktrezensionen von Nutzer*innen nach bestimmten Schlüsselwerten abzusuchen und noch vieles mehr! Einige weitere Beispiele, wie ihr diese Funktion nutzen könnt, findet ihr bei [R for Data Science](https://r4ds.had.co.nz/strings.html#detect-matches){target="_blank"} und in der [stringr-Dokumentation](https://stringr.tidyverse.org/reference/str_detect.html){target="_blank"}.
 
