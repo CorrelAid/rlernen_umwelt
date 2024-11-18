@@ -565,28 +565,28 @@ Und jetzt lassen wir sie noch einmal final erstellen - markiert dazu wieder den 
 ----
 
 <details>
-<summary><h1><b>Exkurs: Hosten von Shiny-Apps</b></h1></summary>
+<summary><h2><b>Exkurs: Hosten von Shiny-Apps</b></h2></summary>
   <br>
 
-## **Hosting von Shiny-Apps**
+### **Hosting von Shiny-Apps**
 
 Shiny-Apps können über Dienste wie [ShinyApps.io](https://www.shinyapps.io) gehostet werden, ohne eine eigene Serverinfrastruktur aufzubauen. Für kleinere Apps gibt es eine **kostenlose Hosting-Option**, größere Anwendungen erfordern kostenpflichtige Modelle. Bei **sensiblen Daten** sollte eine interne Hosting-Lösung geprüft werden.
 
 Ein Beispiel für eine gehostete Shiny-App ist [dieses hier](https://cosima-meyer.shinyapps.io/conflict-elections/), das die Gewaltentwicklung vor Wahlen in Afghanistan darstellt.
 
-## **Hosting über RStudio**
+### **Hosting über RStudio**
 
 Das Hosting einer Shiny-App mit RStudio ist einfach. Folgend sind die Schritte zum Hosting einer Shiny-App:
 
-### **Schritt 1: Packages laden**
+#### **Schritt 1: Packages laden**
 
 Wir stellen sicher, dass alle notwendigen Packages installiert und über `library()` geladen sind ( es darf also kein `install.packages()` im Code vorhanden sein).
 
-### **Schritt 2: Installation von `rsconnect`**
+#### **Schritt 2: Installation von `rsconnect`**
 
 Anschließend Installieren wir das Package `rsconnect` mit `install.packages("rsconnect")`. Damit können wir die Shiny-App auf Plattformen wie ShinyApps.io hochladen und veröffentlichen.
 
-### **Schritt 3: Account anlegen**
+#### **Schritt 3: Account anlegen**
 
 Wir legen uns einen Account bei [ShinyApps.io](https://www.shinyapps.io) an. Unter den verschiedenen Optionen wählen wir den Plan, der zu unseren Bedürfnissen passt:
 
@@ -596,7 +596,7 @@ Wir legen uns einen Account bei [ShinyApps.io](https://www.shinyapps.io) an. Unt
 | **Persönlich**      | Einzelpersonen, regelmäßig  | Unbegrenzt Apps, mehr Rechenleistung             | Monatliche Gebühr, begrenzte Rechenstunden    |
 | **Team/Unternehmen**| Teams, größere Organisationen | Mehr Ressourcen, erweiterte Funktionen           | Höhere monatliche Gebühr                      |
 
-### **Schritt 4: Konfiguration von `rsconnect`**
+#### **Schritt 4: Konfiguration von `rsconnect`**
 
 Jetzt können wir rsconnect konfigurieren. Dazu müssen wir ein Token, den uns [ShinyApps.io](https://www.shinyapps.io){target="_blank"} zur Verfügung stellt, kopieren. Die Screenshots zeigen, wie wir dieses Token erhalten:
 
@@ -612,15 +612,15 @@ Wenn wir jetzt auf **"+ Add Token"** klicken, wird ein neues Token generiert und
 
 ![](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/12_interaktive-visualisierungen/shinyapps3.png?raw=true){.class width="80%" height="80%"}
 
-### **Verknüpfung der Shiny-App**
+#### **Verknüpfung der Shiny-App**
 
 Wechselt zurück zu RStudio, fügt das Token in die Konsole ein und führt den Code aus, um eure Shiny-App mit ShinyApps.io zu verknüpfen.
 
-### **Test der Shiny-App**
+#### **Test der Shiny-App**
 
 Testet die App, indem ihr in der Konsole den Code `runApp()` ausführt.
 
-### **Deploy der Shiny-App**
+#### **Deploy der Shiny-App**
 
 Ist alles korrekt? Nutzt den Befehl `deployApp()` in der Konsole, um eure Shiny-App zu deployen. Nach einem Moment ist die App online und kann über einen Link aufgerufen werden!
 
