@@ -42,7 +42,7 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
 <div style="background-color: white; border: 3px solid #28a745; color: #dc3545; padding: 15px; margin: 10px 0;">
-  <strong>Disclaimer:</strong> Liebe Teilnehmer:innen, die letzte Session des Kurses R Lernen ist sehr umfangreich und gerade zu Beginn sehr komplex. Lasst Euch davon nicht verunsichern - Ihr müsst die Inhalte nicht alle im Detail verstehen und könnt die Code-Snippets in dieser Woche auch einfach kopieren! Wir wollen Euch lediglich zeigen, was mit RStudio alles möglich ist. Wenn wir damit Euer Interesse geweckt haben und Ihr Lust auf ein eigenes Datenprojekt habt habt, könnt Ihr Euch jederzeit melden - wir freuen uns auf Eure Ideen!
+  <strong>Disclaimer:</strong> Liebe Teilnehmer:innen, die letzte Session des Kurses R Lernen ist sehr umfangreich und gerade zu Beginn sehr komplex. Lasst Euch davon nicht verunsichern - Ihr müsst die Inhalte nicht alle im Detail verstehen. Wir wollen Euch lediglich zeigen, was mit RStudio alles möglich ist, denn das ist wirklich eine ganze Menge!
 </div>
 
 # **Einführung in Shiny**
@@ -116,7 +116,7 @@ Wir gehen zu **File → New File** und wählen  **Shiny Web App**.
 </left><br>
 
 ### **3. App-Namen wählen**
-Unsere App braucht einen informativen, einfachen Namen für Ihre App, z. B. „Meine-Erste-R-Shiny-App_2024“ (ohne Sonderzeichen oder Leerzeichen). Das Arbeitsverzeichnis, in dem die Datei gespeichert wird, wird ebenfalls angezeigt.
+Unsere App braucht einen informativen, einfachen Namen für Eure App, z. B. „Meine-Erste-R-Shiny-App_2024“ (ohne Sonderzeichen oder Leerzeichen). Das Arbeitsverzeichnis, in dem die Datei gespeichert wird, wird ebenfalls angezeigt.
 
 <left>
 ![](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/12_interaktive-visualisierungen/shiny_step2.png?raw=true){.class width="70%"}
@@ -126,7 +126,7 @@ Unsere App braucht einen informativen, einfachen Namen für Ihre App, z. B. „M
 Falls gewünscht, können wir einen neuen Speicherort auswählen, indem wir auf „Browse“ klicken.
 
 ### **5. Shiny-App erstellen**
-Durch den Klick auf "Create" wird unsere erste Shiny-App wird erstellt. Die Datei heißt standardmäßig „app.R“ und liegt im gewählten Verzeichnis.
+Durch den Klick auf "Create" wird unsere erste Shiny-App erstellt. Die Datei heißt standardmäßig „app.R“ und liegt im gewählten Verzeichnis.
 
 ### **6. Shiny-App starten**
 Wir können auf „Run App“ klicken, um die App zu starten. Wenn das `shiny`-Package noch nicht installiert ist, müssen wir die Installation bestätigen.
@@ -136,17 +136,15 @@ Wir können auf „Run App“ klicken, um die App zu starten. Wenn das `shiny`-P
 </left><br>
 
 ### **7. Shiny-App ausprobieren**
-Unsere erste Shiny-App ist nun bereit! Wir klicken auf „Open in Browser“ klicken und können nun schon ein bisschen mit den Interaktiven Funktionen experimentieren, z. B. der Anzahl der Bins im Histogramm.
+Unsere erste Shiny-App ist nun bereit! Wir klicken auf „Open in Browser“ und können nun schon ein bisschen mit den Interaktiven Funktionen experimentieren, z. B. der Anzahl der Bins im Histogramm.
 
 ----
 
 # **Interaktive Übung**
 
-Nachdem wir unsere erste Shiny-App erstellt haben, wollen wir nun eine interaktive Visualisierung für unseren eigenen Datensatz entwickeln. Wie bereits im Video gezeigt, besteht jede Shiny-App aus zwei Teilen: dem **Server** und der **UI (User Interface)**. Schauen wir uns an, was dahinter steckt:
+Nachdem wir unsere erste Shiny-App erstellt haben, wollen wir nun eine interaktive Visualisierung für unseren eigenen Datensatz entwickeln. Gerne könnt Ihr Euch zunächst die Datei **loesung.R** aus dem Kapitel **12_interaktive-visualisierungen** im  [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} herunterladen – sie lässt sich Schritt für Schritt ausführen! Wir werden uns hier auf der Lernplattform die einzelnen Schritte im Detail anschauen - den Code könnt Ihr allerdings nur lokal in dieser Datei ausführen.
 
 ![](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/12_interaktive-visualisierungen/app-ui-server-2.png?raw=true){.class width="60%" height="60%"}</right>
-
-<span style="color:red;"><strong>Achtung: Den Code müsst ihr lokal in RStudio ausführen. Kopiert die Code-Snippets Schritt für Schritt in eure lokale Datei und passt sie an.</strong></span>
 
 ----
 
@@ -156,32 +154,11 @@ Bevor wir loslegen, ist es hilfreich, einen **Plan** zu erstellen. Überlegt euc
 
 *Tipp: Haltet es einfach zu Beginn. Eine Shiny-App lässt sich später immer erweitern.*
 
-In dieser Session wollen wir das **Balkendiagramm** aus der [Datenvisualisierung-Session](https://correlaid.shinyapps.io/09_datenvisualisierung/#Und_jetzt_Ihr_(optional){target="_blank"}) in eine interaktive App umwandeln. Das fertige Ergebnis könnt ihr euch [hier](https://correlaid.shinyapps.io/breakfreefromplastic/){target="_blank"} unter dem Tab **"Hersteller"** anschauen.
+Wir wollen zum Ende des Kurses das **Balkendiagramm** zu den Top 10 der müllproduzierenden Firmen aus der [Datenvisualisierung-Session](https://correlaid.shinyapps.io/09_datenvisualisierung/#Und_jetzt_Ihr_(optional){target="_blank"}) in eine interaktive App umwandeln. Das fertige Ergebnis könnt ihr euch [hier](https://correlaid.shinyapps.io/breakfreefromplastic/){target="_blank"} unter dem Tab **"Hersteller"** anschauen.
 
-Hier ist der Code für das Balkendiagramm der Top 10 Firmen mit der höchsten Müllproduktion:
-
-```{r plot_full_to_print, exercise=TRUE}
-# Top Ten Hersteller berechnen
-top10_parentcompany <- audit %>%
-  dplyr::ungroup() %>% # Gruppierung aufheben um Operation zu ermöglichen
-  dplyr::select(parent_company, n_pieces) %>% # Spalten auswählen
-  dplyr::group_by(parent_company) %>% # Pro Hersteller gruppieren
-  dplyr::summarise(total_pieces = sum(n_pieces, na.rm = TRUE)) %>%
-  dplyr::filter(! parent_company %in% c("Grand Total", "Unbranded", "Inconnu", "Assorted"))  %>% # Unpassende Werte Filtern
-  dplyr::slice_max(total_pieces, n = 10) %>% # die Top Ten abschneiden
-  dplyr::arrange(desc(total_pieces))
-
-# Erstellung eines Barplots zu den Herstellern von Plastik
-ggplot2::ggplot(data = top10_parentcompany, aes(x = total_pieces, y = reorder(parent_company, total_pieces))) + # Plot auf Basis der bearbeiteten Daten inititalisieren
-    geom_bar(stat = "identity", fill = "#4E97AC") + # Initialisierung eines Barplots mit absoluten Werten (stat = "identity") in der Farbe blau (#4E97AC)
-    labs(
-      title = "Prominente Firmen aus aller Welt ..." ,
-      subtitle = "... stellen die gefundenen Plastikverpackungen her.",
-      x = "Anzahl an Plastikstücken",
-      y = "Hersteller"
-      ) +
-    theme_minimal()
-```
+<left>
+![](https://github.com/CorrelAid/rlernen_umwelt/blob/jonaslorenz09-patch-1/abbildungen/12_interaktive-visualisierungen/shiny_companies.png?raw=true){.class width="70%"}
+</left><br>
 
 ----
 
@@ -221,10 +198,6 @@ Mehr dazu findet Ihr [hier](https://mastering-shiny.org/basic-ui.html#outputs) (
 
 Mit `output$name <- render...({})` legen wir einen **Objektnamen** fest, unter dem die App den Inhalt anzeigt. Dieser Name wird in der UI verwendet, um den Inhalt an der richtigen Stelle darzustellen.
 
-*Tipp 1: Kopiere den Code für das Balkendiagramm in die Grundstruktur der `app.R`-Datei, um die gesamte Logik an einem Ort zu bündeln.*
-
-*Tipp 2: Lade in einer `Rmd`-Datei notwendige Packages, importiere und bereinige Daten und visualisiere sie. Den Code kannst du dann einfach in die Shiny-App übertragen.*
-
 ### **Der Code**
 
 Und so definieren wir den Server in unserer App:
@@ -232,10 +205,10 @@ Und so definieren wir den Server in unserer App:
 ```{r server_new_plot, exercise=TRUE}
 server <- function(input, output) {
 
-    # Wir speichern unsere Visualisierung in `output$Hersteller`
-    output$Hersteller <- renderPlot({
+# Wir speichern unsere Visualisierung in `output$Hersteller`
+output$Hersteller <- renderPlot({
       
-    # Innerhalb von `renderPlot()` kreieren wir unseren ggplot2 (Code von oben)
+# Innerhalb von `renderPlot()` kreieren wir unseren ggplot2 (Code von oben)
 top10_parentcompany <- audit %>%
   dplyr::ungroup() %>% 
   dplyr::select(parent_company, n_pieces) %>% 
@@ -280,7 +253,7 @@ Die Grundstruktur der UI umfasst:
 
 Mit `fluidPage()` legen wir das **Gesamtlayout** der App fest. Hier definieren wir die grundlegende Struktur der UI, indem wir verschiedene Elemente übergeben.
 
-#### **Layoutfunktionen**
+#### **Möglichkeiten zur Gestaltung der interaktiven Eingabe**
 
 Die Layoutfunktionen wie `sidebarLayout()` und `fluidRow()` steuern, wie die Inhalte angeordnet werden. `sidebarLayout()` teilt die App in einen **Seitenbereich** und einen **Hauptbereich**, während `fluidRow()` Elemente in horizontalen Reihen anordnet.
 
@@ -294,7 +267,7 @@ Für diese App verwenden wir ein **Sidebar-Layout**: Eine **Seitenleiste** links
 
 </center>
 
-Eine Übersicht über alle möglichen Layout-Optionen in Shiny findet Ihr in der [Shiny Gallery von RStudio](https://shiny.posit.co/r/gallery/){target="_blank"} oder der offiziellen [Shiny Webiste](https://shiny.posit.co/r/articles/build/layout-guide/){target="_blank"} - klickt Euch dort gerne einmal durch!
+Eine Übersicht über alle möglichen Möglichkeiten zur Gestaltung der interaktiven Eingabe in Shiny findet Ihr in der [Shiny Gallery von RStudio](https://shiny.posit.co/r/gallery/){target="_blank"} oder der offiziellen [Shiny Webiste](https://shiny.posit.co/r/articles/build/layout-guide/){target="_blank"} - klickt Euch dort gerne einmal durch!
 
 ##### **Die Seitenleiste**
 
@@ -311,7 +284,7 @@ th {
 
 | Layoutoption                          | Befehl in R (in der `ui`)           |
 |---------------------------------------|-------------------------------------|
-| Freitext                             | `textInput("id", "Beschreibung")`  |
+| Freitext                             | `textInput(inputId=“id“, label=“Beschreibung“)`  |
 | Langer Freitext                      | `textAreaInput("id", "Beschreibung", rows = 3)` |
 | Zahl                                 | `numericInput("id", "Beschreibung", value = 0, min = 0, max = 100)` |
 | Zahl mit Slider                      | `sliderInput("id", "Beschreibung", value = 0, min = 0, max = 100)` |
@@ -343,16 +316,16 @@ ui <- fluidPage(
   # Layout mit Seitenleiste (für Eingaben) und Hauptbereich (für Ausgaben)
   sidebarLayout(
     
-    # Seitenleiste: Hier können Eingabeelemente wie Filter, Auswahlmenüs usw. platziert werden
-    sidebarPanel(),  
+  # Seitenleiste: Hier können Eingabeelemente wie Filter, Auswahlmenüs usw. platziert werden
+  sidebarPanel(),  
     
-    # Hauptbereich: Hier werden die Ergebnisse wie Diagramme, Tabellen oder Texte dargestellt
-    mainPanel()      
+  # Hauptbereich: Hier werden die Ergebnisse wie Diagramme, Tabellen oder Texte dargestellt
+  mainPanel()      
   )
 )
 ```
 
-Nun haben wir festgelegt, dass wir in unserer Shiny-App eine Seitenleiste einbauen wollen, mit der die Nutzer:innen interagieren können. Nun müssen wir festlegen, dass über diese Seitenliste unsere Daten nach **Kontinenten gefiltert** werden können. Dazu gehen wir wieder zur `app.R` Datei.
+Nun haben wir festgelegt, dass wir in unserer Shiny-App eine Seitenleiste einbauen wollen, mit der die Nutzer:innen interagieren können. Nun müssen wir festlegen, dass über diese Seitenliste unsere Daten nach **Kontinenten gefiltert** werden können.
 
 ```{r ui_exercise2, exercise=TRUE, eval =FALSE}
 # Definition der Benutzeroberfläche (User Interface, kurz UI) für die Shiny-App
@@ -365,31 +338,31 @@ ui <- fluidPage(
   # und einem Hauptbereich für Ausgaben fest.
   sidebarLayout(
     
-    # Definition der Seitenleiste (sidebarPanel): Hier kommen alle Eingabeelemente wie Checkboxen oder Filter.
-    sidebarPanel(
+  # Definition der Seitenleiste (sidebarPanel): Hier kommen alle Eingabeelemente wie Checkboxen oder Filter.
+  sidebarPanel(
       
-      # Erstellung eines Auswahlmenüs mit Checkboxen, um Kontinente auszuwählen.
-      checkboxGroupInput(
+  # Erstellung eines Auswahlmenüs mit Checkboxen, um Kontinente auszuwählen.
+  checkboxGroupInput(
         
-        # Zuweisung einer eindeutigen Input-ID, damit der Server später darauf zugreifen kann.
-        inputId = "",
+  # Zuweisung einer eindeutigen Input-ID, damit der Server später darauf zugreifen kann.
+  inputId = "",
         
-        # Beschriftung des Auswahlmenüs, die den Nutzer*innen anzeigt, was sie auswählen sollen.
-        label = "",
+  # Beschriftung des Auswahlmenüs, die den Nutzer*innen anzeigt, was sie auswählen sollen.
+  label = "",
         
-        # Definition der Auswahlmöglichkeiten: Eine Liste mit Kontinenten,
-        # die die sichtbaren Namen und zugehörigen Werte (für den Datensatz) enthält.
-        choices = list(
-          # Beispiel: "Europa" = "Europe", "Afrika" = "Africa"
-        ),
+  # Definition der Auswahlmöglichkeiten: Eine Liste mit Kontinenten,
+  # die die sichtbaren Namen und zugehörigen Werte (für den Datensatz) enthält.
+  choices = list(
+  # Beispiel: "Europa" = "Europe", "Afrika" = "Africa"
+  ),
         
-        # Optionale Standardauswahl: Hier legen wir fest, was beim Start der App vorausgewählt ist.
-        selected = ""
-      )
-    ), # Abschluss der Definition der Seitenleiste.
+  # Optionale Standardauswahl: Hier legen wir fest, was beim Start der App vorausgewählt ist.
+  selected = ""
+  )
+  ), # Abschluss der Definition der Seitenleiste.
     
-    # Definition des Hauptbereichs (mainPanel): Hier werden die Ergebnisse wie Diagramme oder Tabellen angezeigt.
-    mainPanel() # Aktuell ist der Hauptbereich leer.
+  # Definition des Hauptbereichs (mainPanel): Hier werden die Ergebnisse wie Diagramme oder Tabellen angezeigt.
+  mainPanel() # Aktuell ist der Hauptbereich leer.
   )
 )
 ```
@@ -423,24 +396,24 @@ ui <- fluidPage(
   # Layout mit Seitenleiste für Eingaben und Hauptbereich für Ergebnisse
   sidebarLayout(
     
-    # Seitenleiste (Filterbereich) mit einer Breite von 3
-    sidebarPanel(width = 3,
-      # Dropdown-Menü zur Auswahl eines Kontinents
-      selectInput(
-        inputId = "continent",                 # Eindeutige ID für den Server
-        label = "Wähle den Kontinent aus:",   # Beschriftung für Nutzer:innen
-        choices = continent_list,             # Liste der Auswahlmöglichkeiten
-        selected = "Alle Kontinente"          # Standardwert
-      )
-    ),
+  # Seitenleiste (Filterbereich) mit einer Breite von 3
+  sidebarPanel(width = 3,
+    # Dropdown-Menü zur Auswahl eines Kontinents
+    selectInput(
+      inputId = "continent",                 # Eindeutige ID für den Server
+      label = "Wähle den Kontinent aus:",   # Beschriftung für Nutzer:innen
+      choices = continent_list,             # Liste der Auswahlmöglichkeiten
+      selected = "Alle Kontinente"          # Standardwert
+     )
+  ),
     
-    # Hauptbereich mit Tabs zur Darstellung verschiedener Inhalte
-    mainPanel(
-      tabsetPanel(
-        # Tab zur Anzeige des interaktiven Balkendiagramms
-        tabPanel(
-          title = "Hersteller",               # Titel des Tabs
-          plotly::plotlyOutput("Hersteller")  # Ausgabe des Diagramms
+  # Hauptbereich mit Tabs zur Darstellung verschiedener Inhalte
+  mainPanel(
+    tabsetPanel(
+      # Tab zur Anzeige des interaktiven Balkendiagramms
+      tabPanel(
+        title = "Hersteller",               # Titel des Tabs
+        plotly::plotlyOutput("Hersteller")  # Ausgabe des Diagramms
         )
       )
     )
@@ -454,11 +427,8 @@ ui <- fluidPage(
 
 Das Schwierigste ist geschafft! Jetzt verbinden wir die **Serverfunktion** mit dem **User Interface (UI)** über `shinyApp(ui, server)`, um die App zu vervollständigen. Diese Funktion sorgt dafür, dass die App dynamische Inhalte basierend auf den Eingaben der Nutzer:innen anzeigt.
 
-*Hinweis: Der Code funktioniert nur lokal auf Euren Rechnern und wird auf der Lernplattform nicht angezeigt. Wir zeigen ihn hier, um den normalen Ablauf zu simulieren.*
-
-
 ```{r shinyapp_bring_it_together, exercise=TRUE, eval = FALSE}
-# Start der Shiny-App -----------------------------------------------------
+# Sart der Shiny-App -----------------------------------------------------
 
 # Die Funktion `shinyApp()` kombiniert die Benutzeroberfläche (`ui`) und 
 # die Serverlogik (`server`) und führt die App lokal aus.
@@ -501,34 +471,34 @@ server <- function(input, output) {
     # Wir speichern unsere Visualisierung in `output$Hersteller`
     output$Hersteller <- renderPlot({
       
-        # Dynamische Filterung basierend auf Benutzereingabe
-        daten <- if (input$continent != "Alle Kontinente") {
-          audit %>% dplyr::filter(continent == input$continent)
-        } else {
-          audit
-        }
+    # Dynamische Filterung basierend auf Benutzereingabe
+    daten <- if (input$continent != "Alle Kontinente") {
+        audit %>% dplyr::filter(continent == input$continent)
+      } else {
+        audit
+      }
       
-        # Vorbereitung der Top-10-Daten
-        top10_parentcompany <- daten %>%
-          dplyr::ungroup() %>% 
-          dplyr::select(parent_company, n_pieces) %>% 
-          dplyr::group_by(parent_company) %>% 
-          dplyr::summarise(total_pieces = sum(n_pieces, na.rm = TRUE)) %>%
-          dplyr::filter(! parent_company %in% c("Grand Total", "Unbranded", "Inconnu", "Assorted")) %>% 
-          dplyr::slice_max(total_pieces, n = 10) %>% 
-          dplyr::arrange(desc(total_pieces))
+    # Vorbereitung der Top-10-Daten
+    top10_parentcompany <- daten %>%
+      dplyr::ungroup() %>% 
+      dplyr::select(parent_company, n_pieces) %>% 
+      dplyr::group_by(parent_company) %>% 
+      dplyr::summarise(total_pieces = sum(n_pieces, na.rm = TRUE)) %>%
+      dplyr::filter(! parent_company %in% c("Grand Total", "Unbranded", "Inconnu", "Assorted")) %>% 
+      dplyr::slice_max(total_pieces, n = 10) %>% 
+      dplyr::arrange(desc(total_pieces))
 
-        # Erstellung des Barplots
-        ggplot2::ggplot(data = top10_parentcompany, aes(x = total_pieces, y = reorder(parent_company, total_pieces))) + 
-          geom_bar(stat = "identity", fill = "#4E97AC") + 
-          labs(
-            title = "Prominente Firmen aus aller Welt ...",
-            subtitle = "... stellen die gefundenen Plastikverpackungen her.",
-            x = "Anzahl an Plastikstücken",
-            y = "Hersteller"
-          ) +
-          theme_minimal()
-    })
+    # Erstellung des Barplots
+    ggplot2::ggplot(data = top10_parentcompany, aes(x = total_pieces, y = reorder(parent_company, total_pieces))) + 
+      geom_bar(stat = "identity", fill = "#4E97AC") + 
+        labs(
+        title = "Prominente Firmen aus aller Welt ...",
+        subtitle = "... stellen die gefundenen Plastikverpackungen her.",
+        x = "Anzahl an Plastikstücken",
+        y = "Hersteller"
+        ) +
+        theme_minimal()
+  })
 }
 ```
 
@@ -552,15 +522,23 @@ library(shinythemes)
 
 ### **Titel ändern**
 
-Im letzten Schritt geben wir unserer Shiny-App noch einen schönen Titel, zum Beispiel `"Break Free From Plastic"`. Das ergänzen wir auch in der `ui` (in `# 4. Aufgabe` seht Ihr, wo Ihr es ergänzen müsst):
+Im letzten Schritt geben wir unserer Shiny-App noch einen schönen Titel, zum Beispiel `"Break Free From Plastic"`. Das ergänzen wir auch in der `ui`:
 
 ```{r ui_title, exercise=TRUE}
 ui <- fluidPage(
-  titlePanel("")
+  titlePanel("Break Free From Plastic")
 )
 ```
 
-Und jetzt lassen wir sie noch einmal final erstellen - markiert dazu wieder den ganzen Code in der `app.R`-Datei und lasst sie durchlaufen. Herzlichen Glückwünsch zu Eurer ersten Shiny-App! Das sieht klasse aus!
+Und jetzt erstellen wir unsere finale Shiny-App - sieht klasse aus!
+
+----
+
+# **Und jetzt Ihr! (optional)**
+
+Die letzte Session ist geschafft und wir haben unsere erste Shiny-App erstellt - herzlichen Glückwunsch dazu!
+
+Wenn Ihr Euch noch ein wenig austoben wollt, könnt Ihr Euch aus dem [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} im Kapitel **12_interaktive-visualisierungen** die Datei **ausblick.R** ausherunterladen. Sie lässt sich ebenfalls Schritt für Schritt ausführen und zeigt Euch die komplette #breakfreefromplastic App mit allen Reitern!
 
 ----
 
