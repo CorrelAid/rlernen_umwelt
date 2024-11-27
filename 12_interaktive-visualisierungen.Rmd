@@ -157,7 +157,7 @@ Bevor wir loslegen, ist es hilfreich, einen **Plan** zu erstellen. Überlegt euc
 Wir wollen zum Ende des Kurses das **Balkendiagramm** zu den Top 10 der müllproduzierenden Firmen aus der [Datenvisualisierung-Session](https://correlaid.shinyapps.io/09_datenvisualisierung/#Und_jetzt_Ihr_(optional){target="_blank"}) in eine interaktive App umwandeln. Das fertige Ergebnis könnt ihr euch [hier](https://correlaid.shinyapps.io/breakfreefromplastic/){target="_blank"} unter dem Tab **"Hersteller"** anschauen.
 
 <left>
-![](https://github.com/CorrelAid/rlernen_umwelt/blob/jonaslorenz09-patch-1/abbildungen/12_interaktive-visualisierungen/shiny_companies.png?raw=true){.class width="70%"}
+![](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/12_interaktive-visualisierungen/shiny_companies.png?raw=true){.class width="70%"}
 </left><br>
 
 ----
