@@ -142,7 +142,7 @@ Unsere erste Shiny-App ist nun bereit! Wir klicken auf „Open in Browser“ und
 
 # **Interaktive Übung**
 
-Nachdem wir unsere erste Shiny-App erstellt haben, wollen wir nun eine interaktive Visualisierung für unseren eigenen Datensatz entwickeln. Gerne könnt Ihr Euch zunächst die Datei **loesung.R** aus dem Kapitel **12_interaktive-visualisierungen** im  [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} herunterladen – sie lässt sich Schritt für Schritt ausführen! Wir werden uns hier auf der Lernplattform die einzelnen Schritte im Detail anschauen - den Code könnt Ihr allerdings nur lokal in dieser Datei ausführen.
+Nachdem wir unsere erste Shiny-App erstellt haben, wollen wir nun eine interaktive Visualisierung für unseren eigenen Datensatz entwickeln. Am besten, Ihr ladet Euch zunächst die Datei **loesung.R** aus dem Kapitel **12_interaktive-visualisierungen** im  [Übungsordner](https://download-directory.github.io/?url=https://github.com/CorrelAid/rlernen_umwelt/tree/main/uebungen){target="_blank"} herunter – und gleicht in RStudio die beschriebenen R-Befehle mit dem verwendeten Programmcode ab. Wir werden uns hier auf der Lernplattform die einzelnen Schritte im Detail anschauen - den Code könnt Ihr allerdings nur lokal in dieser Datei ausführen.
 
 ![](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/12_interaktive-visualisierungen/app-ui-server-2.png?raw=true){.class width="60%" height="60%"}</right>
 
@@ -206,7 +206,7 @@ Und so definieren wir den Server in unserer App:
 server <- function(input, output) {
 
 # Wir speichern unsere Visualisierung in `output$Hersteller`
-output$Hersteller <- renderPlot({
+output$Hersteller <- plotly::renderPlotly({
       
 # Innerhalb von `renderPlot()` kreieren wir unseren ggplot2 (Code von oben)
 top10_parentcompany <- audit %>%
@@ -255,7 +255,7 @@ Mit `fluidPage()` legen wir das **Gesamtlayout** der App fest. Hier definieren w
 
 #### **Möglichkeiten zur Gestaltung der interaktiven Eingabe**
 
-Die Layoutfunktionen wie `sidebarLayout()` und `fluidRow()` steuern, wie die Inhalte angeordnet werden. `sidebarLayout()` teilt die App in einen **Seitenbereich** und einen **Hauptbereich**, während `fluidRow()` Elemente in horizontalen Reihen anordnet.
+Die Eingabeoption(en) wie `sidebarLayout()` und `fluidRow()` steuern, wie die Inhalte angeordnet werden. `sidebarLayout()` teilt die App in einen **Seitenbereich** und einen **Hauptbereich**, während `fluidRow()` Elemente in horizontalen Reihen anordnet.
 
 #### **Panelfunktionen**
 
@@ -271,7 +271,7 @@ Eine Übersicht über alle möglichen Möglichkeiten zur Gestaltung der interakt
 
 ##### **Die Seitenleiste**
 
-Die **linke Seitenleiste** muss mit interaktiven Elementen gefüllt werden. Beispielsweise wollen wir nach Kontinenten filtern. Hier eine Übersicht der wichtigsten **Layoutoptionen**:
+Die **linke Seitenleiste** muss mit interaktiven Elementen gefüllt werden. Beispielsweise wollen wir nach Kontinenten filtern. Hier eine Übersicht der wichtigsten **Eingabeoptionen**:
 
 <style>
 table {
@@ -282,8 +282,8 @@ th {
 }
 </style>
 
-| Layoutoption                          | Befehl in R (in der `ui`)           |
-|---------------------------------------|-------------------------------------|
+| Eingabeoptionen                      | Befehl in R (in der `ui`)           |
+|--------------------------------------|-------------------------------------|
 | Freitext                             | `textInput(inputId=“id“, label=“Beschreibung“)`  |
 | Langer Freitext                      | `textAreaInput("id", "Beschreibung", rows = 3)` |
 | Zahl                                 | `numericInput("id", "Beschreibung", value = 0, min = 0, max = 100)` |
@@ -291,9 +291,9 @@ th {
 | Einfachauswahl aus Liste             | `selectInput("id", "Beschreibung", auswahl)` |
 | Checkbox (Mehrfachauswahl)           | `checkboxGroupInput("id", "Beschreibung", auswahl)` |
 
-Auch hier gibt es wieder eine ausführliche [Übersicht der Layoutoptionen](https://mastering-shiny.org/basic-ui.html#inputs).
+Auch hier gibt es wieder eine ausführliche [Übersicht der Eingabeoptionen](https://mastering-shiny.org/basic-ui.html#inputs).
 
-Die wichtigsten **Argumente** der Layoutoptionen sind:
+Die wichtigsten **Argumente** der Eingabeoptionen sind:
 
 | Argument           | Beschreibung                                                                 |
 |--------------------|-----------------------------------------------------------------------------|
