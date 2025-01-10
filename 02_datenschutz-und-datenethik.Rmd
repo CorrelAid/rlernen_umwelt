@@ -36,37 +36,58 @@ cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 
 ![*Video: Datenschutz und Datenethik (20min)*](https://youtu.be/0Qmy81DLQDw)
 
-Wir Ihr bereits im Video sehen konntet, beschäftigen wir uns in der ersten Woche unseres Kurses mit den Themen **Datenschutz und Datenethik**. 
-Als weiterführende Lektüre empfehlen wir Euch hierzu die [Publikation](https://www.b-b-e.de/fileadmin/Redaktion/06_Service/02_Publikationen/2021/2021-bbe-reihe-forum-3.pdf){target="_blank"} des Bundesnetzwerks Bürgerschaftliches Engagement (BBE) zu „Datenschutz und Datensicherheit“, insbesondere die Schritte 1-12 auf den Seiten 29ff. Darüber hinaus könnt Ihr bei der **Stiftung Datenschutz** zahlreiche [Webinare](https://stiftungdatenschutz.org/veranstaltungen/datenschutz-im-ehrenamt){target="_blank"} zum Thema besuchen. Ein Webinar zur DSGVO-konformen Nutzung von bestehenden Datenbeständen mit der Stiftung Datenschutz und uns findet Ihr [hier](https://stiftungdatenschutz.org/veranstaltungen/unsere-veranstaltungen-detailansicht/datenschutz-im-ehrenamt-datenbestaende-rechtskonform-nutzen-293){target="_blank"}.
+# **Datenschutz und Datenethik**
 
-# **Datenschutz**
+## **Zusammenfassung**
 
-## **Europäische Datenschutzgrundverordnung (DSGVO)**
+- **Datenschutz** bezeichnet den **Schutz der Privatsphäre und personenbezogener Daten**, um Missbrauch, unbefugten Zugriff und unerlaubte Weitergabe zu verhindern. Grundlage bilden rechtliche Regelungen wie die DSGVO.
+- **Datenethik** beschreibt den **verantwortungsvollen Umgang mit Daten**, der gesellschaftliche, ökologische und individuelle Auswirkungen berücksichtigt und faire, diskriminierungsfreie Entscheidungen fördert.
+- Als Organisation tragen wir die **Verantwortung**, die **Rechte der Datennutzer:innen** zu wahren, indem wir eine sichere und ethische Verarbeitung ihrer Daten gewährleisten. Dies erfordert die Einhaltung klarer Verpflichtungen und Verantwortlichkeiten.
+- Als Analyst:innen fördern wir **Transparenz und Vertrauen**, indem wir offen über die Erhebung und Nutzung von Daten kommunizieren. Dadurch stärken wir das Vertrauen der Betroffenen und stellen sicher, dass unsere Prozesse nachvollziehbar sind.
+- Wir verfolgen das Ziel der **Gemeinwohlorientierung**, indem wir sicherstellen, dass **Daten nicht nur rechtmäßig, sondern auch im Einklang mit sozialen und ethischen Werten** eingesetzt werden.
 
-Das **Recht auf informationelle Selbstbestimmung** ist Teil des verfassungsrechtlich verankerten **allgemeinen Persönlichkeitsrechts**  (Art. 1 Abs. 1 und Art. 2 Abs. 1 GG) und sichert "das Recht des/der Einzelnen, grundsätzlich selbst über die Preisgabe und Verwendung seiner/ihrer personenbezogenen Daten zu bestimmen" ([s. Bundesministerium des Innern und für Heimat](https://www.bmi.bund.de/DE/themen/verfassung/datenschutz/datenschutz-node.html){target="_blank"}). Wichtige Rechtsgrundlage dafür ist die **Europäische Datenschutzgrundverordnung (kurz: DSGVO)**, welche am 25. Mai 2018 in Kraft getreten ist. Neben den 99 Artikeln, enthält diese zusätzlich insgesamt 173 sogenannte **Erwägungsgründe**. Das sind Zusätze, die eine wichtige Rolle im Verständnis und der Anwendung der Gesetze spielen, indem sie dafür sorgen, dass Kontextmerkmale berücksichtigt oder komplexe Bestimmungen und ihre Hintergründe erläutert werden. Einen Überblick über alle Erwägungsgründe findet ihr [hier](https://dsgvo-gesetz.de/erwaegungsgruende/){target="_blank"}.
+----
 
-```{r 02_quiz1}
-quiz(caption = NULL,
-  question("Welche Daten werden von der DSGVO geschützt?",
-    answer("Personenbezogene Daten", correct = TRUE),
-    answer("Organisations-/Unternehmensdaten"),
-    answer("Alle Daten"),
-    correct = "Richtig! Die DSGVO schützt ausschließlich personenbezogene Daten. Daten von juristischen, also nicht-natürlichen Personen, (z.B. von Vereinen und Unternehmen) sind daher nicht von der DSGVO geschützt. Hier gelten ggf. das Geschäftsgeheimnisgesetz (GeschGehG) oder bilateral getroffene Vereinbarungen zur Datenverarbeitung.",
-    incorrect = "Leider falsch. Die DSGVO schützt nämlich ausschließlich personenbezogene Daten. Daten von juristischen, also nicht-natürlichen Personen, (z.B. von Vereinen und Unternehmen) werden ggf. durch das Geschäftsgeheimnisgesetz (GeschGehG) oder bilateral getroffene Vereinbarungen zur Datenverarbeitung geschützt.",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-    )
-)
-```
+# **Personenbezogene Daten**
 
-Doch was sind überhaupt **personenbezogene Daten**?
-Folgt man **Art. 4 DSGVO**, so werden Personenbezogene Daten als "alle Informationen, mit denen natürliche Personen, also Menschen, direkt oder indirekt **identifiziert** werden können" definiert. Also im Grunde werden darunter alle Informationen gefasst, die Ihr über eine Person sammeln könnt und die Euch und Anderen dabei helfen können, diese Person wieder zu identifizieren. Die folgende Grafik fasst noch einmal zusammen, welche Daten als personenbezogene Daten verstanden werden:
+**Personenbezogene Daten** sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen, wie etwa Name, Adresse, E-Mail-Adresse, Geburtsdatum oder IP-Adresse. Die **Europäische Datenschutz-Grundverordnung (DSGVO)** regelt den Umgang mit diesen Daten in der Europäischen Union und stellt sicher, dass sie sicher und verantwortungsvoll verarbeitet werden. Sie schützt das **Recht auf informationelle Selbstbestimmung**, welches Einzelpersonen ermöglicht, selbst über die Preisgabe und Nutzung ihrer personenbezogenen Daten zu entscheiden. Die DSGVO, die am 25. Mai 2018 in Kraft trat, besteht aus 99 Artikeln und wird durch 173 **Erwägungsgründe** ergänzt, die den Kontext und die Anwendung der Bestimmungen verdeutlichen. Einen Überblick über alle Erwägungsgründe findet ihr [hier](https://dsgvo-gesetz.de/erwaegungsgruende/){target="_blank"}.
 
 ![*Abbildung: Personenbezogene Daten*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/personenbezogene-daten.png?raw=true){#id .class width=100% height=100%}
 
-```{r 02_quiz2}
+### **Quiz**
+
+```{r quiz_dsgvo}
 quiz(caption = NULL,
- question("Nutzt diese Definition von personenbezogenen Daten (Art. 4 DSGVO), um die Daten zu identifizieren, die unter den Schutzbereich der DSGVO fallen:",
+  question("Welche Art von Daten schützt die DSGVO?",
+    answer("Personenbezogene Daten", correct = TRUE),
+    answer("Daten von Organisationen oder Unternehmen"),
+    answer("Alle Arten von Daten"),
+    correct = "Richtig! Die DSGVO schützt ausschließlich personenbezogene Daten. Daten von juristischen Personen, wie z.B. Unternehmen oder Vereinen, sind nicht unter dem Schutz der DSGVO. Für diese können andere Gesetze, wie das Geschäftsgeheimnisgesetz (GeschGehG), relevant sein.",
+    incorrect = "Leider falsch, für Daten von von juristischen Personen (wie Unternehmen oder Vereinen) gelten beispielsweise andere Regelungen, z.B. das Geschäftsgeheimnisgesetz (GeschGehG).",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+  
+  question("Findet die DSGVO Anwendung auf den persönlichen oder familiären Bereich?",
+    answer("Ja, die DSGVO reguliert alle Lebensbereiche, auch den privaten Bereich."),
+    answer("Nein, für die Datennutzung innerhalb der Familie gelten andere Regelungen.", correct = TRUE),
+    correct = "Richtig! Die DSGVO findet keine Anwendung auf die Verarbeitung von Daten im rein persönlichen oder familiären Bereich. Weitere Informationen gibt es im Erwägungsgrund 18 der DSGVO.",
+    incorrect = "Leider falsch, für die Verarbeitung personenbezogener Daten im persönlichen oder familiären Bereich gelten andere Regelungen (Erwägungsgrund 18).",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+
+  question("Was versteht die DSGVO unter dem Begriff der 'Datenverarbeitung'? Das Erheben, Erfassen, die Organisation, das Ordnen, die Speicherung, Anpassung, Veränderung, das Auslesen, Abfragen, die Verwendung, Offenlegung, den Abgleich, die Verknüpfung, Einschränkung, Löschung oder Vernichtung...",
+    answer("Nur in automatisierten Vorgängen."),
+    answer("Nur in nicht-automatisierten Vorgängen."),
+    answer("Sowohl in automatisierten als auch in nicht-automatisierten Vorgängen.", correct = TRUE),
+    correct = "Richtig! Die DSGVO umfasst alle Arten der Datenverarbeitung, egal ob sie automatisiert oder manuell erfolgt.",
+    incorrect = "Leider falsch. Die DSGVO bezieht sich auf alle Arten der Datenverarbeitung, unabhängig davon, ob sie automatisiert oder manuell erfolgt.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+
+  question("Welche der folgenden Daten fallen unter den Schutzbereich der DSGVO (Art. 4)?",
     answer("Name und Vorname", correct = TRUE),
     answer("Privatanschrift", correct = TRUE),
     answer("Ausweis-/Passnummer", correct = TRUE),
@@ -75,219 +96,213 @@ quiz(caption = NULL,
     answer("Telefonnummer", correct = TRUE),
     answer("IP-Adresse", correct = TRUE),
     answer("Cookie-Kennung", correct = TRUE),
-    correct = "Richtig! Folgt man dem komplizierten Wortlaut von Art 4 DSGVO so werden darunter alle Informationen gefasst, die sich auf eine identifizierte oder identifizierbare natürliche Person (im Folgenden „betroffene Person“) beziehen. Als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer Online-Kennung oder zu einem oder mehreren besonderen Merkmalen, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind, identifiziert werden kann.",
-    incorrect = "Leider falsch. Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person (im Folgenden „betroffene Person“) beziehen. Als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer Online-Kennung oder zu einem oder mehreren besonderen Merkmalen, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind, identifiziert werden kann (Originalwortlaut Art 4 DSGVO).",
+    correct = "Richtig! Alle angegebenen Daten fallen unter den Schutzbereich der DSGVO. Sie beziehen sich auf Informationen, die eine natürliche Person direkt oder indirekt identifizieren können, sei es durch Namen, Identifikationsnummern, Standortdaten oder durch besondere Merkmale.",
+    incorrect = "Leider falsch, die DSGVO schützt alle Informationen, die eine natürliche Person direkt oder indirekt identifizieren können. Sogar Cookies, die Nutzer:innenprofile erstellen oder zur der Widererkennung von Benutzer:innen dienen, zählen dazu.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
- 
- question("Eure neu erworbenen Datenkompetenzen möchtet Ihr nutzen, um Daten von Euren digitalen Bildungsangeboten zu analysieren: Ihr zieht Euch einen Export aus der Lernplattform und aus Eurem Videokonferenztool. Könnte es sich hierbei um personenbezogene Daten handeln?",
+
+  question("Ihr möchtet Eure neu erworbenen Datenkompetenzen nutzen, um Daten aus Euren digitalen Bildungsangeboten zu analysieren. Ihr zieht einen Export aus der Lernplattform und aus dem Videokonferenztool. Könnte es sich hierbei um personenbezogene Daten handeln?",
     answer("Ganz klar ja!"),
     answer("Nein, natürlich nicht!"),
-    answer("Es kommt drauf an, ob eine Anmeldung oder ein Login erforderlich sind oder die Personen über ihre IP Adresse identifizierbar sind.", correct = TRUE),
-    correct = "Richtig! Es handelt sich bei der Lernplattform um personenbezogene Daten, sobald ein Login mit Benutzernamen und Passwort für die Teilnehmenden erforderlich ist oder die über ihre IP-Adressen identifizierbar sind. Beim Videokonferenztool hängt es davon ab, ob eine Anmeldung notwendig ist oder die Klarnamen verwendet werden.",
-    incorrect = "Leider falsch. Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen. Kann das durch eine Anmeldung oder die Verwendung von Namen bei Lernplattform und Videokonferenztool der Fall sein? Versuche es einfach nochmal! ",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-    ),
- 
- question("Findet die DSGVO Anwendung auf den persönlichen oder familiären Bereich?",
-    answer("Ja klar, die DSGVO reguliert jeden Lebensbereich!"),
-    answer("Nein, für die Datennutzung innerhalb der Familie gelten andere Regelungen.", correct = TRUE),
-    correct = "Richtig! Werft gerne einen Blick auf den Erwägungsgrund 18, dieser liefert die entsprechenden Kontext- und Hintergrundinformationen.",
-    incorrect = "Leider falsch. Die DSGVO gilt nicht für die Verarbeitung von personenbezogenen Daten, die von einer natürlichen Person zur Ausübung ausschließlich persönlicher oder familiärer Tätigkeiten und somit ohne Bezug zu einer beruflichen oder wirtschaftlichen Tätigkeit vorgenommen wird (Erwägungsgrund 18).",
-    allow_retry = TRUE,
-    try_again_button = "Nochmal versuchen"
-    ),
- 
- question("Was versteht die DSGVO unter dem Begriff der 'Datenverarbeitung'? Das Erheben, Erfassen, die Organisation, das Ordnen, die Speicherung, Anpassung, Veränderung, das Auslesen, Abfragen, die Verwendung, Offenlegung, den Abgleich, die Verknüpfung, Einschränkung, Löschung oder Vernichtung...",
-    answer("in ausschließlich automatisierten Vorgängen."),
-    answer("in ausschließlich nicht-automatisierten Vorgängen."),
-    answer("in automatisierten und nicht-automatisierten Vorgängen.", correct = TRUE),
-    correct = "Richtig! Also im Grunde alles, was man mit Daten tun kann.",
-    incorrect = "Leider falsch. Die DSGVO schließt dabei sowohl die menschliche als auch die maschinelle Datenverarbeitung ein.",
+    answer("Es kommt darauf an, ob eine Anmeldung oder ein Login erforderlich sind oder ob die Personen durch ihre IP-Adresse identifizierbar sind.", correct = TRUE),
+    correct = "Richtig! Die Daten aus der Lernplattform sind personenbezogen, wenn eine Anmeldung mit Benutzernamen und Passwort erforderlich ist oder die Personen über ihre IP-Adresse identifizierbar sind. Bei Videokonferenztools hängt es davon ab, ob eine Anmeldung erforderlich ist oder ob Klarnamen verwendet werden.",
+    incorrect = "Leider falsch. Personenbezogene Daten beziehen sich auf Informationen, die eine natürliche Person identifizieren oder identifizierbar machen. Wenn eine Anmeldung erforderlich ist oder Namen bzw. IP-Adressen verwendet werden, können diese Daten personenbezogen sein.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     )
 )
 ```
 
-## **Verbotsprinzip**
+----
 
-Die Verarbeitung von personenbezogenen Daten unterliegt dem sogenannten **Verbotsprinzip**: Wir dürfen Daten also nur verarbeiten, wenn wir dafür eine **explizite Berechtigung** haben - ansonsten ist die Datenverarbeitung strengstens **verboten**! Eine jursitische Erlaubnis zur Verarbeitung der Daten wird durch folgende **Erlaubnistatbestände** gesichert:
+# **Europäische Datenschutz-Grundverordnung (DSGVO)**
+
+Die **Europäische Datenschutz-Grundverordnung (DSGVO)** legt die Pflichten von Organisationen fest, die mit personenbezogenen Daten arbeiten, und garantiert den betroffenen Personen bestimmte Rechte. Ein zentrales Prinzip der DSGVO ist das **Verbotsprinzip**, das vorschreibt, dass personenbezogene Daten nur unter bestimmten rechtlichen Grundlagen verarbeitet werden dürfen. Darüber hinaus stellt die DSGVO sicher, dass Organisationen ihre **juristischen Verpflichtungen** gegenüber den betroffenen Personen erfüllen, was einen verantwortungsvollen und transparenten Umgang mit personenbezogenen Daten gewährleistet.
+
+### **Verbotsprinzip**
+
+Die Verarbeitung von personenbezogenen Daten unterliegt dem **Verbotsprinzip**: Personenbezogene Daten dürfen nur verarbeitet werden, wenn es dafür eine **rechtliche Grundlage** gibt. Ohne diese Grundlage ist die Verarbeitung **verboten**. Eine **explizite Berechtigung** zur Verarbeitung kann auf verschiedenen **Erlaubnistatbeständen** beruhen, die in der **DSGVO** festgelegt sind. Diese beinhalten beispielsweise die Einwilligung der betroffenen Person oder die Erfüllung eines Vertrages. Weitere Details zu den rechtlichen Grundlagen finden sich in den Artikeln 6 und 9 der DSGVO.
 
 ![*Abbildung: Rechtmäßigkeit der Datenverarbeitung*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/rechtmaessigkeit.png?raw=true){#id .class width=100% height=100%}
 
-```{r 02_quiz3}
+```{r quiz_verbotsprinzip}
 quiz(caption = NULL,
- question("Darfst Du im Verein die Mitgliederdatenbank nutzen, um Monitoringdashboards und Prognosemodelle für die Vereinsentwicklung zu erstellen? Wenn ja, was ist die zugehörige Rechtsgrundlage?",
+  question("Darfst Du im Verein die Mitgliederdatenbank nutzen, um Monitoringdashboards und Prognosemodelle für die Vereinsentwicklung zu erstellen? Wenn ja, was ist die zugehörige Rechtsgrundlage?",
     answer("Ich darf die Daten für diesen Zweck nicht nutzen."),
-    answer("Ich darf sie nutzen, wenn die Mitglieder eingewilligt haben, wobei hier der Zweck und dessen Interpretation entscheidend sind.", correct = TRUE),
-    answer("Ich darf sie nutzen, wenn die Verarbeitung der Vertragserfüllung dient, wobei hier der Zweck und dessen Interpretation entscheidend sind.", correct = TRUE),
-    answer("Ich darf sie durch berechtigtes Interesse nutzen (z.B. bei Erwägungsgrund 47-49 DSGVO).", correct = TRUE),
-    correct = "Richtig, achte aber immer auf den Zweck und dessen Interpretation! Der Zweck 'Mitgliederverwaltung' kann durch Analysetools unterstützt werden, wenn Du aber 'Registrierung' als Zweck der Verarbeitung angegeben hast, dann solltest Du die Daten aus der Mitgliederdatenbank nicht für Analysezwecke nutzen.",
-    incorrect = "Leider falsch. Auch wenn die Daten Eurer Vereinsmitglieder bestimmt wichtige Daten für Euch sind, so kann in diesem Fall sicher nicht von lebenswichtigen Daten die Rede sein. Da Ihr die Daten eben ausschließlich für Eure eigenen Vereinszwecke verwenden möchtet, können wir an dieser Stelle auch nicht von einem besonderen und öffentliches Interesse ausgehen. Eine rechtliche Verpflichtung zur Erstellung von Prognosemodellen oder Monitoringdashboards gibt es selbstverständlich auch nicht. Aber was denkst Du über die anderen drei Erlaubnistatbestände?",
+    answer("Ich darf die Daten nutzen, wenn die Mitglieder eingewilligt haben, wobei der Zweck und dessen Auslegung entscheidend sind.", correct = TRUE),
+    answer("Ich darf die Daten nutzen, wenn die Verarbeitung zur Vertragserfüllung dient, wobei der Zweck und dessen Auslegung entscheidend sind.", correct = TRUE),
+    answer("Ich darf die Daten durch berechtigtes Interesse nutzen (z.B. laut Erwägungsgrund 47-49 DSGVO).", correct = TRUE),
+    correct = "Richtig! Aber achte immer darauf, den Zweck genau zu definieren. Wenn der Zweck 'Mitgliederverwaltung' lautet, können Analysetools verwendet werden. Wurde jedoch 'Registrierung' als Zweck angegeben, dürfen die Daten nicht für Analysezwecke genutzt werden.",
+    incorrect = "Leider falsch, versuche es nochmal!",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
-    )
+  )
 )
 ```
 
-## **Juristische Verpflichtung der Datenverarbeitung**
+### **Juristische Verpflichtung der Datenverarbeitung**
 
-Die Nutzung der Daten ist ein heikles Thema. Daher haben wir als Nutzer:innen der Daten auch gewisse Pflichten gegenüber den betroffenen Personen, deren Daten wir nutzen (dürfen). Aufgrund dieser sog. **Informationspflichten** (Art. 12-14 DSGVO) müssen wir bei der Datenerfassung auf Rechtsgrundlage und Zweck des Datenprojekts, die Dauer der Datenspeicherung, die Kontaktdaten der Verantwortlichen, sowie die Weitergabe an Dritte und Rechte der Betroffenen aufmerksam machen. Mit Beginn unseres Datenprojekts verpflichten wir uns daher automatisch zu Einhaltung folgender Kernpflichten: **Rechtmäßigkeit, Zweckbindung, Datenminimierung, Richtigkeit, Speicherbegrenzung, Vertraulichkeit und Rechenschaft** (Art.5-7, 12-23 ff. DSGVO).
+Die Nutzung personenbezogener Daten ist ein sensibles Thema, und als **Datenverantwortliche** haben wir Pflichten gegenüber den betroffenen Personen, deren Daten wir verarbeiten dürfen. Nach den **Informationspflichten** der DSGVO (Art. 12-14) müssen wir bei der Datenerhebung klar angeben, auf welcher Rechtsgrundlage und zu welchem Zweck die Daten verarbeitet werden, wie lange sie gespeichert werden und welche Rechte die betroffenen Personen haben. 
 
-Da wir in der Regel zur Datenverarbeitung auf die Auskunft anderer Personen angewiesen sind, deren Daten wir verarbeiten dürfen, müssen wir sicherstellen, dass diese Personen in besonderem Maße von uns geschützt werden. Daher müssen wir die folgenden **Betroffenenrechte** (Art. 15-21 DSGVO) hinweisen und diese berücksichtigen:
+Mit Beginn eines Datenprojekts verpflichten wir uns automatisch zur Einhaltung der grundlegenden Prinzipien der DSGVO: **Rechtmäßigkeit, Zweckbindung, Datenminimierung, Richtigkeit, Speicherbegrenzung, Vertraulichkeit und Rechenschaft** (Art. 5-7, 12-23).
+
+Da wir häufig auf Auskünfte von betroffenen Personen angewiesen sind, müssen wir sicherstellen, dass ihre Rechte gewahrt bleiben. Dies betrifft insbesondere die **Betroffenenrechte** (Art. 15-21 DSGVO), die wir den betroffenen Personen transparent machen und ihnen die Ausübung dieser Rechte ermöglichen müssen:
 
 ![*Abbildung: Betroffenenrechte*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/betroffenenrechte.png?raw=true){#id .class width=100% height=100%}
 
-Bei **Erlöschung des Zwecks** müssen personenbezogene Daten gem. §35 BDSG spätestens nach **drei Jahren** gelöscht werden - außer es handelt sich um steuerlich relevante oder Sozialdaten, diese unterliegen einer Frist von 10 Jahren. Alternativ zur Löschung können Daten auch **anonymisiert** werden, indem identifizierende Informationen wie Name, exakte Adresse oder E-Mail gelöscht werden, bis die Kombination von Merkmalsausprägungen wie Wohnort, Beruf und Geschlecht jeweils bei **min. drei** Personen vorhanden sind. Idealerweise liegt eine Kombination der Daten allerdings bei keiner einzigen Person vor.
+<br>
 
-```{r 02_quiz4}
+Werden die Daten nicht mehr für den ursprünglich festgelegten Zweck benötigt, müssen sie gemäß **§35 BDSG** spätestens nach **drei Jahren** gelöscht werden, es sei denn, sie unterliegen längeren Aufbewahrungsfristen, etwa bei steuerlichen oder Sozialdaten (Löschung nach 10 Jahren). Alternativ zur Löschung können die Daten auch **anonymisiert** werden, indem alle identifizierenden Merkmale entfernt werden. Dies ist der Fall, wenn keine Kombination von Merkmalen mehr zu einer Einzelperson zurückverfolgt werden kann. Ideal wäre es, wenn diese Kombination überhaupt nicht mehr bei einer Einzelperson vorliegt.
+
+```{r quiz_juristische-verpflichtung}
 quiz(caption = NULL,
-  question("Wie lange dürfen Daten gespeichert werden?",
+  question("Wie lange dürfen personenbezogene Daten gespeichert werden?",
       answer("Unbegrenzt, wenn ich die Daten einmal habe, darf ich damit machen, was ich will!"),
-      answer("Bis zur Erlöschung des Zwecks (Prinzip der Zweckbindung), danach muss ich die Daten auf jeden Fall löschen - Ausnahmen gibt es keine!"),
-      answer("Bis zur Erlöschung des Zwecks (Prinzip der Zweckbindung), allerdings kann eine längere Aufhebung durch eine konkurrierende Gesetzgebung nötig sein.", correct = TRUE),
-      correct = "Richtig! Grundsätzlich gilt bei Erlöschung neben dem Prinzip der Zweckbindung (z.B. Austritt eines Vereinsmitglieds) auch die Pflicht zur Löschung der Daten. Allerdings können der Löschung vertragliche Vereinbarungen und Satzungen entgegenstehen (§35 BDSG). Dadurch kann eine gesetzliche Pflicht zur längeren Aufhebung bestehen, z.B. für Dokumente, die steuerlich relevant sind (10 Jahre, §257 HGB) und Sozialdaten (10 Jahre, §304 SGB). Bei einem Mitgliedsaustritt müssen deshalb Name, Anschrift, Daten zur Mitgliedschaft im Verein und Daten zur Beitragszahlung über 10 Jahre aufgehoben werden. Ansonsten gilt grundsätzlich die Frist zur Löschung nach drei Jahren.",
-      incorrect = "Leider falsch. Grundsätzlich gilt bei Erlöschung der Zweckbindung (z.B. Austritt eines Vereinsmitglieds) auch die Pflicht zur Löschung der Daten. Allerdings können der Löschung vertragliche Vereinbarungen und Satzungen entgegenstehen (§35 BDSG). Dadurch kann eine eine gesetzliche Pflicht zur längeren Aufhebung bestehen, z.B. für Dokumente, die steuerlich relevant sind (10 Jahre, §257 HGB), und Sozialdaten (10 Jahre, §304 SGB). Bei einem Mitgliedsaustritt müssen deshalb Name, Anschrift, Daten zur Mitgliedschaft im Verein und Daten zur Beitragszahlung über 10 Jahre aufgehoben werden. Ansonsten gilt grundsätzlich die Frist zur Löschung nach drei Jahren.",
+      answer("Bis zur Erlöschung des Zwecks (Prinzip der Zweckbindung), danach muss ich die Daten auf jeden Fall löschen – Ausnahmen gibt es keine!"),
+      answer("Bis zur Erlöschung des Zwecks (Prinzip der Zweckbindung), allerdings kann eine längere Aufbewahrung aufgrund gesetzlicher Vorgaben erforderlich sein.", correct = TRUE),
+      correct = "Richtig! Grundsätzlich gilt das Prinzip der Zweckbindung: Daten dürfen nur so lange gespeichert werden, wie sie für den vorgesehenen Zweck benötigt werden. Nach der Erlöschung des Zwecks müssen die Daten gelöscht werden, es sei denn, eine gesetzliche Aufbewahrungspflicht besteht. Zum Beispiel können steuerliche oder sozialrechtliche Vorschriften eine längere Aufbewahrung erfordern, wie z.B. für Dokumente, die 10 Jahre lang aufbewahrt werden müssen (z.B. nach §257 HGB oder §304 SGB). Bei einem Mitgliedsaustritt müssen Vereinsdaten wie Name, Adresse, Mitgliedschaftsinformationen und Beitragsdaten in der Regel 10 Jahre lang aufbewahrt werden. Andernfalls beträgt die Löschfrist grundsätzlich drei Jahre.",
+      incorrect = "Leider falsch, grundsätzlich gilt bei personenbezogener Daten nach Erlöschung des Zwecks eine Löschfrist von drei Jahren. Bei gesetzlichen Aufbewahrungspflichten für steuerrelevante Dokumente oder Sozialdaten gelten andere Fristen, z.B. müssen bestimmte Vereinsdaten nach dem Austritt eines Mitglieds für 10 Jahre aufbewahrt werden.",
       allow_retry = TRUE,
       try_again_button = "Nochmal versuchen"
-      )
+  )
 )
 ```
+
+----
 
 ## **Datenschutz außerhalb der EU**
 
-Da der **Datenschutz in anderen Ländern** (z.B. in den USA) nicht so ausgeprägt ist als in der EU, sollten wir bei der Auswahl von datenverarbeitenden Tools darauf achten, wo diese ihren Hauptsitz und Server haben. Möglicherweise müssen wir dann zusätzliche Maßnahmen zum Schutz der Daten ergreifen (z.B. rechtliche Vereinbarung, Passwortschutz, Verschlüsselung).
+Der **Datenschutz in anderen Ländern** (z.B. in den USA) ist häufig weniger streng als in der EU. Deshalb ist es entscheidend, bei der Auswahl von datenverarbeitenden Tools auf den Hauptsitz und die Serverstandorte der Anbieter zu achten. In einigen Fällen sind zusätzliche Schutzmaßnahmen erforderlich, wie etwa rechtliche Vereinbarungen, Passwortschutz oder Verschlüsselung, um den Datenschutz gemäß der DSGVO zu gewährleisten.
 
-Seid Ihr in einer Firma, einer Organisation oder einem Verein tätig, veröffentlicht Ihr am besten auf Eurer Webseite eine **Datenschutzerklärung sowie Kontaktdaten von Ansprechpartner:innen**. Innerhalb Eurer Organsiation legt ihr am besten zusätzlich ein **Verarbeitungsverzeichnis und Datenschutzmanagementsystem** an, welches Ihr in festen Abständen regelmäßig überprüft. Wichtig hierbei: Bestimmt zur Einhaltung und Überprüfung der eigenen Richtlinien verantwortliche Personen innherlab Eurer eigenen Strukturen! Das ist für Euch, aber auch für externe Personen, mit denen Ihr zusammenarbeitet, eine große Stütze. Eine vollständige Datenschutzerklärung enthält idealerweise folgende Dinge:
+Wenn Ihr in einer Firma, Organisation oder einem Verein tätig seid, stellt sicher, dass eine **Datenschutzerklärung** sowie die Kontaktdaten der verantwortlichen Ansprechpartner:innen auf der Webseite veröffentlicht werden. Innerhalb der Organisation sollte ein **Verarbeitungsverzeichnis** sowie ein **Datenschutzmanagementsystem** eingeführt und regelmäßig überprüft werden. Bestimmt dafür **verantwortliche Personen**, die die Einhaltung der Datenschutzrichtlinien sicherstellen – dies unterstützt nicht nur Euch, sondern auch externe Partner:innen. Eine vollständige Datenschutzerklärung sollte idealerweise folgende Elemente beinhalten:
 
 ![*Abbildung: Datenschutzerklärung*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/datenschutzerklaerung.png?raw=true){#id .class width=100% height=100%}
 
-```{r 02_quiz5}
-quiz(caption = NULL,
-  question("Abschließend einmal zusammengefasst: Welche Kernpflichten umfasst die DSGVO?",
-      answer("Rechtmäßigkeit", correct = TRUE),
-      answer("Zweckbindung", correct = TRUE),
-      answer("Datenminimierung", correct = TRUE),
-      answer("Richtigkeit", correct = TRUE),
-      answer("Speicherbegrenzung", correct = TRUE),
-      answer("Vertraulichkeit", correct = TRUE),
-      answer("Rechenschaft", correct = TRUE),
-      correct = "Richtig!",
-      incorrect = "Leider falsch - richtig sind alle sieben.",
-      allow_retry = TRUE,
-      try_again_button = "Nochmal versuchen"
-      )
-)
-```
+<br>
+
+Ein hilfreiches Tool ist [**e-parti.eu**](https://e-parti.eu/tools/){target="_blank"}. Mit dieser Suchmaschine könnt Ihr DSGVO-konforme Tools zur Kommunikation, Erstellung von Präsentationen, etc. finden. Durch die gezielte Suche mit den entsprechenden Filtern stellt Ihr sicher, dass Eure Tools den rechtlichen Anforderungen entsprechen und den Schutz der personenbezogenen Daten gewährleisten.
+
+----
 
 ## **Datenschutz in der Praxis**
 
-Bislang haben wir uns vor allem mit den theoretischen Hintergründen des Datenschutzes beschäftigt. Diese sind wichtig und die Grundlage für unser tatsächliches Verhalten. Daher wollen wir uns doch einmal anschauen, wie es mit dem Datenschutz in der tatsächlichen Praxis aussieht und welcher Herausforderungen dabei auf uns zukommen können.
+Nachdem wir die theoretischen Grundlagen des Datenschutzes behandelt haben, wollen wir nun einen Blick auf die praktische Umsetzung werfen. Die theoretischen Aspekte bilden die Basis für unser tägliches Handeln – nun geht es darum, wie wir diese in der Praxis anwenden und mit den Herausforderungen umgehen, die dabei auftreten können. Im Folgenden werden wir anhand von Beispielen herausfinden, wie Datenschutz konkret umgesetzt wird und welche Stolpersteine dabei zu beachten sind:
 
-```{r 02_quiz6}
+```{r quiz_datenschutz-praxis}
 quiz(caption = NULL,
-  question("Weil Ihr den morgendlichen und bitter benötigten Kaffee über Euren Arbeitslaptop verschüttet, verliert Ihr die Mitgliedsdaten Eures 20 Mitglieder starken Vereins, die Ihr lokal in einer Excel-Datei gespeichert hattet. Die Daten sind unwiderruflich verschwunden. „Kein Problem“, denkt Ihr, „für von Kaffee eliminierte Daten bin ich ja nicht haftungspflichtig.“ Ist das richtig?",
-      answer("Ja, schließlich ist ja der Kaffee Schuld an meinem Datenverlust!"),
-      answer("Nein, ich habe ja den Kaffee verschüttet - wenn auch unbeabsichtigt. Trotzdem bin ich dafür verantwortlich.", correct = TRUE),
-      correct = "Richtig! Auch wenn wir den Kaffe nicht absichtlich verschüttet haben, sind wir jederzeit für unsere Daten verantwortlich. Eine solche Datenpanne (Art. 4 DSGVO) könnt, müsst Ihr aber nicht unbedingt innerhalb von 72h der zuständigen Behörde melden, da das Risiko für Betroffene hier nicht sehr groß ist. Den Vorfall sowie Eure Überlegungen zur Meldepflicht solltet Ihr trotzdem dokumentieren.",
-      incorrect = " Leider falsch! Eure sieben Kernpflichten beinhalten gem. Art. 5 DSGVO auch den Grundsatz der Vertraulichkeit. Damit seid Ihr verpflichtet die Daten durch, dem Risiko angemessene, technische und organisatorische Maßnahmen vor Zugriff und Verlust zu sichern. Dass Endgeräte kaputtgehen, ist durchaus zu erwarten. Eine doppelte Datensicherung durch externe, digitale Speicher wie USB oder Cloud-Lösung ist notwendig. Die Datenpanne (Art. 4 DSGVO) könnt, müsst Ihr aber nicht unbedingt innerhalb von 72h der zuständigen Behörde melden, da das Risiko für Betroffene hier nicht sehr groß ist. Den Vorfall sowie Eure Überlegungen zur Meldepflicht solltet Ihr trotzdem dokumentieren.",
-      allow_retry = TRUE,
-      try_again_button = "Nochmal versuchen"
-      ),
-  
-  question("Zum Austausch von personenbezogenen Daten nutzt die HR-Abteilung Eures Unternehmens passwortgeschützte Ordnerstrukturen in der Google Cloud. Zugang haben lediglich Mitarbeitende der Personalabteilung. Ist das unbedenklich?",
-    answer("Ja, schließlich haben sind die Daten passwortgeschützt und können nur von den Mitarbeiter:innen der Personalabteilung aufgerufen werden!"),
-    answer("Nein, Passwortschutz hin oder her. Da Google ein US-Amerikanischer Anbieter ist, arbeiten sie mit amerikanischen Datenschutzvereinbarungen - diese weichen von den EU-Regelungen ab.", correct = TRUE),
-    correct = "Richtig! Es ist zwar lobenswert, dass die hochsensiblen Daten durch Passwörter geschützt werden, aber Google ist ein US-Amerikanischer Anbieter. Mit dem Kippen des Privacy Shields 2020 ist die Nutzung US-Amerikanischer Tools zur Speicherung personenbezogener Daten unzulässig. Das ist zwar erstmal eine ziemlich schlechte Nachricht, aber auch wir sind derzeit noch in der Umstellung – und erwarten hier auch Korrekturen und Eingriffe der Gesetzgebenden. Bis dahin nutzen wir – wo möglich – digitale Tools aus der EU oder hosten Alternativen, wie z.B. IDGARD oder eine eigene Instanz von NextCloud.",
-    incorrect = " Leider falsch! Es ist zwar lobenswert, dass die hochsensiblen Daten durch Passwörter geschützt werden, aber Google ist ein US-Amerikanischer Anbieter. Mit dem Kippen des Privacy Shields 2020 ist deshalb die Nutzung US-Amerikanischer Tools zur Speicherung personenbezogener Daten unzulässig. Das ist zwar erstmal eine ziemlich schlechte Nachricht, aber auch wir sind derzeit noch in der Umstellung – und erwarten hier auch Korrekturen und Eingriffe der Gesetzgebenden. Bis dahin nutzen wir – wo möglich – digitale Tools aus der EU oder hosten Alternativen, wie z.B. IDGARD oder eine eigene Instanz von NextCloud.",
+  question("Ihr verschüttet aus Versehen den morgendlichen Kaffee über Euren Arbeitslaptop, wodurch die Mitgliedsdaten Eures 20 Mitglieder starken Vereins, die lokal in einer Excel-Datei gespeichert waren, verloren gehen. Seid Ihr als Verantwortliche*r für den Datenverlust haftbar?",
+    answer("Ja, schließlich ist der Kaffee schuld am Datenverlust!"),
+    answer("Nein, ich bin dafür verantwortlich, auch wenn es unbeabsichtigt war.", correct = TRUE),
+    correct = "Richtig! Auch wenn der Kaffee unabsichtlich verschüttet wurde, bleibt Ihr für die Daten verantwortlich. Eine solche Datenpanne (Art. 4 DSGVO) muss nicht immer innerhalb von 72 Stunden der zuständigen Behörde gemeldet werden, wenn das Risiko für die betroffenen Personen gering ist. Den Vorfall und Ihre Entscheidung bezüglich einer Meldung solltet Ihr jedoch dokumentieren.",
+    incorrect = "Leider falsch! Auch wenn der Kaffee unabsichtlich verschüttet wurde, bleibt es Eure Verantwortung, die Daten angemessen zu schützen (Art. 5 DSGVO). Das bedeutet, dass technische und organisatorische Maßnahmen ergriffen werden müssen, um Datenverlust zu vermeiden. Eine doppelte Datensicherung (z.B. durch Cloud- oder USB-Lösungen) ist notwendig. Den Vorfall solltet Ihr dennoch dokumentieren, auch wenn keine Meldung erforderlich ist, da das Risiko für die Betroffenen hier gering ist.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     ),
   
-  question("Zum Abschluss noch der Klassiker: Ihr habt vermutlich eine Vereinswebseite. Sind hier (zustimmungspflichtige) Cookie-Hinweise notwendig?",
-    answer("Ja, es ist immer ein Cookie-Hinweis mit expliziter Einwilligung notwendig."),
-    answer("Nein, der Cookie-Hinweis ist optional."),
-    answer("Für technisch notwendige Cookies brauche ich einen Cookie-Hinweis, aber keine explizite Einwilligung.", correct = TRUE),
-    answer("Für Cookies, die über die technisch notwendigen Cookies hinausgehen (z.B. Tracking, Marketing), müssen Betroffene die Möglichkeit zum Opt-In freiwillig wahrnehmen.", correct = TRUE),
-    correct = "Richtig! Für technisch notwendige Cookies braucht es keine explizite Einwilligung, für alles weitere hingegegen schon. Aber: Durch die Informationspflicht ist ein Banner mit Cookie-Hinweis verpflichtend!",
-    incorrect = "Leider falsch! Auch hier kommt es wieder drauf an: Während für alle Cookies eine Informationspflicht gilt, benötigen technisch notwendige Cookies im Gegensatz zu allen weiteren Cookies keine explizite Einwilligung - ein Banner mit Cookie-Hinweis ist dennoch verpflichtend.",
+  question("Die HR-Abteilung Eures Unternehmens nutzt passwortgeschützte Ordner in der Google Cloud für den Austausch personenbezogener Daten. Der Zugang ist nur für Mitarbeitende der Personalabteilung möglich. Ist diese Vorgehensweise DSGVO-konform?",
+    answer("Ja, da die Daten passwortgeschützt und nur für die Personalabteilung zugänglich sind!"),
+    answer("Nein, Google ist ein US-amerikanischer Anbieter. Die Datenschutzbestimmungen in den USA entsprechen nicht denen der EU.", correct = TRUE),
+    correct = "Richtig! Auch wenn die Daten durch Passwörter geschützt sind, ist Google ein US-amerikanischer Anbieter, und mit dem Wegfall des Privacy Shields 2020 sind US-amerikanische Anbieter nicht mehr DSGVO-konform, wenn personenbezogene Daten in den USA gespeichert werden. Alternativen wie EU-basierte Anbieter oder Lösungen wie IDGARD oder NextCloud wären in diesem Fall sicherer.",
+    incorrect = "Leider falsch! Zwar schützt der Passwortschutz die Daten, aber Google ist ein US-amerikanischer Anbieter, und aufgrund des Wegfalls des Privacy Shields 2020 sind US-basierte Tools nicht mehr DSGVO-konform, wenn personenbezogene Daten in den USA gespeichert werden. Besser wären EU-basierte Anbieter oder Lösungen wie IDGARD oder NextCloud.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+
+  question("Auf Eurer Vereinswebseite verwendet Ihr vermutlich Cookies. Ist ein Cookie-Hinweis mit expliziter Einwilligung für alle Cookies erforderlich?",
+    answer("Ja, für alle Cookies ist ein Cookie-Hinweis mit expliziter Einwilligung erforderlich."),
+    answer("Nein, der Cookie-Hinweis ist nur für bestimmte Cookies erforderlich."),
+    answer("Für technisch notwendige Cookies ist keine explizite Einwilligung notwendig, aber ein Hinweisbanner ist trotzdem erforderlich.", correct = TRUE),
+    answer("Für Cookies, die über die technisch notwendigen hinausgehen (z.B. Tracking- oder Marketing-Cookies), muss eine explizite Einwilligung der Betroffenen eingeholt werden.", correct = TRUE),
+    correct = "Richtig! Für technisch notwendige Cookies ist keine explizite Einwilligung erforderlich, aber ein Cookie-Hinweisbanner ist immer Pflicht. Für alle anderen Cookies, die nicht unbedingt erforderlich sind (z.B. Tracking, Marketing), muss eine ausdrückliche Einwilligung der Nutzer eingeholt werden.",
+    incorrect = "Leider falsch, für technisch notwendige Cookies ist keine explizite Einwilligung erforderlich. Ein Hinweisbanner muss allerdings immer eingeblendet werden. Für alle anderen Cookies (z.B. Tracking oder Marketing) bedarf es einer expliziten Einwilligung der Nutzer:innen.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+  )
+)
+```
+
+----
+
+# **Datenethik**
+
+In der heutigen digitalen Welt geht es nicht nur darum, gesetzliche Vorgaben wie den Datenschutz zu beachten, sondern auch ethische Fragestellungen in den Mittelpunkt zu stellen. Die **Datenethik** beschäftigt sich mit den moralischen Aspekten der Datennutzung und der Frage, wie wir sicherstellen können, dass unsere Datenverarbeitung **gerecht**, **transparent** und **respektvoll** gegenüber den betroffenen Personen erfolgt.
+
+## **Charta der digitalen Grundrechte**
+
+Neben den datenschutzrechtlichen Aspekten sollten wir daher auch die **ethischen Implikationen** unserer Datenanalyse und -verwendung berücksichtigen. Nur weil etwas **gesetzlich zulässig** ist, heißt das nicht zwangsläufig, dass es auch **moralisch vertretbar** ist. Eine wertvolle Orientierungshilfe für diese Überlegungen bietet die [Charta der digitalen Grundrechte](https://digitalcharta.eu/){target="_blank"}.
+
+Auf Basis dieser ethischen Grundsätze können wir **prüfen**, ob die von uns verwendeten Daten eine **faire** und **sinnvolle** Bewertung ermöglichen. Zudem sollten wir die Daten regelmäßig **evaluieren** und gezielt nach **Verzerrungen** (auch bekannt als **Biases**) suchen. Wir müssen uns fragen, ob die Nutzung dieser Daten und deren Analyse möglicherweise zu einer **strukturellen Benachteiligung**, **Diskriminierung** oder einer **negativen Politisierung** von Menschen führen könnte. Falls bei diesen Überlegungen Zweifel aufkommen, sollten wir diese **ernst nehmen** und gegebenenfalls unsere **Erhebungs- und Analyseinstrumente** **überarbeiten**.
+
+Ein besonders wichtiger Punkt ist die **Programmierung von Algorithmen**: Wir sollten uns stets bewusst fragen, ob eine Entscheidung tatsächlich **maschinell** getroffen werden sollte, insbesondere wenn sie auf sozio-demografischen Merkmalen oder deren **Proxies** basiert. Dies gilt besonders für Algorithmen, die über den **Zugang zu essentiellen Bereichen** wie dem Arbeitsmarkt, dem Finanzsektor oder zivilgesellschaftlichen Programmen entscheiden!
+
+Im Folgenden einige ethische Fragen, die wir uns vor und während unserer Datenprojekte stellen sollten:
+
+![*Abbildung: Fragenkatalog Datenethik*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/ethische-fragen.png?raw=true){#id .class width=100% height=100%}
+
+----
+
+## **Datenethik in der Praxis**
+
+Nachdem wir die grundlegenden ethischen Überlegungen zur Datennutzung behandelt haben, wollen wir nun einen praktischen Blick darauf werfen, wie wir diese Prinzipien im Alltag umsetzen können. Die theoretischen Grundlagen der Datenethik bilden die Basis für unser Handeln – jetzt geht es darum, sicherzustellen, dass unsere Entscheidungen und Datenverarbeitungen nicht nur gesetzeskonform, sondern auch moralisch verantwortbar sind. Im Folgenden werden wir anhand konkreter Beispiele untersuchen, wie ethische Fragestellungen im Umgang mit Daten berücksichtigt werden können und welche Herausforderungen dabei auftreten:
+
+```{r quiz_datenethik}
+quiz(caption = NULL,
+  question("Wie könnt Ihr Daten zu Geschlecht und Aussehen sensibel erheben?",
+    answer("Mit Selbstidentifikation anhand der gängigen Merkmalsausprägungen."),
+    answer("Mit Selbstidentifikation anhand einer Kombination aus einigen Vorschlägen, Opt-Out (= Möglichkeit, die Frage unbeantwortet zu lassen) und Freitextfeldern."),
+    answer("Mit Selbstidentifikation anhand einer Kombination aus einigen Vorschlägen, Opt-Out, Freitextfeld und einer zusätzlichen Fremdidentifikation (d.h. Einschätzung durch Dritte).", correct = TRUE),
+    correct = "Richtig! Geschlechteridentitäten sind zunehmend vielfältig, und das ist gut so. Wenn wir das Geschlecht einer Person im Rahmen unserer Datenerhebung abfragen, sollten wir niemanden ausgrenzen oder verletzen. Dafür verwenden wir ein breites Spektrum an Frageformaten und verzichten auf die traditionellen Merkmalsausprägungen ('männlich' vs. 'weiblich').",
+    incorrect = "Leider falsch! Die gängigen Merkmalsausprägungen berücksichtigen nicht die Vielfalt der Geschlechter und schließen viele Menschen aus. Die Fremdeinschätzung kann uns in manchen Fällen helfen, sollte aber als Ergänzung zur Selbsteinschätzung einer Person betrachtet werden. Wenn dich dieses Thema weiter interessiert, kannst du gerne folgende Quellen durchlesen: [nibi.space - Geschlechtsabfragen](https://nibi.space/geschlechtsabfragen), [Broschüre von Citizens for Europe](https://citizensforeurope.org/wp-content/uploads/Broschu%CC%88re_2012-Einzelseiten.pdf).",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+
+  question("Euer Projektpartner bittet Euch, bei der geplanten Datenanalyse zur Polizeilichen Kriminalitätsstatistik (PKS) demografische Merkmale (Geschlecht und Nationalität) zu berücksichtigen. Ihr findet das Ganze aus ethischer Perspektive bedenklich – zu Recht?",
+    answer("Ja, Geschlecht und Nationalität geben wenig Auskunft über das Verhalten einer Person und könnten von anderen politisiert werden. Darunter leiden vor allem die betroffenen Personen.", correct = TRUE),
+    answer("Nein, Geschlecht und Nationalität sind zentrale Informationen. Außerdem sollen diese Daten von anderen so genutzt werden, wie sie das tun wollen. Dafür sind die Daten doch da!"),
+    correct = "Richtig! Die Polizeiliche Kriminalstatistik enthält viele interessante Daten. Allerdings kann die geplante Analyse – falls statistisch signifikante Beobachtungen gemacht werden – leicht politisiert werden, zum Beispiel um für die Ausweisung von Migrant:innen zu werben. Besonders kritisch ist auch, dass die Polizeistatistik neben den genannten Merkmalen nur wenige Informationen zu weiteren demografischen Faktoren enthält, weshalb sogenannte 'Confounding Variables' (Störfaktoren) wie Alter und Einkommen nicht identifiziert werden können.",
+    incorrect = "Leider falsch! Die Polizeiliche Kriminalstatistik enthält viele interessante Daten, kann aber bei statistisch signifikanten Beobachtungen leicht politisiert werden. Besonders kritisch ist auch, dass die Polizeistatistik neben den genannten Merkmalen nur wenige Informationen zu weiteren demografischen Faktoren enthält, weshalb sogenannte 'Confounding Variables' (Störfaktoren) wie Alter und Einkommen nicht identifiziert werden können.",
+    allow_retry = TRUE,
+    try_again_button = "Nochmal versuchen"
+    ),
+
+  question("Von welchen Kriterien könnt Ihr ethische Überlegungen zu Datenanalysen leiten lassen?",
+    answer("Trägt die Datenanalyse zur strukturellen Diskriminierung bestimmter Personengruppen oder zur Politisierung eines Themas bei?", correct = TRUE),
+    answer("Reicht die Datengrundlage aus, um den Sachverhalt wissenschaftlich zu bewerten? Ist das überhaupt sinnvoll?", correct = TRUE),
+    answer("Sind die Daten 'repräsentativ' oder liegt eventuell eine (historisch bedingte) Verzerrung vor?", correct = TRUE),
+    answer("Wenn es um die Programmierung von Algorithmen geht: Sollten solche Entscheidungen überhaupt maschinell und automatisiert getroffen werden?", correct = TRUE),
+    answer("Wenn es um die Programmierung von Algorithmen geht: Sollten Entscheidungen auf Basis sozio-demografischer Merkmale und deren Proxies im Anwendungsfall getroffen werden? Wäre das fair?", correct = TRUE),
+    correct = "Richtig! Darüber hinaus gibt es noch viele weitere wichtige Überlegungen. Legt idealerweise selbst einen Katalog an, der Euch als Entscheidungshilfe dient.",
+    incorrect = "Leider falsch! Zumindest die genannten fünf Kriterien sollten alle angewendet werden. Darüber hinaus gibt es noch viele weitere Möglichkeiten. Legt idealerweise selbst einen Katalog an, der Euch als Entscheidungshilfe dient.",
     allow_retry = TRUE,
     try_again_button = "Nochmal versuchen"
     )
 )
 ```
 
-# **Datenethik**
+----
 
-## **Charta der digitalen Grundrechte**
+# **Und jetzt Ihr!**
 
-Neben dem Datenschutz solltet Ihr Euch auch mit den **ethischen Anforderungen** Eurer Daten beschäftigen. Denn nur weil etwas augenscheinlich legal ist, bedeutet das nicht, dass es auch moralisch vertretbar ist. Als Inspiration kann Euch hierbei die [Charta der digitalen Grundrechte](https://digitalcharta.eu/){target="_blank"} dienen.
+Wie bereits erwähnt, ist eine **Datenschutzerklärung** bei der Arbeit mit (personenbezogenen) Daten ein wichtiger Bestandteil! Eine solche Datenschutzerklärung zu erstellen kann häufig ein sehr mühsamer und langwieriger Prozess sein – bis jetzt!  
 
-Auf Basis dieser Überlegungen, könnt Ihr **überprüfen**, ob Eure Datengrundlage ausreicht, um Sachverhalte **sinnvoll zu bewerten**. Außerdem könnt Ihr Eure zugrundeliegenden Daten **evaluieren** und gezielt nach **Verzerrungen** (= engl. Biases) suchen. Anschließend solltet Ihr Euch darüber Gedanken machen, ob Eure Daten und deren Analyse zur **strukturellen Benachteiligung, Diskriminierung oder (negativen) Politisierung** von Menschen führen können. Kommen im Zuge dieser Überlegungen Zweifel auf, müssen wir diese Ernst nehmen und ggf. unsere Erhebungs- und Analyseinstrumente **überarbeiten**.
-Wichtig: Denkt v.a. bei der **Programmierung von Algorithmen** stets darüber nach, ob die zu treffende Entscheidung überhaupt **maschinell** anhand von sozio-demographischen Merkmalen und deren Proxies getroffen werden sollte. Das gilt insbesondere bei Algorithmen, die über den **Zugang zu essentiellen Bereichen** wie dem Arbeits- und Finanzmarkt oder zu zivilgesellschaftlichen Programmmen entscheiden!
+Mit dem Angebot von [Datenschutz-Generator.de](https://datenschutz-generator.de/?dsgo=free){target="_blank"} könnt Ihr jetzt mit wenigen Klicks eine Datenschutzerklärung für Euren Verein oder Eure Organisation erstellen – und das Ganze auch noch völlig kostenlos! Klickt Euch gerne einmal durch den Generator, teilt Eure fertige Datenschutzerklärung im Slack oder bringt sie mit in die Live-Session am Freitag.  
 
-Einige ethische Fragen solltet Ihr Euch vor und während Eurer Datenprojekte stellen:
+Wenn Ihr darüber hinaus ein **Datenverarbeitungsverzeichnis** für Euren Verein oder Eure Organisation erstellen möchtet, empfehlen wir die Vorlage der **Stiftung Datenschutz** für Vereine und gemeinnützige Organisationen. Das Muster könnt Ihr Euch [hier herunterladen](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/MusterDatenverarbeitungsverzeichnis.xlsx?raw=true){target="_blank"} und Eure eigenen Daten in die Tabelle eintragen.
 
+----
 
-![*Abbildung: Fragenkatalog Datenethik*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/ethische-fragen.png?raw=true){#id .class width=100% height=100%}
+# **Zusätzliche Ressourcen**
 
-
-## **Datenethik in der Praxis**
-```{r 02_quiz}
-quiz(caption = NULL,
-  question("Wie könnt Ihr Daten zu Geschlecht und Aussehen sensibel erheben?",
-      answer("Mit Selbstidentifikation anhand der gängigen Merkmalsausprägungen."),
-      answer("Mit Selbstidentifikation anhand Kombination aus einigen Vorschlägen, Opt Out (= Möglichkeit die Frage unbeantwortet zu lassen) und Freitextfeldern."),
-      answer("Mit Selbstidentifikation anhand einer Kombination aus einigen Vorschlägen, Opt Out, Freitextfeld und Fremdidentifikation (d.h. Einschätzung einer Person durch Dritte).", correct = TRUE),
-      correct = "Richtig, Geschlechteridentitäten sind zunehmend divers und das ist gut so! Wenn wir das Geschlecht einer Person im Rahmen unserer Datenerhebung abfragen wollen, versuchen wir daher, niemanden auszugrenzen oder zu verletzen. Dafür verwenden wir vielfältige Frageformate und distanzieren uns von den gängigen Merkmalsausprägungen (ausschließlich 'männlich' vs. 'weiblich').",
-      incorrect = " Leider falsch! Die gängigen Merkmalsausprägungen werden der Diversität der Geschlechter nicht gerecht und schließen viele Menschen aus. Die zweite Antwortmöglichkeit ist da schon deutlich besser, aber immer noch nicht perfekt, da wir auch aus der Auskunft anderer Menschen wertvolle Informationen ziehen können. Wenn dich dieses Thema weiter interessiert, schaue doch gerne bei folgenden Links vorbei, hier wird das Thema noch einmal ausführlicher behandelt: https://nibi.space/geschlechtsabfragen, https://citizensforeurope.org/wp-content/uploads/Broschu%CC%88re_2012-Einzelseiten.pdf",
-      allow_retry = TRUE,
-      try_again_button = "Nochmal versuchen"
-      ),
-
-  question("Eurer Projektpartner bittet Euch bei der geplanten Datenanalyse zur Polizeilichen Kriminalitätsstatistik (PKS) vorhandene demographische Merkmalen (Geschlecht und Nationalität) zu berücksichtigen. Ihr findet das Ganze aus ethischer Perspektive bedenklich  – zu Recht?",
-      answer("Ja, Geschlecht und Nationalität geben wenig Auskunft über das Verhalten einer Person - außerdem könnten die Informationen von anderem Menschen politisiert werden. Darunter leiden am Ende vor allem die betroffenen Personen.", correct = TRUE),
-      answer("Nein, Geschlecht und Nationalität sind zentrale Informationen. Außerdem sollen diese Daten von Anderen so genutzt werden, wie sie das tun wollen, dafür sind die Daten doch da!"),
-      correct = "Richtig! Die Polizeiliche Kriminalstatistik enthält viele spannende Daten – allerdings kann die geplante Analyse – falls statistisch signifikante Beobachtungen gemacht werden - leicht politisiert werden, z.B. um für die Ausweisung von Migrant:innen zu
-  werben. Besonders kritisch ist hier auch, dass die Polizeistatistik neben den genannten Merkmalen wenig Informationen zu sonstigen demographischen Merkmalen enthält, weshalb sog. 'Confounding Variables' (zu dt. Störfaktoren) wie Alter und Einkommen nicht identifiziert werden können.",
-      incorrect = "Leider falsch! Die Polizeiliche Kriminalstatistik enthält viele spannende Daten – allerdings kann die geplante Analyse – falls statistisch signifikante Beobachtungen gemacht werden - leicht politisiert werden, z.B. um für die Ausweisung von Migrant:innen zu
-  werben. Besonders kritisch ist hier auch, dass die Polizeistatistik neben den genannten Merkmalen wenig Informationen zu sonstigen demographischen Merkmalen enthält, weshalb sog. 'Confounding Variables' (zu dt. Störfaktoren) wie Alter und Einkommen nicht identifiziert werden können.",
-      allow_retry = TRUE,
-      try_again_button = "Nochmal versuchen"
-      ),
-
-  question("Von welchen Kriterien könnt Ihr solche ethischen Überlegungen zu Datenanalysen leiten lassen?",
-    answer("Trägt die Datenanalyse zur strukturellen Diskriminierung bestimmter Personengruppen oder Politisierung eines Themas bei?", correct = TRUE),
-  answer("Reicht die Datengrundlage aus, um den Sachverhalt wissenschaftlich zu bewerten? Ist das überhaupt sinnvoll?", correct = TRUE),
-  answer(" Sind die Daten 'repräsentativ' oder liegt eventuell eine (historisch bedingte) Verzerrung vor?", correct = TRUE),
-  answer("Wenn es um die Programmierung von Algorithmen geht: Sollten solche Entscheidung überhaupt maschinell und automatisiert getroffen werden?", correct = TRUE),
-  answer("Wenn es um die Programmierung von Algorithmen geht: Sollten Entscheidungen auf Basis sozio-demographischer Merkmale und deren Proxies im Anwendungsfall getroffen werden? Wäre das fair?", correct = TRUE),
-  correct = "Richtig! Darüber hinaus gibt es aber noch wesentlich mehr Möglichkeiten. Legt idealerweise selbst einen Katalog an, der Euch als Entscheidungshilfe dient.",
-      incorrect = " Leider falsch! Zumindest die genannten fünf sollten alle angewandt werden. Darüber hinaus gibt es aber noch wesentlich mehr Möglichkeiten. Legt idealerweise selbst einen Katalog an, der Euch als Entscheidungshilfe dient.",
-      allow_retry = TRUE,
-      try_again_button = "Nochmal versuchen"
-    )
-)
-```
-
-# Und jetzt Ihr: Eigenes Datenverarbeitungsverzeichnis erstellen (optional)
-Ihr arbeitet mit personenbezogenen Daten und möchtet ein **Datenverarbeitungsverzeichnis** anlegen? Zur Erstellung eines solchen Verzeichnisses gibt es im Netz zahlreiche Informationen. Hier geht es zu den Veröffentlichungen der [Datenschutzkonferenz (DKI)](https://www.bfdi.bund.de/DE/Fachthemen/Inhalte/Allgemein/Verzeichnis-Verarbeitungstaetigkeiten.html){target="_blank"} und [bitkom](https://www.bitkom.org/sites/default/files/file/import/180529-LF-Verarbeitungsverzeichnis-online.pdf){target="_blank"}. 
-
-Die **Stiftung Datenschutz** kennen wir ja bereits! Diese haben, wie wir finden, eine ziemlich hilfreiche **Vorlage für Vereine und gemeinnützige Organisationen** veröffentlicht. Dieses Muster wollen wir mit Euch teilen - Ihr könnt es [hier](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/MusterDatenverarbeitungsverzeichnis.xlsx?raw=true){target="_blank"} herunterladen.
-
-<center>
-![*Template: Datenverarbeitungsverzeichnis*](https://github.com/CorrelAid/rlernen_umwelt/blob/main/abbildungen/02_datenschutz-und-datenethik/datenverarbeitungsverzeichnis.png?raw=true){#id .class width=100% height=100%}
-</center>
-<br>
-
-# Zusätzliche Ressourcen
-- [Publikation](https://www.b-b-e.de/fileadmin/Redaktion/06_Service/02_Publikationen/2021/2021-bbe-reihe-forum-3.pdf){target="_blank"} des Bundesnetzwerks Bürgerschaftliches Engagement (BBE) zu „Datenschutz und Datensicherheit“, insbesondere die Schritte 1-12 auf den Seiten 29ff.
-- [Webinare](https://stiftungdatenschutz.org/veranstaltungen/datenschutz-im-ehrenamt){target="_blank"} der Stiftung Datenschutz
+- [Publikation des Bundesnetzwerks Bürgerschaftliches Engagement (BBE)](https://www.b-b-e.de/fileadmin/Redaktion/06_Service/02_Publikationen/2021/2021-bbe-reihe-forum-3.pdf){target="_blank"}
+- [Webinare der Stiftung Datenschutz](https://stiftungdatenschutz.org/veranstaltungen/datenschutz-im-ehrenamt){target="_blank"}
 - Informationsseiten des:der [Berliner Datenschutzbeauftragten](https://www.datenschutz-berlin.de/){target="_blank"}
 - [Data Ethics Canvas (dt.)](http://theodi.org/wp-content/uploads/2021/07/Data-Ethics-Canvas-German-Colour.pdf){target="_blank"} des Open Data Institutes
 - [Coded Bias](https://www.netflix.com/title/81328723){target="_blank"}, eine Netflixdokumentation zu Bias (zu dt. Verzerrungen) in Algorithmen
+- [Datenschutz Generator](https://datenschutz-generator.de/?l=de){target="_blank"} zur Erstellung einer Datenschutzerklärung
+- Materialien der [Deutschen Gesellschaft für Datenschutz](https://dg-datenschutz.de/){target="_blank"} zur Erstellung einer Datenschutzerklärung
+
+----
 
 <a class="btn btn-primary btn-back-to-main" href=`r params$links$end_session`>Session beenden</a>
