@@ -40,6 +40,7 @@ z <- get_z()
 cat(get_license_note(rmarkdown::metadata$title, rmarkdown::metadata$authors))
 ```
 
+
 In dieser Woche geht es um die Grundlagen des statistischen Denkens.
 Wir beschäftigen uns aber nicht mit der Statistik aus purem Selbstzweck, sondern sie ist ein ganz wesentlicher Teil und Voraussetzung für den kritischen Umgang mit Daten. Daher schauen wir uns zu Beginn an, was wir für einen kompetenten Umgang mit Daten benötigen, wie wir Datenkompetenz erlangen können und welche Rolle die Statistik dabei spielt.
 
